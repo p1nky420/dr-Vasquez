@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-graphite: #0b0f14;
+  --color-petrol: #0e2a36;
+  --color-gold: #b89b5e;
+  --color-ivory: #f5f2ea;
+  --color-steel: #8c9299;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #05080c;
+}
+
+body {
+  margin: 0;
+  background: transparent;
+  color: #f5f2ea;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  position: relative;
+}
+
+/* 1. Procedural luxury analog grain texture (No placesholders) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: rgba(184, 155, 94, 0.35);
+  color: #f5f2ea;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 2. Keyframes for luxury reflections */
+@keyframes text-shine {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes border-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 10px rgba(184, 155, 94, 0.3);
+  }
+  50% {
+    opacity: 0.85;
+    box-shadow: 0 0 25px rgba(184, 155, 94, 0.7);
+  }
+}
+
+/* 3. Luxury visual classes */
+.eyebrow {
+  color: #b89b5e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f5f2ea 0%, #d4af37 40%, #b89b5e 70%, #8b6d2c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer metallic animated gold text */
+.text-gold-metallic {
+  background: linear-gradient(90deg, #ffffff 0%, #f3e5ab 25%, #d4af37 50%, #b89b5e 75%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shine 6s linear infinite;
+}
+
+.bg-marble-dark {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(184, 155, 94, 0.04) 0%, transparent 80%),
+    linear-gradient(135deg, rgba(245, 242, 234, 0.02) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(11, 15, 20, 0.35) 0%, rgba(6, 8, 11, 0.45) 100%);
+  background-color: transparent;
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.bg-marble-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(45deg, rgba(184, 155, 94, 0.1) 0px, rgba(184, 155, 94, 0.1) 1px, transparent 1px, transparent 15px);
+}
+
+/* Premium beveled glassmorphism */
+.glass-beveled {
+  background: rgba(11, 15, 20, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(184, 155, 94, 0.15);
+  box-shadow: 
+    0 25px 55px rgba(0, 0, 0, 0.65), 
+    inset 0 1px 0 rgba(245, 242, 234, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-beveled:hover {
+  border-color: rgba(184, 155, 94, 0.45);
+  box-shadow: 
+    0 30px 65px rgba(0, 0, 0, 0.75), 
+    0 0 25px rgba(184, 155, 94, 0.15),
+    inset 0 1px 0 rgba(245, 242, 234, 0.2);
+}
+
+.shadow-glow-gold {
+  box-shadow: 0 4px 30px rgba(184, 155, 94, 0.15), inset 0 0 12px rgba(184, 155, 94, 0.05);
+}
+
+.border-gold-glow {
+  border: 1px solid rgba(184, 155, 94, 0.18);
+  box-shadow: 0 0 15px rgba(184, 155, 94, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.border-gold-glow:hover {
+  border-color: rgba(184, 155, 94, 0.55);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(184, 155, 94, 0.2);
+}
+
+.led-strip-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(184, 155, 94, 0.75) 50%, transparent 100%);
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.hero-static {
+  background:
+    radial-gradient(circle at 68% 38%, rgba(184, 155, 94, 0.22), transparent 16%),
+    linear-gradient(100deg, rgba(11, 15, 20, 0.98), rgba(14, 42, 54, 0.68)),
+    repeating-linear-gradient(90deg, rgba(245, 242, 234, 0.035) 0 1px, transparent 1px 96px),
+    radial-gradient(circle at 77% 42%, rgba(184, 155, 94, 0.2), transparent 29%);
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.case-plaque {
+  background:
+    linear-gradient(135deg, rgba(245, 242, 234, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(14, 42, 54, 0.82), rgba(8, 11, 16, 0.94));
+}
+
+.section-shell {
+  padding: 6rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding: 7rem 2rem;
+  }
+}
+
+/* Beveled borders with animation */
+.border-gold-active {
+  position: relative;
+}
+
+.border-gold-active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 155, 94, 0.5), transparent);
+  background-size: 200% auto;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: border-shine 4s linear infinite;
+  transition: opacity 0.4s ease;
+}
+
+/* Rotative LED Gold Border Shine */
+@keyframes border-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card-shine-border {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card-shine-border::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 30%,
+    rgba(184, 155, 94, 0.05) 45%,
+    rgba(184, 155, 94, 0.5) 50%,
+    rgba(184, 155, 94, 0.05) 55%,
+    transparent 70%
+  );
+  animation: border-rotate 10s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-shine-border:hover::before {
+  opacity: 1;
+  animation-duration: 5s;
+}
+
+.card-shine-border::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: inherit;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-shine-border > * {
+  position: relative;
+  z-index: 10;
+}
+
+.text-shadow-premium {
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
