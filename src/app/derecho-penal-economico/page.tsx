@@ -21,10 +21,10 @@ export default function PenalEconomicoPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden px-5 pt-36 pb-12 bg-marble-dark">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/reception_marble.png"
-            alt="Mármol de Recepción Estudio Jurídico"
+            src="/penal_economico_bg.png"
+            alt="Bóveda de Seguridad Penal Económico"
             fill
-            className="object-cover opacity-20 filter grayscale brightness-50 contrast-[1.1] scale-102"
+            className="object-cover opacity-45 filter grayscale brightness-[0.6] contrast-[1.1] scale-102 transition-transform duration-[12s]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-transparent to-transparent" />

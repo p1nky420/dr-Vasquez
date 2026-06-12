@@ -27,6 +27,26 @@ body {
   position: relative;
 }
 
+body > main,
+body > header,
+body > footer {
+  transform-origin: center top;
+  transition:
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.vault-open {
+  overflow: hidden;
+}
+
+body.vault-open > main,
+body.vault-open > header,
+body.vault-open > footer {
+  transform: scale(0.985);
+  filter: blur(2px) brightness(0.62);
+}
+
 /* 1. Procedural luxury analog grain texture (No placesholders) */
 body::after {
   content: "";
@@ -38,6 +58,12 @@ body::after {
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 767px) {
+  body::after {
+    opacity: 0.02;
+  }
 }
 
 ::selection {
@@ -126,6 +152,15 @@ a {
   opacity: 0.05;
   pointer-events: none;
   background-image: repeating-linear-gradient(45deg, rgba(184, 155, 94, 0.1) 0px, rgba(184, 155, 94, 0.1) 1px, transparent 1px, transparent 15px);
+}
+
+.bg-ivory-paper {
+  background-color: #eee7db;
+  background-image:
+    linear-gradient(rgba(238, 231, 219, 0.9), rgba(238, 231, 219, 0.9)),
+    url("/ivory-archival-paper-v1.webp");
+  background-position: center;
+  background-size: cover;
 }
 
 /* Premium beveled glassmorphism */

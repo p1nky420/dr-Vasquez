@@ -38,3 +38,6 @@ next-env.d.ts
 !public/*.png
 !public/*.jpg
 !public/*.jpeg
+
+# Generated source texture; the optimized WebP is committed instead.
+public/ivory-archival-paper-v1.png

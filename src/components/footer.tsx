@@ -1,11 +1,11 @@
 import { Scale } from "lucide-react";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
-import { contactMessage, navItems, whatsappHref } from "@/lib/site";
+import { navItems } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-ivory/10 bg-[#080b10]">
+    <footer className="border-t border-ivory/10 bg-[#080b10] pb-20 md:pb-0">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
         <div>
           <div className="flex items-center gap-3">
@@ -35,13 +35,11 @@ export function Footer() {
         </div>
         <div>
           <p className="text-sm uppercase tracking-[0.18em] text-gold">Evaluación</p>
-          <p className="mt-5 text-sm leading-7 text-steel">
+          <p className="mb-6 mt-5 text-sm leading-7 text-steel">
             Si existe una audiencia próxima o una investigación penal activa, solicite una revisión inicial.
           </p>
           <ButtonLink
-            className="mt-6"
-            href={whatsappHref(contactMessage)}
-            target="_blank"
+            href="#admision"
           >
             Solicitar evaluación
           </ButtonLink>

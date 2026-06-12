@@ -1,12 +1,17 @@
+import type { Metadata } from "next";
 import { Shield, Award, Compass, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/animated";
-import { contactMessage, pageDescriptions, whatsappHref } from "@/lib/site";
+import { contactMessage, whatsappHref } from "@/lib/site";
 
-export const metadata = {
-  title: "Contacto",
-  description: pageDescriptions.contacto,
+export const metadata: Metadata = {
+  title: "Contacto | Abogado Penalista Quito",
+  description:
+    "Solicite una evaluación confidencial con Fausto Vásquez Abogados para casos penales complejos, delitos financieros y litigio estratégico en Quito.",
+  alternates: {
+    canonical: "https://faustovasquezabogados.com/contacto",
+  },
 };
 
 const pillars = [
@@ -23,10 +28,10 @@ export default function ContactoPage() {
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/reception_marble.png"
-            alt="Mármol Negro"
+            src="/contacto_bg.png"
+            alt="Despacho Legal de Noche"
             fill
-            className="object-cover opacity-10 filter grayscale brightness-50"
+            className="object-cover opacity-40 filter grayscale brightness-[0.6] transition-transform duration-[12s]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-transparent to-transparent" />
@@ -46,6 +51,7 @@ export default function ContactoPage() {
               <a
                 href={whatsappHref(contactMessage)}
                 target="_blank"
+                rel="noreferrer"
                 className="inline-flex h-12 items-center gap-2 border border-gold/30 bg-gold/10 hover:bg-gold/20 px-6 text-xs uppercase tracking-widest text-gold transition duration-300 shadow-glow-gold rounded-sm"
               >
                 <MessageCircle size={15} />
@@ -93,8 +99,9 @@ export default function ContactoPage() {
                       </p>
                       <div className="mt-6">
                         <a
-                          href="https://maps.google.com"
+                          href="https://www.google.com/maps/search/?api=1&query=Av.+12+de+Octubre+N26-97+y+Lincoln,+Torre+1492,+Quito,+Ecuador"
                           target="_blank"
+                          rel="noreferrer"
                           className="inline-block text-[0.6rem] uppercase tracking-widest text-gold border-b border-gold/20 hover:border-gold pb-0.5 transition duration-300 font-semibold"
                         >
                           Ver en Google Maps
@@ -125,8 +132,9 @@ export default function ContactoPage() {
                       </p>
                       <div className="mt-6">
                         <a
-                          href="https://maps.google.com"
+                          href="https://www.google.com/maps/search/?api=1&query=Av.+12+de+Octubre+N26-97+y+Lincoln,+Torre+1492,+Quito,+Ecuador"
                           target="_blank"
+                          rel="noreferrer"
                           className="inline-block text-[0.6rem] uppercase tracking-widest text-gold border-b border-gold/20 hover:border-gold pb-0.5 transition duration-300 font-semibold"
                         >
                           Ver en Google Maps
@@ -165,7 +173,7 @@ export default function ContactoPage() {
 
             {/* Right Column: Contact Form */}
             <Reveal delay={0.24}>
-              <div className="case-plaque relative overflow-hidden border border-gold/20 bg-black/45 p-8 shadow-[0_30px_90px_rgba(0,0,0,0.65)] rounded-sm">
+              <div className="relative overflow-hidden rounded-sm border border-[#C5A059]/30 bg-[#050D1F] p-8">
                 <h3 className="font-serif text-xl text-ivory tracking-wide uppercase font-light">
                   Envíenos un mensaje
                 </h3>

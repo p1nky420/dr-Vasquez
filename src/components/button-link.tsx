@@ -25,7 +25,7 @@ export function ButtonLink({
 }: ButtonLinkProps) {
   const classes = `inline-flex min-h-12 items-center justify-center rounded-sm border px-5 py-3 text-sm font-semibold tracking-[0.04em] transition duration-300 ${styles[variant]} ${className}`;
 
-  if (href.startsWith("http") || href.startsWith("mailto:")) {
+  if (href.startsWith("http")) {
     return (
       <a className={classes} href={href} {...props}>
         {children}

@@ -1,12 +1,17 @@
+import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { PracticeGrid } from "@/components/practice-grid";
 import { Reveal } from "@/components/animated";
-import { pageDescriptions, practiceAreas } from "@/lib/site";
+import { practiceAreas } from "@/lib/site";
 
-export const metadata = {
-  title: "Áreas de práctica",
-  description: pageDescriptions.areas,
+export const metadata: Metadata = {
+  title: "Áreas de Práctica | Abogado Penalista Quito",
+  description:
+    "Defensa especializada en Derecho Penal Económico, lavado de activos, delitos financieros y litigio estratégico en Quito, Ecuador.",
+  alternates: {
+    canonical: "https://faustovasquezabogados.com/areas-de-practica",
+  },
 };
 
 export default function AreasPage() {
@@ -16,6 +21,7 @@ export default function AreasPage() {
         eyebrow="Áreas de práctica"
         title="Áreas de defensa penal especializada"
         text="Casos empresariales, financieros, constitucionales y políticos requieren una defensa penal capaz de leer hechos, prueba, instituciones y estrategia."
+        bgImage="/consultoria_bg.png"
       />
       <section className="section-shell">
         <div className="mx-auto max-w-7xl">

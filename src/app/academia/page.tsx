@@ -1,4 +1,5 @@
-import { GraduationCap, BriefcaseBusiness, Scale, Lock, ShieldCheck, FileText, ChevronRight, Award } from "lucide-react";
+import type { Metadata } from "next";
+import { BriefcaseBusiness, Scale, ShieldCheck, FileText, ChevronRight, Award } from "lucide-react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { CtaBand } from "@/components/cta-band";
@@ -6,9 +7,12 @@ import { Reveal } from "@/components/animated";
 import { CardSpotlight } from "@/components/card-spotlight";
 import { contactMessage, pageDescriptions, whatsappHref } from "@/lib/site";
 
-export const metadata = {
-  title: "Academia",
+export const metadata: Metadata = {
+  title: "Academia de Derecho Penal y Litigación",
   description: pageDescriptions.academia,
+  alternates: {
+    canonical: "/academia",
+  },
 };
 
 const academicPrograms = [
@@ -51,7 +55,7 @@ export default function AcademiaPage() {
             src="/quito_night.png"
             alt="Quito de Noche"
             fill
-            className="object-cover opacity-25 filter grayscale brightness-[0.35] contrast-[1.25]"
+            className="object-cover opacity-45 filter grayscale brightness-[0.6] contrast-[1.2] transition-transform duration-[12s]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-[#0b0f14]/80 to-transparent" />

@@ -16,7 +16,7 @@ export default function BlogPage() {
             src="/quito_night.png"
             alt="Quito de Noche"
             fill
-            className="object-cover opacity-20 filter grayscale brightness-50 contrast-[1.1] scale-102"
+            className="object-cover opacity-45 filter grayscale brightness-[0.6] contrast-[1.1] scale-102 transition-transform duration-[12s]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-transparent to-transparent" />

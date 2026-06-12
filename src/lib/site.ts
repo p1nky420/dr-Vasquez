@@ -2,7 +2,6 @@ import type { LucideIcon } from "lucide-react";
 import {
   BriefcaseBusiness,
   Building2,
-  ChartNoAxesCombined,
   FileText,
   Landmark,
   Scale,
@@ -11,17 +10,13 @@ import {
   WalletCards,
 } from "lucide-react";
 
-export const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
-export const contactEmail =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contacto@faustovasquezabogados.com";
-
+export const whatsappNumber = "+593983076881";
 export const navItems = [
-  { href: "/", label: "Gestión" },
-  { href: "/firma", label: "Estrategia" },
-  { href: "/academia", label: "Academia" },
-  { href: "/areas-de-practica", label: "Consultoría" },
-  { href: "/blog", label: "Análisis y Libros" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#defensa", label: "Defensa" },
+  { href: "/#perfil", label: "Perfil" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#admision", label: "Admisión" },
 ];
 
 export type PracticeArea = {
@@ -203,15 +198,8 @@ export const pageDescriptions = {
 
 export function whatsappHref(message: string) {
   const encoded = encodeURIComponent(message);
-  return whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encoded}`
-    : `https://wa.me/?text=${encoded}`;
-}
-
-export function mailtoHref(subject: string, body: string) {
-  return `mailto:${contactEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
+  const number = whatsappNumber;
+  return `https://wa.me/${number}?text=${encoded}`;
 }
 
 export const contactMessage =

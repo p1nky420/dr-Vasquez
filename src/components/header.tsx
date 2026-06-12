@@ -1,51 +1,33 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Scale, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ButtonLink } from "@/components/button-link";
 import { contactMessage, navItems, whatsappHref } from "@/lib/site";
+
+const urgentWhatsappMessage =
+  "Hola, necesito una evaluación urgente de mi caso penal.";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b ${
-        scrolled
-          ? "border-gold/25 bg-[#0b0f14]/96 py-0 shadow-[0_10px_35px_rgba(0,0,0,0.8)] backdrop-blur-xl"
-          : "border-gold/10 bg-transparent py-2"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 border-b border-gold/15 bg-[#0b0a08]/82 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.34)] backdrop-blur-lg"
     >
-      {/* Upper strip shown only on top */}
-      <div
-        className={`hidden border-b border-gold/10 text-[0.62rem] uppercase tracking-[0.24em] text-steel/80 transition-all duration-500 lg:block ${
-          scrolled ? "h-0 overflow-hidden opacity-0 border-none" : "h-9 opacity-100"
-        }`}
-      >
+      {/* Institutional strip remains visible to preserve the editorial header. */}
+      <div className="hidden h-9 border-b border-gold/10 text-[0.62rem] uppercase tracking-[0.24em] text-steel/80 lg:block">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-8">
           <span>Derecho Penal Económico & Litigio Estratégico</span>
           <span className="text-gold/80 italic normal-case tracking-wider">Defensa · Prueba · Garantías · Reputación</span>
         </div>
       </div>
 
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:h-20 md:px-8">
         
         {/* FV Monogram Logo (with golden metallic animation) */}
         <Link className="group flex items-center gap-4" href="/" onClick={() => setOpen(false)}>
@@ -87,21 +69,20 @@ export function Header() {
           })}
         </nav>
 
-        {/* Right side icon */}
-        <div className="hidden lg:block">
-          <Link
-            href="/contacto"
-            className="text-gold hover:text-ivory hover:rotate-[15deg] transform transition duration-500 block"
-            aria-label="Contacto"
-          >
-            <Scale size={23} strokeWidth={1.2} />
-          </Link>
-        </div>
+        <a
+          href={whatsappHref(urgentWhatsappMessage)}
+          target="_blank"
+          rel="noreferrer"
+          className="hidden items-center gap-2 border border-[#c7a86a]/55 bg-[#17140f]/80 px-4 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[#f4efe5] transition-colors hover:bg-[#c7a86a] hover:text-[#11100e] md:flex"
+        >
+          <MessageCircle size={15} strokeWidth={1.6} />
+          Evaluación urgente
+        </a>
 
         {/* Mobile menu trigger */}
         <button
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          className="grid size-11 place-items-center border border-gold/20 text-gold hover:text-ivory hover:border-gold/50 transition duration-300 lg:hidden rounded-sm"
+          className="grid size-12 touch-manipulation place-items-center border border-gold/25 text-gold transition duration-300 hover:border-gold/50 hover:text-ivory lg:hidden rounded-sm"
           onClick={() => setOpen((value) => !value)}
           type="button"
         >
@@ -120,7 +101,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-gold/10 bg-[#0b0f14]/98 px-5 pb-8 pt-4 lg:hidden shadow-2xl backdrop-blur-xl"
+            className="max-h-[calc(100svh-4.5rem)] overflow-y-auto border-t border-gold/10 bg-[#0b0a08]/98 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-4 shadow-2xl backdrop-blur-xl lg:hidden"
           >
             <nav className="grid gap-1">
               {navItems.map((item) => (
@@ -128,7 +109,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`border-b border-gold/5 py-3 text-sm uppercase tracking-widest font-semibold ${
+                  className={`min-h-14 touch-manipulation border-b border-gold/10 py-4 text-sm uppercase tracking-widest font-semibold ${
                     pathname === item.href ? "text-gold" : "text-ivory"
                   }`}
                 >
