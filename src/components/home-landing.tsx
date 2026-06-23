@@ -385,7 +385,7 @@ export function HomeLanding() {
               <motion.path
                 d="M 8,15 C 8,35 14,40 8,60 S 4,120 8,160 S 14,220 8,260 S 4,320 8,360 S 8,420 8,480"
                 stroke="#ecc058"
-                strokeWidth={0.5}
+                strokeWidth={0.6}
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -398,7 +398,7 @@ export function HomeLanding() {
                 { cx: 8, cy: 360 },
                 { cx: 8, cy: 460 },
               ].map((dot, i) => (
-                <circle key={i} cx={dot.cx} cy={dot.cy} r={2} fill="#ecc058" opacity={0.9} />
+                <circle key={i} cx={dot.cx} cy={dot.cy} r={2.5} fill="#ecc058" opacity={0.95} />
               ))}
             </svg>
 
@@ -427,7 +427,7 @@ export function HomeLanding() {
                   <div className="grid gap-4 md:grid-cols-[auto_1fr] md:gap-12">
                     {/* Roman numeral */}
                     <div className="md:text-right md:w-32">
-                      <p className="font-serif text-[5rem] leading-[0.78] tracking-[-0.08em] text-[#ecc058]/20 md:text-[10rem]">
+                      <p className="font-serif text-[7.5rem] leading-[0.78] tracking-[-0.08em] text-[#ecc058]/20 md:text-[15rem]">
                         {node.number}
                       </p>
                     </div>
