@@ -28,6 +28,13 @@ body {
   position: relative;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  letter-spacing: 0.015em;
+  line-height: 1.85;
 }
 
 :focus-visible {

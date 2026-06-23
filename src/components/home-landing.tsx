@@ -186,7 +186,7 @@ function SectionIntro({
   return (
     <EditorialReveal className="max-w-4xl">
       <Eyebrow dark={dark}>{eyebrow}</Eyebrow>
-      <h2 className={`mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] tracking-[-0.04em] ${dark ? "text-[#15130f]" : "text-[#f3eee4]"}`}>
+      <h2 className={`mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.15] tracking-[0.01em] ${dark ? "text-[#15130f]" : "text-[#f3eee4]"}`}>
         {title}
       </h2>
       {text ? (
@@ -230,22 +230,22 @@ export function HomeLanding() {
         <div className="relative mx-auto flex min-h-[100svh] max-w-[94rem] items-end px-5 pb-12 pt-32 md:px-8 md:pb-20 lg:items-center lg:pb-10">
           <div className="max-w-[45rem] lg:ml-[2vw]">
             <EditorialReveal>
-              <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-[#ecc058]">
+              <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
                 Jurista penalista · Ecuador
               </p>
             </EditorialReveal>
-            <h1 className="hero-title mt-6 font-serif text-[clamp(3.35rem,12vw,7.25rem)] leading-[0.84] tracking-[-0.068em]">
+            <h1 className="hero-title mt-6 font-serif text-[clamp(3.35rem,12vw,7.25rem)] leading-[0.92] tracking-[-0.02em]">
               <MaskReveal>Derecho penal</MaskReveal>
               <MaskReveal delay={0.1} className="text-[#ecc058]">más allá</MaskReveal>
               <MaskReveal delay={0.2}>del litigio.</MaskReveal>
             </h1>
             <EditorialReveal delay={0.25}>
-              <p className="mt-5 text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+              <p className="mt-5 text-[0.82rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
                 Profesor universitario · Autor · Investigador · Litigante
               </p>
             </EditorialReveal>
             <EditorialReveal delay={0.3}>
-              <p className="mt-6 max-w-xl text-[0.98rem] leading-[1.9] text-[#eee7dc] md:text-[1.06rem]">
+              <p className="mt-6 max-w-xl text-[0.98rem] leading-[1.95] tracking-[0.02em] text-[#eee7dc] md:text-[1.06rem]">
                 Inteligencia jurídica, excelencia académica y estrategia procesal para proteger libertad, patrimonio y reputación.
               </p>
             </EditorialReveal>
@@ -364,10 +364,10 @@ export function HomeLanding() {
               <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
                 Trayectoria
               </p>
-              <h2 className="mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] tracking-[-0.04em] text-[#f3eee4]">
+              <h2 className="mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.15] tracking-[0.01em] text-[#f3eee4]">
                 La construcción de una visión jurídica.
               </h2>
-              <p className="mt-6 max-w-2xl text-[0.98rem] leading-[1.9] text-[#c2baae]">
+              <p className="mt-6 max-w-2xl text-[0.98rem] leading-[1.95] tracking-[0.02em] text-[#c2baae]">
                 Una trayectoria desarrollada entre distintas tradiciones académicas, escuelas de pensamiento e investigación permanente.
               </p>
             </EditorialReveal>
@@ -489,10 +489,10 @@ export function HomeLanding() {
         <div className="relative mx-auto max-w-[88rem]">
           <EditorialReveal>
             <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">Legado académico</p>
-            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] tracking-[-0.04em] text-[#f3eee4]">
+            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.15] tracking-[0.01em] text-[#f3eee4]">
               Una voz jurídica construida desde la academia.
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.85] text-[#c2baae]">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.95] tracking-[0.02em] text-[#c2baae]">
               El pensamiento no se improvisa. Se forma, se publica, se enseña y se comparte. El Dr. Fausto Vásquez ha construido su carrera sobre cuatro pilares académicos.
             </p>
           </EditorialReveal>
@@ -505,7 +505,7 @@ export function HomeLanding() {
               { number: "Perm.", label: "continua", role: "Investigador", desc: "Producción jurídica permanente y análisis doctrinal aplicado a la defensa estratégica." },
             ].map((item) => (
               <EditorialReveal key={item.role} className="bg-[#0e0c0a]/90 p-6 sm:p-8 md:p-10">
-                <p className="font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[0.9] tracking-[-0.05em] text-[#ecc058]">{item.number}</p>
+                <p className="font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[0.95] tracking-[0.01em] text-[#ecc058]">{item.number}</p>
                 <p className="mt-1 text-[0.55rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#ecc058]/50">{item.label}</p>
                 <p className="mt-6 font-serif text-xl text-[#f3eee4] md:text-2xl">{item.role}</p>
                 <p className="mt-3 text-[0.88rem] leading-relaxed text-[#c2baae]">{item.desc}</p>
@@ -531,14 +531,14 @@ export function HomeLanding() {
                 <SwipeableCard href={practice.href}>
                   <Link href={practice.href} className="group flex min-h-[28rem] flex-col border border-[#15130f]/15 bg-[#f3ede3] p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(21,19,15,0.12)] sm:p-8 md:p-10">
                   <div className="flex items-start justify-between">
-                    <span className="font-serif text-5xl leading-none tracking-[-0.06em] text-[#15130f]/10">{practice.number}</span>
+                    <span className="font-serif text-5xl leading-[0.95] tracking-[0.01em] text-[#15130f]/10">{practice.number}</span>
                     <ArrowDownRight className="text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
                   </div>
 
                   <div className="mt-10 flex-1">
                     <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
                     <h3 className="mt-4 font-serif text-3xl leading-[1.04] tracking-[-0.04em] text-[#15130f] md:text-4xl">{practice.title}</h3>
-                    <p className="mt-5 text-[0.9rem] leading-[1.85] text-[#514b43]]">{practice.text}</p>
+                    <p className="mt-5 text-[0.9rem] leading-[1.9] tracking-[0.02em] text-[#514b43]">{practice.text}</p>
 
                     <div className="mt-8 space-y-3 border-t border-[#15130f]/10 pt-7">
                       <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Metodología</p>
@@ -741,7 +741,7 @@ export function HomeLanding() {
             <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">
               Pensamiento jurídico
             </p>
-            <blockquote className="mt-8 max-w-[88rem] font-serif text-[clamp(3rem,7.4vw,8.5rem)] leading-[0.94] tracking-[-0.058em]">
+            <blockquote className="mt-8 max-w-[88rem] font-serif text-[clamp(3rem,7.4vw,8.5rem)] leading-[1] tracking-[0.01em]">
               El derecho penal no se ejerce únicamente en los tribunales.
               <span className="mt-2 block text-[#8a6941]">
                 Se construye desde la investigación, el análisis y la estrategia.
@@ -751,13 +751,13 @@ export function HomeLanding() {
 
           <EditorialReveal delay={0.12} className="mx-auto mt-16 max-w-4xl border-t border-b border-[#8a6941]/15 py-12 md:mt-20 md:py-16">
             <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">Manifiesto</p>
-            <p className="mt-8 font-serif text-[1.05rem] leading-[1.9] text-[#4a443c] md:text-[1.15rem]">
+            <p className="mt-8 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
               En un tiempo donde el discurso jurídico se ha simplificado hasta volverse operativo, este despacho sostiene que la defensa penal no puede reducirse a una técnica de litigación. Es, ante todo, un ejercicio de pensamiento.
             </p>
-            <p className="mt-5 font-serif text-[1.05rem] leading-[1.9] text-[#4a443c] md:text-[1.15rem]">
+            <p className="mt-5 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
               Cada asunto que asumimos se construye desde la lectura crítica del derecho, el análisis riguroso de la prueba y la comprensión del contexto institucional donde se decide. No hay estrategia sin teoría. No hay litigio sin fundamento.
             </p>
-            <p className="mt-5 font-serif text-[1.05rem] leading-[1.9] text-[#4a443c] md:text-[1.15rem]">
+            <p className="mt-5 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
               Creemos en una abogacía que investiga, publica, enseña y piensa antes de actuar. Porque la libertad, el patrimonio y la reputación de quienes confían en nosotros no merecen menos que la excelencia del conocimiento puesto al servicio de la defensa.
             </p>
           </EditorialReveal>
@@ -890,13 +890,13 @@ export function HomeLanding() {
               />
               
               <EditorialReveal delay={0.08} className="mt-8 space-y-5 border-l border-[#ecc058]/30 pl-5">
-                <div className="flex gap-3 items-start text-[0.92rem] leading-[1.7] text-[#e8e2d5]">
+                <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
                   <span className="text-[#ecc058] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#ecc058]" />
                   <p>
                     <strong className="text-[#ecc058] font-medium">Atención exclusiva:</strong> Su caso será atendido directamente por el Dr. Fausto Vásquez.
                   </p>
                 </div>
-                <div className="flex gap-3 items-start text-[0.92rem] leading-[1.7] text-[#e8e2d5]">
+                <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
                   <span className="text-[#ecc058] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#ecc058]" />
                   <p>
                     <strong className="text-[#ecc058] font-medium">Secreto Profesional:</strong> Toda información compartida será tratada bajo estricta confidencialidad profesional.
@@ -962,7 +962,7 @@ export function HomeLanding() {
             {faqs.map((faq, index) => (
               <EditorialReveal key={faq.question} delay={Math.min(index * 0.04, 0.4)}>
                 <details className="group border-b border-[#15130f]/20 py-6">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl md:text-2xl">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl tracking-[0.02em] md:text-2xl">
                     {faq.question}
                     <span className="text-[#8a6941] transition-transform group-open:rotate-45">+</span>
                   </summary>
@@ -983,7 +983,7 @@ export function HomeLanding() {
         <div className="mx-auto max-w-[88rem]">
           <EditorialReveal>
             <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">Producción jurídica</p>
-            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] tracking-[-0.04em] text-[#15130f]">
+            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.15] tracking-[0.01em] text-[#15130f]">
               Publicaciones y conferencias.
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.85] text-[#514b43]]">
