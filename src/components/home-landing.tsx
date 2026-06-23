@@ -481,7 +481,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden grain-overlay">
+      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden ">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(201,173,120,0.08),transparent_50%)]" />
         <div className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 w-[45%] opacity-[0.12] md:w-[35%]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -572,7 +572,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden grain-overlay">
+      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden ">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(201,173,120,0.07),transparent_40%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[10%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -701,7 +701,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden grain-overlay">
+      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden ">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,173,120,.08),transparent_28%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -876,7 +876,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden grain-overlay">
+      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden ">
         {/* Decorative elements representing private safe room */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(184,155,94,0.06),transparent_50%)] pointer-events-none" />
         
