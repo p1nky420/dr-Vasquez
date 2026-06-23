@@ -18,7 +18,7 @@ export function BlogCards() {
                   </span>
                   <ArrowUpRight className="text-steel/50 transition group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300" size={16} />
                 </div>
-                <p className="mt-5 text-[0.58rem] uppercase tracking-[0.18em] text-gold/80 font-bold">{post.category}</p>
+                <p className="mt-5 text-[0.58rem] max-sm:text-[0.6rem] uppercase tracking-[0.18em] text-gold/80 font-bold">{post.category}</p>
                 <h3 className="mt-2 font-serif text-base font-bold leading-snug text-ivory group-hover:text-gold transition duration-300">{post.title}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-steel group-hover:text-ivory/80 transition duration-300">{post.summary}</p>
               </article>

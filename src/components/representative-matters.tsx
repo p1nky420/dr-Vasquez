@@ -31,7 +31,7 @@ export function RepresentativeMatters() {
                 <div>
                   <div className="flex items-center justify-between text-gold">
                     <span className="text-[0.66rem] uppercase tracking-widest font-serif font-bold">Asunto 0{index + 1}</span>
-                    <span className="text-[0.55rem] uppercase tracking-[0.16em] text-steel font-bold bg-[#0b0f14] px-2 py-0.5 border border-gold/5 rounded-sm">{matter.tag}</span>
+                    <span className="text-[0.55rem] max-sm:text-[0.6rem] uppercase tracking-[0.16em] text-steel font-bold bg-[#0b0f14] px-2 py-0.5 border border-gold/5 rounded-sm">{matter.tag}</span>
                   </div>
                   <h3 className="mt-5 font-serif text-lg font-bold leading-snug text-ivory group-hover:text-gold transition duration-300">
                     {matter.title}

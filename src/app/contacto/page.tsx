@@ -46,7 +46,7 @@ export default function ContactoPage() {
 
         <div className="relative mx-auto flex min-h-[52svh] max-w-[88rem] items-end">
           <Reveal className="max-w-4xl">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-[#c9ad78]">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-[#ecc058]">
               Admisión confidencial
             </p>
             <h1 className="mt-6 max-w-4xl font-serif text-[clamp(3.5rem,8vw,7.5rem)] leading-[0.9] tracking-[-0.055em] text-[#fffaf0]">
@@ -121,13 +121,13 @@ export default function ContactoPage() {
                     className="object-cover grayscale"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                  <p className="absolute bottom-5 left-6 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#c9ad78]">
+                  <p className="absolute bottom-5 left-6 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#ecc058]">
                     Oficina Quito
                   </p>
                 </div>
                 <div className="grid gap-6 p-6 sm:grid-cols-[1fr_auto] md:p-8">
                   <div className="flex gap-3">
-                    <MapPin className="mt-1 shrink-0 text-[#c9ad78]" size={18} />
+                    <MapPin className="mt-1 shrink-0 text-[#ecc058]" size={18} />
                     <p className="text-sm leading-6 text-[#c9c1b5]">
                       Av. 12 de Octubre N26-97 y Lincoln<br />
                       Torre 1492 · Piso 8 · Oficina 802<br />
@@ -138,7 +138,7 @@ export default function ContactoPage() {
                     href="https://www.google.com/maps/search/?api=1&query=Av.+12+de+Octubre+N26-97+y+Lincoln,+Torre+1492,+Quito,+Ecuador"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#c9ad78] hover:text-[#f4eee3]"
+                    className="text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#ecc058] hover:text-[#f4eee3]"
                   >
                     Ver mapa ↗
                   </a>
@@ -155,13 +155,13 @@ export default function ContactoPage() {
                     className="object-cover grayscale"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                  <p className="absolute bottom-5 left-6 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#c9ad78]">
+                  <p className="absolute bottom-5 left-6 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#ecc058]">
                     Oficina Guayaquil
                   </p>
                 </div>
                 <div className="grid gap-6 p-6 sm:grid-cols-[1fr_auto] md:p-8">
                   <div className="flex gap-3">
-                    <MapPin className="mt-1 shrink-0 text-[#c9ad78]" size={18} />
+                    <MapPin className="mt-1 shrink-0 text-[#ecc058]" size={18} />
                     <p className="text-sm leading-6 text-[#c9c1b5]">
                       Av. Malecón Simón Bolívar y Loja<br />
                       Edificio The Point · Piso 12 · Oficina 1203<br />
@@ -172,7 +172,7 @@ export default function ContactoPage() {
                     href="https://www.google.com/maps/search/?api=1&query=Edificio+The+Point,+Puerto+Santa+Ana,+Guayaquil,+Ecuador"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#c9ad78] hover:text-[#f4eee3]"
+                    className="text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#ecc058] hover:text-[#f4eee3]"
                   >
                     Ver mapa ↗
                   </a>
@@ -190,14 +190,14 @@ export default function ContactoPage() {
 
           <Reveal delay={0.08}>
             <div className="sticky top-28 bg-[#12100d] p-6 text-[#f4eee3] shadow-[0_35px_90px_rgba(44,34,22,.2)] md:p-10">
-              <div className="flex items-start justify-between gap-5 border-b border-[#c9ad78]/20 pb-7">
+              <div className="flex items-start justify-between gap-5 border-b border-[#ecc058]/20 pb-7">
                 <div>
-                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#c9ad78]">
+                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
                     Solicitud de evaluación
                   </p>
                   <h2 className="mt-3 font-serif text-3xl md:text-4xl">Sala de admisión privada</h2>
                 </div>
-                <ShieldCheck className="shrink-0 text-[#c9ad78]" size={26} strokeWidth={1.3} />
+                <ShieldCheck className="shrink-0 text-[#ecc058]" size={26} strokeWidth={1.3} />
               </div>
               <p className="my-7 text-sm leading-7 text-[#bdb5aa]">
                 La solicitud no crea una relación abogado-cliente. La firma confirmará disponibilidad antes de recibir información sensible.

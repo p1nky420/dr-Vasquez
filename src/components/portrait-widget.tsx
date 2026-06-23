@@ -65,7 +65,7 @@ export function PortraitWidget() {
         <h3 className="font-serif text-lg font-bold text-ivory group-hover:text-gold transition duration-300">
           Dr. Fausto Vásquez
         </h3>
-        <p className="text-[0.58rem] uppercase tracking-[0.24em] text-steel mt-1 font-semibold">
+        <p className="text-[0.58rem] max-sm:text-[0.65rem] uppercase tracking-[0.24em] text-steel mt-1 font-semibold">
           Socio Fundador & Director Legal
         </p>
       </div>

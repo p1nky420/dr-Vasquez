@@ -157,7 +157,7 @@ export default function AcademiaPage() {
                         {program.description}
                       </p>
 
-                      <div className="mt-auto pt-6 text-[0.6rem] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 transition duration-300">
+                      <div className="mt-auto pt-6 text-[0.6rem] max-sm:text-[0.65rem] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 transition duration-300">
                         Ver más
                       </div>
 

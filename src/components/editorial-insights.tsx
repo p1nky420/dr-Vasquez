@@ -67,7 +67,7 @@ export function EditorialInsights() {
                       
                       <div>
                         {/* Golden publisher brand */}
-                        <div className="flex justify-between items-center text-[0.45rem] tracking-widest text-gold/70 font-semibold uppercase">
+                        <div className="flex justify-between items-center text-[0.45rem] max-sm:text-[0.6rem] tracking-widest text-gold/70 font-semibold uppercase">
                           <span>Estudio Jurídico</span>
                           <span>ergo</span>
                         </div>
@@ -76,14 +76,14 @@ export function EditorialInsights() {
                         <h4 className="mt-4 font-serif text-[0.72rem] font-bold leading-normal tracking-wide text-gold">
                           PUNTO DE INFLEXIÓN DE LA IMPUTACIÓN OBJETIVA
                         </h4>
-                        <p className="mt-1 text-[0.45rem] text-steel tracking-wide leading-tight">
+                        <p className="mt-1 text-[0.45rem] max-sm:text-[0.6rem] text-steel tracking-wide leading-tight">
                           EN EL CÓDIGO ORGÁNICO INTEGRAL PENAL
                         </p>
                       </div>
 
                       {/* Author & Editorial */}
-                      <div className="border-t border-gold/15 pt-2 flex flex-col text-[0.4rem] text-gold/80 tracking-widest uppercase">
-                        <span className="font-serif font-bold text-[0.45rem]">Fausto Ramiro Vásquez Cevallos</span>
+                      <div className="border-t border-gold/15 pt-2 flex flex-col text-[0.4rem] max-sm:text-[0.6rem] text-gold/80 tracking-widest uppercase">
+                        <span className="font-serif font-bold text-[0.45rem] max-sm:text-[0.6rem]">Fausto Ramiro Vásquez Cevallos</span>
                         <span className="mt-1 text-steel/60">ergo editores</span>
                       </div>
 

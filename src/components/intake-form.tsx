@@ -106,13 +106,13 @@ export function IntakeForm() {
         </label>
       </div>
 
-      <div className="border-y border-[#c9ad78]/25 py-5 text-xs leading-6 text-[#a9a196]">
+      <div className="border-y border-[#ecc058]/25 py-5 text-xs leading-6 text-[#a9a196]">
         <p className="flex items-start gap-3">
-          <ShieldAlert className="mt-1 shrink-0 text-[#c9ad78]" size={17} />
+          <ShieldAlert className="mt-1 shrink-0 text-[#ecc058]" size={17} />
           No incluya hechos especialmente sensibles ni adjunte documentos en esta etapa. El envío no crea una relación abogado-cliente.
         </p>
         <label className="mt-4 flex cursor-pointer items-start gap-3 select-none">
-          <input className="mt-1 accent-[#c9ad78]" type="checkbox" name="consent" required />
+          <input className="mt-1 accent-[#ecc058]" type="checkbox" name="consent" required />
           <span>Confirmo que comprendo el proceso de admisión selectiva y autorizo el tratamiento inicial de estos datos.</span>
         </label>
       </div>
@@ -138,17 +138,17 @@ export function IntakeForm() {
         {state === "submitting" ? <LockKeyhole size={16} /> : <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} />}
       </button>
 
-      <div className="grid gap-3 border-t border-[#c9ad78]/20 pt-5 text-[0.64rem] uppercase leading-5 tracking-[0.13em] text-[#9d958a] sm:grid-cols-2">
+      <div className="grid gap-3 border-t border-[#ecc058]/20 pt-5 text-[0.64rem] max-sm:text-[0.65rem] uppercase leading-5 tracking-[0.13em] text-[#9d958a] sm:grid-cols-2">
         <p className="flex items-center gap-3">
-          <LockKeyhole size={15} className="shrink-0 text-[#c9ad78]" />
+          <LockKeyhole size={15} className="shrink-0 text-[#ecc058]" />
           Transmisión cifrada
         </p>
         <p className="flex items-center gap-3">
-          <ShieldCheck size={15} className="shrink-0 text-[#c9ad78]" />
+          <ShieldCheck size={15} className="shrink-0 text-[#ecc058]" />
           Amparado bajo secreto profesional estricto
         </p>
         <p className="flex items-center gap-3 sm:col-span-2">
-          <CheckCircle2 size={15} className="shrink-0 text-[#c9ad78]" />
+          <CheckCircle2 size={15} className="shrink-0 text-[#ecc058]" />
           Revisión inicial por el equipo jurídico
         </p>
       </div>

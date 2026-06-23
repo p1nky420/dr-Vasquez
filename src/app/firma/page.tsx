@@ -133,7 +133,7 @@ export default function FirmaPage() {
                     transition={{ duration: 2, ease: "easeInOut", delay: 0.4 }}
                   />
                 </svg>
-                <span className="text-[0.55rem] uppercase tracking-[0.24em] text-gold/60 mt-1 pl-4">Firma de Responsabilidad Técnica</span>
+                <span className="text-[0.55rem] max-sm:text-[0.6rem] uppercase tracking-[0.24em] text-gold/60 mt-1 pl-4">Firma de Responsabilidad Técnica</span>
               </div>
             </Reveal>
 

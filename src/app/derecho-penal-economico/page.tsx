@@ -104,7 +104,7 @@ export default function PenalEconomicoPage() {
                 {/* Captions */}
                 <div className="mt-4 text-center">
                   <h3 className="font-serif text-lg font-bold text-ivory">Gabinete de Crisis</h3>
-                  <p className="text-[0.6rem] uppercase tracking-[0.24em] text-gold mt-1 font-semibold">Defensa Empresarial & Corporativa</p>
+                  <p className="text-[0.6rem] max-sm:text-[0.65rem] uppercase tracking-[0.24em] text-gold mt-1 font-semibold">Defensa Empresarial & Corporativa</p>
                 </div>
               </div>
             </Reveal>

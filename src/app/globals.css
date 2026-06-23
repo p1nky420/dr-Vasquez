@@ -17,6 +17,7 @@
 html {
   scroll-behavior: smooth;
   background: #05080c;
+  overscroll-behavior: none;
 }
 
 body {
@@ -25,10 +26,12 @@ body {
   color: #f5f2ea;
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   position: relative;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 :focus-visible {
-  outline: 2px solid #c9ad78;
+  outline: 2px solid #ecc058;
   outline-offset: 4px;
 }
 
@@ -38,7 +41,7 @@ body {
   left: 0.75rem;
   z-index: 10000;
   transform: translateY(-150%);
-  background: #c9ad78;
+  background: #ecc058;
   padding: 0.8rem 1rem;
   color: #15130f;
   font-size: 0.8rem;
@@ -68,8 +71,8 @@ body {
 }
 
 .premium-button:hover {
-  background: #c9ad78;
-  border-color: #c9ad78;
+  background: #ecc058;
+  border-color: #ecc058;
 }
 
 .premium-button--ghost {
@@ -81,7 +84,7 @@ body {
 
 .premium-button--ghost:hover {
   background: rgba(243, 238, 228, 0.08);
-  border-color: #c9ad78;
+  border-color: #ecc058;
   color: #f3eee4;
 }
 
@@ -182,7 +185,7 @@ body {
   gap: 1rem;
   border-bottom: 1px solid rgba(201, 173, 120, 0.2);
   padding: 1rem 0;
-  color: #c9ad78;
+  color: #ecc058;
 }
 
 .contact-line span {
@@ -199,6 +202,15 @@ body {
   font-size: 0.52rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+@media (max-width: 639px) {
+  .contact-line small {
+    font-size: 0.6rem;
+  }
+  .contact-line span {
+    font-size: 0.95rem;
+  }
 }
 
 body > main,
@@ -929,4 +941,40 @@ a {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ─── Touch device micro-interactions ──────────────────────────────────── */
+
+/* Restore native cursor on touch devices (overrides cursor: none) */
+@media (pointer: coarse) {
+  html, body, a, button, select, input {
+    cursor: auto !important;
+  }
+}
+
+/* Active state feedback on touch (compensation for sticky hover) */
+@media (hover: none) and (pointer: coarse) {
+  a:active, button:active, .premium-button:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Hover-only effects: prevent sticky hover on touch */
+@media (hover: hover) {
+  .premium-button:hover {
+    background-color: #ecc058;
+    color: #15130f;
+    border-color: #ecc058;
+  }
+
+  .premium-button--ghost:hover {
+    background-color: rgba(236, 192, 88, 0.1);
+    border-color: #ecc058;
+  }
+}
+
+.premium-button:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
 }

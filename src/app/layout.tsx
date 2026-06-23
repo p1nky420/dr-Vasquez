@@ -8,6 +8,9 @@ import { EvaluationVault } from "@/components/evaluation-vault";
 import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { CustomCursor } from "@/components/custom-cursor";
+import { SearchProvider, SearchModal } from "@/components/search-modal";
+import { HapticFeedback } from "@/components/haptic-feedback";
+import { faqs } from "@/lib/home-content";
 import "./globals.css";
 
 const inter = Inter({
@@ -71,6 +74,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 const institutionalJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -78,19 +86,28 @@ const institutionalJsonLd = {
       "@type": "Person",
       "@id": "https://faustovasquezabogados.com/#person",
       name: "Fausto Ramiro Vásquez Cevallos",
-      jobTitle: "Abogado Penalista",
+      givenName: "Fausto Ramiro",
+      familyName: "Vásquez Cevallos",
+      honorificSuffix: "Doctor Honoris Causa",
+      jobTitle: "Abogado Penalista · Profesor Universitario · Autor · Investigador · Litigante",
       description:
-        "Especialista en Derecho Penal Económico, Constitucional y Litigio Estratégico en Ecuador. Más de 20 años de trayectoria.",
+        "Especialista en Derecho Penal Económico, Constitucional y Litigio Estratégico en Ecuador. Más de 20 años de trayectoria. Doctor Honoris Causa por la Universidad del Golfo de México. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
       url: "https://faustovasquezabogados.com",
       image:
         "https://faustovasquezabogados.com/portrait-editorial-authority-v2.png",
+      telephone: "+593983076881",
+      email: "contacto@faustovasquezabogados.com",
       worksFor: {
         "@id": "https://faustovasquezabogados.com/#legal-service",
       },
+      sameAs: [
+        "https://www.facebook.com/share/1AFRvUQQiB/?mibextid=wwXIfr",
+      ],
       alumniOf: [
         { "@type": "CollegeOrUniversity", name: "Universidad Central del Ecuador" },
         { "@type": "CollegeOrUniversity", name: "Universitat Pompeu Fabra" },
         { "@type": "CollegeOrUniversity", name: "Universidad Externado de Colombia" },
+        { "@type": "CollegeOrUniversity", name: "Universidad del Golfo de México" },
       ],
       knowsAbout: [
         "Derecho Penal Económico",
@@ -99,7 +116,6 @@ const institutionalJsonLd = {
         "Derecho Constitucional Penal",
         "Litigio Estratégico",
       ],
-      sameAs: ["https://www.facebook.com/share/1Jy16EpESA/"],
     },
     {
       "@type": ["LegalService", "Attorney"],
@@ -169,6 +185,23 @@ const institutionalJsonLd = {
       publisher: {
         "@id": "https://faustovasquezabogados.com/#legal-service",
       },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://faustovasquezabogados.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://faustovasquezabogados.com/#faq",
+      mainEntity: faqs.slice(0, 10).map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
     },
   ],
 };
@@ -190,15 +223,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(institutionalJsonLd) }}
         />
-        <CustomCursor />
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <EvaluationVault />
-        <FloatingWhatsapp />
-        <AnalyticsConsent />
-        <ScrollAnalytics />
-        <SmoothScroll />
+        <SearchProvider>
+          <CustomCursor />
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <SearchModal />
+          <EvaluationVault />
+          <FloatingWhatsapp />
+          <AnalyticsConsent />
+          <ScrollAnalytics />
+          <SmoothScroll />
+          <HapticFeedback />
+        </SearchProvider>
       </body>
     </html>
   );

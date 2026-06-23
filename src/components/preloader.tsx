@@ -139,7 +139,7 @@ export function Preloader() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 0.45, y: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              className="mt-8 font-serif text-[0.6rem] uppercase tracking-[0.38em] text-ivory"
+              className="mt-8 font-serif text-[0.6rem] max-sm:text-[0.65rem] uppercase tracking-[0.38em] text-ivory"
             >
               Estudio Jurídico · Fausto Vásquez
             </motion.span>

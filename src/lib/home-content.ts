@@ -293,6 +293,56 @@ export const faqs = [
     answer:
       "No. Ningún resultado puede garantizarse. La evaluación inicial permite identificar riesgos, información necesaria y posibles rutas de intervención jurídica.",
   },
+  {
+    question: "¿Qué tipos de asuntos atiende el Dr. Fausto Vásquez?",
+    answer:
+      "Derecho penal económico, lavado de activos, delitos financieros, litigio constitucional penal, defensa penal estratégica, responsabilidad penal empresarial y delitos contra la administración pública.",
+  },
+  {
+    question: "¿El secreto profesional aplica desde la primera consulta?",
+    answer:
+      "Sí. Toda información compartida durante el proceso de admisión o evaluación está protegida por el secreto profesional, incluso si no se formaliza una representación.",
+  },
+  {
+    question: "¿Cuánto tiempo toma una evaluación estratégica inicial?",
+    answer:
+      "La evaluación inicial suele completarse en un plazo de 48 a 72 horas hábiles, dependiendo de la complejidad del asunto y la información disponible.",
+  },
+  {
+    question: "¿Qué diferencia a esta firma de un bufete tradicional?",
+    answer:
+      "Cada asunto recibe dirección personal del Dr. Vásquez, combinando profundidad académica, experiencia procesal y una arquitectura de defensa construida específicamente para el caso.",
+  },
+  {
+    question: "¿Se manejan casos con exposición mediática o institucional?",
+    answer:
+      "Sí. La firma cuenta con experiencia en asuntos de alta exposición, diseñando estrategias de comunicación jurídica y protección reputacional paralelas a la defensa técnica.",
+  },
+  {
+    question: "¿Puedo solicitar una segunda opinión sobre mi caso?",
+    answer:
+      "Sí. La evaluación independiente de una estrategia de defensa en curso es una práctica habitual. Se realiza con absoluta confidencialidad y respeto al abogado titular.",
+  },
+  {
+    question: "¿Cómo se protege la información que comparto digitalmente?",
+    answer:
+      "Todas las comunicaciones y documentos se gestionan a través de canales cifrados, con protocolos de seguridad diseñados para preservar la confidencialidad y el secreto profesional.",
+  },
+  {
+    question: "¿La firma representa en audiencias orales y tribunales?",
+    answer:
+      "Sí. La representación incluye intervención directa en audiencias orales, juicios, recursos extraordinarios y litigio ante cortes nacionales, con dirección personal del Dr. Vásquez.",
+  },
+  {
+    question: "¿Se atienden casos de delitos económicos y empresariales?",
+    answer:
+      "Es una de las áreas centrales de la práctica: lavado de activos, delitos financieros, responsabilidad penal de personas jurídicas, administración desleal y delitos societarios.",
+  },
+  {
+    question: "¿Qué rol tiene la investigación académica en la defensa?",
+    answer:
+      "La producción jurídica del Dr. Vásquez —libros, artículos y análisis doctrinales— se integra directamente en la construcción de teoría del caso y en la argumentación estratégica de cada defensa.",
+  },
 ];
 
 export const proofInstitutions = [

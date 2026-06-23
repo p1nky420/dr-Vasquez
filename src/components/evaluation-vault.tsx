@@ -255,7 +255,7 @@ export function EvaluationVault() {
 
             <form onSubmit={submit} className="relative mx-auto flex min-h-[100svh] w-full max-w-5xl flex-col justify-center px-5 py-24 md:px-10">
               <div className="mb-10 flex items-center justify-between gap-5">
-                <p className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">
+                <p className="text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">
                   Bóveda de admisión · Paso {String(step + 1).padStart(2, "0")}
                 </p>
                 <LockKeyhole size={17} className="text-[#c7a86a]" />
@@ -290,7 +290,7 @@ export function EvaluationVault() {
                   ) : null}
                   {textStep ? (
                     <div>
-                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">{textStep.eyebrow}</p>
+                      <p className="text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">{textStep.eyebrow}</p>
                       <label className="mt-6 block">
                         <span className="block max-w-4xl font-serif text-4xl leading-[1.03] tracking-[-0.035em] md:text-6xl">{textStep.question}</span>
                         <input
@@ -312,7 +312,7 @@ export function EvaluationVault() {
                   ) : null}
                   {step === finalStep ? (
                     <div>
-                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">Revisión final</p>
+                      <p className="text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">Revisión final</p>
                       <h2 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.03] tracking-[-0.035em] md:text-6xl">
                         Su solicitud será revisada bajo confidencialidad estricta.
                       </h2>
@@ -338,7 +338,7 @@ export function EvaluationVault() {
                   type="button"
                   disabled={step === 0}
                   onClick={() => setStep((current) => Math.max(0, current - 1))}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-3 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#aaa298] transition-colors hover:text-[#f4efe5] disabled:invisible sm:w-auto sm:justify-start"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-3 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#aaa298] transition-colors hover:text-[#f4efe5] disabled:invisible sm:w-auto sm:justify-start"
                 >
                   <ArrowLeft size={14} /> Anterior
                 </button>
@@ -347,7 +347,7 @@ export function EvaluationVault() {
                     type="button"
                     disabled={!canContinue()}
                     onClick={advance}
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-3 border border-[#9a6b3d] bg-[#9a6b3d] px-6 text-center text-[0.62rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#b08b4f] disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-3 border border-[#9a6b3d] bg-[#9a6b3d] px-6 text-center text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#b08b4f] disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto"
                   >
                     Continuar <ArrowRight size={14} />
                   </button>
@@ -355,7 +355,7 @@ export function EvaluationVault() {
                   <button
                     type="submit"
                     disabled={!consent || state === "submitting"}
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-3 border border-[#9a6b3d] bg-gradient-to-r from-[#9a4f12] to-[#b08b4f] px-5 text-center text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto sm:px-6 sm:text-[0.62rem] sm:tracking-[0.18em]"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-3 border border-[#9a6b3d] bg-gradient-to-r from-[#9a4f12] to-[#b08b4f] px-5 text-center text-[0.6rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto sm:px-6 sm:text-[0.62rem] max-sm:text-[0.65rem] sm:tracking-[0.18em]"
                   >
                     {state === "submitting" ? "Enviando..." : "Solicitar evaluación confidencial"} <LockKeyhole size={14} />
                   </button>
@@ -384,7 +384,7 @@ function VaultOptions({
 }) {
   return (
     <div>
-      <p className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">{eyebrow}</p>
+      <p className="text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#c7a86a]">{eyebrow}</p>
       <h2 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.03] tracking-[-0.035em] md:text-6xl">{question}</h2>
       <div className="mt-10 grid gap-2 md:grid-cols-2">
         {options.map((option, index) => (
