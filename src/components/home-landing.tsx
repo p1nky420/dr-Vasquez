@@ -499,16 +499,31 @@ export function HomeLanding() {
 
           <div className="mt-16 grid gap-px bg-[#ecc058]/10 md:grid-cols-4 sm:snap-scroll">
             {[
-              { number: "15+", label: "años", role: "Profesor universitario", desc: "Docencia en pregrado y posgrado en universidades ecuatorianas y extranjeras." },
-              { number: "12+", label: "conferencias", role: "Conferencista", desc: "Ponencias en congresos, foros y seminarios nacionales e internacionales de ciencias penales." },
-              { number: "02", label: "obras publicadas", role: "Autor", desc: "Libros y artículos jurídicos sobre imputación objetiva, falsedad documental y derecho penal económico." },
-              { number: "Perm.", label: "continua", role: "Investigador", desc: "Producción jurídica permanente y análisis doctrinal aplicado a la defensa estratégica." },
+              { number: "15+", label: "Años de ejercicio", big: true },
+              { number: "12+", label: "Años de docencia", big: true },
+              { number: "02", label: "Libros", big: true },
+              { number: null, label: "Investigación", sublabel: "Permanente", big: false },
             ].map((item) => (
-              <EditorialReveal key={item.role} className="bg-[#0e0c0a]/90 p-6 sm:p-8 md:p-10">
-                <p className="font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[0.95] tracking-[0.01em] text-[#ecc058]">{item.number}</p>
-                <p className="mt-1 text-[0.55rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#ecc058]/50">{item.label}</p>
-                <p className="mt-6 font-serif text-xl text-[#f3eee4] md:text-2xl">{item.role}</p>
-                <p className="mt-3 text-[0.88rem] leading-relaxed text-[#c2baae]">{item.desc}</p>
+              <EditorialReveal key={item.label} className="bg-[#0e0c0a]/90 p-8 sm:p-10 md:p-12 flex flex-col justify-center min-h-[14rem]">
+                {item.big ? (
+                  <>
+                    <p className="font-serif text-[clamp(3.5rem,8vw,6rem)] leading-[0.85] tracking-[-0.03em] text-[#ecc058]">
+                      {item.number}
+                    </p>
+                    <p className="mt-3 text-[0.7rem] max-sm:text-[0.7rem] uppercase tracking-[0.28em] text-[#ecc058]/60 font-semibold">
+                      {item.label}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-serif text-[clamp(2.2rem,5vw,3.6rem)] leading-[0.9] tracking-[-0.02em] text-[#ecc058]">
+                      {item.label}
+                    </p>
+                    <p className="mt-2 text-[0.7rem] max-sm:text-[0.7rem] uppercase tracking-[0.28em] text-[#ecc058]/60 font-semibold">
+                      {item.sublabel}
+                    </p>
+                  </>
+                )}
               </EditorialReveal>
             ))}
           </div>
