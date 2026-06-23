@@ -215,4 +215,4 @@ export function whatsappHref(message: string) {
 }
 
 export const contactMessage =
-  "Hola, deseo solicitar una evaluación estratégica de mi caso con Fausto Vásquez Abogados.";
+  "Hola, deseo solicitar una evaluación estratégica de mi caso con Dr. Fausto Vásquez — Estudio Jurídico.";

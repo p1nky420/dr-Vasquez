@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Solicitud recibida",
   description:
-    "Confirmación confidencial de recepción de solicitud para Fausto Vásquez Abogados.",
+    "Confirmación confidencial de recepción de solicitud para Dr. Fausto Vásquez — Estudio Jurídico.",
   robots: {
     index: false,
     follow: false,

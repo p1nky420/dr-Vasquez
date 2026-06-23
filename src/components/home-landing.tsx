@@ -1070,7 +1070,7 @@ export function HomeLanding() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,173,120,.16),transparent_35%)]" />
         <div className="relative mx-auto flex min-h-[55vh] max-w-5xl flex-col items-center justify-center text-center">
           <EditorialReveal>
-            <p className="text-[0.62rem] max-sm:text-[0.65rem] uppercase tracking-[0.3em] text-[#ecc058]">Fausto Vásquez Abogados</p>
+            <p className="text-[0.62rem] max-sm:text-[0.65rem] uppercase tracking-[0.3em] text-[#ecc058]">Dr. Fausto Vásquez — Estudio Jurídico</p>
             <h2 className="mt-7 font-serif text-[clamp(3rem,9vw,7rem)] leading-[0.94] tracking-[-0.055em]">
               Su libertad, reputación y legado merecen una defensa estratégica.
             </h2>

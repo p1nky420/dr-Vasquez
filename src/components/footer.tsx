@@ -13,7 +13,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-16 md:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] md:px-8 md:py-20">
         <div>
           <p className="font-serif text-4xl tracking-[-0.04em]">Fausto Vásquez</p>
-          <p className="mt-2 text-[0.68rem] uppercase tracking-[0.22em] text-[#ecc058]">Abogados · Derecho penal estratégico</p>
+          <p className="mt-2 text-[0.68rem] uppercase tracking-[0.22em] text-[#ecc058]">Estudio Jurídico · Derecho penal estratégico</p>
           <p className="mt-7 max-w-md text-[0.95rem] leading-7 text-[#b8b0a5]">
             Defensa penal, pensamiento jurídico y dirección estratégica para asuntos de alta complejidad.
           </p>
@@ -43,7 +43,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-5 text-center text-[0.66rem] uppercase tracking-[0.13em] text-[#948c81] sm:text-[0.72rem]">
-        © {new Date().getFullYear()} Fausto Vásquez Abogados · La información publicada no constituye asesoría jurídica.
+        © {new Date().getFullYear()} Dr. Fausto Vásquez — Estudio Jurídico · La información publicada no constituye asesoría jurídica.
       </div>
       <div className="border-t border-white/5 px-5 py-4 text-center text-[0.6rem] uppercase tracking-[0.2em] text-[#6d655b] sm:text-[0.65rem]">
         Diseñado y desarrollado por <a href="https://mateoguerrero.lat" target="_blank" rel="noreferrer" className="text-[#ecc058] hover:text-[#f3eee4] transition-colors">MG Web Studio</a>

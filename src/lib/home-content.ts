@@ -117,11 +117,20 @@ export const credentials = [
 ];
 
 export const specializations = [
-  "Derecho Penal",
-  "Derecho Penal Económico",
-  "Derecho Constitucional",
-  "Litigación Oral",
-  "Defensa estratégica en casos complejos",
+  "Derecho penal económico",
+  "Derecho penal empresarial",
+  "Derecho constitucional",
+  "Derecho penal político",
+  "Delitos contra la administración pública",
+  "Delitos económicos y financieros",
+  "Cohecho",
+  "Lavado de activos",
+  "Defensa en investigaciones penales complejas",
+  "Imputación objetiva",
+  "Dogmática penal",
+  "Litigación oral",
+  "Recursos penales y constitucionales",
+  "Asesoría estratégica preventiva",
 ];
 
 export const tacticalServices = [
@@ -259,92 +268,86 @@ export const internalSeoLinks = [
 
 export const faqs = [
   {
-    question: "¿El envío del formulario crea una relación abogado-cliente?",
-    answer:
-      "No. La relación profesional se formaliza únicamente después de revisar el asunto, verificar conflictos de interés y aceptar expresamente la representación.",
+    question: "¿Qué debo hacer si recibo una notificación de Fiscalía?",
+    answer: "Debe solicitar asesoría inmediata antes de rendir versión o entregar documentación, para evitar errores estratégicos desde el inicio.",
   },
   {
-    question: "¿Debo enviar documentos o detalles sensibles en la primera solicitud?",
-    answer:
-      "No. La admisión inicial solicita únicamente datos mínimos. La firma indicará un canal seguro si el asunto avanza a una segunda etapa.",
+    question: "¿Qué ocurre después de una formulación de cargos?",
+    answer: "Se abre una etapa procesal en la que la defensa debe analizar la imputación, los elementos de convicción, los riesgos procesales y la estrategia probatoria.",
   },
   {
-    question: "¿Qué casos reciben atención prioritaria?",
-    answer:
-      "Asuntos con detenciones, audiencias próximas, investigaciones activas, exposición patrimonial, empresarial o reputacional requieren revisión prioritaria.",
+    question: "¿Puedo solicitar una segunda opinión jurídica?",
+    answer: "Sí. La firma puede revisar el estado del caso y emitir una evaluación estratégica independiente, con absoluta confidencialidad y respeto al abogado titular.",
   },
   {
-    question: "¿La firma trabaja fuera de Quito?",
-    answer:
-      "La práctica atiende asuntos en Quito, Guayaquil y otras jurisdicciones del Ecuador, según la naturaleza y etapa del caso.",
+    question: "¿Atienden casos fuera de Quito?",
+    answer: "Sí. Se atienden casos en Quito, Guayaquil y otras ciudades del Ecuador, previa evaluación de la naturaleza y etapa del caso.",
   },
   {
-    question: "¿Qué ocurre después de solicitar una evaluación?",
-    answer:
-      "El equipo revisa los datos mínimos, verifica posibles conflictos y contacta al solicitante para confirmar si el asunto puede avanzar a evaluación privada.",
+    question: "¿Qué documentos debo preparar para una evaluación jurídica?",
+    answer: "Denuncia, versiones, providencias, partes policiales, informes, impulsos fiscales, escritos presentados y cualquier documento relacionado con el caso.",
   },
   {
-    question: "¿Por qué importa la etapa procesal al diseñar una defensa?",
-    answer:
-      "Cada etapa presenta decisiones, riesgos y oportunidades diferentes. La estrategia debe construirse a partir del estado real del proceso, la imputación y los elementos disponibles.",
+    question: "¿Atienden urgencias penales?",
+    answer: "Sí, previa disponibilidad y evaluación de la situación por parte del Dr. Fausto Vásquez.",
   },
   {
-    question: "¿Una evaluación inicial garantiza un resultado?",
-    answer:
-      "No. Ningún resultado puede garantizarse. La evaluación inicial permite identificar riesgos, información necesaria y posibles rutas de intervención jurídica.",
+    question: "¿La primera consulta tiene costo?",
+    answer: "La evaluación jurídica privada tiene un valor definido. Consulte directamente para conocer las condiciones vigentes.",
   },
   {
-    question: "¿Qué tipos de asuntos atiende el Dr. Fausto Vásquez?",
-    answer:
-      "Derecho penal económico, lavado de activos, delitos financieros, litigio constitucional penal, defensa penal estratégica, responsabilidad penal empresarial y delitos contra la administración pública.",
+    question: "¿Puedo agendar una consulta online?",
+    answer: "Sí. La asesoría online está disponible para clientes dentro y fuera de Ecuador, a través de videollamada o llamada telefónica.",
   },
   {
-    question: "¿El secreto profesional aplica desde la primera consulta?",
-    answer:
-      "Sí. Toda información compartida durante el proceso de admisión o evaluación está protegida por el secreto profesional, incluso si no se formaliza una representación.",
+    question: "¿Manejan casos de lavado de activos?",
+    answer: "Sí. La firma trabaja en defensa penal económica y casos complejos relacionados con delitos financieros, lavado de activos y delitos societarios.",
   },
   {
-    question: "¿Cuánto tiempo toma una evaluación estratégica inicial?",
-    answer:
-      "La evaluación inicial suele completarse en un plazo de 48 a 72 horas hábiles, dependiendo de la complejidad del asunto y la información disponible.",
+    question: "¿Manejan delitos contra la administración pública?",
+    answer: "Sí. Se atienden casos relacionados con cohecho, peculado, concusión, tráfico de influencias y otras figuras penales contra la administración pública.",
   },
   {
-    question: "¿Qué diferencia a esta firma de un bufete tradicional?",
-    answer:
-      "Cada asunto recibe dirección personal del Dr. Vásquez, combinando profundidad académica, experiencia procesal y una arquitectura de defensa construida específicamente para el caso.",
+    question: "¿Qué diferencia tiene una defensa penal estratégica?",
+    answer: "No se limita a responder escritos. Analiza riesgos, prueba, teoría del caso, dogmática penal, tiempos procesales y escenarios de decisión para construir una arquitectura de defensa.",
   },
   {
-    question: "¿Se manejan casos con exposición mediática o institucional?",
-    answer:
-      "Sí. La firma cuenta con experiencia en asuntos de alta exposición, diseñando estrategias de comunicación jurídica y protección reputacional paralelas a la defensa técnica.",
+    question: "¿Pueden revisar un caso que ya tiene abogado?",
+    answer: "Sí. Se puede realizar una segunda opinión o auditoría estratégica del caso, con absoluta confidencialidad y respeto al profesional titular.",
   },
   {
-    question: "¿Puedo solicitar una segunda opinión sobre mi caso?",
-    answer:
-      "Sí. La evaluación independiente de una estrategia de defensa en curso es una práctica habitual. Se realiza con absoluta confidencialidad y respeto al abogado titular.",
+    question: "¿La información del cliente es confidencial?",
+    answer: "Sí. Toda consulta y documentación recibida se maneja bajo estricta confidencialidad profesional, incluso si no se formaliza una representación.",
   },
   {
-    question: "¿Cómo se protege la información que comparto digitalmente?",
-    answer:
-      "Todas las comunicaciones y documentos se gestionan a través de canales cifrados, con protocolos de seguridad diseñados para preservar la confidencialidad y el secreto profesional.",
+    question: "¿Publican casos reales en la web?",
+    answer: "Solo se publican casos anónimos y autorizados, sin revelar nombres, datos sensibles ni información que vulnere el secreto profesional.",
   },
   {
-    question: "¿La firma representa en audiencias orales y tribunales?",
-    answer:
-      "Sí. La representación incluye intervención directa en audiencias orales, juicios, recursos extraordinarios y litigio ante cortes nacionales, con dirección personal del Dr. Vásquez.",
+    question: "¿Cómo se agenda una cita?",
+    answer: "El cliente debe contactarse por WhatsApp o formulario web, enviar información básica del caso y coordinar fecha, modalidad y condiciones de atención.",
   },
   {
-    question: "¿Se atienden casos de delitos económicos y empresariales?",
-    answer:
-      "Es una de las áreas centrales de la práctica: lavado de activos, delitos financieros, responsabilidad penal de personas jurídicas, administración desleal y delitos societarios.",
+    question: "¿Qué tipo de clientes atiende la firma?",
+    answer: "Personas naturales, empresarios, directivos, funcionarios, profesionales y organizaciones involucradas en asuntos penales o constitucionales complejos.",
   },
   {
-    question: "¿Qué rol tiene la investigación académica en la defensa?",
-    answer:
-      "La producción jurídica del Dr. Vásquez —libros, artículos y análisis doctrinales— se integra directamente en la construcción de teoría del caso y en la argumentación estratégica de cada defensa.",
+    question: "¿Atienden casos constitucionales?",
+    answer: "Sí. Se trabaja en temas constitucionales vinculados a procesos penales, garantías jurisdiccionales y defensa de derechos fundamentales.",
   },
-];
-
+  {
+    question: "¿El doctor Fausto atiende personalmente?",
+    answer: "Sí, el Dr. Fausto Vásquez dirige personalmente cada caso. La modalidad de atención depende del tipo de servicio contratado y su disponibilidad.",
+  },
+  {
+    question: "¿Se puede comprar libros desde la web?",
+    answer: "Consulte disponibilidad y condiciones de compra y envío a través del formulario de contacto o WhatsApp.",
+  },
+  {
+    question: "¿Qué debo hacer si tengo un proceso penal en curso?",
+    answer: "Solicite una evaluación estratégica para revisar el estado del proceso, identificar riesgos procesales y recibir una recomendación jurídica fundamentada.",
+  },
+]
 export const proofInstitutions = [
   "Corte Nacional de Justicia",
   "Universidad Central del Ecuador",
@@ -354,26 +357,8 @@ export const proofInstitutions = [
   "Ergo Editores",
 ];
 
-export const confidentialCaseStudies = [
-  {
-    title: "Lavado de activos",
-    risk: "Acusación de lavado de activos; exposición patrimonial de $5M.",
-    tactic: "Desvirtuación de elementos de convicción en fase de instrucción fiscal.",
-    resolution: "Sobreseimiento y liberación total de cuentas.",
-  },
-  {
-    title: "Administración pública",
-    risk: "Imputación por peculado vinculada a contratación de obra pública.",
-    tactic: "Contradicción técnica de la imputación y control de cargos en audiencia preparatoria.",
-    resolution: "Desestimación de cargos.",
-  },
-  {
-    title: "Corte Nacional",
-    risk: "Sentencia condenatoria con error de derecho en la aplicación de imputación objetiva.",
-    tactic: "Recurso de casación centrado en el error jurídico y la vulneración de garantías.",
-    resolution: "Casación aceptada y caso remitido para nuevo juicio.",
-  },
-];
+// CASOS DE ÉXITO — PENDIENTE AUTORIZACIÓN DEL CLIENTE
+// export const confidentialCaseStudies = [...]
 
 export const ecosystemItems = [
   { title: "Academia jurídica", icon: GraduationCap, href: "/academia" },

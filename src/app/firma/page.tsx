@@ -8,7 +8,7 @@ import { Reveal } from "@/components/animated";
 import { PortraitWidget } from "@/components/portrait-widget";
 
 const profile = [
-  "Más de 20 años de trayectoria profesional en litigio penal complejo en el Ecuador.",
+  "Amplia trayectoria profesional y académica de trayectoria profesional en litigio penal complejo en el Ecuador.",
   "Especialización avanzada en procesos de corrupción pública y delincuencia organizada.",
   "Reconocido autor y docente de Dogmática Penal e Imputación Objetiva en posgrados.",
   "Defensa técnica rigurosa bajo los más estrictos estándares de confidencialidad.",
@@ -94,7 +94,7 @@ export default function FirmaPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight size={14} className="text-gold shrink-0" />
-                    <span><em>&ldquo;La falsedad documental en materia penal&rdquo;</em> (2007)</span>
+                    <span><em>&ldquo;La falsedad documental en materia penal&rdquo;</em> (2018)</span>
                   </li>
                 </ul>
               </div>

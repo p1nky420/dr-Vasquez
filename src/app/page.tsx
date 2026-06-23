@@ -45,7 +45,7 @@ const pageJsonLd = {
       "@type": "WebPage",
       "@id": "https://faustovasquezabogados.com/#webpage",
       url: "https://faustovasquezabogados.com",
-      name: "Abogado Penalista en Quito | Fausto Vásquez Abogados",
+      name: "Abogado Penalista en Quito | Dr. Fausto Vásquez — Estudio Jurídico",
       description:
         "Defensa penal estratégica en Quito para asuntos económicos, financieros y corporativos complejos.",
       inLanguage: "es-EC",

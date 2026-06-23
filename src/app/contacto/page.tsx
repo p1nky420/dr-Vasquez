@@ -35,7 +35,7 @@ export default function ContactoPage() {
       <section className="relative min-h-[72svh] overflow-hidden bg-[#0a0908] px-5 pb-20 pt-36 md:px-8 md:pb-28 md:pt-44">
         <Image
           src="/real-office-view.jpg"
-          alt="Vista desde la oficina de Fausto Vásquez Abogados en Quito"
+          alt="Vista desde la oficina de Dr. Fausto Vásquez — Estudio Jurídico en Quito"
           fill
           priority
           sizes="100vw"
@@ -115,7 +115,7 @@ export default function ContactoPage() {
                 <div className="relative aspect-[16/9]">
                   <Image
                     src="/real-office-entrance.jpg"
-                    alt="Ingreso a las oficinas de Fausto Vásquez Abogados en Quito"
+                    alt="Ingreso a las oficinas de Dr. Fausto Vásquez — Estudio Jurídico en Quito"
                     fill
                     sizes="(min-width: 1024px) 36vw, 100vw"
                     className="object-cover grayscale"
@@ -149,7 +149,7 @@ export default function ContactoPage() {
                 <div className="relative aspect-[16/9]">
                   <Image
                     src="/guayaquil_night.png"
-                    alt="Sede de atención de Fausto Vásquez Abogados en Guayaquil"
+                    alt="Sede de atención de Dr. Fausto Vásquez — Estudio Jurídico en Guayaquil"
                     fill
                     sizes="(min-width: 1024px) 36vw, 100vw"
                     className="object-cover grayscale"

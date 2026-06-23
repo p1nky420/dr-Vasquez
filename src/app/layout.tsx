@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://faustovasquezabogados.com"),
   title: {
     default: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
-    template: "%s | Fausto Vásquez Abogados",
+    template: "%s | Dr. Fausto Vásquez — Estudio Jurídico",
   },
   description:
-    "Abogado penalista en Quito especializado en derecho penal económico, lavado de activos, delitos financieros y litigio estratégico en Ecuador.",
+    "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Su práctica profesional combina litigación técnica, análisis dogmático, estrategia probatoria y experiencia académica para la defensa de personas, empresarios, funcionarios y organizaciones involucradas en procesos complejos.",
   keywords: [
-    "Fausto Vásquez Abogados",
+    "Dr. Fausto Vásquez — Estudio Jurídico",
     "derecho penal económico",
     "litigio estratégico",
     "delitos financieros",
@@ -45,12 +45,12 @@ export const metadata: Metadata = {
       "delitos complejos",
   ],
   openGraph: {
-    title: "Fausto Vásquez Abogados",
+    title: "Dr. Fausto Vásquez — Estudio Jurídico",
     description:
-      "Defensa penal estratégica para casos complejos donde están en juego libertad, patrimonio, empresa y reputación.",
+      "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
     type: "website",
     locale: "es_EC",
-    siteName: "Fausto Vásquez Abogados",
+    siteName: "Dr. Fausto Vásquez — Estudio Jurídico",
     url: "/",
     images: [
       {
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fausto Vásquez Abogados | Abogado Penalista Quito",
+    title: "Dr. Fausto Vásquez — Estudio Jurídico | Abogado Penalista Quito",
     description:
-      "Defensa penal estratégica para asuntos empresariales, patrimoniales y financieros complejos.",
+      "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
     images: ["/portrait-editorial-authority-v2.png"],
   },
   robots: {
@@ -91,7 +91,7 @@ const institutionalJsonLd = {
       honorificSuffix: "Doctor Honoris Causa",
       jobTitle: "Abogado Penalista · Profesor Universitario · Autor · Investigador · Litigante",
       description:
-        "Especialista en Derecho Penal Económico, Constitucional y Litigio Estratégico en Ecuador. Más de 20 años de trayectoria. Doctor Honoris Causa por la Universidad del Golfo de México. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
+        "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Doctor Honoris Causa por la Universidad del Golfo de México. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
       url: "https://faustovasquezabogados.com",
       image:
         "https://faustovasquezabogados.com/portrait-editorial-authority-v2.png",
@@ -110,22 +110,30 @@ const institutionalJsonLd = {
         { "@type": "CollegeOrUniversity", name: "Universidad del Golfo de México" },
       ],
       knowsAbout: [
-        "Derecho Penal Económico",
-        "Lavado de Activos",
-        "Delitos Financieros",
-        "Derecho Constitucional Penal",
-        "Litigio Estratégico",
+        "Derecho penal económico",
+        "Derecho penal empresarial",
+        "Derecho constitucional",
+        "Derecho penal político",
+        "Delitos contra la administración pública",
+        "Delitos económicos y financieros",
+        "Cohecho",
+        "Lavado de activos",
+        "Defensa en investigaciones penales complejas",
+        "Imputación objetiva",
+        "Dogmática penal",
+        "Litigación oral",
+        "Recursos penales y constitucionales",
+        "Asesoría estratégica preventiva",
       ],
     },
     {
       "@type": ["LegalService", "Attorney"],
       "@id": "https://faustovasquezabogados.com/#legal-service",
-      name: "Fausto Vásquez Abogados",
+      name: "Dr. Fausto Vásquez — Estudio Jurídico",
       url: "https://faustovasquezabogados.com",
       image: "https://faustovasquezabogados.com/reception_marble.png",
       telephone: "+593983076881",
       email: "contacto@faustovasquezabogados.com",
-      priceRange: "$$$$",
       availableLanguage: "Spanish",
       founder: {
         "@id": "https://faustovasquezabogados.com/#person",
@@ -133,7 +141,6 @@ const institutionalJsonLd = {
       areaServed: [
         { "@type": "City", name: "Quito" },
         { "@type": "City", name: "Guayaquil" },
-        { "@type": "Country", name: "Ecuador" },
       ],
       address: [
         {
@@ -159,20 +166,13 @@ const institutionalJsonLd = {
         "@type": "OfferCatalog",
         name: "Servicios legales",
         itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Derecho Penal Económico",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Lavado de Activos",
-            },
-          },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal económico" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal empresarial" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho constitucional" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal político" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Delitos contra la administración pública" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lavado de activos" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Litigación penal estratégica" }},
         ],
       },
     },
@@ -180,7 +180,7 @@ const institutionalJsonLd = {
       "@type": "WebSite",
       "@id": "https://faustovasquezabogados.com/#website",
       url: "https://faustovasquezabogados.com",
-      name: "Fausto Vásquez Abogados",
+      name: "Dr. Fausto Vásquez — Estudio Jurídico",
       inLanguage: "es-EC",
       publisher: {
         "@id": "https://faustovasquezabogados.com/#legal-service",

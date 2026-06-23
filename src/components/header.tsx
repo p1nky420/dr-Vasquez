@@ -35,7 +35,7 @@ export function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? "border-b border-white/10 bg-[#090806]/92 shadow-[0_18px_60px_rgba(0,0,0,.28)] backdrop-blur-xl" : "bg-gradient-to-b from-black/65 to-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-[94rem] items-center justify-between px-5 md:h-24 md:px-8">
-        <Link href="/" onClick={() => setOpen(false)} className="group flex items-center gap-4" aria-label="Fausto Vásquez Abogados, inicio">
+        <Link href="/" onClick={() => setOpen(false)} className="group flex items-center gap-4" aria-label="Dr. Fausto Vásquez — Estudio Jurídico, inicio">
           <div className="relative h-8 w-14 md:h-10 md:w-20">
             <Image src="/logoFV-solo.png" alt="Fausto Vásquez" fill className="object-contain" sizes="80px" />
           </div>
