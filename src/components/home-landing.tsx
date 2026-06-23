@@ -239,14 +239,14 @@ export function HomeLanding() {
               <MaskReveal delay={0.1} className="text-[#ecc058]">más allá</MaskReveal>
               <MaskReveal delay={0.2}>del litigio.</MaskReveal>
             </h1>
-            <EditorialReveal delay={0.25}>
-              <p className="mt-5 text-[0.82rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
-                Profesor universitario · Autor · Investigador · Litigante
-              </p>
-            </EditorialReveal>
             <EditorialReveal delay={0.3}>
               <p className="mt-6 max-w-xl text-[0.98rem] leading-[1.95] tracking-[0.02em] text-[#eee7dc] md:text-[1.06rem]">
                 Inteligencia jurídica, excelencia académica y estrategia procesal para proteger libertad, patrimonio y reputación.
+              </p>
+            </EditorialReveal>
+            <EditorialReveal delay={0.34}>
+              <p className="mt-5 text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-[#ecc058]/70">
+                Profesor <span className="mx-2 text-[#ecc058]/30">·</span> Investigador <span className="mx-2 text-[#ecc058]/30">·</span> Autor
               </p>
             </EditorialReveal>
             <EditorialReveal delay={0.36}>
