@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Fausto Vásquez - Incisión Autoral</title>
+  <desc id="desc">Wordmark autoral en el que una incisión FV transforma el nombre Vásquez.</desc>
+  <rect width="1400" height="520" fill="#121719"/>
+  <g transform="translate(85 102)">
+    <text x="0" y="60" fill="#9FA5A4" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="10">DR. FAUSTO VÁSQUEZ</text>
+    <text x="-5" y="213" fill="#F0E9DD" font-family="Georgia, serif" font-size="142" letter-spacing="-5">VÁSQUEZ</text>
+    <path d="M28 80L80 228" stroke="#B7774C" stroke-width="9"/>
+    <path d="M80 228L133 80" stroke="#121719" stroke-width="12"/>
+    <text x="4" y="285" fill="#B7774C" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="8">DIRECCIÓN PERSONAL DE LA DEFENSA</text>
+    <text x="4" y="332" fill="#868D8D" font-family="Arial, sans-serif" font-size="13" letter-spacing="5">DERECHO PENAL ESTRATÉGICO</text>
+  </g>
+  <g transform="translate(1130 126)">
+    <path d="M0 0V220M0 0H130M0 92H104" stroke="#F0E9DD" stroke-width="17"/>
+    <path d="M50 75L102 220L156 75" fill="none" stroke="#B7774C" stroke-width="15"/>
+  </g>
+</svg>

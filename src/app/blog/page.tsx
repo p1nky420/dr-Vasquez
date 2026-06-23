@@ -4,7 +4,7 @@ import Image from "next/image";
 import { BlogCards } from "@/components/blog-cards";
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/animated";
-import { blogCategories, pageDescriptions } from "@/lib/site";
+import { blogCategories } from "@/lib/site";
 
 export default function BlogPage() {
   return (
@@ -26,10 +26,10 @@ export default function BlogPage() {
         <div className="relative z-10 max-w-4xl text-center">
           <Reveal>
             <span className="eyebrow tracking-[0.24em] text-gold">Centro de Pensamiento Penal</span>
-            <h1 className="mt-6 font-serif text-5xl sm:text-6xl text-gold-metallic animate-text-shine tracking-tight leading-none uppercase select-none">
-              Análisis y Libros
+            <h1 className="mt-6 font-serif text-5xl font-normal leading-[0.95] tracking-[-0.045em] text-[#fffaf0] sm:text-7xl">
+              Pensamiento y análisis jurídico
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-base sm:text-lg text-steel leading-relaxed">
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#c9c1b5] sm:text-lg">
               Un espacio para desarrollar doctrina y posicionar el análisis técnico serio sobre derecho penal económico y litigio constitucional complejo.
             </p>
           </Reveal>

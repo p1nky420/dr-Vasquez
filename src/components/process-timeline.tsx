@@ -1,8 +1,8 @@
-import { Search, Columns, Gavel, Scale, Lock, ShieldCheck, Award, Compass, BookOpen } from "lucide-react";
+import { Search, Columns, Gavel, Scale, Lock, ShieldCheck, Award, Compass, BookOpen, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/animated";
 import { processSteps } from "@/lib/site";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   Search,
   Columns,
   Gavel,
@@ -14,7 +14,7 @@ const pillars = [
   { label: "Confidencialidad", icon: ShieldCheck },
   { label: "Excelencia", icon: Award },
   { label: "Estrategia", icon: Compass },
-  { label: "Resultados", icon: BookOpen },
+  { label: "Rigor", icon: BookOpen },
 ];
 
 export function ProcessTimeline() {

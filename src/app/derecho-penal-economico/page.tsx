@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, Building2, FileSearch, ShieldCheck, WalletCards, ChevronRight } from "lucide-react";
+import { AlertTriangle, Building2, FileSearch, ShieldCheck, WalletCards } from "lucide-react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { CtaBand } from "@/components/cta-band";

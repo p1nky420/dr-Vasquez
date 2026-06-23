@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Fausto Vásquez - Código FV</title>
+  <desc id="desc">Identidad tipográfica contemporánea articulada mediante el código F/V.</desc>
+  <rect width="1400" height="520" fill="#11171A"/>
+  <g transform="translate(82 86)">
+    <text x="0" y="215" fill="#EFE8DB" font-family="Georgia, serif" font-size="220" font-weight="700">F</text>
+    <path d="M174 14L74 334" stroke="#B07147" stroke-width="13"/>
+    <text x="176" y="335" fill="#EFE8DB" font-family="Georgia, serif" font-size="220" font-weight="700">V</text>
+  </g>
+  <text x="565" y="170" fill="#AEB3B1" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="10">JURISTA PENALISTA</text>
+  <text x="552" y="288" fill="#EFE8DB" font-family="Georgia, serif" font-size="104" font-style="italic">Fausto Vásquez</text>
+  <text x="560" y="355" fill="#B07147" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="7">DIRECCIÓN PERSONAL DE LA DEFENSA</text>
+  <text x="560" y="403" fill="#7F8787" font-family="Arial, sans-serif" font-size="13" letter-spacing="4">PENSAMIENTO · ESTRATEGIA · LITIGIO</text>
+</svg>

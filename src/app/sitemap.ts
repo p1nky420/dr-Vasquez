@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const siteUrl = "https://faustovasquezabogados.com";
-const lastModified = new Date("2026-06-11");
+const lastModified = new Date("2026-06-19");
 
 const routes = [
   "",

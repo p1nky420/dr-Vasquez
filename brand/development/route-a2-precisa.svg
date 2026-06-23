@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ruta A2 - Incisión Precisa</title>
+  <desc id="desc">Refinamiento contemporáneo y preciso de la ruta Incisión.</desc>
+  <rect width="1600" height="900" fill="#EDE6DA"/>
+  <text x="90" y="78" fill="#815D3B" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="8">A2 / INCISIÓN PRECISA</text>
+  <text x="90" y="120" fill="#6D655C" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">Contemporánea · rigurosa · preparada para crecer como firma</text>
+
+  <g transform="translate(92 220)">
+    <path d="M0 0H190V36H50V142H165V178H50V330H0Z" fill="#171411"/>
+    <path d="M112 109L186 330H229L307 109H262L208 273L155 109Z" fill="#B67C42"/>
+    <path d="M208 0V344" stroke="#171411" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(520 240)">
+    <text x="0" y="47" fill="#815D3B" font-family="Arial" font-size="20" font-weight="700" letter-spacing="13">FAUSTO</text>
+    <text x="-4" y="166" fill="#171411" font-family="Georgia" font-size="112" font-weight="700" letter-spacing="-3">VÁSQUEZ</text>
+    <text x="1" y="219" fill="#5D5750" font-family="Arial" font-size="17" font-weight="700" letter-spacing="8">ABOGADOS</text>
+    <line x1="2" y1="255" x2="855" y2="255" stroke="#B67C42" stroke-width="2"/>
+    <text x="2" y="301" fill="#675F57" font-family="Arial" font-size="14" letter-spacing="5">DERECHO PENAL ESTRATÉGICO</text>
+  </g>
+
+  <line x1="90" y1="610" x2="1510" y2="610" stroke="#C7BCAF"/>
+  <text x="90" y="663" fill="#815D3B" font-family="Arial" font-size="14" font-weight="700" letter-spacing="5">SISTEMA RESPONSIVE</text>
+
+  <g transform="translate(90 700)">
+    <rect width="365" height="112" fill="#171411"/>
+    <path d="M25 18H92V31H42V59H83V72H42V96H25Z" fill="#EDE6DA"/>
+    <path d="M64 55L91 96H107L136 55H119L99 84L81 55Z" fill="#B67C42"/>
+    <text x="166" y="53" fill="#EDE6DA" font-family="Georgia" font-size="27">VÁSQUEZ</text>
+    <text x="167" y="79" fill="#A8A198" font-family="Arial" font-size="9" letter-spacing="3">ABOGADOS</text>
+  </g>
+  <g transform="translate(510 700)">
+    <rect width="112" height="112" fill="#171411"/>
+    <path d="M20 20H71V33H38V59H65V72H38V93H20Z" fill="#EDE6DA"/>
+    <path d="M49 55L68 93H80L101 55H87L74 82L61 55Z" fill="#B67C42"/>
+  </g>
+  <g transform="translate(680 700)">
+    <rect width="112" height="112" fill="#B67C42"/>
+    <path d="M25 22L56 91L89 22" fill="none" stroke="#171411" stroke-width="15"/>
+  </g>
+  <text x="870" y="744" fill="#171411" font-family="Georgia" font-size="27">La precisión cambia</text>
+  <text x="870" y="778" fill="#171411" font-family="Georgia" font-size="27">el curso de un caso.</text>
+</svg>

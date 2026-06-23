@@ -10,7 +10,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, text, bgImage }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden px-5 pb-20 pt-36 md:px-8 md:pb-24 md:pt-44 backdrop-blur-sm">
+    <section className="relative min-h-[64svh] overflow-hidden bg-[#0a0908] px-5 pb-20 pt-36 md:px-8 md:pb-28 md:pt-44">
       {/* Background Section */}
       {bgImage ? (
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -18,11 +18,12 @@ export function PageHero({ eyebrow, title, text, bgImage }: PageHeroProps) {
             src={bgImage}
             alt={title}
             fill
-            className="object-cover opacity-45 filter grayscale brightness-[0.55] contrast-[1.1] scale-102 transition-transform duration-[15s] select-none pointer-events-none"
+            sizes="100vw"
+            className="pointer-events-none scale-[1.02] select-none object-cover opacity-42 grayscale brightness-[0.58] contrast-[1.08]"
             priority
           />
           {/* Smart responsive gradient overlay for absolute text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0b0f14]/80 via-[#0b0f14]/40 to-[#0b0f14] md:bg-gradient-to-r md:from-[#0b0f14]/85 md:via-[#0b0f14]/40 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#090806]/85 via-[#090806]/52 to-[#090806] md:bg-gradient-to-r md:from-[#090806]/95 md:via-[#090806]/62 md:to-[#090806]/20" />
         </div>
       ) : (
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,rgba(184,155,94,0.12),transparent_35%),linear-gradient(135deg,rgba(11,15,20,0.65),rgba(14,42,54,0.40)_58%,rgba(8,11,16,0.65))]" />
@@ -31,12 +32,12 @@ export function PageHero({ eyebrow, title, text, bgImage }: PageHeroProps) {
       {/* Bottom glowing line indicator */}
       <div className="absolute inset-x-0 bottom-0 -z-10 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-      <Reveal className="mx-auto max-w-5xl">
+      <Reveal className="mx-auto flex min-h-[42svh] max-w-[88rem] flex-col justify-end">
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-4xl text-balance font-serif text-5xl leading-[0.95] text-ivory md:text-7xl font-light">
+        <h1 className="mt-5 max-w-5xl text-balance font-serif text-[clamp(3.4rem,7vw,7rem)] font-normal leading-[0.92] tracking-[-0.05em] text-ivory">
           {title}
         </h1>
-        <p className="mt-7 max-w-3xl text-pretty text-lg leading-8 text-[#eae5d9] bg-black/35 md:bg-transparent p-4 md:p-0 rounded-sm backdrop-blur-sm md:backdrop-blur-none border-l border-gold/20 md:border-none">
+        <p className="mt-8 max-w-3xl text-pretty text-base leading-8 text-[#d0c8bd] md:text-lg">
           {text}
         </p>
       </Reveal>

@@ -52,10 +52,10 @@ export default function FirmaPage() {
         <div className="relative z-10 max-w-4xl text-center">
           <Reveal>
             <span className="eyebrow tracking-[0.24em] text-gold">Quiénes Somos</span>
-            <h1 className="mt-6 font-serif text-5xl sm:text-6xl text-gold-metallic animate-text-shine tracking-tight leading-none uppercase select-none">
+            <h1 className="mt-6 font-serif text-5xl font-normal leading-[0.95] tracking-[-0.045em] text-[#fffaf0] sm:text-7xl">
               Nuestra Firma
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-base sm:text-lg text-steel leading-relaxed">
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-[#c9c1b5] sm:text-lg">
               Asumimos defensas penales complejas con absoluto rigor técnico, lectura estratégica del proceso y capacidad de convertir conflictos difíciles en rutas jurídicas claras.
             </p>
           </Reveal>
@@ -70,16 +70,16 @@ export default function FirmaPage() {
             {/* Left: Technical Profile & Real publications of Dr. Fausto */}
             <Reveal>
               <span className="eyebrow">Dirección Estratégica</span>
-              <h2 className="mt-4 font-serif text-4xl text-ivory tracking-wide leading-tight uppercase">
+              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-[-0.035em] text-ivory md:text-6xl">
                 Dr. Fausto Ramiro Vásquez Cevallos
               </h2>
               <div className="h-px w-20 bg-gold mt-4 mb-6" />
               
-              <p className="text-base leading-relaxed text-steel">
-                El **Dr. Fausto Ramiro Vásquez Cevallos** es un destacado penalista y jurista ecuatoriano. Su práctica está orientada al patrocinio de causas complejas en materia de **Derecho Penal Económico, Constitucional, Político y Financiero**. 
+              <p className="text-[1.05rem] leading-8 text-[#b8b0a5]">
+                El <strong className="font-medium text-ivory">Dr. Fausto Ramiro Vásquez Cevallos</strong> es penalista y jurista ecuatoriano. Su práctica está orientada al patrocinio de causas complejas en materia de <strong className="font-medium text-ivory">Derecho Penal Económico, Constitucional, Político y Financiero</strong>.
               </p>
               
-              <p className="mt-4 text-base leading-relaxed text-steel">
+              <p className="mt-5 text-[1.05rem] leading-8 text-[#b8b0a5]">
                 Es un reconocido tratadista y docente de dogmática penal y debido proceso en programas de posgrado y especializaciones. Ha influenciado la doctrina judicial ecuatoriana a través de sus reconocidas obras de texto:
               </p>
 
@@ -87,14 +87,14 @@ export default function FirmaPage() {
               <div className="mt-6 border border-gold/15 bg-black/45 p-5 rounded-sm shadow-glow-gold relative overflow-hidden">
                 <div className="absolute right-0 top-0 h-10 w-10 border-l border-b border-gold/10" />
                 <h4 className="font-serif text-gold text-sm font-bold uppercase tracking-wider">Obras Cumbre Publicadas:</h4>
-                <ul className="mt-3 grid gap-2.5 text-xs text-ivory/95 font-medium pl-1">
+                <ul className="mt-4 grid gap-3 text-sm leading-6 text-ivory/95 font-medium pl-1">
                   <li className="flex items-center gap-2">
                     <ChevronRight size={14} className="text-gold shrink-0" />
-                    <span>*"Punto de Inflexión de la Imputación Objetiva en el COIP"* (2016)</span>
+                    <span><em>&ldquo;Punto de Inflexión de la Imputación Objetiva en el COIP&rdquo;</em> (2016)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight size={14} className="text-gold shrink-0" />
-                    <span>*"La falsedad documental en materia penal"* (2007)</span>
+                    <span><em>&ldquo;La falsedad documental en materia penal&rdquo;</em> (2007)</span>
                   </li>
                 </ul>
               </div>
@@ -104,7 +104,7 @@ export default function FirmaPage() {
                 {profile.map((item, idx) => (
                   <div className="flex items-start gap-3 border border-gold/10 bg-[#0b0f14]/50 p-4 rounded-sm hover:border-gold/25 transition duration-300" key={idx}>
                     <Award className="text-gold shrink-0 mt-0.5" size={17} strokeWidth={1.8} />
-                    <p className="text-xs leading-relaxed text-steel group-hover:text-ivory">{item}</p>
+                    <p className="text-sm leading-6 text-[#b8b0a5] group-hover:text-ivory">{item}</p>
                   </div>
                 ))}
               </div>

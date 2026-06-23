@@ -6,8 +6,8 @@
   --color-gold: #b89b5e;
   --color-ivory: #f5f2ea;
   --color-steel: #8c9299;
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Playfair Display Fallback", Georgia, serif;
 }
 
 * {
@@ -25,6 +25,180 @@ body {
   color: #f5f2ea;
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   position: relative;
+}
+
+:focus-visible {
+  outline: 2px solid #c9ad78;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10000;
+  transform: translateY(-150%);
+  background: #c9ad78;
+  padding: 0.8rem 1rem;
+  color: #15130f;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.premium-button {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid #a98650;
+  background: #a98650;
+  padding: 0.9rem 1.5rem;
+  color: #15130f;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: 300ms ease;
+}
+
+.premium-button:hover {
+  background: #c9ad78;
+  border-color: #c9ad78;
+}
+
+.premium-button--ghost {
+  border-color: rgba(243, 238, 228, 0.34);
+  background: rgba(0, 0, 0, 0.16);
+  color: #f3eee4;
+  backdrop-filter: blur(10px);
+}
+
+.premium-button--ghost:hover {
+  background: rgba(243, 238, 228, 0.08);
+  border-color: #c9ad78;
+  color: #f3eee4;
+}
+
+.hero-title {
+  color: #fffaf0;
+  text-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.9),
+    0 16px 42px rgba(0, 0, 0, 0.78);
+}
+
+.museum-grid {
+  background-image:
+    linear-gradient(rgba(201, 173, 120, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 173, 120, 0.045) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+.academic-exhibit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201, 173, 120, 0.1), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 38%);
+}
+
+.academic-exhibit {
+  border: 1px solid rgba(201, 173, 120, 0.2);
+}
+
+.academic-exhibit::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  border: 1px solid rgba(201, 173, 120, 0.08);
+  transition: border-color 500ms ease;
+}
+
+.academic-exhibit:hover::after {
+  border-color: rgba(201, 173, 120, 0.18);
+}
+
+.academic-logo-plaque {
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.28));
+}
+
+.academic-corner {
+  position: absolute;
+  z-index: 2;
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+  border-color: rgba(201, 173, 120, 0.5);
+}
+
+.academic-corner--tl {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.academic-corner--tr {
+  top: 0.75rem;
+  right: 0.75rem;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+
+.academic-corner--bl {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.academic-corner--br {
+  right: 0.75rem;
+  bottom: 0.75rem;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.practice-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #15130f;
+  box-shadow: 0 28px 70px rgba(33, 25, 15, 0.12);
+}
+
+.contact-line {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(201, 173, 120, 0.2);
+  padding: 1rem 0;
+  color: #c9ad78;
+}
+
+.contact-line span {
+  color: #f3eee4;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.contact-line small {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #8f877c;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 body > main,
@@ -318,6 +492,433 @@ a {
 .text-shadow-premium {
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.9);
 }
+
+/* --- Catálogo de Servicios Premium --- */
+.practice-catalogue {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .practice-catalogue {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .practice-catalogue {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.practice-catalogue__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 380px; /* Altura fija predeterminada */
+  overflow: hidden;
+  background-color: #0b0f14;
+  border: 1px solid rgba(184, 155, 94, 0.15);
+  border-radius: 4px;
+  padding: 2.25rem 1.75rem;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Al pasar el mouse, la tarjeta se ilumina y se expande sutilmente */
+.practice-catalogue__card:hover,
+.practice-catalogue__card--active {
+  border-color: rgba(184, 155, 94, 0.5);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(184, 155, 94, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Capa de imagen: revelada al pasar el mouse */
+.practice-catalogue__image-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(1.1);
+  filter: blur(4px);
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.practice-catalogue__image {
+  object-fit: cover;
+}
+
+.practice-catalogue__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 20, 0.35) 0%,
+    rgba(5, 8, 12, 0.95) 90%
+  );
+}
+
+.practice-catalogue__card:hover .practice-catalogue__image-layer,
+.practice-catalogue__card--active .practice-catalogue__image-layer {
+  opacity: 0.35;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Resplandor ambiental de fondo */
+.practice-catalogue__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15;
+  background: radial-gradient(
+    circle at 50% 100%,
+    rgba(184, 155, 94, 0.3) 0%,
+    transparent 70%
+  );
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.practice-catalogue__card:hover .practice-catalogue__glow,
+.practice-catalogue__card--active .practice-catalogue__glow {
+  opacity: 0.45;
+}
+
+/* Contenido */
+.practice-catalogue__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.practice-catalogue__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.practice-catalogue__number {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #b89b5e;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+
+.practice-catalogue__card:hover .practice-catalogue__number,
+.practice-catalogue__card--active .practice-catalogue__number {
+  opacity: 1;
+}
+
+.practice-catalogue__icon-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(184, 155, 94, 0.25);
+  background-color: rgba(184, 155, 94, 0.05);
+  color: #b89b5e;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-catalogue__card:hover .practice-catalogue__icon-ring,
+.practice-catalogue__card--active .practice-catalogue__icon-ring {
+  background-color: #b89b5e;
+  color: #0b0f14;
+  border-color: #b89b5e;
+  box-shadow: 0 0 15px rgba(184, 155, 94, 0.3);
+}
+
+.practice-catalogue__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: #f5f2ea;
+  margin-bottom: auto; /* Empuja el separador y la descripción hacia abajo */
+  transition: color 0.5s ease;
+}
+
+.practice-catalogue__card:hover .practice-catalogue__title,
+.practice-catalogue__card--active .practice-catalogue__title {
+  color: #b89b5e;
+}
+
+.practice-catalogue__separator {
+  width: 2rem;
+  height: 1px;
+  background-color: rgba(184, 155, 94, 0.3);
+  margin-top: 1.5rem;
+  margin-bottom: 0px;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-catalogue__card:hover .practice-catalogue__separator,
+.practice-catalogue__card--active .practice-catalogue__separator {
+  width: 100%;
+  background-color: rgba(184, 155, 94, 0.6);
+  margin-bottom: 1.25rem;
+}
+
+/* Descripción expansiva */
+.practice-catalogue__description-wrapper {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-catalogue__description {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #8c9299;
+  margin: 0;
+}
+
+.practice-catalogue__card:hover .practice-catalogue__description-wrapper,
+.practice-catalogue__card--active .practice-catalogue__description-wrapper {
+  max-height: 120px;
+  opacity: 1;
+}
+
+/* Botón elegante CTA */
+.practice-catalogue__cta-wrapper {
+  margin-top: 1.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-catalogue__card:hover .practice-catalogue__cta-wrapper,
+.practice-catalogue__card--active .practice-catalogue__cta-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.practice-catalogue__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #b89b5e;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+}
+
+.practice-catalogue__cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-catalogue__cta:hover {
+  color: #f5f2ea;
+}
+
+.practice-catalogue__cta:hover .practice-catalogue__cta-icon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1023px) {
+  /* En pantallas móviles y tablets, la descripción está siempre visible y el CTA también */
+  .practice-catalogue__card {
+    height: auto;
+    min-height: 280px;
+  }
+  .practice-catalogue__separator {
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+  .practice-catalogue__description-wrapper {
+    max-height: none !important;
+    opacity: 1 !important;
+  }
+  .practice-catalogue__cta-wrapper {
+    opacity: 1 !important;
+    transform: none !important;
+    margin-top: 1.5rem;
+  }
+  .practice-catalogue__image-layer {
+    opacity: 0.15;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* --- Estilos de Sala Privada de Consulta --- */
+.luxury-field-input {
+  min-height: 3.25rem;
+  width: 100%;
+  border: 1px solid rgba(184, 155, 94, 0.18);
+  background: rgba(11, 15, 20, 0.6);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  color: #f5f2ea;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+  color-scheme: dark;
+}
+
+.luxury-field-input:hover {
+  border-color: rgba(184, 155, 94, 0.4);
+  background: rgba(11, 15, 20, 0.8);
+}
+
+.luxury-field-input:focus {
+  border-color: #b89b5e;
+  background: #0b0f14;
+  box-shadow: 0 0 15px rgba(184, 155, 94, 0.15);
+}
+
+.luxury-field-label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #b89b5e;
+}
+
+.luxury-field-input::placeholder {
+  color: rgba(140, 146, 153, 0.5);
+}
+
+/* Botón CTA del Formulario con Presencia Premium */
+.cta-premium-submit {
+  position: relative;
+  display: inline-flex;
+  min-height: 3.75rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid #b89b5e;
+  background: linear-gradient(135deg, #15130f 0%, #0b0f14 100%);
+  color: #f5f2ea;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(184, 155, 94, 0.15);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.cta-premium-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 155, 94, 0.3),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.cta-premium-submit:hover::before {
+  left: 100%;
+}
+
+.cta-premium-submit:hover {
+  background: #b89b5e;
+  color: #0b0f14;
+  border-color: #b89b5e;
+  box-shadow: 
+    0 20px 45px rgba(184, 155, 94, 0.35),
+    0 0 25px rgba(184, 155, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+.cta-premium-submit:active {
+  transform: translateY(0);
+}
+
+.cta-premium-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Placa del Formulario - Sala Privada */
+.consultation-vault-card {
+  border: 1px solid rgba(184, 155, 94, 0.25);
+  background: #07090b;
+  position: relative;
+  box-shadow: 
+    0 40px 90px rgba(0, 0, 0, 0.8),
+    inset 0 0 40px rgba(184, 155, 94, 0.02);
+}
+
+.consultation-vault-card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(184, 155, 94, 0.04);
+  pointer-events: none;
+}
+
+/* Efecto de Grano Cinematográfico Animado */
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  55% { transform: translate(-15%, -15%); }
+  70% { transform: translate(15%, 15%); }
+  85% { transform: translate(-10%, 10%); }
+  95% { transform: translate(10%, -10%); }
+}
+
+.grain-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") repeat;
+  opacity: 0.032; /* Sutil pero presente */
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain-shift 8s steps(10) infinite;
+}
+
+/* Ocultar el cursor nativo de forma global si el dispositivo lo soporta */
+@media (pointer: fine) {
+  html, body, a, button, select, input {
+    cursor: none !important;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Fausto Vásquez - Sello de Decisión</title>
+  <desc id="desc">Marca FV compacta construida mediante cuatro planos y una incisión central.</desc>
+  <rect width="1400" height="520" fill="#ECE6DB"/>
+  <g transform="translate(84 70)">
+    <rect width="382" height="382" rx="2" fill="#151311"/>
+    <path d="M65 62H234V111H122V180H218V227H122V320H65Z" fill="#ECE6DB"/>
+    <path d="M176 175L236 320H287L345 175H290L262 258L230 175Z" fill="#B5854D"/>
+    <path d="M252 53V329" stroke="#ECE6DB" stroke-width="3"/>
+    <path d="M45 342H337" stroke="#B5854D" stroke-width="3"/>
+  </g>
+  <g transform="translate(555 105)">
+    <text x="0" y="54" fill="#7D603F" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="11">FAUSTO</text>
+    <text x="-4" y="168" fill="#151311" font-family="Georgia, serif" font-size="105" font-weight="700" letter-spacing="-2">VÁSQUEZ</text>
+    <text x="1" y="221" fill="#5C554D" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="7">ABOGADOS</text>
+    <path d="M0 252H696" stroke="#B5854D" stroke-width="2"/>
+    <text x="0" y="298" fill="#6B635B" font-family="Arial, sans-serif" font-size="14" letter-spacing="5">DEFENSA PENAL · ESTRATEGIA · REPUTACIÓN</text>
+  </g>
+</svg>

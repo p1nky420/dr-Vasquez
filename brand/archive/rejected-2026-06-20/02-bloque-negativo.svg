@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Fausto Vásquez - Bloque Negativo</title>
+  <desc id="desc">Símbolo FV compacto construido como un bloque de espacio negativo.</desc>
+  <rect width="1400" height="520" fill="#E9E2D7"/>
+  <rect x="82" y="72" width="360" height="376" fill="#171411"/>
+  <path d="M142 126H354V176H205V245H330V294H205V394H142Z" fill="#E9E2D7"/>
+  <path d="M214 242L272 394H321L382 242H328L297 333L266 242Z" fill="#B17C45"/>
+  <text x="530" y="226" fill="#171411" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="13">FAUSTO</text>
+  <text x="520" y="330" fill="#171411" font-family="Georgia, serif" font-size="94" font-weight="700" letter-spacing="1">VÁSQUEZ</text>
+  <rect x="526" y="367" width="690" height="2" fill="#B17C45"/>
+  <text x="526" y="414" fill="#5D554D" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="6">ABOGADOS · QUITO · GUAYAQUIL</text>
+</svg>

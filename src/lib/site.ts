@@ -12,17 +12,19 @@ import {
 
 export const whatsappNumber = "+593983076881";
 export const navItems = [
-  { href: "/#inicio", label: "Inicio" },
-  { href: "/#defensa", label: "Defensa" },
-  { href: "/#perfil", label: "Perfil" },
-  { href: "/#servicios", label: "Servicios" },
-  { href: "/#admision", label: "Admisión" },
+  { href: "/#legado", label: "Legado" },
+  { href: "/#trayectoria", label: "Trayectoria" },
+  { href: "/#practica", label: "Práctica" },
+  { href: "/#pensamiento-juridico", label: "Pensamiento" },
+  { href: "/#consulta", label: "Consulta" },
 ];
 
 export type PracticeArea = {
   title: string;
   description: string;
   icon: LucideIcon;
+  image: string;
+  href: string;
 };
 
 export const practiceAreas: PracticeArea[] = [
@@ -31,30 +33,40 @@ export const practiceAreas: PracticeArea[] = [
     description:
       "Defensa en investigaciones por fraude, estafa, abuso de confianza, delitos societarios, tributarios y conflictos empresariales con relevancia penal.",
     icon: BriefcaseBusiness,
+    image: "/practice-area-penal-economico.png",
+    href: "/derecho-penal-economico",
   },
   {
     title: "Lavado de Activos y Delitos Financieros",
     description:
       "Estrategia de defensa ante análisis de origen de fondos, operaciones patrimoniales, estructuras financieras y movimientos empresariales complejos.",
     icon: WalletCards,
+    image: "/practice-area-lavado-activos.png",
+    href: "/contacto?area=lavado-de-activos",
   },
   {
     title: "Delitos contra la Administración Pública",
     description:
       "Defensa en casos de peculado, cohecho, concusión, tráfico de influencias, enriquecimiento ilícito y responsabilidad de funcionarios o contratistas.",
     icon: Landmark,
+    image: "/practice-area-admin-publica.png",
+    href: "/contacto?area=administracion-publica",
   },
   {
     title: "Derecho Constitucional Penal",
     description:
       "Acciones constitucionales, garantías jurisdiccionales, debido proceso, tutela judicial efectiva y defensa frente a vulneraciones de derechos fundamentales.",
     icon: ShieldCheck,
+    image: "/practice-area-constitucional.png",
+    href: "/contacto?area=constitucional-penal",
   },
   {
     title: "Litigio Penal Estratégico",
     description:
       "Construcción de teoría del caso, análisis probatorio, audiencias, recursos, juicio oral y diseño integral de defensa.",
     icon: Target,
+    image: "/practice-area-litigio.png",
+    href: "/contacto?area=litigio-estrategico",
   },
 ];
 

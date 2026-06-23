@@ -7,6 +7,7 @@ import { AnalyticsConsent } from "@/components/analytics-consent";
 import { EvaluationVault } from "@/components/evaluation-vault";
 import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,7 +25,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://faustovasquezabogados.com"),
   title: {
-    default: "Fausto Vásquez Abogados | Defensa Penal Estratégica",
+    default: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
     template: "%s | Fausto Vásquez Abogados",
   },
   description:
@@ -50,10 +51,10 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/reception_marble.png",
-        width: 1024,
-        height: 1024,
-        alt: "Fausto Vásquez Abogados, defensa penal estratégica en Quito",
+        url: "/portrait-editorial-authority-v2.png",
+        width: 1003,
+        height: 1568,
+        alt: "Dr. Fausto Vásquez, jurista penalista ecuatoriano",
       },
     ],
   },
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
     title: "Fausto Vásquez Abogados | Abogado Penalista Quito",
     description:
       "Defensa penal estratégica para asuntos empresariales, patrimoniales y financieros complejos.",
-    images: ["/reception_marble.png"],
+    images: ["/portrait-editorial-authority-v2.png"],
   },
   robots: {
     index: true,
@@ -101,7 +102,7 @@ const institutionalJsonLd = {
       sameAs: ["https://www.facebook.com/share/1Jy16EpESA/"],
     },
     {
-      "@type": "LegalService",
+      "@type": ["LegalService", "Attorney"],
       "@id": "https://faustovasquezabogados.com/#legal-service",
       name: "Fausto Vásquez Abogados",
       url: "https://faustovasquezabogados.com",
@@ -115,23 +116,29 @@ const institutionalJsonLd = {
       },
       areaServed: [
         { "@type": "City", name: "Quito" },
+        { "@type": "City", name: "Guayaquil" },
         { "@type": "Country", name: "Ecuador" },
       ],
-      address: {
-        "@type": "PostalAddress",
-        streetAddress:
-          "Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8",
-        addressLocality: "Quito",
-        addressRegion: "Pichincha",
-        postalCode: "170522",
-        addressCountry: "EC",
-      },
-      // TODO: Validar las coordenadas exactas de la oficina con el cliente.
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: -0.1969,
-        longitude: -78.4818,
-      },
+      address: [
+        {
+          "@type": "PostalAddress",
+          streetAddress:
+            "Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8, Oficina 802",
+          addressLocality: "Quito",
+          addressRegion: "Pichincha",
+          postalCode: "170522",
+          addressCountry: "EC",
+        },
+        {
+          "@type": "PostalAddress",
+          streetAddress:
+            "Av. Malecón Simón Bolívar y Loja, Edificio The Point, Piso 12, Oficina 1203",
+          addressLocality: "Guayaquil",
+          addressRegion: "Guayas",
+          postalCode: "090150",
+          addressCountry: "EC",
+        },
+      ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Servicios legales",
@@ -178,12 +185,14 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="bg-[#0b0a09] text-[#f4efe5]">
+        <a className="skip-link" href="#main-content">Saltar al contenido principal</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(institutionalJsonLd) }}
         />
+        <CustomCursor />
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <EvaluationVault />
         <FloatingWhatsapp />

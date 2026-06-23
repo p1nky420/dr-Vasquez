@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Ruta C - Dirección</title>
+  <desc id="desc">Identidad autoral basada en trayectoria y dirección estratégica.</desc>
+  <rect width="1600" height="1000" fill="#101719"/>
+  <text x="90" y="82" fill="#B87348" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="8">RUTA C / DIRECCIÓN</text>
+  <text x="90" y="130" fill="#909897" font-family="Arial, sans-serif" font-size="16" letter-spacing="2">Pensamiento jurídico · autoría · liderazgo personal</text>
+
+  <g transform="translate(98 218)" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M0 0V325M0 0H192M0 139H158" stroke="#F0E9DD" stroke-width="28"/>
+    <path d="M114 92L206 325L300 92" stroke="#F0E9DD" stroke-width="28"/>
+    <path d="M-2 325C89 373 212 373 302 325" stroke="#B87348" stroke-width="8"/>
+    <path d="M206 325V22" stroke="#B87348" stroke-width="5"/>
+  </g>
+
+  <g transform="translate(525 250)">
+    <text x="0" y="42" fill="#9AA1A0" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="10">JURISTA PENALISTA</text>
+    <text x="-7" y="175" fill="#F0E9DD" font-family="Georgia, serif" font-size="116" font-style="italic">Fausto Vásquez</text>
+    <text x="1" y="235" fill="#B87348" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="7">DIRECCIÓN PERSONAL DE LA DEFENSA</text>
+    <text x="1" y="286" fill="#7E8786" font-family="Arial, sans-serif" font-size="14" letter-spacing="5">DERECHO PENAL ESTRATÉGICO</text>
+  </g>
+
+  <line x1="90" y1="632" x2="1510" y2="632" stroke="#384043"/>
+
+  <g transform="translate(90 690)">
+    <text x="0" y="0" fill="#B87348" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5">ECOSISTEMA EDITORIAL</text>
+    <rect x="0" y="35" width="250" height="210" fill="#F0E9DD"/>
+    <text x="28" y="74" fill="#B87348" font-family="Arial" font-size="9" font-weight="700" letter-spacing="3">COLECCIÓN JURÍDICA</text>
+    <text x="26" y="124" fill="#101719" font-family="Georgia, serif" font-size="27" font-style="italic">Pensamiento</text>
+    <text x="26" y="158" fill="#101719" font-family="Georgia, serif" font-size="27" font-style="italic">penal aplicado</text>
+    <path d="M28 184H220" stroke="#B87348"/>
+    <text x="28" y="215" fill="#5D6564" font-family="Arial" font-size="9" letter-spacing="2">FAUSTO VÁSQUEZ</text>
+    <rect x="278" y="35" width="250" height="210" fill="#1A2224"/>
+    <text x="306" y="78" fill="#B87348" font-family="Arial" font-size="9" letter-spacing="3">CONFERENCIA</text>
+    <text x="304" y="130" fill="#F0E9DD" font-family="Georgia, serif" font-size="25">La defensa comienza</text>
+    <text x="304" y="164" fill="#F0E9DD" font-family="Georgia, serif" font-size="25">antes del litigio.</text>
+  </g>
+
+  <g transform="translate(770 690)">
+    <text x="0" y="0" fill="#B87348" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5">PALETA</text>
+    <rect x="0" y="35" width="120" height="120" fill="#101719" stroke="#41494A"/>
+    <rect x="140" y="35" width="120" height="120" fill="#F0E9DD"/>
+    <rect x="280" y="35" width="120" height="120" fill="#B87348"/>
+    <rect x="420" y="35" width="120" height="120" fill="#8F9897"/>
+    <text x="0" y="184" fill="#909897" font-family="Arial" font-size="12">Azul tinta</text>
+    <text x="140" y="184" fill="#909897" font-family="Arial" font-size="12">Pergamino</text>
+    <text x="280" y="184" fill="#909897" font-family="Arial" font-size="12">Cobre</text>
+    <text x="420" y="184" fill="#909897" font-family="Arial" font-size="12">Acero</text>
+  </g>
+</svg>

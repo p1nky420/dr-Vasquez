@@ -4,26 +4,26 @@ import { faqs, serviceCategories } from "@/lib/home-content";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Abogado Penalista en Quito | Fausto Vásquez Abogados",
+    absolute: "Dr. Fausto Vásquez | Derecho Penal Estratégico en Ecuador",
   },
   description:
-    "Abogado penalista en Quito para defensa penal económica, lavado de activos y delitos financieros. Más de 20 años de trayectoria en litigio complejo.",
+    "Jurista penalista en Quito especializado en defensa penal económica, litigio constitucional y casos complejos. Consulta privada y confidencial.",
   alternates: {
     canonical: "https://faustovasquezabogados.com",
   },
   openGraph: {
-    title: "Abogado Penalista en Quito | Fausto Vásquez Abogados",
+    title: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
     description:
-      "Firma penal de élite especializada en casos de alta complejidad. Quito, Ecuador.",
+      "Inteligencia jurídica, excelencia académica y estrategia procesal para asuntos penales de alta complejidad.",
     locale: "es_EC",
     type: "website",
     url: "https://faustovasquezabogados.com",
     images: [
       {
-        url: "/reception_marble.png",
-        width: 1024,
-        height: 1024,
-        alt: "Fausto Vásquez Abogados, defensa penal estratégica en Quito",
+        url: "/portrait-editorial-quito-v2.png",
+        width: 1003,
+        height: 1568,
+        alt: "Dr. Fausto Vásquez, jurista penalista ecuatoriano",
       },
     ],
   },

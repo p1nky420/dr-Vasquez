@@ -4,15 +4,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Preloader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(
+    () => typeof window === "undefined" || sessionStorage.getItem("fv_preloader_run") !== "true",
+  );
 
   useEffect(() => {
-    // Check if the preloader has already run in this session
-    const hasRun = sessionStorage.getItem("fv_preloader_run");
-    if (hasRun === "true") {
-      setLoading(false);
-      return;
-    }
+    if (!loading) return;
 
     const timer = setTimeout(() => {
       setLoading(false);
@@ -20,7 +17,7 @@ export function Preloader() {
     }, 3700);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [loading]);
 
   return (
     <AnimatePresence>

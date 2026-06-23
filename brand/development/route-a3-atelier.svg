@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ruta A3 - Incisión Atelier</title>
+  <desc id="desc">Refinamiento exclusivo y editorial de la ruta Incisión.</desc>
+  <rect width="1600" height="900" fill="#111619"/>
+  <text x="90" y="78" fill="#BE7950" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="8">A3 / INCISIÓN ATELIER</text>
+  <text x="90" y="120" fill="#919897" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">Autoral · cultural · exclusiva · orientada a pensamiento jurídico</text>
+
+  <g transform="translate(90 225)">
+    <text x="0" y="40" fill="#929A99" font-family="Arial" font-size="17" font-weight="700" letter-spacing="10">DR. FAUSTO VÁSQUEZ</text>
+    <text x="-8" y="199" fill="#F1EADD" font-family="Georgia" font-size="150" font-style="italic" letter-spacing="-7">Vásquez</text>
+    <path d="M30 56L92 216" stroke="#BE7950" stroke-width="9"/>
+    <text x="3" y="260" fill="#BE7950" font-family="Arial" font-size="17" font-weight="700" letter-spacing="8">DIRECCIÓN PERSONAL DE LA DEFENSA</text>
+    <text x="3" y="306" fill="#858D8C" font-family="Arial" font-size="13" letter-spacing="5">DERECHO PENAL ESTRATÉGICO</text>
+  </g>
+
+  <g transform="translate(1178 190)">
+    <path d="M0 0V330M0 0H190M0 142H155" stroke="#F1EADD" stroke-width="27"/>
+    <path d="M112 95L203 330L297 95" fill="none" stroke="#F1EADD" stroke-width="27"/>
+    <path d="M112 95L203 330" stroke="#BE7950" stroke-width="7"/>
+  </g>
+
+  <line x1="90" y1="610" x2="1510" y2="610" stroke="#394043"/>
+  <text x="90" y="663" fill="#BE7950" font-family="Arial" font-size="14" font-weight="700" letter-spacing="5">SISTEMA AUTORAL</text>
+  <rect x="90" y="700" width="240" height="135" fill="#F1EADD"/>
+  <text x="115" y="732" fill="#BE7950" font-family="Arial" font-size="8" letter-spacing="3">COLECCIÓN JURÍDICA</text>
+  <text x="113" y="778" fill="#111619" font-family="Georgia" font-size="22" font-style="italic">Pensamiento penal</text>
+  <text x="113" y="807" fill="#111619" font-family="Georgia" font-size="22" font-style="italic">aplicado</text>
+  <rect x="365" y="700" width="240" height="135" fill="#1B2325"/>
+  <text x="391" y="735" fill="#BE7950" font-family="Arial" font-size="8" letter-spacing="3">CONFERENCIA</text>
+  <text x="390" y="778" fill="#F1EADD" font-family="Georgia" font-size="20">La defensa comienza</text>
+  <text x="390" y="805" fill="#F1EADD" font-family="Georgia" font-size="20">antes del litigio.</text>
+  <rect x="760" y="700" width="340" height="135" fill="#F1EADD"/>
+  <text x="788" y="742" fill="#111619" font-family="Georgia" font-size="28" font-style="italic">Fausto Vásquez</text>
+  <text x="790" y="780" fill="#BE7950" font-family="Arial" font-size="10" letter-spacing="3">JURISTA PENALISTA</text>
+  <text x="790" y="812" fill="#6F7776" font-family="Arial" font-size="9" letter-spacing="2">FIRMA EDITORIAL</text>
+</svg>

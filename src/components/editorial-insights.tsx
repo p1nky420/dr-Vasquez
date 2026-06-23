@@ -1,4 +1,4 @@
-import { Scale, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { BookOpen, ArrowRight } from "lucide-react";
 import { BlogCards } from "@/components/blog-cards";
 import { Reveal } from "@/components/animated";
 import Link from "next/link";
@@ -128,7 +128,7 @@ export function EditorialInsights() {
         {/* Dynamic quote footer */}
         <Reveal delay={0.3} className="mt-20 border-t border-gold/15 pt-8 text-center">
           <p className="font-serif text-lg sm:text-xl italic text-gold/90 text-gold-metallic animate-text-shine">
-            "El Derecho Penal no es solo norma, es reflexión, técnica y compromiso absoluto con la justicia."
+            &ldquo;El Derecho Penal no es solo norma, es reflexión, técnica y compromiso absoluto con la justicia.&rdquo;
           </p>
           <p className="mt-2 text-[0.66rem] uppercase tracking-[0.28em] text-steel">
             Dr. Fausto Ramiro Vásquez Cevallos

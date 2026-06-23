@@ -1,52 +1,34 @@
-import { Scale } from "lucide-react";
 import Link from "next/link";
-import { ButtonLink } from "@/components/button-link";
 import { navItems } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-ivory/10 bg-[#080b10] pb-20 md:pb-0">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
+    <footer className="border-t border-white/10 bg-[#080706] pb-20 text-[#f3eee4] md:pb-0">
+      <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-16 md:grid-cols-[1.35fr_0.65fr_0.8fr] md:px-8 md:py-20">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="grid size-11 place-items-center border border-gold/40 text-gold">
-              <Scale size={22} strokeWidth={1.5} />
-            </span>
-            <div>
-              <p className="font-serif text-2xl text-ivory">Fausto Vásquez Abogados</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.24em] text-gold">
-                Derecho Penal Económico & Litigio Estratégico
-              </p>
-            </div>
-          </div>
-          <p className="mt-6 max-w-md text-sm leading-7 text-steel">
-            Convertir lo complejo en una estrategia penal clara, técnica y contundente.
+          <p className="font-serif text-4xl tracking-[-0.04em]">Fausto Vásquez</p>
+          <p className="mt-2 text-[0.68rem] uppercase tracking-[0.22em] text-[#c9ad78]">Abogados · Derecho penal estratégico</p>
+          <p className="mt-7 max-w-md text-[0.95rem] leading-7 text-[#b8b0a5]">
+            Defensa penal, pensamiento jurídico y dirección estratégica para asuntos de alta complejidad.
           </p>
         </div>
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold">Navegación</p>
-          <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-            {navItems.map((item) => (
-              <Link className="text-steel transition hover:text-ivory" href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ))}
-          </div>
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#c9ad78]">Institución</p>
+          <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#b8b0a5]">
+            {navItems.map((item) => <Link key={item.href} href={item.href} className="transition-colors hover:text-[#f3eee4]">{item.label}</Link>)}
+          </nav>
         </div>
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold">Evaluación</p>
-          <p className="mb-6 mt-5 text-sm leading-7 text-steel">
-            Si existe una audiencia próxima o una investigación penal activa, solicite una revisión inicial.
-          </p>
-          <ButtonLink
-            href="#admision"
-          >
-            Solicitar evaluación
-          </ButtonLink>
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#c9ad78]">Contacto</p>
+          <div className="mt-6 space-y-3 text-[0.95rem] leading-6 text-[#b8b0a5]">
+            <p><a className="hover:text-[#f3eee4]" href="tel:+593983076881">+593 98 307 6881</a></p>
+            <p><a className="hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogados.com">contacto@faustovasquezabogados.com</a></p>
+            <p>Oficinas en Quito y Guayaquil<br />Atención con cita previa</p>
+          </div>
         </div>
       </div>
-      <div className="border-t border-ivory/10 px-5 py-5 text-center text-xs text-steel">
-        © {new Date().getFullYear()} Fausto Vásquez Abogados. Todos los derechos reservados.
+      <div className="border-t border-white/10 px-5 py-5 text-center text-[0.66rem] uppercase tracking-[0.13em] text-[#948c81]">
+        © {new Date().getFullYear()} Fausto Vásquez Abogados · La información publicada no constituye asesoría jurídica.
       </div>
     </footer>
   );

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ruta A1 - Incisión Clásica</title>
+  <desc id="desc">Refinamiento clásico de la ruta Incisión para Fausto Vásquez.</desc>
+  <rect width="1600" height="900" fill="#090908"/>
+  <text x="90" y="78" fill="#B58A52" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="8">A1 / INCISIÓN CLÁSICA</text>
+  <text x="90" y="120" fill="#8E887E" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">Tradición jurídica · autoridad personal · máxima legibilidad</text>
+
+  <g transform="translate(88 238)">
+    <text x="0" y="52" fill="#B58A52" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="14">FAUSTO</text>
+    <text x="-7" y="219" fill="#F3EDE2" font-family="Georgia, serif" font-size="174" letter-spacing="-6">VÁSQUEZ</text>
+    <path d="M29 70L94 236" stroke="#B58A52" stroke-width="10"/>
+    <path d="M94 236L157 70" stroke="#090908" stroke-width="15"/>
+    <text x="2" y="275" fill="#AAA297" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="8">DERECHO PENAL ESTRATÉGICO</text>
+  </g>
+
+  <g transform="translate(1145 194)">
+    <rect width="320" height="320" fill="#F3EDE2"/>
+    <path d="M74 55L159 267L246 55" fill="none" stroke="#11100F" stroke-width="34"/>
+    <path d="M74 55L159 267" stroke="#B58A52" stroke-width="9"/>
+    <text x="101" y="298" fill="#6E665D" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="5">INCISIÓN / V</text>
+  </g>
+
+  <line x1="90" y1="610" x2="1510" y2="610" stroke="#39332C"/>
+  <text x="90" y="663" fill="#B58A52" font-family="Arial" font-size="14" font-weight="700" letter-spacing="5">PRUEBAS DE USO</text>
+  <rect x="90" y="700" width="195" height="110" fill="#F3EDE2"/>
+  <path d="M125 720L171 792L218 720" fill="none" stroke="#11100F" stroke-width="17"/>
+  <path d="M125 720L171 792" stroke="#B58A52" stroke-width="5"/>
+  <text x="308" y="746" fill="#F3EDE2" font-family="Georgia" font-size="30">Fausto Vásquez</text>
+  <text x="310" y="780" fill="#8E887E" font-family="Arial" font-size="11" letter-spacing="3">FIRMA DE CORREO / DOCUMENTOS / WEB</text>
+  <rect x="990" y="688" width="140" height="140" rx="70" fill="#B58A52"/>
+  <path d="M1025 720L1060 793L1096 720" fill="none" stroke="#090908" stroke-width="14"/>
+  <rect x="1165" y="688" width="140" height="140" fill="#F3EDE2"/>
+  <path d="M1200 720L1235 793L1271 720" fill="none" stroke="#090908" stroke-width="14"/>
+  <rect x="1340" y="688" width="140" height="140" fill="#090908" stroke="#3A342D"/>
+  <path d="M1375 720L1410 793L1446 720" fill="none" stroke="#F3EDE2" stroke-width="14"/>
+</svg>
