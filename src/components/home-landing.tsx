@@ -290,7 +290,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="legado" className="bg-[#ece5d9] px-5 py-24 text-[#15130f] md:px-8 md:py-36">
+      <section id="legado" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
         <div className="mx-auto max-w-[88rem]">
           <div className="grid gap-16 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-24">
             <EditorialReveal className="relative">
@@ -406,7 +406,7 @@ export function HomeLanding() {
             {visionNodes.map((node, i) => (
               <motion.div
                 key={node.number}
-                className="relative min-h-[60vh] md:min-h-[80vh] flex items-center py-16 md:py-20"
+                className="relative min-h-[50vh] md:min-h-[80vh] flex items-center py-12 md:py-20"
                 initial={{ opacity: 0.08 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
@@ -481,7 +481,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-24 md:px-8 md:py-32 overflow-hidden">
+      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(201,173,120,0.04),transparent_50%)]" />
         <div className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 w-[45%] opacity-[0.12] md:w-[35%]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -517,7 +517,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="practica" className="bg-[#ece5d9] px-5 py-24 text-[#15130f] md:px-8 md:py-36">
+      <section id="practica" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
         <div className="mx-auto max-w-[88rem]">
           <SectionIntro
             eyebrow="Práctica estratégica"
@@ -572,7 +572,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="metodo" className="relative bg-[#15120f] px-5 py-24 md:px-8 md:py-36 overflow-hidden">
+      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden">
         <div className="pointer-events-none absolute left-[5%] top-[10%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>
@@ -632,7 +632,7 @@ export function HomeLanding() {
       </section>\n
       <SectionDivider />
 
-      <section id="conocimiento" className="bg-[#ece5d9] px-5 py-24 text-[#15130f] md:px-8 md:py-36">
+      <section id="conocimiento" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
         <div className="mx-auto max-w-[88rem]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <SectionIntro
@@ -700,7 +700,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-24 md:px-8 md:py-36 overflow-hidden">
+      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,173,120,.08),transparent_28%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -729,7 +729,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="pensamiento-juridico" className="relative overflow-hidden bg-[#e9e1d4] px-5 py-24 text-[#15130f] md:px-8 md:py-40">
+      <section id="pensamiento-juridico" className="relative overflow-hidden bg-[#e9e1d4] px-5 py-16 text-[#15130f] md:px-8 md:py-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(138,105,65,.13),transparent_28%),linear-gradient(90deg,transparent_49.9%,rgba(21,19,15,.08)_50%,transparent_50.1%)]" />
         <div className="pointer-events-none absolute -right-12 top-12 font-serif text-[16rem] leading-none tracking-[-0.1em] text-[#8a6941]/[0.045] md:text-[28rem]" aria-hidden="true">
           FV
@@ -875,7 +875,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="consulta" className="bg-[#15120f] px-5 py-24 md:px-8 md:py-36 relative overflow-hidden">
+      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden">
         {/* Decorative elements representing private safe room */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(184,155,94,0.03),transparent_50%)] pointer-events-none" />
         
@@ -954,7 +954,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="faq" className="bg-[#ece5d9] px-5 py-24 text-[#15130f] md:px-8 md:py-32">
+      <section id="faq" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-32">
         <div className="mx-auto max-w-[72rem]">
           <SectionIntro eyebrow="Preguntas frecuentes" title="Información antes de iniciar." dark />
           <div className="mt-14 border-t border-[#15130f]/20">
@@ -975,7 +975,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="publicaciones" className="relative bg-[#ece5d9] px-5 py-24 text-[#15130f] md:px-8 md:py-36 overflow-hidden">
+      <section id="publicaciones" className="relative bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36 overflow-hidden">
         <div className="pointer-events-none absolute -left-[10%] top-1/2 -translate-y-1/2 w-[38%] opacity-[0.1] md:w-[28%]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>
@@ -1064,7 +1064,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section className="relative min-h-[72vh] overflow-hidden px-5 py-24 md:px-8">
+      <section className="relative min-h-[72vh] overflow-hidden px-5 py-16 md:px-8">
         <Image src="/quito_night.png" alt="Quito de noche" fill sizes="100vw" className="object-cover grayscale" />
         <div className="absolute inset-0 bg-[#080706]/82" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,173,120,.16),transparent_35%)]" />

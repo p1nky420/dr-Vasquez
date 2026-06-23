@@ -46,9 +46,9 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">
+        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Navegación principal">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="relative py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#c2baae] transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#ecc058] after:transition-transform hover:text-[#f3eee4] hover:after:scale-x-100">
+            <Link key={item.href} href={item.href} className="relative py-3 text-[0.6rem] xl:text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#c2baae] transition-colors whitespace-nowrap after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#ecc058] after:transition-transform hover:text-[#f3eee4] hover:after:scale-x-100">
               {item.label}
             </Link>
           ))}

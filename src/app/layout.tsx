@@ -11,6 +11,7 @@ import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { CustomCursor } from "@/components/custom-cursor";
 import { SearchProvider, SearchModal } from "@/components/search-modal";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
 import { faqs } from "@/lib/home-content";
 import "./globals.css";
@@ -228,8 +229,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(institutionalJsonLd) }}
         />
-        <SearchProvider>
-          <CustomCursor />
+          <SearchProvider>
+            <ScrollProgress />
+            <CustomCursor />
           <Header />
           <main id="main-content">{children}</main>
           <Footer />

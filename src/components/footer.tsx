@@ -4,7 +4,7 @@ import { navItems } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-[#080706] pb-20 text-[#f3eee4] md:pb-0 overflow-hidden">
+    <footer className="relative border-t border-white/10 bg-[#080706] pb-24 text-[#f3eee4] md:pb-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-[8%] opacity-[0.12]">
         <div className="relative w-[35%] aspect-[826/644] md:w-[25%]">
           <Image src="/logoFV-solo.png" alt="" fill className="object-contain" sizes="300px" />
