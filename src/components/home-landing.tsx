@@ -550,16 +550,16 @@ export function HomeLanding() {
                     <ArrowDownRight className="text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
                   </div>
 
-                  <div className="mt-10 flex-1">
+                  <div className="mt-8 flex-1 flex flex-col">
                     <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
                     <h3 className="mt-4 font-serif text-3xl leading-[1.04] tracking-[-0.04em] text-[#15130f] md:text-4xl">{practice.title}</h3>
                     <p className="mt-5 text-[0.9rem] leading-[1.9] tracking-[0.02em] text-[#514b43]">{practice.text}</p>
 
-                    <div className="mt-8 space-y-3 border-t border-[#15130f]/10 pt-7">
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Metodología</p>
+                    <div className="mt-auto space-y-3 pt-8">
+                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Doctrina relacionada</p>
                       <ul className="space-y-2">
                         {practice.methodology.map((item) => (
-                          <li key={item} className="flex items-start gap-3 text-[0.82rem] leading-relaxed text-[#514b43]]">
+                          <li key={item} className="flex items-start gap-3 text-[0.82rem] leading-relaxed text-[#514b43]">
                             <span className="mt-2 h-px w-4 shrink-0 bg-[#8a6941]/50" />
                             {item}
                           </li>
@@ -568,7 +568,7 @@ export function HomeLanding() {
                     </div>
 
                     <div className="mt-6 space-y-2">
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Publicaciones relacionadas</p>
+                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Publicaciones</p>
                       {practice.publications.map((pub) => (
                         <p key={pub} className="flex items-center gap-2 text-[0.7rem] leading-snug text-[#6f512f] underline decoration-[#8a6941]/30 underline-offset-2">
                           <span className="size-1 rounded-full bg-[#8a6941]/40 shrink-0" />
@@ -576,6 +576,10 @@ export function HomeLanding() {
                         </p>
                       ))}
                     </div>
+
+                    <span className="mt-6 inline-flex items-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-[#8a6941] transition-colors group-hover:text-[#6f512f]">
+                      Explorar especialidad <ArrowRight size={13} />
+                    </span>
                   </div>
                 </Link>
                 </SwipeableCard>
