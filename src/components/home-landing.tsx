@@ -646,10 +646,9 @@ export function HomeLanding() {
                 </div>
               ))}
             </div>
-            </div>
           </EditorialReveal>
         </div>
-      </section>\n
+      </section>
       <SectionDivider />
 
       <section id="conocimiento" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
