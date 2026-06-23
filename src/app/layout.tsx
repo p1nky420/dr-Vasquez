@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { FloatingWhatsapp } from "@/components/floating-whatsapp";
@@ -217,6 +219,9 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable}`}
       data-scroll-behavior="smooth"
     >
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="bg-[#0b0a09] text-[#f4efe5]">
         <a className="skip-link" href="#main-content">Saltar al contenido principal</a>
         <script
@@ -235,6 +240,8 @@ export default function RootLayout({
           <ScrollAnalytics />
           <SmoothScroll />
           <HapticFeedback />
+          <Analytics />
+          <SpeedInsights />
         </SearchProvider>
       </body>
     </html>

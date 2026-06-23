@@ -1,0 +1,21 @@
+{
+  "name": "Dr. Fausto Vásquez — Estudio Jurídico",
+  "short_name": "Fausto Vásquez",
+  "description": "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0908",
+  "theme_color": "#ecc058",
+  "icons": [
+    {
+      "src": "/logoFV-solo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logoFV-solo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

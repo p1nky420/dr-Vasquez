@@ -958,8 +958,8 @@ export function HomeLanding() {
         <div className="mx-auto max-w-[72rem]">
           <SectionIntro eyebrow="Preguntas frecuentes" title="Información antes de iniciar." dark />
           <div className="mt-14 border-t border-[#15130f]/20">
-            {faqs.slice(0, 10).map((faq, index) => (
-              <EditorialReveal key={faq.question} delay={index * 0.04}>
+            {faqs.map((faq, index) => (
+              <EditorialReveal key={faq.question} delay={Math.min(index * 0.04, 0.4)}>
                 <details className="group border-b border-[#15130f]/20 py-6">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl md:text-2xl">
                     {faq.question}

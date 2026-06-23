@@ -873,9 +873,28 @@ a {
 }
 
 .cta-premium-submit:disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Loading spinner for submit button */
+@keyframes cta-spin {
+  to { transform: rotate(360deg); }
+}
+
+.cta-premium-submit:disabled svg:first-child {
+  animation: cta-spin 0.8s linear infinite;
+}
+
+/* Input validation glow on focus-within group */
+.luxury-field-input:user-invalid {
+  border-color: rgba(214, 169, 143, 0.5);
+  box-shadow: 0 0 12px rgba(214, 169, 143, 0.1);
+}
+
+.luxury-field-input:user-valid {
+  border-color: rgba(184, 155, 94, 0.35);
 }
 
 /* Placa del Formulario - Sala Privada */

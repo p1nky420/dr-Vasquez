@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CheckCircle2, LockKeyhole, ShieldAlert, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader, LockKeyhole, ShieldAlert, ShieldCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { useState, type FormEvent } from "react";
@@ -135,7 +135,7 @@ export function IntakeForm() {
         type="submit"
       >
         {state === "submitting" ? "Enviando solicitud..." : "Solicitar evaluación confidencial"}
-        {state === "submitting" ? <LockKeyhole size={16} /> : <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} />}
+        {state === "submitting" ? <Loader size={16} /> : <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} />}
       </button>
 
       <div className="grid gap-3 border-t border-[#ecc058]/20 pt-5 text-[0.64rem] max-sm:text-[0.65rem] uppercase leading-5 tracking-[0.13em] text-[#9d958a] sm:grid-cols-2">
