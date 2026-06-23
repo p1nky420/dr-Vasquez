@@ -741,10 +741,10 @@ export function HomeLanding() {
             {process.map(([number, title, text], index) => (
               <EditorialReveal key={number} delay={index * 0.07} className="border-b border-r border-[#ecc058]/20">
                 <article className="flex min-h-[18rem] flex-col justify-between p-6 sm:p-7 md:p-8">
-                  <span className="font-serif text-4xl text-[#ecc058]">{number}</span>
+                  <span className="font-serif text-6xl text-[#ecc058]">{number}</span>
                   <div>
                     <h3 className="font-serif text-2xl">{title}</h3>
-                    <p className="mt-4 text-[0.98rem] leading-[1.85] text-[#c2baae]">{text}</p>
+                    <p className="mt-4 text-[0.98rem] leading-[1.85] text-[#e8e2d5]">{text}</p>
                   </div>
                 </article>
               </EditorialReveal>
@@ -799,13 +799,15 @@ export function HomeLanding() {
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,9,8,.08),rgba(10,9,8,.2)_40%,rgba(10,9,8,.94)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-7 md:p-11">
                 <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
-                  Investigación y método
+                  Producción intelectual
                 </p>
-                <h3 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.03] tracking-[-0.04em] md:text-6xl">
-                  La doctrina como herramienta concreta de defensa.
-                </h3>
+                <div className="mt-5 overflow-hidden">
+                  <span className="block font-serif text-[clamp(3rem,5.5vw,5rem)] leading-[0.9] tracking-[-0.04em] text-[#f3eee4]">
+                    PUBLICACIONES
+                  </span>
+                </div>
                 <p className="mt-6 max-w-2xl text-[1rem] leading-[1.9] text-[#cec6ba]">
-                  Estudio de la imputación, la prueba y las garantías para transformar complejidad jurídica en decisiones estratégicas.
+                  Libros, doctrina y análisis jurídico que trascienden el expediente y consolidan una voz de referencia en el derecho penal ecuatoriano.
                 </p>
               </div>
             </EditorialReveal>
@@ -909,7 +911,7 @@ export function HomeLanding() {
           <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
             <div>
               <SectionIntro
-                eyebrow="Consulta privada"
+                eyebrow="Evaluación estratégica confidencial"
                 title="Todo asunto importante comienza con una conversación confidencial."
                 text="Comparta únicamente la información inicial necesaria. Antes de recibir documentos o detalles sensibles, la firma verificará disponibilidad y posibles conflictos de interés."
               />
@@ -1008,7 +1010,7 @@ export function HomeLanding() {
         <div className="mx-auto max-w-[88rem]">
           <EditorialReveal>
             <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">Producción jurídica</p>
-            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.15] tracking-[0.01em] text-[#15130f]">
+            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1.05] tracking-[-0.02em] text-[#15130f]">
               Publicaciones y conferencias.
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.85] text-[#514b43]]">
@@ -1016,74 +1018,126 @@ export function HomeLanding() {
             </p>
           </EditorialReveal>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            {/* Books */}
-            <EditorialReveal delay={0.06}>
-              <div className="relative overflow-hidden border border-[#15130f]/15 bg-[#f3ede3]">
-                <div className="absolute inset-0 opacity-[0.04]">
-                  <Image src="/practice-consulting-dossier-v1.png" alt="" fill className="object-cover" />
-                </div>
-                <div className="relative p-8 md:p-10">
-                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Libros</p>
-                  <div className="mt-8 grid gap-8">
-                    <div className="flex gap-6">
-                      <div className="relative h-40 w-28 shrink-0 overflow-hidden shadow-lg md:h-48 md:w-32">
-                        <Image src="/practice-economic-glass-v1.png" alt="" fill className="object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                          <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Ergo Editores<br />2016</p>
+          <div className="mt-16 grid gap-6">
+            {/* Books + Conferences row */}
+            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+              <EditorialReveal delay={0.06}>
+                <div className="relative overflow-hidden border border-[#15130f]/15 bg-[#f3ede3]">
+                  <div className="absolute inset-0 opacity-[0.04]">
+                    <Image src="/practice-consulting-dossier-v1.png" alt="" fill className="object-cover" />
+                  </div>
+                  <div className="relative p-8 md:p-10">
+                    <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Libros</p>
+                    <div className="mt-8 grid gap-8">
+                      <div className="flex gap-6">
+                        <div className="relative h-40 w-28 shrink-0 overflow-hidden shadow-lg md:h-48 md:w-32">
+                          <Image src="/practice-economic-glass-v1.png" alt="" fill className="object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Ergo Editores<br />2016</p>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-serif text-xl leading-snug md:text-2xl">Punto de inflexión de la imputación objetiva en el COIP</p>
+                          <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Análisis doctrinal sobre los límites de atribución penal y su aplicación en el sistema ecuatoriano.</p>
+                          <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">Ergo Editores · 2016</p>
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <p className="font-serif text-xl leading-snug md:text-2xl">Punto de inflexión de la imputación objetiva en el COIP</p>
-                        <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Análisis doctrinal sobre los límites de atribución penal y su aplicación en el sistema ecuatoriano.</p>
-                        <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">Ergo Editores · 2016</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-6">
-                      <div className="relative h-40 w-28 shrink-0 overflow-hidden shadow-lg md:h-48 md:w-32">
-                        <Image src="/practice-defense-marble-v1.png" alt="" fill className="object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                          <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Publicación<br />2018</p>
+                      <div className="flex gap-6">
+                        <div className="relative h-40 w-28 shrink-0 overflow-hidden shadow-lg md:h-48 md:w-32">
+                          <Image src="/practice-defense-marble-v1.png" alt="" fill className="object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Publicación<br />2018</p>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <p className="font-serif text-xl leading-snug md:text-2xl">La falsedad documental en materia penal</p>
-                        <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Estudio sobre verdad documental, relevancia probatoria y responsabilidad penal.</p>
-                        <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">Publicación jurídica · 2018</p>
+                        <div>
+                          <p className="font-serif text-xl leading-snug md:text-2xl">La falsedad documental en materia penal</p>
+                          <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Estudio sobre verdad documental, relevancia probatoria y responsabilidad penal.</p>
+                          <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">Publicación jurídica · 2018</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </EditorialReveal>
+              </EditorialReveal>
 
-            {/* Conferences */}
-            <EditorialReveal delay={0.1}>
-              <div className="relative flex h-full flex-col overflow-hidden border border-[#15130f]/15">
-                <div className="absolute inset-0">
-                  <Image src="/eventos_bg.png" alt="" fill className="object-cover opacity-[0.06]" />
+              {/* Conferences */}
+              <EditorialReveal delay={0.1}>
+                <div className="relative flex h-full flex-col overflow-hidden border border-[#15130f]/15">
+                  <div className="absolute inset-0">
+                    <Image src="/eventos_bg.png" alt="" fill className="object-cover opacity-[0.06]" />
+                  </div>
+                  <div className="relative flex h-full flex-col bg-[#f3ede3]/95 p-8 backdrop-blur-sm md:p-10">
+                    <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Conferencias</p>
+                    <div className="mt-8 flex-1 space-y-6">
+                      {[
+                        { title: "Ciencias penales y litigación oral", event: "Congreso Internacional de Derecho Penal", year: "2024" },
+                        { title: "Imputación objetiva en el sistema ecuatoriano", event: "Universidad Central del Ecuador", year: "2023" },
+                        { title: "Responsabilidad penal de la persona jurídica", event: "Foro de Derecho Empresarial", year: "2023" },
+                        { title: "La prueba en el proceso penal", event: "Seminario de Litigación Oral", year: "2022" },
+                      ].map((conf) => (
+                        <div key={conf.title} className="border-l-2 border-[#8a6941]/25 pl-4 transition-colors hover:border-[#8a6941]">
+                          <p className="font-serif text-base leading-snug md:text-lg">{conf.title}</p>
+                          <p className="mt-1.5 text-[0.7rem] text-[#514b43]">{conf.event}</p>
+                          <p className="mt-0.5 text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/50">{conf.year}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="relative flex h-full flex-col bg-[#f3ede3]/95 p-8 backdrop-blur-sm md:p-10">
-                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Conferencias</p>
-                  <div className="mt-8 flex-1 space-y-6">
+              </EditorialReveal>
+            </div>
+
+            {/* Ponencias + Entrevistas row */}
+            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+              <EditorialReveal delay={0.12}>
+                <div className="relative overflow-hidden border border-[#15130f]/15 bg-[#f3ede3] p-8 md:p-10">
+                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Ponencias y artículos</p>
+                  <div className="mt-8 space-y-6">
                     {[
-                      { title: "Ciencias penales y litigación oral", event: "Congreso Internacional de Derecho Penal", year: "2024" },
-                      { title: "Imputación objetiva en el sistema ecuatoriano", event: "Universidad Central del Ecuador", year: "2023" },
-                      { title: "Responsabilidad penal de la persona jurídica", event: "Foro de Derecho Empresarial", year: "2023" },
-                      { title: "La prueba en el proceso penal", event: "Seminario de Litigación Oral", year: "2022" },
-                    ].map((conf) => (
-                      <div key={conf.title} className="border-l-2 border-[#8a6941]/25 pl-4 transition-colors hover:border-[#8a6941]">
-                        <p className="font-serif text-base leading-snug md:text-lg">{conf.title}</p>
-                        <p className="mt-1.5 text-[0.7rem] text-[#514b43]">{conf.event}</p>
-                        <p className="mt-0.5 text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/50">{conf.year}</p>
+                      { title: "Estándares probatorios en el delito de lavado de activos", venue: "Revista de Derecho Penal", year: "2024" },
+                      { title: "La imputación objetiva como límite al poder punitivo", venue: "Congreso Internacional de Ciencias Penales", year: "2023" },
+                      { title: "Responsabilidad penal de las personas jurídicas en Ecuador", venue: "Foro de Derecho Empresarial", year: "2023" },
+                      { title: "El debido proceso como garantía frente a la prisión preventiva", venue: "Universidad Nacional de Loja", year: "2022" },
+                    ].map((art) => (
+                      <div key={art.title} className="border-l-2 border-[#8a6941]/25 pl-4 transition-colors hover:border-[#8a6941]">
+                        <p className="font-serif text-base leading-snug md:text-lg">{art.title}</p>
+                        <p className="mt-1 text-[0.7rem] text-[#514b43]">{art.venue}</p>
+                        <p className="mt-0.5 text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/50">{art.year}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
-            </EditorialReveal>
+              </EditorialReveal>
+
+              {/* Entrevistas */}
+              <EditorialReveal delay={0.16}>
+                <div className="flex h-full flex-col border border-[#15130f]/15 bg-[#15130f] p-8 text-[#f3eee4] md:p-10">
+                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#ecc058]">Entrevistas y medios</p>
+                  <div className="mt-8 space-y-6">
+                    {[
+                      { label: "Análisis jurídico en medios nacionales", desc: "Entrevistas y columnas de opinión sobre actualidad penal y procesal." },
+                      { label: "Participación en foros académicos", desc: "Paneles, debates y espacios de discusión jurídica especializada." },
+                      { label: "Contenido editorial y publicaciones digitales", desc: "Artículos de análisis doctrinal publicados en plataformas jurídicas." },
+                    ].map((item) => (
+                      <div key={item.label} className="border-l-2 border-[#ecc058]/25 pl-4 transition-colors hover:border-[#ecc058]">
+                        <p className="font-serif text-base leading-snug md:text-lg">{item.label}</p>
+                        <p className="mt-1.5 text-[0.75rem] leading-relaxed text-[#cec6ba]">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <a
+                    href="https://www.facebook.com/fausto.vasquez.9083"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-8 inline-flex items-center gap-2 text-[0.55rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#ecc058] transition-colors hover:text-[#f3eee4]"
+                  >
+                    Ver contenido en redes <ArrowRight size={13} />
+                  </a>
+                </div>
+              </EditorialReveal>
+            </div>
           </div>
         </div>
       </section>

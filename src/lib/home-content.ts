@@ -347,6 +347,26 @@ export const faqs = [
     question: "¿Qué debo hacer si tengo un proceso penal en curso?",
     answer: "Solicite una evaluación estratégica para revisar el estado del proceso, identificar riesgos procesales y recibir una recomendación jurídica fundamentada.",
   },
+  {
+    question: "¿La formación académica del abogado influye en la defensa?",
+    answer: "Sí. La profundidad doctrinal permite construir teoría del caso, argumentar con solidez y anticipar líneas de imputación. No es lo mismo litigar con oficio que con conocimiento.",
+  },
+  {
+    question: "¿Cuánto puede durar un proceso penal en Ecuador?",
+    answer: "Depende de la etapa, la complejidad del caso y la carga del órgano judicial. Puede durar desde meses hasta varios años. La defensa debe estar preparada para la duración del proceso.",
+  },
+  {
+    question: "¿Atienden casos de funcionarios públicos?",
+    answer: "Sí. La firma cuenta con experiencia en defensa de funcionarios, servidores públicos y exautoridades investigadas por delitos contra la administración pública o relacionados con el ejercicio del cargo.",
+  },
+  {
+    question: "¿Qué diferencia hay entre evaluación jurídica y representación?",
+    answer: "La evaluación es un diagnóstico estratégico del caso, sus riesgos y escenarios. La representación implica la dirección técnica y jurídica del proceso desde la etapa en que se encuentre.",
+  },
+  {
+    question: "¿Se puede cambiar de abogado durante el proceso?",
+    answer: "Sí. El imputado o procesado tiene derecho a designar un nuevo defensor en cualquier etapa del proceso. La firma puede asumir la defensa previa evaluación del estado procesal.",
+  },
 ]
 export const proofInstitutions = [
   "Corte Nacional de Justicia",
