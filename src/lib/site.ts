@@ -13,13 +13,12 @@ import {
 export const whatsappNumber = "+593983076881";
 export const navItems = [
   { href: "/", label: "Inicio" },
-  { href: "/firma", label: "Quién es Fausto Vásquez" },
-  { href: "/areas-de-practica", label: "Áreas de práctica" },
-  { href: "/academia", label: "Formación académica" },
-  { href: "/eventos", label: "Docencia y conferencias" },
-  { href: "/blog", label: "Libros y publicaciones" },
-  { href: "/#consulta", label: "Evaluación jurídica" },
-  { href: "/#faq", label: "Preguntas frecuentes" },
+  { href: "/firma", label: "El Estudio" },
+  { href: "/areas-de-practica", label: "Áreas" },
+  { href: "/academia", label: "Academia" },
+  { href: "/blog", label: "Publicaciones" },
+  { href: "/#consulta", label: "Evaluación" },
+  { href: "/#faq", label: "FAQs" },
   { href: "/contacto", label: "Contacto" },
 ];
 

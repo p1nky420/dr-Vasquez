@@ -997,3 +997,47 @@ a {
   transform: scale(0.97);
   transition: transform 0.1s ease;
 }
+
+/* Horizontal snap scroll containers for mobile carousels */
+.snap-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.snap-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-scroll > * {
+  scroll-snap-align: start;
+  flex: 0 0 85vw;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .snap-scroll {
+    display: grid;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  .snap-scroll > * {
+    flex: none;
+  }
+}
+
+/* Subtle grain texture overlay for dark sections */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}

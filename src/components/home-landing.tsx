@@ -481,8 +481,8 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(201,173,120,0.04),transparent_50%)]" />
+      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden grain-overlay">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(201,173,120,0.08),transparent_50%)]" />
         <div className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 w-[45%] opacity-[0.12] md:w-[35%]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>
@@ -497,14 +497,14 @@ export function HomeLanding() {
             </p>
           </EditorialReveal>
 
-          <div className="mt-16 grid gap-px bg-[#ecc058]/10 md:grid-cols-4">
+          <div className="mt-16 grid gap-px bg-[#ecc058]/10 md:grid-cols-4 sm:snap-scroll">
             {[
               { number: "15+", label: "años", role: "Profesor universitario", desc: "Docencia en pregrado y posgrado en universidades ecuatorianas y extranjeras." },
               { number: "12+", label: "conferencias", role: "Conferencista", desc: "Ponencias en congresos, foros y seminarios nacionales e internacionales de ciencias penales." },
               { number: "02", label: "obras publicadas", role: "Autor", desc: "Libros y artículos jurídicos sobre imputación objetiva, falsedad documental y derecho penal económico." },
               { number: "Perm.", label: "continua", role: "Investigador", desc: "Producción jurídica permanente y análisis doctrinal aplicado a la defensa estratégica." },
             ].map((item) => (
-              <EditorialReveal key={item.role} className="bg-[#0e0c0a]/90 p-8 md:p-10">
+              <EditorialReveal key={item.role} className="bg-[#0e0c0a]/90 p-6 sm:p-8 md:p-10">
                 <p className="font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[0.9] tracking-[-0.05em] text-[#ecc058]">{item.number}</p>
                 <p className="mt-1 text-[0.55rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#ecc058]/50">{item.label}</p>
                 <p className="mt-6 font-serif text-xl text-[#f3eee4] md:text-2xl">{item.role}</p>
@@ -525,11 +525,11 @@ export function HomeLanding() {
             text="No son servicios estándar. Son arquitecturas jurídicas construidas para escenarios donde una decisión incorrecta puede alterar libertad, patrimonio, empresa o legado."
             dark
           />
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 lg:grid-cols-3 sm:snap-scroll">
             {practices.map((practice, index) => (
               <EditorialReveal key={practice.title} delay={index * 0.08}>
                 <SwipeableCard href={practice.href}>
-                  <Link href={practice.href} className="group flex min-h-[32rem] flex-col border border-[#15130f]/15 bg-[#f3ede3] p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(21,19,15,0.12)] md:p-10">
+                  <Link href={practice.href} className="group flex min-h-[28rem] flex-col border border-[#15130f]/15 bg-[#f3ede3] p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(21,19,15,0.12)] sm:p-8 md:p-10">
                   <div className="flex items-start justify-between">
                     <span className="font-serif text-5xl leading-none tracking-[-0.06em] text-[#15130f]/10">{practice.number}</span>
                     <ArrowDownRight className="text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
@@ -572,7 +572,8 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden">
+      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden grain-overlay">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(201,173,120,0.07),transparent_40%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[10%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>
@@ -700,7 +701,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden">
+      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden grain-overlay">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,173,120,.08),transparent_28%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -711,10 +712,10 @@ export function HomeLanding() {
             title="Claridad desde la primera conversación."
             text="Un proceso de admisión serio, discreto y diseñado para convertir incertidumbre en decisiones jurídicas concretas."
           />
-          <div className="mt-16 grid border-l border-t border-[#ecc058]/20 lg:grid-cols-4">
+          <div className="mt-16 grid border-l border-t border-[#ecc058]/20 lg:grid-cols-4 sm:snap-scroll">
             {process.map(([number, title, text], index) => (
               <EditorialReveal key={number} delay={index * 0.07} className="border-b border-r border-[#ecc058]/20">
-                <article className="flex min-h-80 flex-col justify-between p-7 md:p-8">
+                <article className="flex min-h-[18rem] flex-col justify-between p-6 sm:p-7 md:p-8">
                   <span className="font-serif text-4xl text-[#ecc058]">{number}</span>
                   <div>
                     <h3 className="font-serif text-2xl">{title}</h3>
@@ -875,9 +876,9 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden">
+      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden grain-overlay">
         {/* Decorative elements representing private safe room */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(184,155,94,0.03),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(184,155,94,0.06),transparent_50%)] pointer-events-none" />
         
         <div className="mx-auto max-w-[88rem] relative z-10">
           <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
