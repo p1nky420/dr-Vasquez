@@ -626,26 +626,26 @@ export function HomeLanding() {
             <div className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 bg-[#15120f] px-6 text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]/50">
               Método de trabajo
             </div>
-            <div className="grid gap-8 md:grid-cols-4 md:gap-0">
+            <div className="flex flex-col items-center gap-0 md:flex-row md:gap-0">
               {[
-                { step: "01", label: "Investigación", desc: "Comprensión profunda del asunto, su contexto jurídico y los intereses en juego antes de cualquier decisión." },
-                { step: "02", label: "Análisis", desc: "Identificación de exposición, valoración de prueba, derecho aplicable y escenarios procesales posibles." },
-                { step: "03", label: "Estrategia", desc: "Arquitectura de teoría del caso, diseño de defensa y ruta de intervención ajustada al expediente." },
-                { step: "04", label: "Litigio", desc: "Representación directa en audiencia, recursos y ejecución de la estrategia con dirección personal." },
+                { label: "Investigación" },
+                { label: "Análisis" },
+                { label: "Estrategia" },
+                { label: "Defensa" },
               ].map((item, i) => (
-                <div key={item.label} className="relative flex gap-5 md:flex-col md:gap-0 md:px-8">
+                <div key={item.label} className="flex items-center md:flex-1 md:flex-col">
+                  <div className="flex items-center gap-5 md:flex-col md:gap-4">
+                    <span className="inline-flex size-10 items-center justify-center rounded-full border border-[#ecc058]/40 bg-[#15120f] font-serif text-[0.7rem] font-bold text-[#ecc058] md:size-14 md:text-[0.9rem]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="font-serif text-2xl font-medium text-[#f3eee4] md:text-3xl">{item.label}</p>
+                  </div>
                   {i < 3 ? (
-                    <div className="pointer-events-none absolute left-[1.125rem] top-12 bottom-0 w-px bg-gradient-to-b from-[#ecc058]/25 to-transparent md:left-1/2 md:top-auto md:-right-4 md:bottom-auto md:h-px md:w-full md:from-transparent md:via-[#ecc058]/25 md:to-transparent" />
+                    <span className="mx-6 text-[#ecc058]/30 md:mx-auto md:my-4 md:block md:rotate-90">↓</span>
                   ) : null}
-                  <div className="relative z-10 mt-1 flex size-9 shrink-0 items-center justify-center rounded-full border border-[#ecc058]/30 bg-[#15120f] md:mx-auto md:mb-7 md:size-12">
-                    <span className="font-serif text-[0.65rem] font-bold text-[#ecc058] md:text-[0.8rem]">{item.step}</span>
-                  </div>
-                  <div className="md:text-center">
-                    <p className="font-serif text-xl font-medium text-[#f3eee4] md:text-2xl">{item.label}</p>
-                    <p className="mt-2 max-w-sm text-[0.82rem] leading-relaxed text-[#c2baae] md:mx-auto md:text-[0.88rem]">{item.desc}</p>
-                  </div>
                 </div>
               ))}
+            </div>
             </div>
           </EditorialReveal>
         </div>
@@ -655,12 +655,19 @@ export function HomeLanding() {
       <section id="conocimiento" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
         <div className="mx-auto max-w-[88rem]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <SectionIntro
-              eyebrow="Centro de pensamiento penal"
-              title="Biblioteca Jurídica Vásquez"
-              text="Publicaciones, análisis y espacios académicos que convierten conocimiento especializado en una fuente pública de criterio jurídico."
-              dark
-            />
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 border border-[#8a6941]/25 bg-[#8a6941]/10 px-4 py-2">
+                <span className="text-[0.55rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#6f512f]">
+                  Biblioteca en expansión permanente
+                </span>
+              </div>
+              <SectionIntro
+                eyebrow="Centro de pensamiento penal"
+                title="Biblioteca Jurídica Vásquez"
+                text="Publicaciones, análisis y espacios académicos que convierten conocimiento especializado en una fuente pública de criterio jurídico."
+                dark
+              />
+            </div>
             <Link href="/blog" className="inline-flex shrink-0 items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#6f512f]">
               Explorar biblioteca <ArrowRight size={14} />
             </Link>
