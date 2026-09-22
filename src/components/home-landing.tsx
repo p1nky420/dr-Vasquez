@@ -3,7 +3,6 @@
 import {
   ArrowDownRight,
   ArrowRight,
-  BookOpen,
   Check,
   ChevronRight,
   LockKeyhole,
@@ -133,35 +132,6 @@ const process = [
   ["04", "Ejecución procesal", "Ejecución rigurosa, comunicación directa y revisión continua de la estrategia."],
 ];
 
-const insights = [
-  {
-    type: "Obra jurídica",
-    title: "Punto de inflexión de la imputación objetiva en el COIP",
-    text: "Análisis doctrinal sobre los límites de atribución penal y su aplicación en el sistema ecuatoriano.",
-    date: "2016",
-    author: "Dr. Fausto Vásquez",
-    readTime: "45 min",
-    category: "Dogmática penal",
-  },
-  {
-    type: "Obra jurídica",
-    title: "La falsedad documental en materia penal",
-    text: "Estudio sobre verdad documental, relevancia probatoria y responsabilidad penal.",
-    date: "2018",
-    author: "Dr. Fausto Vásquez",
-    readTime: "30 min",
-    category: "Derecho probatorio",
-  },
-  {
-    type: "Análisis",
-    title: "Responsabilidad penal de la persona jurídica",
-    text: "Claves para comprender la exposición penal de organizaciones, administradores y órganos de decisión.",
-    date: "2023",
-    author: "Dr. Fausto Vásquez",
-    readTime: "20 min",
-    category: "Derecho penal económico",
-  },
-];
 
 /** Las preguntas que más influyen en si alguien contacta o abandona. */
 const FEATURED_QUESTIONS = [
@@ -175,7 +145,6 @@ const featuredFaqs = FEATURED_QUESTIONS
   .map((question) => faqs.find((faq) => faq.question === question))
   .filter((faq): faq is (typeof faqs)[number] => Boolean(faq));
 
-const restFaqs = faqs.filter((faq) => !FEATURED_QUESTIONS.includes(faq.question));
 
 function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (

@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Solicitud demasiado extensa." }, { status: 413 });
   }
 
-  let id = randomUUID();
+  const id = randomUUID();
 
   try {
     const validation = validateIntakeSubmission(await request.json());

@@ -28,7 +28,8 @@ export function CustomCursor() {
   useEffect(() => {
     const finePointer =
       window.matchMedia("(pointer: fine)").matches && navigator.maxTouchPoints === 0;
-    setIsTouchDevice(!finePointer);
+    // Diferido: fijar estado de forma síncrona dentro del efecto encadena renders.
+    queueMicrotask(() => setIsTouchDevice(!finePointer));
     if (!finePointer) return;
 
     const moveCursor = (event: MouseEvent) => {

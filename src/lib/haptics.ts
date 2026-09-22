@@ -5,7 +5,7 @@ export function hapticFeedback() {
 }
 
 export function useHapticOnClick() {
-  return (e: React.MouseEvent | React.TouchEvent) => {
+  return () => {
     hapticFeedback();
   };
 }

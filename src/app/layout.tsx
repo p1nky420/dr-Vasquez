@@ -280,6 +280,20 @@ export default function RootLayout({
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
+        {/* Consent Mode v2 en estado denegado, antes de que cargue gtag.
+            GA4 recibe pings sin cookies que usa para modelar a quien rechaza,
+            así que el comportamiento no se pierde: se estima. */}
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}" +
+                "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied'," +
+                "ad_personalization:'denied',analytics_storage:'denied'," +
+                "functionality_storage:'granted',security_storage:'granted',wait_for_update:500});",
+            }}
+          />
+        ) : null}
       </head>
       <body className="bg-[#0b0a09] text-[#f4efe5]">
         <a className="skip-link" href="#main-content">Saltar al contenido principal</a>

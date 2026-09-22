@@ -46,7 +46,7 @@ const GROUPS: Array<{ title: string; match: (q: string) => boolean }> = [
   },
   {
     title: "Confidencialidad, costos y la firma",
-    match: (q) => true,
+    match: () => true,
   },
 ];
 
