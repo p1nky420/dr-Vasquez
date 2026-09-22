@@ -1,21 +1,17 @@
 "use client";
 
-import { useRef } from "react";
 import {
   ArrowDownRight,
   ArrowRight,
   BookOpen,
   Check,
   ChevronRight,
-  GraduationCap,
   LockKeyhole,
   MapPin,
   MessageCircle,
-  Mic2,
   Quote,
   ShieldCheck,
 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { EditorialReveal, MaskReveal, ParallaxLayer } from "@/components/editorial-motion";
@@ -23,6 +19,7 @@ import { IntakeForm } from "@/components/intake-form";
 import { QuickIntake } from "@/components/quick-intake";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { SwipeableCard } from "@/components/swipeable-card";
+import { TrajectoryAtlas } from "@/components/trajectory-atlas";
 import { SectionDivider } from "@/components/section-divider";
 import { faqs, tacticalServices, proofInstitutions } from "@/lib/home-content";
 import { whatsappHref } from "@/lib/site";
@@ -216,13 +213,6 @@ function SectionIntro({
 }
 
 export function HomeLanding() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const lineProgress = useTransform(scrollYProgress, [0, 0.92], [0, 1]);
-
   return (
     <div className="overflow-hidden bg-[#0a0908] text-[#f3eee4]">
       <section id="inicio" className="relative min-h-[100svh] overflow-hidden">
@@ -371,7 +361,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="legado" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
+      <section id="legado" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[88rem]">
           <div className="grid gap-16 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-24">
             <EditorialReveal className="relative">
@@ -433,180 +423,29 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="trayectoria" ref={sectionRef} className="relative bg-[#080706] px-5 md:px-8">
-        {/* Artisanal paper texture */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(201,173,120,0.018),transparent_50%),radial-gradient(ellipse_at_70%_80%,rgba(201,173,120,0.012),transparent_50%)]" />
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
-
-        <div className="relative mx-auto max-w-[94rem]">
-          {/* Intro */}
-          <div className="pt-24 md:pt-36 pb-8 md:pb-16">
-            <EditorialReveal>
-              <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
-                Trayectoria
-              </p>
-              <h2 className="mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.15] tracking-[0.01em] text-[#f3eee4]">
-                La construcción de una visión jurídica.
-              </h2>
-              <p className="mt-6 max-w-2xl text-[0.98rem] leading-[1.95] tracking-[0.02em] text-[#c2baae]">
-                Una trayectoria desarrollada entre distintas tradiciones académicas, escuelas de pensamiento e investigación permanente.
-              </p>
-            </EditorialReveal>
-          </div>
-
-          {/* Timeline */}
-          <div className="relative pb-24 md:pb-36">
-            {/* Organic line SVG */}
-            <svg
-              className="absolute left-[2%] top-0 h-full w-full md:left-[6%]"
-              viewBox="0 0 100 500"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <motion.path
-                d="M 8,15 C 8,35 14,40 8,60 S 4,120 8,160 S 14,220 8,260 S 4,320 8,360 S 8,420 8,480"
-                stroke="#ecc058"
-                strokeWidth={0.6}
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ pathLength: lineProgress }}
-              />
-              {[
-                { cx: 8, cy: 60 },
-                { cx: 8, cy: 160 },
-                { cx: 8, cy: 260 },
-                { cx: 8, cy: 360 },
-                { cx: 8, cy: 460 },
-              ].map((dot, i) => (
-                <circle key={i} cx={dot.cx} cy={dot.cy} r={2.5} fill="#ecc058" opacity={0.95} />
-              ))}
-            </svg>
-
-            {/* Nodes */}
-            {visionNodes.map((node, i) => (
-              <motion.div
-                key={node.number}
-                className="relative flex items-center py-9 md:py-14"
-                initial={{ opacity: 0.25 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {/* Gold glow on active node */}
-                <motion.div
-                  className="pointer-events-none absolute inset-0"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
-                  transition={{ duration: 1 }}
-                >
-                  <div className="absolute top-1/2 left-1/2 size-[70%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse,rgba(201,173,120,0.06),transparent_65%)]" />
-                </motion.div>
-
-                <div className="relative z-10 w-full pl-[18%] md:pl-[24%]">
-                  <div className="grid gap-4 md:grid-cols-[auto_1fr] md:gap-12">
-                    {/* Roman numeral */}
-                    <div className="md:text-right md:w-32">
-                      <p className="font-serif text-[3.4rem] leading-[0.78] tracking-[-0.06em] text-[#ecc058]/25 md:text-[6rem]">
-                        {node.number}
-                      </p>
-                    </div>
-
-                    {/* Content */}
-                    <div className="max-w-2xl">
-                      {/* Institution header with logo */}
-                      <div className="flex items-center gap-4 flex-wrap md:gap-6">
-                        {node.logo ? (
-                          <div className="relative h-10 w-28 shrink-0 md:h-14 md:w-40">
-                            <Image src={node.logo} alt="" fill className="object-contain object-left" sizes="160px" />
-                          </div>
-                        ) : (
-                          <span className="font-serif text-[0.85rem] font-bold tracking-[0.1em] text-[#ecc058] md:text-[1rem]">
-                            AV
-                          </span>
-                        )}
-                        <div>
-                          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058] md:text-[0.85rem]">
-                            {node.institution}
-                          </p>
-                          <p className="mt-0.5 text-[0.55rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#8a7351]">
-                            {node.country}
-                          </p>
-                        </div>
-                      </div>
-
-                      <h3 className="mt-5 font-serif text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.06] tracking-[-0.03em] text-[#f3eee4]">
-                        {node.title}
-                      </h3>
-                      {node.description ? (
-                        <p className="mt-4 max-w-xl text-[0.98rem] leading-[1.8] text-[#c2baae]">
-                          {node.description}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      <section id="legado-academico" className="relative bg-[#0e0c0a] px-5 py-16 md:px-8 md:py-32 overflow-hidden ">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(201,173,120,0.08),transparent_50%)]" />
-        <div className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 w-[45%] opacity-[0.12] md:w-[35%]">
-          <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
-        </div>
+      <section id="trayectoria" className="relative bg-[#080706] px-5 py-16 md:px-8 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(201,173,120,0.02),transparent_55%)]" />
         <div className="relative mx-auto max-w-[88rem]">
           <EditorialReveal>
-            <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">Legado académico</p>
-            <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.15] tracking-[0.01em] text-[#f3eee4]">
-              Una voz jurídica construida desde la academia.
+            <Eyebrow>Trayectoria</Eyebrow>
+            <h2 className="mt-6 max-w-4xl font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.12] tracking-[-0.01em] text-[#f3eee4]">
+              La construcción de una visión jurídica.
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.95] tracking-[0.02em] text-[#c2baae]">
-              El pensamiento no se improvisa. Se forma, se publica, se enseña y se comparte. El Dr. Fausto Vásquez ha construido su carrera sobre cuatro pilares académicos.
+            <p className="mt-6 max-w-2xl text-[0.98rem] leading-[1.85] text-[#c2baae]">
+              Cuatro tradiciones académicas y una escuela propia. Recorra el
+              expediente.
             </p>
           </EditorialReveal>
 
-          <div className="mt-16 grid gap-px bg-[#ecc058]/10 md:grid-cols-4 sm:snap-scroll">
-            {[
-              { number: "15+", label: "Años de ejercicio", big: true },
-              { number: "12+", label: "Años de docencia", big: true },
-              { number: "02", label: "Libros", big: true },
-              { number: null, label: "Investigación", sublabel: "Permanente", big: false },
-            ].map((item) => (
-              <EditorialReveal key={item.label} className="bg-[#0e0c0a]/90 p-8 sm:p-10 md:p-12 flex flex-col justify-center min-h-[14rem]">
-                {item.big ? (
-                  <>
-                    <p className="font-serif text-[clamp(3.5rem,8vw,6rem)] leading-[0.85] tracking-[-0.03em] text-[#ecc058]">
-                      {item.number}
-                    </p>
-                    <p className="mt-3 text-[0.7rem] max-sm:text-[0.7rem] uppercase tracking-[0.28em] text-[#ecc058]/60 font-semibold">
-                      {item.label}
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="font-serif text-[clamp(2.2rem,5vw,3.6rem)] leading-[0.9] tracking-[-0.02em] text-[#ecc058]">
-                      {item.label}
-                    </p>
-                    <p className="mt-2 text-[0.7rem] max-sm:text-[0.7rem] uppercase tracking-[0.28em] text-[#ecc058]/60 font-semibold">
-                      {item.sublabel}
-                    </p>
-                  </>
-                )}
-              </EditorialReveal>
-            ))}
-          </div>
+          <EditorialReveal delay={0.1} className="mt-12">
+            <TrajectoryAtlas nodes={visionNodes} />
+          </EditorialReveal>
         </div>
       </section>
 
       <SectionDivider />
 
-      <section id="practica" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
+      <section id="practica" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[88rem]">
           <SectionIntro
             eyebrow="Práctica estratégica"
@@ -665,7 +504,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-36 overflow-hidden ">
+      <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-24 overflow-hidden ">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(201,173,120,0.07),transparent_40%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[10%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -696,106 +535,11 @@ export function HomeLanding() {
             </div>
           </div>
 
-          <EditorialReveal delay={0.24} className="relative mt-20 border-t border-[#ecc058]/12 pt-16 md:mt-28 md:pt-20">
-            <div className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 bg-[#15120f] px-6 text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]/50">
-              Método de trabajo
-            </div>
-            <div className="flex flex-col items-center gap-0 md:flex-row md:gap-0">
-              {[
-                { label: "Investigación" },
-                { label: "Análisis" },
-                { label: "Estrategia" },
-                { label: "Defensa" },
-              ].map((item, i) => (
-                <div key={item.label} className="flex items-center md:flex-1 md:flex-col">
-                  <div className="flex items-center gap-5 md:flex-col md:gap-4">
-                    <span className="inline-flex size-10 items-center justify-center rounded-full border border-[#ecc058]/40 bg-[#15120f] font-serif text-[0.7rem] font-bold text-[#ecc058] md:size-14 md:text-[0.9rem]">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="font-serif text-2xl font-medium text-[#f3eee4] md:text-3xl">{item.label}</p>
-                  </div>
-                  {i < 3 ? (
-                    <span className="mx-6 text-[#ecc058]/30 md:mx-auto md:my-4 md:block md:rotate-90">↓</span>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </EditorialReveal>
         </div>
       </section>
       <SectionDivider />
 
-      <section id="conocimiento" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36">
-        <div className="mx-auto max-w-[88rem]">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <SectionIntro
-                eyebrow="Centro de pensamiento penal"
-                title="Biblioteca Jurídica Vásquez"
-                text="Publicaciones, análisis y espacios académicos que convierten conocimiento especializado en una fuente pública de criterio jurídico."
-                dark
-              />
-            </div>
-            <Link href="/areas-de-practica" className="inline-flex shrink-0 items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#6f512f]">
-              Ver áreas de práctica <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="mt-16 grid gap-px bg-[#15130f]/10 lg:grid-cols-3">
-            {insights.map((item, index) => (
-              <EditorialReveal key={item.title} delay={index * 0.06}>
-                <article className="flex min-h-[22rem] flex-col bg-[#f3ede3] p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(21,19,15,0.1)] md:p-10">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="flex size-7 items-center justify-center rounded border border-[#8a6941]/30 bg-white/60 text-[0.45rem] max-sm:text-[0.65rem] font-bold uppercase tracking-wider text-[#8a6941]">
-                        {item.category.split(" ").map(w => w[0]).join("").slice(0, 2)}
-                      </span>
-                      <span className="text-[0.5rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#8a6941]">{item.category}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.15em] text-[#8a6941]/60">
-                      <span>{item.readTime}</span>
-                      <span className="h-3 w-px bg-[#8a6941]/20" />
-                      <span>{item.date}</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-10 flex-1">
-                    <div className="mb-3 flex items-center gap-2">
-                      <BookOpen size={13} className="text-[#8a6941]" strokeWidth={1.5} />
-                      <span className="text-[0.5rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#8a6941]">{item.type}</span>
-                    </div>
-                    <h3 className="font-serif text-2xl leading-tight tracking-[-0.03em] md:text-3xl">{item.title}</h3>
-                    <p className="mt-4 text-[0.9rem] leading-[1.8] text-[#514b43]">{item.text}</p>
-                  </div>
-
-                  <div className="mt-8 flex items-center gap-3 border-t border-[#15130f]/8 pt-5 text-[0.6rem] max-sm:text-[0.65rem] text-[#6f512f]">
-                    <div className="flex size-6 items-center justify-center rounded-full bg-[#8a6941]/10 font-serif text-[0.5rem] max-sm:text-[0.65rem] font-bold text-[#8a6941]">FV</div>
-                    {item.author}
-                  </div>
-                </article>
-              </EditorialReveal>
-            ))}
-          </div>
-          <EditorialReveal className="mt-5 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
-            <div className="relative min-h-80 overflow-hidden bg-[#15130f] p-8 text-[#f3eee4] md:p-10">
-              <Image src="/practice-consulting-dossier-v1.png" alt="" fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover opacity-35" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#15130f] via-[#15130f]/90 to-transparent" />
-              <div className="relative max-w-lg">
-                <p className="text-[0.58rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#ecc058]">Conferencias y análisis</p>
-                <h3 className="mt-5 font-serif text-4xl">Una voz jurídica para la academia y la conversación pública.</h3>
-                <p className="mt-5 text-[0.98rem] leading-[1.85] text-[#c8c0b5]">Conferencias, entrevistas, formación avanzada y análisis audiovisual sobre ciencias penales.</p>
-              </div>
-            </div>
-            <div className="flex min-h-80 flex-col justify-between border border-[#15130f]/20 p-8 md:p-10">
-              <Quote className="text-[#8a6941]" size={30} />
-              <p className="font-serif text-2xl leading-snug">El conocimiento jurídico adquiere valor cuando permite comprender mejor el conflicto y decidir con responsabilidad.</p>
-            </div>
-          </EditorialReveal>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-36 overflow-hidden ">
+      <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-24 overflow-hidden ">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,173,120,.08),transparent_28%)]" />
         <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
@@ -824,7 +568,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="pensamiento-juridico" className="relative overflow-hidden bg-[#e9e1d4] px-5 py-16 text-[#15130f] md:px-8 md:py-40">
+      <section id="pensamiento-juridico" className="relative overflow-hidden bg-[#e9e1d4] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(138,105,65,.13),transparent_28%),linear-gradient(90deg,transparent_49.9%,rgba(21,19,15,.08)_50%,transparent_50.1%)]" />
         <div className="pointer-events-none absolute -right-12 top-12 font-serif text-[16rem] leading-none tracking-[-0.1em] text-[#8a6941]/[0.045] md:text-[28rem]" aria-hidden="true">
           FV
@@ -835,7 +579,7 @@ export function HomeLanding() {
             <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">
               Pensamiento jurídico
             </p>
-            <blockquote className="mt-8 max-w-[88rem] font-serif text-[clamp(3rem,7.4vw,8.5rem)] leading-[1] tracking-[0.01em]">
+            <blockquote className="mt-8 max-w-[88rem] font-serif text-[clamp(2.4rem,5.2vw,5rem)] leading-[1] tracking-[0.01em]">
               El derecho penal no se ejerce únicamente en los tribunales.
               <span className="mt-2 block text-[#8a6941]">
                 Se construye desde la investigación, el análisis y la estrategia.
@@ -851,89 +595,30 @@ export function HomeLanding() {
             <p className="mt-5 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
               Cada asunto que asumimos se construye desde la lectura crítica del derecho, el análisis riguroso de la prueba y la comprensión del contexto institucional donde se decide. No hay estrategia sin teoría. No hay litigio sin fundamento.
             </p>
-            <p className="mt-5 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
-              Creemos en una abogacía que investiga, publica, enseña y piensa antes de actuar. Porque la libertad, el patrimonio y la reputación de quienes confían en nosotros no merecen menos que la excelencia del conocimiento puesto al servicio de la defensa.
-            </p>
           </EditorialReveal>
 
-          <div className="mt-20 grid gap-5 lg:grid-cols-[1.12fr_0.88fr]">
-            <EditorialReveal className="relative min-h-[38rem] overflow-hidden bg-[#15120f] text-[#f3eee4]">
-              <Image
-                src="/portrait-editorial-desk-v2.png"
-                alt="Dr. Fausto Vásquez durante una sesión de análisis jurídico"
-                fill
-                sizes="(min-width: 1024px) 58vw, 100vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,9,8,.08),rgba(10,9,8,.2)_40%,rgba(10,9,8,.94)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-7 md:p-11">
-                <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
-                  Producción intelectual
-                </p>
-                <div className="mt-5 overflow-hidden">
-                  <span className="block font-serif text-[clamp(3rem,5.5vw,5rem)] leading-[0.9] tracking-[-0.04em] text-[#f3eee4]">
-                    PUBLICACIONES
-                  </span>
-                </div>
-                <p className="mt-6 max-w-2xl text-[1rem] leading-[1.9] text-[#cec6ba]">
-                  Libros, doctrina y análisis jurídico que trascienden el expediente y consolidan una voz de referencia en el derecho penal ecuatoriano.
-                </p>
-              </div>
-            </EditorialReveal>
-
-            <div className="grid gap-5">
-              <EditorialReveal delay={0.08} className="h-full">
-                <div className="flex h-full flex-col border border-[#15130f]/20 bg-[#f3ede3] p-8 md:p-10">
-                  <div className="flex items-center gap-3 border-b border-[#8a6941]/15 pb-5">
-                    <BookOpen className="text-[#8a6941]" size={18} strokeWidth={1.4} />
-                    <span className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Libros</span>
-                    <span className="ml-auto text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.15em] text-[#8a6941]/50">02 obras</span>
-                  </div>
-                  <div className="mt-6 space-y-6 flex-1">
-                    {[
-                      { title: "Punto de inflexión de la imputación objetiva en el COIP", year: "2016", desc: "Análisis doctrinal sobre los límites de atribución penal en el sistema ecuatoriano." },
-                      { title: "La falsedad documental en materia penal", year: "2018", desc: "Estudio sobre verdad documental, relevancia probatoria y responsabilidad penal." },
-                    ].map((book) => (
-                      <div key={book.title} className="group border-l-2 border-[#8a6941]/25 pl-4 transition-colors hover:border-[#8a6941]">
-                        <p className="font-serif text-lg leading-snug tracking-[-0.02em] md:text-xl">{book.title}</p>
-                        <p className="mt-2 text-[0.78rem] leading-relaxed text-[#514b43]">{book.desc}</p>
-                        <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">{book.year}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </EditorialReveal>
-
-              <div className="grid gap-5 sm:grid-cols-2">
-                <EditorialReveal delay={0.14}>
-                  <div className="flex min-h-56 flex-col justify-between bg-[#15130f] p-7 text-[#f3eee4] md:p-8">
-                    <div className="flex items-center justify-between">
-                      <Mic2 size={18} strokeWidth={1.4} className="text-[#ecc058]" />
-                      <span className="text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#ecc058]/60">+12 conferencias</span>
-                    </div>
-                    <div>
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#ecc058]">Conferencias</p>
-                      <h3 className="mt-3 font-serif text-2xl leading-tight">Ciencias penales y litigación oral.</h3>
-                      <p className="mt-3 text-[0.78rem] leading-relaxed text-[#cec6ba]">Conferencias académicas en universidades, foros y centros de estudio especializados.</p>
-                    </div>
-                  </div>
-                </EditorialReveal>
-                <EditorialReveal delay={0.2}>
-                  <div className="flex min-h-56 flex-col justify-between border border-[#15130f]/20 bg-[#f3ede3] p-7 md:p-8">
-                    <div className="flex items-center justify-between">
-                      <GraduationCap className="text-[#8a6941]" size={18} strokeWidth={1.4} />
-                      <span className="text-[0.45rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/50">Artículos</span>
-                    </div>
-                    <div>
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Publicaciones</p>
-                      <h3 className="mt-3 font-serif text-2xl leading-tight">Responsabilidad penal de la persona jurídica.</h3>
-                      <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Análisis sobre exposición penal de organizaciones, administradores y órganos de decisión.</p>
-                    </div>
-                  </div>
-                </EditorialReveal>
-              </div>
+          <EditorialReveal className="relative mt-16 min-h-[26rem] overflow-hidden bg-[#15120f] text-[#f3eee4] md:mt-20 md:min-h-[32rem]">
+            <Image
+              src="/portrait-editorial-desk-v2.png"
+              alt="Dr. Fausto Vásquez durante una sesión de análisis jurídico"
+              fill
+              sizes="(min-width: 1024px) 88vw, 100vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,9,8,.08),rgba(10,9,8,.28)_45%,rgba(10,9,8,.94)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 p-7 md:p-11">
+              <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
+                Producción intelectual
+              </p>
+              <span className="mt-4 block font-serif text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[-0.03em] text-[#f3eee4]">
+                PUBLICACIONES
+              </span>
+              <p className="mt-5 max-w-2xl text-[1rem] leading-[1.85] text-[#cec6ba]">
+                Libros, doctrina y análisis jurídico que trascienden el expediente y
+                consolidan una voz de referencia en el derecho penal ecuatoriano.
+              </p>
             </div>
-          </div>
+          </EditorialReveal>
 
           <div className="mt-5 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
             <EditorialReveal delay={0.12}>
@@ -972,7 +657,7 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-36 relative overflow-hidden ">
+      <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-24 relative overflow-hidden ">
         {/* Decorative elements representing private safe room */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(184,155,94,0.06),transparent_50%)] pointer-events-none" />
         
@@ -1051,12 +736,10 @@ export function HomeLanding() {
 
       <SectionDivider />
 
-      <section id="faq" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-32">
+      <section id="faq" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[72rem]">
           <SectionIntro eyebrow="Preguntas frecuentes" title="Información antes de iniciar." dark />
-
-          {/* Las cuatro que deciden si alguien escribe o no, arriba y abiertas. */}
-          <div className="mt-12 grid gap-px bg-[#15130f]/12 md:grid-cols-2">
+          <div className="mt-10 grid gap-px bg-[#15130f]/12 md:grid-cols-2">
             {featuredFaqs.map((faq) => (
               <div key={faq.question} className="bg-[#f3ede3] p-6 md:p-7">
                 <h3 className="font-serif text-lg leading-snug md:text-xl">{faq.question}</h3>
@@ -1064,29 +747,18 @@ export function HomeLanding() {
               </div>
             ))}
           </div>
-
-          <p className="mt-12 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#75552f]">
-            Todas las preguntas
-          </p>
-          <div className="mt-5 border-t border-[#15130f]/20">
-            {restFaqs.map((faq, index) => (
-              <EditorialReveal key={faq.question} delay={Math.min(index * 0.04, 0.4)}>
-                <details className="group border-b border-[#15130f]/20 py-6">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl tracking-[0.02em] md:text-2xl">
-                    {faq.question}
-                    <span className="text-[#8a6941] transition-transform group-open:rotate-45">+</span>
-                  </summary>
-                  <p className="max-w-3xl pt-5 text-[0.98rem] leading-[1.9] text-[#514b43]">{faq.answer}</p>
-                </details>
-              </EditorialReveal>
-            ))}
-          </div>
+          <Link
+            href="/preguntas-frecuentes"
+            className="mt-10 inline-flex items-center gap-3 border-b border-[#75552f] pb-2 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-[#75552f]"
+          >
+            Las {faqs.length} preguntas frecuentes <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
 
       <SectionDivider />
 
-      <section id="publicaciones" className="relative bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-36 overflow-hidden">
+      <section id="publicaciones" className="relative bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24 overflow-hidden">
         <div className="pointer-events-none absolute -left-[10%] top-1/2 -translate-y-1/2 w-[38%] opacity-[0.1] md:w-[28%]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>

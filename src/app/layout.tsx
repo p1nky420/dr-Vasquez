@@ -1,6 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Instrument_Sans, Newsreader } from "next/font/google";
 import { FloatingWhatsapp } from "@/components/floating-whatsapp";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -14,14 +14,24 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+/**
+ * Playfair Display + Inter es la pareja más usada de la web: lee como
+ * plantilla antes de que nadie haya leído una palabra.
+ *
+ * Newsreader es una serif editorial con eje óptico —se adelgaza al crecer—
+ * diseñada para textos largos con autoridad, que es exactamente el registro
+ * de un jurista que publica. Instrument Sans acompaña sin imitar a Inter.
+ */
+const display = Newsreader({
+  variable: "--font-display",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const text = Instrument_Sans({
+  variable: "--font-text",
   subsets: ["latin"],
   display: "swap",
 });
@@ -265,7 +275,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${playfair.variable}`}
+      className={`${display.variable} ${text.variable}`}
       data-scroll-behavior="smooth"
     >
       <head>

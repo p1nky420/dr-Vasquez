@@ -6,8 +6,8 @@
   --color-gold: #b89b5e;
   --color-ivory: #f5f2ea;
   --color-steel: #8c9299;
-  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", "Playfair Display Fallback", Georgia, serif;
+  --font-sans: var(--font-text), "Instrument Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), "Newsreader Fallback", Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -24,7 +24,7 @@ body {
   margin: 0;
   background: transparent;
   color: #f5f2ea;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-text), ui-sans-serif, system-ui, sans-serif;
   position: relative;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
@@ -197,7 +197,7 @@ p {
 
 .contact-line span {
   color: #f3eee4;
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.05rem;
 }
 
@@ -205,7 +205,7 @@ p {
   display: block;
   margin-bottom: 0.25rem;
   color: #8f877c;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-text), sans-serif;
   font-size: 0.52rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1134,7 +1134,7 @@ a {
   border: 1px solid rgba(236, 192, 88, 0.22);
   background: rgba(8, 7, 6, 0.75);
   padding: 0.75rem 1rem;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-text), sans-serif;
   font-size: 1rem;
   letter-spacing: 0.01em;
   text-transform: none;
@@ -1235,4 +1235,200 @@ a {
   border-radius: 999px;
   background: #ecc058;
   opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ATLAS DE TRAYECTORIA
+   Cinco pantallas apiladas (4.209 px) convertidas en una pieza de una
+   pantalla: un expediente de cinco pestañas.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.atlas {
+  display: grid;
+  gap: 0;
+  border: 1px solid rgba(236, 192, 88, 0.22);
+  background: linear-gradient(150deg, rgba(14, 12, 10, 0.92), rgba(8, 7, 6, 0.98));
+}
+
+@media (min-width: 900px) {
+  .atlas {
+    grid-template-columns: 15rem 1fr;
+  }
+}
+
+/* ─── Riel / índice ─── */
+.atlas__rail {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(236, 192, 88, 0.18);
+}
+
+.atlas__rail::-webkit-scrollbar { display: none; }
+
+@media (min-width: 900px) {
+  .atlas__rail {
+    display: block;
+    border-bottom: 0;
+    border-right: 1px solid rgba(236, 192, 88, 0.18);
+    overflow: visible;
+  }
+}
+
+.atlas__tab {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  gap: 0.7rem;
+  border: 0;
+  background: transparent;
+  padding: 1rem 1.15rem;
+  color: #8f877c;
+  font-family: var(--font-text), sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 300ms ease, background 300ms ease;
+  text-align: left;
+}
+
+@media (min-width: 900px) {
+  .atlas__tab {
+    width: 100%;
+    padding: 1.15rem 1.5rem;
+    border-bottom: 1px solid rgba(236, 192, 88, 0.1);
+  }
+}
+
+.atlas__tab:hover { color: #d8cfc3; background: rgba(236, 192, 88, 0.04); }
+
+.atlas__tab--active { color: #f3eee4; background: rgba(236, 192, 88, 0.07); }
+
+.atlas__tab-num {
+  font-family: var(--font-display), serif;
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+  color: #ecc058;
+}
+
+.atlas__tab-country { font-weight: 600; }
+
+/* La marca que se desliza entre pestañas: el único movimiento con layoutId. */
+.atlas__marker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ecc058;
+}
+
+@media (min-width: 900px) {
+  .atlas__marker {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+  }
+}
+
+/* ─── Panel ─── */
+.atlas__panel {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.5rem 2.25rem;
+  min-height: 24rem;
+}
+
+@media (min-width: 900px) {
+  .atlas__panel { padding: 3.25rem 3.5rem; min-height: 26rem; }
+}
+
+.atlas__page { position: relative; z-index: 2; max-width: 40rem; }
+
+.atlas__meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.atlas__logo { position: relative; height: 2.75rem; width: 9rem; flex-shrink: 0; }
+
+@media (min-width: 900px) {
+  .atlas__logo { height: 3.5rem; width: 11rem; }
+}
+
+.atlas__monogram {
+  font-family: var(--font-display), serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.08em;
+  color: #ecc058;
+}
+
+.atlas__institution {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ecc058;
+  line-height: 1.5;
+}
+
+.atlas__country {
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b0946c;
+}
+
+.atlas__title {
+  margin-top: 2rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #f3eee4;
+  text-wrap: balance;
+}
+
+.atlas__text {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #c2baae;
+}
+
+.atlas__index {
+  margin-top: 2.25rem;
+  font-family: var(--font-display), serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: #ecc058;
+}
+
+.atlas__index span { color: rgba(236, 192, 88, 0.4); }
+
+.atlas__watermark {
+  position: absolute;
+  right: -0.5rem;
+  bottom: -3rem;
+  z-index: 1;
+  font-family: var(--font-display), serif;
+  font-size: 15rem;
+  line-height: 0.7;
+  letter-spacing: -0.08em;
+  color: rgba(236, 192, 88, 0.06);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 900px) {
+  .atlas__watermark { font-size: 24rem; right: 1rem; bottom: -6rem; }
 }
