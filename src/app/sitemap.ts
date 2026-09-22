@@ -11,6 +11,7 @@ const staticRoutes: Entry[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/contacto", priority: 0.9, changeFrequency: "monthly" },
   { path: "/preguntas-frecuentes", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/publicaciones", priority: 0.8, changeFrequency: "monthly" },
   { path: "/areas-de-practica", priority: 0.9, changeFrequency: "monthly" },
   { path: "/derecho-penal-economico", priority: 0.9, changeFrequency: "monthly" },
   { path: "/firma", priority: 0.8, changeFrequency: "monthly" },

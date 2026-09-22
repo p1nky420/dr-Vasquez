@@ -19,7 +19,7 @@ export const navItems = [
   { href: "/firma", label: "El Estudio" },
   { href: "/areas-de-practica", label: "Áreas" },
   { href: "/academia", label: "Academia" },
-  { href: "/blog", label: "Publicaciones" },
+  { href: "/publicaciones", label: "Publicaciones" },
   { href: "/#consulta-rapida", label: "Evaluación" },
   { href: "/#faq", label: "FAQs" },
   { href: "/contacto", label: "Contacto" },
