@@ -21,32 +21,40 @@ export function Footer() {
         <div>
           <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Institución</p>
           <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#b8b0a5]">
-            {navItems.map((item) => <Link key={item.href} href={item.href} className="transition-colors hover:text-[#f3eee4]">{item.label}</Link>)}
+            {navItems.map((item) => <Link key={item.href} href={item.href} className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">{item.label}</Link>)}
           </nav>
         </div>
         <div>
           <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Biblioteca</p>
           <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#b8b0a5]">
-            <Link href="/academia" className="transition-colors hover:text-[#f3eee4]">Academia</Link>
-            <Link href="/blog" className="transition-colors hover:text-[#f3eee4]">Publicaciones</Link>
-            <Link href="/eventos" className="transition-colors hover:text-[#f3eee4]">Conferencias</Link>
-            <Link href="/blog" className="transition-colors hover:text-[#f3eee4]">Investigación</Link>
+            <Link href="/academia" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Academia</Link>
+            <Link href="/publicaciones" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Publicaciones</Link>
+            <Link href="/eventos" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Conferencias</Link>
+            <Link href="/preguntas-frecuentes" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Preguntas frecuentes</Link>
           </nav>
         </div>
         <div>
           <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Contacto</p>
           <div className="mt-6 space-y-3 text-[0.95rem] leading-6 text-[#b8b0a5]">
-            <p><a className="hover:text-[#f3eee4]" href="tel:+593983076881">+593 98 307 6881</a></p>
-            <p><a className="hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogados.com">contacto@faustovasquezabogados.com</a></p>
+            <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="tel:+593983076881">+593 98 307 6881</a></p>
+            <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogados.com">contacto@faustovasquezabogados.com</a></p>
             <p>Oficinas en Quito y Guayaquil<br />Atención con cita previa</p>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-5 text-center text-[0.66rem] uppercase tracking-[0.13em] text-[#948c81] sm:text-[0.72rem]">
-        © {new Date().getFullYear()} Dr. Fausto Vásquez — Estudio Jurídico · La información publicada no constituye asesoría jurídica.
+        <p>© {new Date().getFullYear()} Dr. Fausto Vásquez — Estudio Jurídico · La información publicada no constituye asesoría jurídica.</p>
+        <nav aria-label="Información legal" className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+          <Link href="/aviso-legal" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#ecc058]">
+            Aviso legal
+          </Link>
+          <Link href="/privacidad" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#ecc058]">
+            Política de privacidad
+          </Link>
+        </nav>
       </div>
       <div className="border-t border-white/5 px-5 py-4 text-center text-[0.6rem] uppercase tracking-[0.2em] text-[#6d655b] sm:text-[0.65rem]">
-        Diseñado y desarrollado por <a href="https://mateoguerrero.lat" target="_blank" rel="noreferrer" className="text-[#ecc058] hover:text-[#f3eee4] transition-colors">MG Web Studio</a>
+        Diseñado y desarrollado por <a href="https://mateoguerrero.lat" target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center py-0.5 text-[#ecc058] hover:text-[#f3eee4] transition-colors">MG Web Studio</a>
       </div>
     </footer>
   );

@@ -1432,3 +1432,56 @@ a {
 @media (min-width: 900px) {
   .atlas__watermark { font-size: 24rem; right: 1rem; bottom: -6rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PÁGINAS LEGALES — registro de lectura, no de escaparate
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.legal h2 {
+  margin-top: 2.75rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #f3eee4;
+}
+
+.legal h2:first-child { margin-top: 0; }
+
+.legal h3 {
+  margin-top: 1.75rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #e6ded1;
+}
+
+.legal p,
+.legal li {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #c2baae;
+  max-width: 68ch;
+}
+
+.legal ul { margin: 0; padding-left: 1.2rem; }
+.legal li { margin-top: 0.5rem; }
+.legal li::marker { color: #ecc058; }
+
+.legal a {
+  color: #ecc058;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal strong { color: #f3eee4; font-weight: 600; }
+
+.legal .aside {
+  margin-top: 2rem;
+  border-left: 2px solid #ecc058;
+  background: rgba(236, 192, 88, 0.05);
+  padding: 1rem 1.25rem;
+}
+
+.legal .aside p { margin-top: 0; }

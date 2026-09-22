@@ -18,6 +18,8 @@ const staticRoutes: Entry[] = [
   { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
   { path: "/academia", priority: 0.6, changeFrequency: "monthly" },
   { path: "/eventos", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/aviso-legal", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/privacidad", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -615,10 +615,10 @@ export function HomeLanding() {
                   </p>
                   <h3 className="mt-5 font-serif text-4xl leading-tight">Conferencias, entrevistas y formación avanzada.</h3>
                   <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
-                    <Link href="/publicaciones" className="inline-flex items-center gap-3 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]">
+                    <Link href="/publicaciones" className="inline-flex min-h-6 items-center gap-3 py-0.5 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]">
                       Ver publicaciones y conferencias <ArrowRight size={14} />
                     </Link>
-                    <Link href="/eventos" className="inline-flex items-center gap-3 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]/70">
+                    <Link href="/eventos" className="inline-flex min-h-6 items-center gap-3 py-0.5 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]/70">
                       Actividad académica <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -667,7 +667,7 @@ export function HomeLanding() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058] font-semibold">Garantía Constitucional</h4>
+                  <h3 className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058] font-semibold">Garantía Constitucional</h3>
                   <p className="text-[0.62rem] max-sm:text-[0.65rem] text-[#bbb2a6] mt-0.5 uppercase tracking-wider">Admisión Selectiva bajo Secreto Profesional</p>
                 </div>
               </EditorialReveal>
