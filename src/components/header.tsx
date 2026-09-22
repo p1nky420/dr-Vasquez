@@ -46,9 +46,9 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex" aria-label="Navegación principal">
+        <nav className="hidden items-center gap-4 xl:gap-6 lg:flex" aria-label="Navegación principal">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="relative py-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#c2baae] transition-colors whitespace-nowrap after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#ecc058] after:transition-transform hover:text-[#f3eee4] hover:after:scale-x-100">
+            <Link key={item.href} href={item.href} className="relative py-3 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[#c2baae] transition-colors whitespace-nowrap after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-[#ecc058] after:transition-transform hover:text-[#f3eee4] hover:after:scale-x-100">
               {item.label}
             </Link>
           ))}
@@ -56,7 +56,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <SearchButton />
-          <Link href="/#consulta" className="hidden border border-[#ecc058]/55 px-5 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.15em] text-[#f3eee4] transition-colors hover:bg-[#ecc058] hover:text-[#15130f] md:inline-flex">
+          <Link href="/#consulta-rapida" className="hidden whitespace-nowrap border border-[#ecc058]/55 px-4 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.15em] text-[#f3eee4] transition-colors hover:bg-[#ecc058] hover:text-[#15130f] md:inline-flex">
             Consulta privada
           </Link>
           <button type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Cerrar menú" : "Abrir menú"} aria-expanded={open} aria-controls="mobile-navigation" className="grid size-12 place-items-center border border-white/15 text-[#ecc058] touch-manipulation lg:hidden">

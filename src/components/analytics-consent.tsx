@@ -12,10 +12,21 @@ export function AnalyticsConsent() {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("analytics-consent");
-    window.requestAnimationFrame(() => {
-      if (saved === "accepted" || saved === "rejected") setConsent(saved);
-      setReady(true);
-    });
+    if (saved === "accepted" || saved === "rejected") {
+      setConsent(saved);
+      return;
+    }
+
+    // El banner no compite con el hero: aparece tras el primer scroll o a los
+    // 12 s. Antes tapaba el CTA principal en el momento de mayor atención.
+    const reveal = () => setReady(true);
+    const timer = window.setTimeout(reveal, 12_000);
+    window.addEventListener("scroll", reveal, { once: true, passive: true });
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", reveal);
+    };
   }, []);
 
   const decide = (value: "accepted" | "rejected") => {
@@ -25,13 +36,25 @@ export function AnalyticsConsent() {
 
   return (
     <>
-      {consent === "accepted" && gaId ? (
+      {/* Consent Mode v2: gtag carga siempre en estado denegado y solo se
+          otorgan los permisos tras la aceptación. Esto permite a GA4 modelar
+          conversiones de quienes rechazan, en lugar de perderlas por completo. */}
+      {gaId ? (
         <>
+          <Script id="ga4-consent-default" strategy="beforeInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`}
+          </Script>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-          <Script id="ga4-consented" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','${gaId}');`}
+          <Script id="ga4-init" strategy="afterInteractive">
+            {`gtag('js',new Date());gtag('config','${gaId}',{send_page_view:true});`}
           </Script>
         </>
+      ) : null}
+      {consent === "accepted" && gaId ? (
+        <Script id="ga4-consent-granted" strategy="afterInteractive">
+          {`gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});`}
+        </Script>
       ) : null}
       {consent === "accepted" && metaPixelId ? (
         <Script id="meta-pixel-consented" strategy="afterInteractive">
@@ -41,7 +64,7 @@ export function AnalyticsConsent() {
       {ready && consent === null ? (
         <aside
           aria-label="Preferencias de privacidad"
-          className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] left-3 right-3 z-[80] border border-[#9a835b]/35 bg-[#11100e]/96 p-5 text-[#f4efe5] shadow-[0_24px_70px_rgba(0,0,0,0.68)] backdrop-blur-xl md:bottom-5 md:left-5 md:right-auto md:max-w-[28rem]"
+          className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] left-3 right-3 z-[80] border border-[#9a835b]/35 bg-[#11100e]/96 p-5 text-[#f4efe5] shadow-[0_24px_70px_rgba(0,0,0,0.68)] backdrop-blur-xl md:bottom-5 md:left-auto md:right-24 md:max-w-[26rem]"
         >
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#ecc058]">Privacidad</p>
           <p className="mt-2 text-sm leading-6 text-[#c3bbb0]">

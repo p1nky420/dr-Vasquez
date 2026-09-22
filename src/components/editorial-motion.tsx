@@ -15,10 +15,12 @@ export function EditorialReveal({
 }) {
   const reduce = useReducedMotion();
   return (
+    // Solo desplazamiento, sin opacity:0. El HTML servido llevaba secciones
+    // enteras invisibles, que los rastreadores de IA sin JS no pueden leer.
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 30 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={reduce ? false : { y: 26 }}
+      whileInView={reduce ? undefined : { y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -61,13 +63,15 @@ export function MaskReveal({
 }) {
   const reduce = useReducedMotion();
 
+  // El texto arranca visible y solo se desplaza: es el elemento LCP y estaba
+  // oculto hasta que React hidrataba, dejando el hero en negro varios segundos.
   return (
     <span className={`block overflow-hidden pb-[0.08em] ${className}`}>
       <motion.span
         className="block"
-        initial={reduce ? false : { y: "108%", opacity: 0.2 }}
-        animate={reduce ? undefined : { y: 0, opacity: 1 }}
-        transition={{ duration: 1.05, delay, ease: [0.16, 1, 0.3, 1] }}
+        initial={reduce ? false : { y: "22%" }}
+        animate={reduce ? undefined : { y: 0 }}
+        transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.span>

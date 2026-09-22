@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "@/components/animated";
 import { CardSpotlight } from "@/components/card-spotlight";
 import { featuredPosts } from "@/lib/site";
@@ -10,6 +11,7 @@ export function BlogCards() {
         const Icon = post.icon;
         return (
           <Reveal delay={index * 0.06} key={post.title} className="h-full">
+            <Link href={post.href} className="block h-full">
             <CardSpotlight className="h-full">
               <article className="relative flex h-full min-h-[160px] flex-col bg-black/35 p-6 rounded-sm transition duration-300 hover:bg-black/15">
                 <div className="flex items-center justify-between">
@@ -23,6 +25,7 @@ export function BlogCards() {
                 <p className="mt-2 text-xs leading-relaxed text-steel group-hover:text-ivory/80 transition duration-300">{post.summary}</p>
               </article>
             </CardSpotlight>
+            </Link>
           </Reveal>
         );
       })}

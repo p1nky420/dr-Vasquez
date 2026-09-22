@@ -20,10 +20,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { EditorialReveal, MaskReveal, ParallaxLayer } from "@/components/editorial-motion";
 import { IntakeForm } from "@/components/intake-form";
+import { QuickIntake } from "@/components/quick-intake";
+import { WhatsappCta } from "@/components/whatsapp-cta";
 import { SwipeableCard } from "@/components/swipeable-card";
 import { SectionDivider } from "@/components/section-divider";
-import { faqs } from "@/lib/home-content";
+import { faqs, tacticalServices, proofInstitutions } from "@/lib/home-content";
 import { whatsappHref } from "@/lib/site";
+import { trackCta } from "@/lib/analytics";
 
 const practices = [
   {
@@ -163,6 +166,20 @@ const insights = [
   },
 ];
 
+/** Las preguntas que más influyen en si alguien contacta o abandona. */
+const FEATURED_QUESTIONS = [
+  "¿Qué debo hacer si recibo una notificación de Fiscalía?",
+  "¿La primera consulta tiene costo?",
+  "¿Pueden revisar un caso que ya tiene abogado?",
+  "¿Atienden urgencias penales?",
+];
+
+const featuredFaqs = FEATURED_QUESTIONS
+  .map((question) => faqs.find((faq) => faq.question === question))
+  .filter((faq): faq is (typeof faqs)[number] => Boolean(faq));
+
+const restFaqs = faqs.filter((faq) => !FEATURED_QUESTIONS.includes(faq.question));
+
 function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <p className={`flex items-center gap-3 text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.26em] ${dark ? "text-[#8a6941]" : "text-[#ecc058]"}`}>
@@ -190,7 +207,7 @@ function SectionIntro({
         {title}
       </h2>
       {text ? (
-        <p className={`mt-7 max-w-2xl text-[0.98rem] leading-[1.9] md:text-[1.06rem] ${dark ? "text-[#514b43]]" : "text-[#c2baae]"}`}>
+        <p className={`mt-7 max-w-2xl text-[0.98rem] leading-[1.9] md:text-[1.06rem] ${dark ? "text-[#514b43]" : "text-[#c2baae]"}`}>
           {text}
         </p>
       ) : null}
@@ -227,53 +244,57 @@ export function HomeLanding() {
         </ParallaxLayer>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,4,.97)_0%,rgba(5,5,4,.91)_50%,rgba(5,5,4,.42)_72%,rgba(5,5,4,.18)_100%)] lg:bg-[linear-gradient(90deg,#080706_0%,#080706_47%,rgba(8,7,6,.93)_51%,rgba(8,7,6,.22)_63%,rgba(8,7,6,.02)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,4,.24)_0%,transparent_52%,rgba(5,5,4,.28)_78%,#0a0908_100%)] lg:bg-[linear-gradient(180deg,rgba(5,5,4,.16)_0%,transparent_62%,rgba(5,5,4,.34)_86%,#0a0908_100%)]" />
-        <div className="relative mx-auto flex min-h-[100svh] max-w-[94rem] items-end px-5 pb-12 pt-32 md:px-8 md:pb-20 lg:items-center lg:pb-10">
+        {/* pb deja sitio a la barra fija de WhatsApp, que tapaba el CTA en móvil. */}
+        <div className="relative mx-auto flex min-h-[100svh] max-w-[94rem] items-end px-5 pb-28 pt-28 md:px-8 md:pb-20 lg:items-center lg:pb-10">
           <div className="max-w-[45rem] lg:ml-[2vw]">
             <EditorialReveal>
               <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
                 Jurista penalista · Ecuador
               </p>
             </EditorialReveal>
-            <h1 className="hero-title mt-6 font-serif text-[clamp(3.35rem,12vw,7.25rem)] leading-[0.92] tracking-[-0.02em]">
+            {/* El h1 se pinta visible y solo se desplaza: era el elemento LCP
+                y estaba oculto hasta que React hidrataba. */}
+            <h1 className="hero-title mt-5 font-serif text-[clamp(2.9rem,8.4vw,5.6rem)] leading-[0.94] tracking-[-0.02em]">
               <MaskReveal>Derecho penal</MaskReveal>
-              <MaskReveal delay={0.1} className="text-[#ecc058]">más allá</MaskReveal>
-              <MaskReveal delay={0.2}>del litigio.</MaskReveal>
+              <MaskReveal delay={0.08} className="text-[#ecc058]">más allá</MaskReveal>
+              <MaskReveal delay={0.16}>del litigio.</MaskReveal>
             </h1>
-            <EditorialReveal delay={0.3}>
-              <p className="mt-6 max-w-xl text-[0.98rem] leading-[1.95] tracking-[0.02em] text-[#eee7dc] md:text-[1.06rem]">
-                Inteligencia jurídica, excelencia académica y estrategia procesal para proteger libertad, patrimonio y reputación.
+            {/* Señal de relevancia local que el h1 de marca no da. */}
+            <p className="mt-4 text-[0.95rem] leading-[1.7] tracking-[0.02em] text-[#e2dbd0] md:text-[1.02rem]">
+              Abogado penalista en Quito y Guayaquil · Defensa penal económica,
+              delitos financieros y casos de alta complejidad.
+            </p>
+            <EditorialReveal delay={0.22}>
+              <p className="mt-4 max-w-xl text-[0.95rem] leading-[1.8] tracking-[0.02em] text-[#c2baae]">
+                Doctor en Jurisprudencia · Profesor e investigador · Autor de dos
+                obras sobre dogmática penal.
               </p>
             </EditorialReveal>
-            <EditorialReveal delay={0.34}>
-              <p className="mt-5 text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-[#ecc058]/70">
-                Profesor <span className="mx-2 text-[#ecc058]/30">·</span> Investigador <span className="mx-2 text-[#ecc058]/30">·</span> Autor
-              </p>
-            </EditorialReveal>
-            <EditorialReveal delay={0.36}>
-              <div className="mt-7 grid max-w-2xl gap-4 sm:grid-cols-[1fr_1.18fr_0.9fr] sm:gap-6">
-                {[
-                  ["Doctor en", "Jurisprudencia"],
-                  ["Derecho Penal", "Económico"],
-                  ["Profesor e", "Investigador"],
-                ].map(([firstLine, secondLine]) => (
-                  <div key={secondLine}>
-                    <p className="text-[0.62rem] max-sm:text-[0.65rem] font-semibold uppercase leading-[1.75] tracking-[0.16em] text-[#e2dbd0]">
-                      <span className="block">{firstLine}</span>
-                      <span className="block text-[#fffaf0]">{secondLine}</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </EditorialReveal>
-            <EditorialReveal delay={0.44} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#consulta" className="premium-button group">
-                Solicitar consulta privada
+            <EditorialReveal delay={0.28} className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#consulta-rapida"
+                onClick={() => trackCta("hero", "Solicitar evaluación")}
+                className="premium-button group"
+              >
+                Solicitar evaluación confidencial
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="#legado" className="premium-button premium-button--ghost group">
-                Explorar trayectoria
-                <ArrowDownRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+              <a
+                href={whatsappHref("Hola, necesito asesoría penal urgente.")}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackCta("hero", "WhatsApp")}
+                className="premium-button premium-button--ghost group"
+              >
+                <MessageCircle size={15} /> WhatsApp directo
               </a>
+            </EditorialReveal>
+            <EditorialReveal delay={0.34}>
+              <p className="proof-strip mt-6">
+                <span>+20 años de ejercicio</span>
+                <span>Formación en 4 países</span>
+                <span>Atención personal del Dr. Vásquez</span>
+              </p>
             </EditorialReveal>
           </div>
         </div>
@@ -286,6 +307,66 @@ export function HomeLanding() {
             </p>
           </div>
         </EditorialReveal>
+      </section>
+
+      <SectionDivider />
+
+      {/* ─────────────────────────────────────────────────────────────────
+          Captación inmediata. El único punto de conversión estaba al 69 %
+          de profundidad; este bloque lo coloca justo debajo del hero, en
+          lenguaje del problema del cliente y no de la firma.
+          ───────────────────────────────────────────────────────────────── */}
+      <section id="consulta-rapida" className="relative bg-[#0e0c0a] px-5 py-14 md:px-8 md:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_25%_30%,rgba(201,173,120,0.07),transparent_55%)]" />
+        <div className="relative mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+          <div>
+            <Eyebrow>Atención inmediata</Eyebrow>
+            <h2 className="mt-5 max-w-xl font-serif text-[clamp(1.85rem,4vw,2.9rem)] leading-[1.12] text-[#f3eee4]">
+              ¿En qué punto está su caso hoy?
+            </h2>
+            <p className="mt-5 max-w-xl text-[0.98rem] leading-[1.8] text-[#c2baae]">
+              Cada una de estas situaciones tiene decisiones críticas con plazo.
+              Una lectura técnica temprana del expediente cambia lo que todavía
+              es posible hacer.
+            </p>
+
+            <div className="mt-9 grid gap-px bg-[#ecc058]/12 sm:grid-cols-2">
+              {tacticalServices.map((service) => (
+                <EditorialReveal key={service.number} className="bg-[#0e0c0a] p-6">
+                  <span className="font-serif text-xl text-[#ecc058]/55">{service.number}</span>
+                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#f3eee4]">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-[0.9rem] leading-[1.7] text-[#b5ada2]">{service.text}</p>
+                </EditorialReveal>
+              ))}
+            </div>
+
+            <WhatsappCta
+              className="mt-9"
+              location="consulta-rapida"
+              message="Hola, necesito una evaluación de mi caso penal."
+            />
+          </div>
+
+          <EditorialReveal delay={0.08}>
+            <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
+              Evaluación confidencial · Respuesta el mismo día hábil
+            </p>
+            <QuickIntake source="home-hero" />
+
+            <div className="mt-8 border-t border-[#ecc058]/15 pt-6">
+              <p className="text-[0.8125rem] uppercase tracking-[0.14em] text-[#8f877c]">
+                Trayectoria construida en
+              </p>
+              <p className="proof-strip mt-3">
+                {proofInstitutions.map((institution) => (
+                  <span key={institution}>{institution}</span>
+                ))}
+              </p>
+            </div>
+          </EditorialReveal>
+        </div>
       </section>
 
       <SectionDivider />
@@ -406,8 +487,8 @@ export function HomeLanding() {
             {visionNodes.map((node, i) => (
               <motion.div
                 key={node.number}
-                className="relative min-h-[50vh] md:min-h-[80vh] flex items-center py-12 md:py-20"
-                initial={{ opacity: 0.08 }}
+                className="relative flex items-center py-9 md:py-14"
+                initial={{ opacity: 0.25 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -427,7 +508,7 @@ export function HomeLanding() {
                   <div className="grid gap-4 md:grid-cols-[auto_1fr] md:gap-12">
                     {/* Roman numeral */}
                     <div className="md:text-right md:w-32">
-                      <p className="font-serif text-[7.5rem] leading-[0.78] tracking-[-0.08em] text-[#ecc058]/20 md:text-[15rem]">
+                      <p className="font-serif text-[3.4rem] leading-[0.78] tracking-[-0.06em] text-[#ecc058]/25 md:text-[6rem]">
                         {node.number}
                       </p>
                     </div>
@@ -455,20 +536,13 @@ export function HomeLanding() {
                         </div>
                       </div>
 
-                      <h3 className="mt-8 font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.02] tracking-[-0.04em] text-[#f3eee4]">
+                      <h3 className="mt-5 font-serif text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.06] tracking-[-0.03em] text-[#f3eee4]">
                         {node.title}
                       </h3>
                       {node.description ? (
-                        <p className="mt-6 max-w-xl text-[1rem] leading-[1.9] text-[#c2baae]">
+                        <p className="mt-4 max-w-xl text-[0.98rem] leading-[1.8] text-[#c2baae]">
                           {node.description}
                         </p>
-                      ) : null}
-
-                      {node.image ? (
-                        <div className="mt-10 relative h-40 w-full max-w-xs overflow-hidden rounded-sm opacity-50">
-                          <Image src={node.image} alt="" fill className="object-cover" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#080706] via-transparent to-transparent" />
-                        </div>
                       ) : null}
                     </div>
                   </div>
@@ -655,11 +729,6 @@ export function HomeLanding() {
         <div className="mx-auto max-w-[88rem]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 border border-[#8a6941]/25 bg-[#8a6941]/10 px-4 py-2">
-                <span className="text-[0.55rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#6f512f]">
-                  Biblioteca en expansión permanente
-                </span>
-              </div>
               <SectionIntro
                 eyebrow="Centro de pensamiento penal"
                 title="Biblioteca Jurídica Vásquez"
@@ -667,8 +736,8 @@ export function HomeLanding() {
                 dark
               />
             </div>
-            <Link href="/blog" className="inline-flex shrink-0 items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#6f512f]">
-              Explorar biblioteca <ArrowRight size={14} />
+            <Link href="/areas-de-practica" className="inline-flex shrink-0 items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#6f512f]">
+              Ver áreas de práctica <ArrowRight size={14} />
             </Link>
           </div>
           <div className="mt-16 grid gap-px bg-[#15130f]/10 lg:grid-cols-3">
@@ -695,7 +764,7 @@ export function HomeLanding() {
                       <span className="text-[0.5rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#8a6941]">{item.type}</span>
                     </div>
                     <h3 className="font-serif text-2xl leading-tight tracking-[-0.03em] md:text-3xl">{item.title}</h3>
-                    <p className="mt-4 text-[0.9rem] leading-[1.8] text-[#514b43]]">{item.text}</p>
+                    <p className="mt-4 text-[0.9rem] leading-[1.8] text-[#514b43]">{item.text}</p>
                   </div>
 
                   <div className="mt-8 flex items-center gap-3 border-t border-[#15130f]/8 pt-5 text-[0.6rem] max-sm:text-[0.65rem] text-[#6f512f]">
@@ -827,7 +896,7 @@ export function HomeLanding() {
                     ].map((book) => (
                       <div key={book.title} className="group border-l-2 border-[#8a6941]/25 pl-4 transition-colors hover:border-[#8a6941]">
                         <p className="font-serif text-lg leading-snug tracking-[-0.02em] md:text-xl">{book.title}</p>
-                        <p className="mt-2 text-[0.78rem] leading-relaxed text-[#514b43]]">{book.desc}</p>
+                        <p className="mt-2 text-[0.78rem] leading-relaxed text-[#514b43]">{book.desc}</p>
                         <p className="mt-2 text-[0.5rem] max-sm:text-[0.65rem] uppercase tracking-[0.18em] text-[#8a6941]/60">{book.year}</p>
                       </div>
                     ))}
@@ -858,7 +927,7 @@ export function HomeLanding() {
                     <div>
                       <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#8a6941]">Publicaciones</p>
                       <h3 className="mt-3 font-serif text-2xl leading-tight">Responsabilidad penal de la persona jurídica.</h3>
-                      <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]]">Análisis sobre exposición penal de organizaciones, administradores y órganos de decisión.</p>
+                      <p className="mt-3 text-[0.78rem] leading-relaxed text-[#514b43]">Análisis sobre exposición penal de organizaciones, administradores y órganos de decisión.</p>
                     </div>
                   </div>
                 </EditorialReveal>
@@ -985,15 +1054,29 @@ export function HomeLanding() {
       <section id="faq" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-32">
         <div className="mx-auto max-w-[72rem]">
           <SectionIntro eyebrow="Preguntas frecuentes" title="Información antes de iniciar." dark />
-          <div className="mt-14 border-t border-[#15130f]/20">
-            {faqs.map((faq, index) => (
+
+          {/* Las cuatro que deciden si alguien escribe o no, arriba y abiertas. */}
+          <div className="mt-12 grid gap-px bg-[#15130f]/12 md:grid-cols-2">
+            {featuredFaqs.map((faq) => (
+              <div key={faq.question} className="bg-[#f3ede3] p-6 md:p-7">
+                <h3 className="font-serif text-lg leading-snug md:text-xl">{faq.question}</h3>
+                <p className="mt-3 text-[0.93rem] leading-[1.75] text-[#514b43]">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-12 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#75552f]">
+            Todas las preguntas
+          </p>
+          <div className="mt-5 border-t border-[#15130f]/20">
+            {restFaqs.map((faq, index) => (
               <EditorialReveal key={faq.question} delay={Math.min(index * 0.04, 0.4)}>
                 <details className="group border-b border-[#15130f]/20 py-6">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl tracking-[0.02em] md:text-2xl">
                     {faq.question}
                     <span className="text-[#8a6941] transition-transform group-open:rotate-45">+</span>
                   </summary>
-                  <p className="max-w-3xl pt-5 text-[0.98rem] leading-[1.9] text-[#514b43]]">{faq.answer}</p>
+                  <p className="max-w-3xl pt-5 text-[0.98rem] leading-[1.9] text-[#514b43]">{faq.answer}</p>
                 </details>
               </EditorialReveal>
             ))}
@@ -1013,7 +1096,7 @@ export function HomeLanding() {
             <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1.05] tracking-[-0.02em] text-[#15130f]">
               Publicaciones y conferencias.
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.85] text-[#514b43]]">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-[1.85] text-[#514b43]">
               Obras jurídicas, análisis doctrinal y participación académica que trascienden el expediente.
             </p>
           </EditorialReveal>

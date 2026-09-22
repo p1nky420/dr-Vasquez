@@ -13,7 +13,6 @@ import { CustomCursor } from "@/components/custom-cursor";
 import { SearchProvider, SearchModal } from "@/components/search-modal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
-import { faqs } from "@/lib/home-content";
 import "./globals.css";
 
 const inter = Inter({
@@ -105,6 +104,7 @@ const institutionalJsonLd = {
       },
       sameAs: [
         "https://www.facebook.com/share/1AFRvUQQiB/?mibextid=wwXIfr",
+        "https://www.facebook.com/fausto.vasquez.9083",
       ],
       alumniOf: [
         { "@type": "CollegeOrUniversity", name: "Universidad Central del Ecuador" },
@@ -165,17 +165,66 @@ const institutionalJsonLd = {
           addressCountry: "EC",
         },
       ],
+      priceRange: "$$$",
+      currenciesAccepted: "USD",
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "18:00",
+        },
+      ],
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -0.2058,
+        longitude: -78.4903,
+      },
+      hasMap: "https://www.google.com/maps/search/?api=1&query=Torre+1492+Av+12+de+Octubre+Quito",
+      knowsLanguage: "es",
+      department: [
+        {
+          "@type": "LegalService",
+          "@id": "https://faustovasquezabogados.com/#sede-quito",
+          name: "Dr. Fausto Vásquez — Estudio Jurídico · Quito",
+          telephone: "+593983076881",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8, Oficina 802",
+            addressLocality: "Quito",
+            addressRegion: "Pichincha",
+            postalCode: "170522",
+            addressCountry: "EC",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: -0.2058, longitude: -78.4903 },
+        },
+        {
+          "@type": "LegalService",
+          "@id": "https://faustovasquezabogados.com/#sede-guayaquil",
+          name: "Dr. Fausto Vásquez — Estudio Jurídico · Guayaquil",
+          telephone: "+593983076881",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Av. Malecón Simón Bolívar y Loja, Edificio The Point, Piso 12, Oficina 1203",
+            addressLocality: "Guayaquil",
+            addressRegion: "Guayas",
+            postalCode: "090150",
+            addressCountry: "EC",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: -2.1894, longitude: -79.8807 },
+        },
+      ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Servicios legales",
         itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal económico" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal económico", url: "https://faustovasquezabogados.com/derecho-penal-economico" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lavado de activos y delitos financieros", url: "https://faustovasquezabogados.com/areas-de-practica/lavado-de-activos" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Delitos contra la administración pública", url: "https://faustovasquezabogados.com/areas-de-practica/delitos-administracion-publica" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Constitucional penal y garantías", url: "https://faustovasquezabogados.com/areas-de-practica/constitucional-penal" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Litigio penal estratégico", url: "https://faustovasquezabogados.com/areas-de-practica/litigio-penal-estrategico" }},
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal empresarial" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho constitucional" }},
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal político" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Delitos contra la administración pública" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lavado de activos" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Litigación penal estratégica" }},
         ],
       },
     },
@@ -194,18 +243,8 @@ const institutionalJsonLd = {
         "query-input": "required name=search_term_string",
       },
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://faustovasquezabogados.com/#faq",
-      mainEntity: faqs.slice(0, 10).map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
+    // El FAQPage vive únicamente en la página que muestra las preguntas.
+    // Emitirlo también aquí producía dos nodos con el mismo @id en la home.
   ],
 };
 

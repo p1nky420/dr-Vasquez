@@ -10,14 +10,17 @@ import {
   WalletCards,
 } from "lucide-react";
 
-export const whatsappNumber = "+593983076881";
+/** wa.me requires digits only — a leading "+" breaks the deep link on some clients. */
+export const whatsappNumber = "593983076881";
+export const phoneHref = "tel:+593983076881";
+export const phoneDisplay = "+593 98 307 6881";
 export const navItems = [
   { href: "/", label: "Inicio" },
   { href: "/firma", label: "El Estudio" },
   { href: "/areas-de-practica", label: "Áreas" },
   { href: "/academia", label: "Academia" },
   { href: "/blog", label: "Publicaciones" },
-  { href: "/#consulta", label: "Evaluación" },
+  { href: "/#consulta-rapida", label: "Evaluación" },
   { href: "/#faq", label: "FAQs" },
   { href: "/contacto", label: "Contacto" },
 ];
@@ -45,7 +48,7 @@ export const practiceAreas: PracticeArea[] = [
       "Estrategia de defensa ante análisis de origen de fondos, operaciones patrimoniales, estructuras financieras y movimientos empresariales complejos.",
     icon: WalletCards,
     image: "/practice-area-lavado-activos.png",
-    href: "/contacto?area=lavado-de-activos",
+    href: "/areas-de-practica/lavado-de-activos",
   },
   {
     title: "Delitos contra la Administración Pública",
@@ -53,7 +56,7 @@ export const practiceAreas: PracticeArea[] = [
       "Defensa en casos de peculado, cohecho, concusión, tráfico de influencias, enriquecimiento ilícito y responsabilidad de funcionarios o contratistas.",
     icon: Landmark,
     image: "/practice-area-admin-publica.png",
-    href: "/contacto?area=administracion-publica",
+    href: "/areas-de-practica/delitos-administracion-publica",
   },
   {
     title: "Derecho Constitucional Penal",
@@ -61,7 +64,7 @@ export const practiceAreas: PracticeArea[] = [
       "Acciones constitucionales, garantías jurisdiccionales, debido proceso, tutela judicial efectiva y defensa frente a vulneraciones de derechos fundamentales.",
     icon: ShieldCheck,
     image: "/practice-area-constitucional.png",
-    href: "/contacto?area=constitucional-penal",
+    href: "/areas-de-practica/constitucional-penal",
   },
   {
     title: "Litigio Penal Estratégico",
@@ -69,7 +72,7 @@ export const practiceAreas: PracticeArea[] = [
       "Construcción de teoría del caso, análisis probatorio, audiencias, recursos, juicio oral y diseño integral de defensa.",
     icon: Target,
     image: "/practice-area-litigio.png",
-    href: "/contacto?area=litigio-estrategico",
+    href: "/areas-de-practica/litigio-penal-estrategico",
   },
 ];
 
@@ -132,6 +135,7 @@ export const featuredPosts = [
     summary:
       "La evolución dogmática y práctica de la responsabilidad penal de las corporaciones en el COIP ecuatoriano.",
     icon: Building2,
+    href: "/areas-de-practica/lavado-de-activos",
   },
   {
     title: "El Principio de Confianza y los Delitos de Omisión",
@@ -139,6 +143,7 @@ export const featuredPosts = [
     summary:
       "Límites técnicos de la imputación objetiva en las decisiones directivas y empresariales complejas.",
     icon: Scale,
+    href: "/areas-de-practica/delitos-administracion-publica",
   },
   {
     title: "La Falsedad Documental en Materia Penal",
@@ -146,6 +151,7 @@ export const featuredPosts = [
     summary:
       "Estudio dogmático sobre la alteración de la verdad, la prueba instrumental y el dolo procesal en Ecuador.",
     icon: FileText,
+    href: "/areas-de-practica/litigio-penal-estrategico",
   },
   {
     title: "Litigio Penal Estratégico y Teoría del Caso",
@@ -153,8 +159,15 @@ export const featuredPosts = [
     summary:
       "Diseño científico de la teoría del caso frente a la imputación fiscal en el proceso penal ecuatoriano.",
     icon: Target,
+    href: "/areas-de-practica/constitucional-penal",
   },
-];
+] satisfies Array<{
+  title: string;
+  category: string;
+  summary: string;
+  icon: LucideIcon;
+  href: string;
+}>;
 
 export const credentials = [
   {

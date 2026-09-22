@@ -1,22 +1,38 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL, practiceLandings } from "@/lib/seo";
 
-const siteUrl = "https://faustovasquezabogados.com";
-const lastModified = new Date("2026-06-19");
+type Entry = {
+  path: string;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+};
 
-const routes = [
-  "",
-  "/firma",
-  "/areas-de-practica",
-  "/derecho-penal-economico",
-  "/contacto",
-  "/blog",
-  "/academia",
-  "/eventos",
+const staticRoutes: Entry[] = [
+  { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "/contacto", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/areas-de-practica", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/derecho-penal-economico", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/firma", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/academia", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/eventos", priority: 0.6, changeFrequency: "monthly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${siteUrl}${route}`,
-    lastModified,
-  }));
+  const lastModified = new Date();
+
+  return [
+    ...staticRoutes.map((route) => ({
+      url: `${SITE_URL}${route.path}`,
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...practiceLandings.map((landing) => ({
+      url: `${SITE_URL}/areas-de-practica/${landing.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+  ];
 }

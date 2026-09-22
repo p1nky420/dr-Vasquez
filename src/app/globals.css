@@ -950,12 +950,8 @@ a {
   animation: grain-shift 8s steps(10) infinite;
 }
 
-/* Ocultar el cursor nativo de forma global si el dispositivo lo soporta */
-@media (pointer: fine) {
-  html, body, a, button, select, input {
-    cursor: none !important;
-  }
-}
+/* El cursor nativo se conserva: el anillo dorado se superpone, no lo sustituye.
+   Ocultarlo dejaba la página sin cursor alguno antes del primer mousemove. */
 
 
 @media (prefers-reduced-motion: reduce) {
@@ -970,13 +966,6 @@ a {
 }
 
 /* ─── Touch device micro-interactions ──────────────────────────────────── */
-
-/* Restore native cursor on touch devices (overrides cursor: none) */
-@media (pointer: coarse) {
-  html, body, a, button, select, input {
-    cursor: auto !important;
-  }
-}
 
 /* Active state feedback on touch (compensation for sticky hover) */
 @media (hover: none) and (pointer: coarse) {
@@ -1038,3 +1027,212 @@ a {
 }
 
 
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUELO TIPOGRÁFICO
+   Había 179 clases de texto por debajo de 11px en escritorio (hasta 6.4px),
+   casi todas en versalitas con tracking amplio. Se normalizan aquí, por
+   tamaño explícito, en lugar de editar 179 llamadas.
+   Nivel 1 (<=0.56rem) -> 12px · Nivel 2 (0.58-0.68rem) -> 13px
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.text-\[0\.4rem\],
+.text-\[0\.45rem\],
+.text-\[0\.5rem\],
+.text-\[0\.52rem\],
+.text-\[0\.55rem\],
+.text-\[0\.56rem\] {
+  font-size: 0.75rem;
+}
+
+.text-\[0\.58rem\],
+.text-\[0\.6rem\],
+.text-\[0\.62rem\],
+.text-\[0\.64rem\],
+.text-\[0\.65rem\],
+.text-\[0\.66rem\],
+.text-\[0\.67rem\],
+.text-\[0\.68rem\] {
+  font-size: 0.8125rem;
+}
+
+/* Las variantes max-sm: volvían a bajar el tamaño en móvil. */
+@media (max-width: 639px) {
+  [class*="max-sm:text-[0."] {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Tracking: se conserva el carácter editorial, acotado a lo legible. */
+.tracking-\[0\.24em\],
+.tracking-\[0\.26em\],
+.tracking-\[0\.28em\],
+.tracking-\[0\.3em\] {
+  letter-spacing: 0.18em;
+}
+
+/* ─── Contraste: dos parejas no alcanzaban AA ───────────────────────────
+   #8a6941 sobre crema = 4.0:1 → #75552f = 5.8:1
+   #8a7351 sobre negro = 4.4:1 → #b0946c = 7.1:1                        */
+.text-\[\#8a6941\] { color: #75552f; }
+.text-\[\#6d655b\] { color: #5a5249; }
+.text-\[\#8a7351\] { color: #b0946c; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CAPTACIÓN RÁPIDA — formulario de 3 campos
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.quick-intake {
+  display: grid;
+  gap: 1.1rem;
+  border: 1px solid rgba(236, 192, 88, 0.3);
+  background: linear-gradient(160deg, rgba(21, 18, 15, 0.96), rgba(8, 7, 6, 0.98));
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  padding: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .quick-intake { padding: 2rem 2.25rem; }
+}
+
+.quick-intake--done {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.quick-intake__fields {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .quick-intake__fields { grid-template-columns: 1fr 1fr; }
+  .quick-intake__label--wide { grid-column: 1 / -1; }
+}
+
+.quick-intake__label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d9b96a;
+}
+
+.quick-intake__optional {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: #8f877c;
+}
+
+.quick-intake__input {
+  min-height: 3.25rem;
+  width: 100%;
+  border: 1px solid rgba(236, 192, 88, 0.22);
+  background: rgba(8, 7, 6, 0.75);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #f5f2ea;
+  outline: none;
+  transition: border-color 250ms ease, background 250ms ease;
+}
+
+.quick-intake__input::placeholder { color: rgba(160, 153, 143, 0.75); }
+
+.quick-intake__input:focus {
+  border-color: #ecc058;
+  background: #0b0a08;
+}
+
+.quick-intake__submit {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border: 1px solid #ecc058;
+  background: #ecc058;
+  color: #15130f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 250ms ease, transform 120ms ease;
+}
+
+.quick-intake__submit:hover { background: #f7d67e; }
+.quick-intake__submit:active { transform: scale(0.99); }
+.quick-intake__submit:disabled { opacity: 0.65; cursor: progress; }
+.quick-intake__submit:disabled svg { animation: cta-spin 0.8s linear infinite; }
+
+.quick-intake__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: #9d958a;
+  cursor: pointer;
+}
+
+.quick-intake__consent input { margin-top: 0.25rem; accent-color: #ecc058; }
+
+.quick-intake__seal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: #8f877c;
+}
+
+.quick-intake__error {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e5a98f;
+}
+
+.quick-intake__error a { color: #ecc058; text-decoration: underline; }
+
+.quick-intake__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid #ecc058;
+  padding-bottom: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ecc058;
+}
+
+/* ─── Franja de prueba institucional ─────────────────────────────────── */
+.proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.75rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: #9a9287;
+}
+
+.proof-strip span { display: inline-flex; align-items: center; gap: 0.55rem; }
+.proof-strip span::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #ecc058;
+  opacity: 0.7;
+}
