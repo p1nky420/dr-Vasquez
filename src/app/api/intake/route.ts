@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { isUrgentIntake, validateIntakeSubmission } from "@/lib/intake";
 import { deliverIntake, verifyTurnstile } from "@/lib/server/intake-security";
+import { reportLeadToGa4 } from "@/lib/server/ga4";
 
 export const runtime = "nodejs";
 
@@ -48,10 +49,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json(
-      { ok: true, id, urgent: isUrgentIntake(validation.data) },
-      { status: 201 },
-    );
+    const urgent = isUrgentIntake(validation.data);
+
+    // Contador exacto de conversiones, independiente del consentimiento.
+    await reportLeadToGa4({ leadId: id, source: validation.data.source, urgent });
+
+    return NextResponse.json({ ok: true, id, urgent }, { status: 201 });
   } catch (error) {
     console.error(`[intake] ${id} unexpected failure`, error);
     return NextResponse.json(

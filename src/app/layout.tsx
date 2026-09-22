@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
@@ -73,7 +72,17 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 };
 
 export const viewport = {
@@ -281,7 +290,6 @@ export default function RootLayout({
           <ScrollAnalytics />
           <SmoothScroll />
           <HapticFeedback />
-          <Analytics />
           <SpeedInsights />
         </SearchProvider>
       </body>

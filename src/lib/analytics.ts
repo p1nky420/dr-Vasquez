@@ -1,7 +1,5 @@
 "use client";
 
-import { track as vercelTrack } from "@vercel/analytics";
-
 type AnalyticsPayload = Record<string, string | number | boolean | undefined>;
 
 declare global {
@@ -13,8 +11,9 @@ declare global {
 }
 
 /**
- * Conversion events that matter commercially. Anything tracked with a name from
- * this list is also mirrored into GA4 as a `generate_lead`-style conversion.
+ * Eventos que cuentan como conversión comercial. Se envían a GA4 además como
+ * `generate_lead`, que es el nombre que GA4 reconoce para marcarlos como
+ * conversión en la interfaz y para importarlos a Google Ads.
  */
 export const CONVERSION_EVENTS = [
   "lead_submitted",
@@ -27,7 +26,6 @@ function isConversion(name: string) {
   return (CONVERSION_EVENTS as readonly string[]).includes(name);
 }
 
-/** Vercel Analytics rejects nested/undefined values; flatten to primitives. */
 function clean(payload: AnalyticsPayload) {
   const out: Record<string, string | number | boolean> = {};
   for (const [key, value] of Object.entries(payload)) {
@@ -38,25 +36,23 @@ function clean(payload: AnalyticsPayload) {
 }
 
 /**
- * Sends an event to every measurement surface that is actually available.
+ * Canal único de medición: GA4.
  *
- * Vercel Analytics is loaded unconditionally and is cookieless, so it is the
- * one channel guaranteed to record the event regardless of consent state.
- * GA4 / Meta only receive it once the visitor has opted in.
+ * `gtag` se carga siempre, en estado Consent Mode «denied», y solo se otorgan
+ * los permisos tras aceptar el banner. Con analytics_storage denegado GA4 sigue
+ * recibiendo pings sin cookies que usa para modelar el comportamiento de quien
+ * rechaza, así que el evento no se pierde: se estima.
+ *
+ * La conversión de lead se registra además en el servidor (Measurement
+ * Protocol) desde /api/intake, que es la única cifra que debe ser exacta.
  */
 export function trackEvent(name: string, payload: AnalyticsPayload = {}) {
   if (typeof window === "undefined") return;
 
   const properties = clean(payload);
 
-  try {
-    vercelTrack(name, properties);
-  } catch {
-    // Analytics must never break the page it measures.
-  }
-
-  window.dataLayer?.push({ event: name, ...properties });
   window.gtag?.("event", name, properties);
+  window.dataLayer?.push({ event: name, ...properties });
 
   if (isConversion(name)) {
     window.gtag?.("event", "generate_lead", { ...properties, lead_source: name });
@@ -66,10 +62,7 @@ export function trackEvent(name: string, payload: AnalyticsPayload = {}) {
   }
 }
 
-/**
- * Fires `name` at most once per page view. Used for scroll milestones and
- * section impressions, which would otherwise fire on every scroll frame.
- */
+/** Dispara `name` una sola vez por vista de página. */
 const fired = new Set<string>();
 
 export function trackOnce(name: string, payload: AnalyticsPayload = {}) {
@@ -78,7 +71,7 @@ export function trackOnce(name: string, payload: AnalyticsPayload = {}) {
   trackEvent(name, payload);
 }
 
-/** Where on the page a CTA was clicked, so we can rank CTA placements. */
+/** Desde dónde se pulsó un CTA, para poder rankear ubicaciones. */
 export function trackCta(location: string, label: string) {
   trackEvent("cta_click", { location, label });
 }
