@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { HomeLanding } from "@/components/home-landing";
+import { CinematicHome } from "@/components/cinematic/cinematic-home";
 import { faqs, serviceCategories } from "@/lib/home-content";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Dr. Fausto Vásquez | Derecho Penal Estratégico en Ecuador",
+    absolute: "Abogado penalista en Quito | Dr. Fausto Vásquez",
   },
   description:
     "Jurista penalista en Quito especializado en defensa penal económica, litigio constitucional y casos complejos. Consulta privada y confidencial.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Abogado penalista en Quito | Dr. Fausto Vásquez",
+    description:
+      "Defensa penal económica y litigación estratégica en Ecuador. Solicite una evaluación reservada.",
+    images: ["/fausto-plan-despacho.jpg"],
+  },
   alternates: {
     canonical: "https://faustovasquezabogados.com",
   },
@@ -20,9 +27,9 @@ export const metadata: Metadata = {
     url: "https://faustovasquezabogados.com",
     images: [
       {
-        url: "/portrait-editorial-quito-v2.png",
-        width: 1003,
-        height: 1568,
+        url: "/fausto-plan-despacho.jpg",
+        width: 1536,
+        height: 864,
         alt: "Dr. Fausto Vásquez, jurista penalista ecuatoriano",
       },
     ],
@@ -84,12 +91,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
       />
-      <HomeLanding />
-      {false && (
-        <section aria-hidden="true">
-          <h2>Academia</h2>
-        </section>
-      )}
+      <CinematicHome />
     </>
   );
 }

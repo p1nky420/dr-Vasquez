@@ -1,17 +1,13 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Instrument_Sans, Newsreader } from "next/font/google";
-import { FloatingWhatsapp } from "@/components/floating-whatsapp";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { AnalyticsConsent } from "@/components/analytics-consent";
 import { EvaluationVault } from "@/components/evaluation-vault";
 import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { CustomCursor } from "@/components/custom-cursor";
 import { SearchProvider, SearchModal } from "@/components/search-modal";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
+import { SiteChrome } from "@/components/site-chrome";
 import "./globals.css";
 
 /**
@@ -274,7 +270,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="es-EC"
       className={`${display.variable} ${text.variable}`}
       data-scroll-behavior="smooth"
     >
@@ -302,14 +298,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(institutionalJsonLd) }}
         />
           <SearchProvider>
-            <ScrollProgress />
-            <CustomCursor />
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
           <SearchModal />
           <EvaluationVault />
-          <FloatingWhatsapp />
           <AnalyticsConsent />
           <ScrollAnalytics />
           <SmoothScroll />

@@ -1,0 +1,34 @@
+{
+  "desktop": {
+    "webgl": true,
+    "scrollChangesScene": true,
+    "pauseFreezesScene": true,
+    "oneH1": true,
+    "faqSchemaMatches": true,
+    "anchorsValid": true
+  },
+  "routes": {
+    "/": 200,
+    "/areas-de-practica/litigio-penal-estrategico": 200,
+    "/derecho-penal-economico": 200,
+    "/areas-de-practica": 200,
+    "/areas-de-practica/constitucional-penal": 200,
+    "/areas-de-practica/lavado-de-activos": 200,
+    "/firma": 200,
+    "/publicaciones": 200,
+    "/academia": 200,
+    "/contacto": 200,
+    "/privacidad": 200,
+    "/aviso-legal": 200
+  },
+  "widths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "reducedMotion": true,
+  "noJavaScript": true,
+  "noWebglFallback": true,
+  "browserErrors": []
+}
