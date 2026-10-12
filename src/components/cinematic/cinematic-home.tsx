@@ -24,6 +24,7 @@ import {
 } from "@/lib/site";
 import { trackCta, trackEvent } from "@/lib/analytics";
 import type { mountChessScene } from "./chess-scene";
+import { FilmOpening } from "./film-opening";
 import "./cinematic.css";
 
 const chapters = ["La decisión", "La lectura", "La estrategia", "Su defensa"];
@@ -266,6 +267,7 @@ export function CinematicHome() {
       ref={root}
       className={`cinema ${paused || reduced ? "cinema-still" : ""}`}
     >
+      <FilmOpening />
       <header className="cine-header">
         <Link
           className="cine-brand"

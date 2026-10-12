@@ -42,3 +42,9 @@ Abrir `http://localhost:3101`. No se ha desplegado ni fusionado con `main`.
 - Un H1, canonical e idioma correctos; preguntas JSON-LD coinciden con las preguntas visibles.
 
 Estas son pruebas locales con emulación de tamaños. No se afirma una puntuación Lighthouse, resultados de posicionamiento ni pruebas en dispositivos físicos. Las credenciales de las páginas interiores, la oferta comercial y la configuración real de analítica siguen siendo las del proyecto de origen.
+
+## Revisión: apertura como película
+
+Se añadió un prólogo de tres actos antes de la navegación: plano macro en penumbra, revelación de la pieza y título del estudio. Cámara 3D propia, luz rasante, partículas discretas, títulos de entrada y fundidos por scroll. La entrada automática dura 5.2 segundos y termina; no bloquea el desplazamiento. Hay salto al estudio y pausa. La versión móvil usa su propio encuadre.
+
+Verificación adicional: compilación y lint, tres actos en Chromium, avance por control, salto al contenido, pausa, movimiento reducido, 390 px sin desbordamiento, un solo H1 y sin errores de ejecución.

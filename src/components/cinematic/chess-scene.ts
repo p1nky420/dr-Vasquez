@@ -7,7 +7,10 @@ const smooth = (a: number, b: number, p: number) =>
   THREE.MathUtils.smoothstep(p, a, b);
 
 /** A procedural sculpture: no remote model, texture, tracking or asset request. */
-export function mountChessScene(host: HTMLElement) {
+export function mountChessScene(
+  host: HTMLElement,
+  mode: "story" | "film" = "story",
+) {
   const mobile = matchMedia("(max-width: 760px)").matches;
   const renderer = new THREE.WebGLRenderer({
     alpha: true,
@@ -196,6 +199,30 @@ export function mountChessScene(host: HTMLElement) {
   rim.position.set(-4, 2, -3);
   scene.add(rim, new THREE.AmbientLight(0xffffff, 0.65));
 
+  const dustGeometry = new THREE.BufferGeometry();
+  const dustPositions = new Float32Array(120 * 3);
+  for (let i = 0; i < 120; i++) {
+    dustPositions[i * 3] = Math.sin(i * 127.1) * 8;
+    dustPositions[i * 3 + 1] = Math.cos(i * 311.7) * 6;
+    dustPositions[i * 3 + 2] = Math.sin(i * 73.3) * 5 - 3;
+  }
+  dustGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(dustPositions, 3),
+  );
+  const dust = new THREE.Points(
+    dustGeometry,
+    new THREE.PointsMaterial({
+      color: 0xc8a45d,
+      size: 0.017,
+      transparent: true,
+      opacity: 0.35,
+      depthWrite: false,
+    }),
+  );
+  dust.visible = mode === "film";
+  scene.add(dust);
+
   let progress = 0,
     target = 0,
     pointerX = 0,
@@ -240,6 +267,38 @@ export function mountChessScene(host: HTMLElement) {
     orbit.position.copy(sculpture.position);
     orbit.scale.setScalar(scale * (1 + split * 0.11));
     orbit.rotation.set(progress * 0.8, 0.1 + progress * 1.7, progress * 0.45);
+    if (mode === "film") {
+      // A macro tracking shot opens into a low-angle portrait of the king.
+      const reveal = smooth(0, 0.64, progress);
+      camera.position.set(
+        mix(1.6, -0.7, reveal),
+        mix(0.95, -0.05, reveal),
+        mix(narrow ? 5.8 : 3.4, narrow ? 11.6 : 8.1, reveal),
+      );
+      camera.lookAt(0, mix(0.72, 0.1, reveal), 0);
+      sculpture.position.set(
+        narrow ? 0.15 : 1.55 * (1 - smooth(0.52, 0.92, progress)),
+        -0.25,
+        0,
+      );
+      sculpture.scale.setScalar(1);
+      sculpture.rotation.set(
+        0.04,
+        -0.85 + progress * 2.15,
+        -0.08 * (1 - reveal),
+      );
+      body.position.y = 0;
+      crown.position.y = 0;
+      crown.rotation.y = 0;
+      base.position.y = 0;
+      dust.rotation.y = progress * 0.3;
+      board.visible = false;
+      orbit.visible = false;
+      key.intensity = 1.1 + reveal * 0.7;
+      rim.intensity = 4;
+      scene.environmentIntensity = 0.22;
+      renderer.toneMappingExposure = 0.85;
+    }
     renderer.render(scene, camera);
     if (Math.abs(progress - target) > 0.0002)
       frame = requestAnimationFrame(draw);
@@ -289,7 +348,7 @@ export function mountChessScene(host: HTMLElement) {
       const geometries = new Set<THREE.BufferGeometry>();
       const materials = new Set<THREE.Material>();
       scene.traverse((object) => {
-        if (object instanceof THREE.Mesh) {
+        if (object instanceof THREE.Mesh || object instanceof THREE.Points) {
           geometries.add(object.geometry);
           for (const material of Array.isArray(object.material)
             ? object.material

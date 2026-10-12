@@ -1587,3 +1587,430 @@
     visibility: hidden;
   }
 }
+
+/* Film prologue: the opening is an experience before the website navigation. */
+.cinema {
+  --film-height: 340svh;
+}
+.cine-header {
+  top: var(--film-height);
+}
+.film-opening {
+  height: var(--film-height);
+  position: relative;
+  background: #05070a;
+  isolation: isolate;
+}
+.film-screen {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: #05070a;
+}
+.film-image,
+.film-canvas,
+.film-atmosphere,
+.film-edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.film-canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+.film-canvas[data-ready="true"] canvas {
+  opacity: 1;
+}
+.film-fallback {
+  position: absolute;
+  right: 8%;
+  top: 5%;
+  font-family: Georgia, serif;
+  font-size: 70vh;
+  line-height: 1;
+  color: #a78b533b;
+  transform: rotate(-12deg);
+  text-shadow: 10px 0 30px #c8a45d30;
+}
+.film-canvas[data-ready="true"] .film-fallback {
+  display: none;
+}
+.film-halo {
+  position: absolute;
+  width: 70vw;
+  height: 90vh;
+  right: -8vw;
+  top: 5vh;
+  background: radial-gradient(ellipse, #2a354233, transparent 66%);
+}
+.film-atmosphere {
+  background:
+    linear-gradient(90deg, #020408a8, transparent 60%),
+    linear-gradient(0deg, #030508e8, transparent 35%, #02040855);
+  z-index: 1;
+}
+.film-edge {
+  box-shadow: inset 0 0 180px 70px #020406a8;
+  z-index: 2;
+}
+.film-beam {
+  position: absolute;
+  right: 17%;
+  top: -20%;
+  height: 140%;
+  width: 20%;
+  transform: rotate(25deg);
+  background: linear-gradient(90deg, transparent, #c8a45d07, transparent);
+  filter: blur(18px);
+  pointer-events: none;
+}
+.film-top,
+.film-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4.5vw;
+  background: #040609;
+}
+.film-top {
+  top: 0;
+  height: 9svh;
+  min-height: 58px;
+  border-bottom: 1px solid #c8a45d16;
+}
+.film-top > span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: #a2a3a5;
+}
+.film-top b {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: -0.05em;
+  color: var(--gold);
+}
+.film-top > a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: #bbb6ab;
+  min-height: 44px;
+}
+.film-bottom {
+  bottom: 0;
+  height: 9svh;
+  min-height: 65px;
+  border-top: 1px solid #c8a45d16;
+}
+.film-reel {
+  font-size: 7px;
+  letter-spacing: 0.21em;
+  color: #9c9b96;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.film-reel i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.film-scroll {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 9px;
+  color: #cfc4ad;
+  letter-spacing: 0.1em;
+  min-height: 44px;
+}
+.film-bottom button {
+  background: transparent;
+  border: 1px solid #c8a45d38;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+}
+.film-shot {
+  position: absolute;
+  inset: 9svh 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4vh 9vw;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.film-shot a {
+  pointer-events: auto;
+}
+.film-credit {
+  font-family: var(--font-text), Arial, sans-serif !important;
+  font-size: 9px !important;
+  letter-spacing: 0.39em !important;
+  text-transform: uppercase;
+  color: #bda675;
+  margin-bottom: 35px !important;
+}
+.film-title,
+.film-line,
+.film-name {
+  font-family: var(--font-display), Georgia, serif !important;
+  font-weight: 300;
+  font-size: clamp(80px, 10.8vw, 185px) !important;
+  line-height: 0.91 !important;
+  letter-spacing: -0.045em !important;
+  color: #ece6dc;
+  text-shadow: 0 5px 50px #0005;
+}
+.film-title em {
+  color: #d3b978;
+}
+.film-subtitle {
+  font-size: 12px !important;
+  color: #bbb7b1;
+  line-height: 1.9 !important;
+  letter-spacing: 0.04em !important;
+  margin-top: 37px !important;
+  max-width: 410px;
+}
+.film-shot-one .film-credit {
+  animation: film-credit-in 2.4s both;
+}
+.film-shot-one .film-title {
+  animation: film-title-in 3.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.film-shot-one .film-subtitle {
+  animation: film-credit-in 3.7s both;
+}
+.film-shot-two,
+.film-shot-three {
+  opacity: 0;
+  visibility: hidden;
+}
+.film-shot-two {
+  text-align: center;
+  align-items: center;
+}
+.film-shot-two:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse, #030509b0, transparent 78%);
+  z-index: -1;
+}
+.film-line {
+  font-size: clamp(65px, 7.4vw, 122px) !important;
+}
+.film-divider {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 32px;
+}
+.film-shot-two .film-subtitle {
+  margin-top: 23px !important;
+}
+.film-shot-three {
+  text-align: center;
+  align-items: center;
+  background: #03050850;
+}
+.film-name {
+  font-size: clamp(100px, 13vw, 220px) !important;
+  line-height: 0.82 !important;
+}
+.film-name-caption {
+  font-size: 10px !important;
+  letter-spacing: 0.45em !important;
+  margin-top: 35px !important;
+  color: #cfbf9c;
+}
+.film-enter {
+  display: flex;
+  gap: 45px;
+  align-items: center;
+  border-bottom: 1px solid #c8a45d66;
+  color: var(--paper);
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  padding: 17px 0;
+  margin-top: 35px;
+  min-height: 44px;
+}
+.film-timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  height: 1px;
+  background: #c8a45d15;
+}
+.film-timeline span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleX(var(--film-progress, 0));
+  transform-origin: left;
+}
+.film-next-anchor {
+  position: absolute;
+  top: 47%;
+  left: 0;
+}
+@keyframes film-title-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(1.06);
+    filter: blur(8px);
+  }
+  35% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes film-credit-in {
+  0%,
+  25% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.film-still * {
+  animation: none !important;
+  transition: none !important;
+}
+@media (max-width: 760px) {
+  .cinema {
+    --film-height: 300svh;
+  }
+  .film-top {
+    padding-inline: 7vw;
+  }
+  .film-top > span {
+    font-size: 6px;
+    letter-spacing: 0.15em;
+    gap: 12px;
+  }
+  .film-top b {
+    font-size: 24px;
+  }
+  .film-top > a {
+    font-size: 8px;
+    gap: 8px;
+  }
+  .film-shot {
+    padding: 0 7vw;
+    inset: 12svh 0 15svh;
+    justify-content: center;
+  }
+  .film-credit {
+    font-size: 7px !important;
+    letter-spacing: 0.24em !important;
+    margin-bottom: 27px !important;
+  }
+  .film-title {
+    font-size: clamp(61px, 16vw, 120px) !important;
+    line-height: 0.95 !important;
+  }
+  .film-subtitle {
+    font-size: 11px !important;
+    max-width: 260px;
+    margin-top: 27px !important;
+  }
+  .film-shot-one {
+    justify-content: flex-end;
+    padding-bottom: 7vh;
+  }
+  .film-atmosphere {
+    background: linear-gradient(
+      0deg,
+      #030508ef 10%,
+      #03050855 55%,
+      transparent 80%
+    );
+  }
+  .film-edge {
+    box-shadow: inset 0 0 100px 20px #02040688;
+  }
+  .film-line {
+    font-size: 12vw !important;
+    line-height: 1.05 !important;
+  }
+  .film-name {
+    font-size: 21vw !important;
+  }
+  .film-name-caption {
+    font-size: 7px !important;
+    letter-spacing: 0.25em !important;
+  }
+  .film-enter {
+    margin-top: 28px;
+    font-size: 9px;
+    gap: 20px;
+  }
+  .film-bottom {
+    padding-inline: 7vw;
+  }
+  .film-reel {
+    display: none;
+  }
+  .film-scroll {
+    left: 7vw;
+    transform: none;
+    font-size: 8px;
+    gap: 15px;
+  }
+  .film-bottom button {
+    margin-left: auto;
+  }
+  .film-fallback {
+    font-size: 60vh;
+    right: -20%;
+    top: 5%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-shot-one * {
+    animation: none !important;
+  }
+  .film-canvas canvas {
+    transition: none !important;
+  }
+}
