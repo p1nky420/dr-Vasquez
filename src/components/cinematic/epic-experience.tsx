@@ -121,12 +121,7 @@ export function EpicExperience() {
   const go = useCallback((index: number, instant = false) => {
     const el = root.current;
     if (!el) return;
-    const position = el.getBoundingClientRect().top + scrollY;
-    const height = el.offsetHeight - innerHeight;
-    const target =
-      el.dataset.enhanced === "true"
-        ? position + (height * index) / (acts.length - 1)
-        : (document.getElementById(acts[index].id)?.offsetTop ?? position);
+    const target = (document.getElementById(acts[index].id)?.getBoundingClientRect().top ?? 0) + scrollY - 80;
     window.scrollTo({
       top: target,
       behavior: instant || motionOff.current ? "instant" : "smooth",
@@ -178,10 +173,15 @@ export function EpicExperience() {
     const render = () => {
       frame = 0;
       if (disposed || document.hidden || !visible) return;
-      const raw = clamp(
-        -el.getBoundingClientRect().top / (el.offsetHeight - innerHeight),
-      );
-      const position = raw * (acts.length - 1);
+      // Interpolate camera positions from the actual document sections, including
+      // expanded FAQ content; the page itself remains in normal scroll flow.
+      const anchor = innerHeight * 0.35;
+      const tops = sections.map(section => section.getBoundingClientRect().top);
+      let index = 0;
+      while (index < tops.length - 1 && tops[index + 1] <= anchor) index++;
+      const span = index < tops.length - 1 ? tops[index + 1] - tops[index] : innerHeight;
+      const position = Math.min(acts.length - 1, index + clamp((anchor - tops[index]) / span));
+      const raw = position / (acts.length - 1);
       const next = Math.round(position);
       if (next !== current.current) {
         current.current = next;
@@ -215,17 +215,6 @@ export function EpicExperience() {
         String(motionOff.current ? 1 : 1.06 + (position - 6) * 0.07),
       );
       el.dataset.act = String(next);
-      sections.forEach((section, i) => {
-        const distance = position - i;
-        const opacity = clamp((0.52 - Math.abs(distance)) / 0.16);
-        section.style.opacity = String(opacity);
-        section.style.visibility = opacity < 0.01 ? "hidden" : "visible";
-        section.style.transform = motionOff.current
-          ? "none"
-          : `translate3d(0,${-distance * 42}px,0)`;
-        section.inert = i !== next;
-        section.setAttribute("aria-hidden", i !== next ? "true" : "false");
-      });
       if (!motionOff.current)
         cameraProgress.current = Math.min(1, raw + entrance * 0.009);
       scene.current?.update(cameraProgress.current, 0, 0, motionOff.current);
@@ -267,6 +256,8 @@ export function EpicExperience() {
       schedule();
     });
     observer.observe(el);
+    const resizeObserver = new ResizeObserver(schedule);
+    resizeObserver.observe(el);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     window.addEventListener("hashchange", hash);
@@ -278,6 +269,7 @@ export function EpicExperience() {
       disposed = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
+      resizeObserver.disconnect();
       scene.current?.destroy();
       scene.current = null;
       window.removeEventListener("scroll", schedule);
@@ -296,37 +288,12 @@ export function EpicExperience() {
   return (
     <div
       ref={root}
-      className={`epic-site ${paused || reduced ? "epic-still" : ""}`}
+      className={`epic-site epic-flow ${paused || reduced ? "epic-still" : ""}`}
     >
       <div className="epic-screen">
         <div className="epic-world" aria-hidden="true">
           <div ref={canvas} className="epic-canvas">
             <span className="epic-fallback">♚</span>
-          </div>
-          <div className="epic-portrait">
-            <picture>
-              <source
-                media="(max-width: 760px)"
-                srcSet={tallPortrait.srcSet}
-                sizes={tallPortrait.sizes}
-              />
-              <img {...widePortrait} alt="" />
-            </picture>
-            <div />
-          </div>
-          <div className="epic-library">
-            <div className="epic-volume">
-              <span>FV</span>
-              <small>
-                DOGMÁTICA
-                <br />
-                PENAL
-              </small>
-              <i>Pensamiento jurídico</i>
-              <b>Fausto Vásquez</b>
-            </div>
-            <div className="epic-volume epic-volume-back" />
-            <div className="epic-volume epic-volume-last" />
           </div>
           <div className="epic-vignette" />
           <div className="epic-reading-shade" />
@@ -344,6 +311,11 @@ export function EpicExperience() {
               FAUSTO VÁSQUEZ<small>ESTUDIO JURÍDICO</small>
             </span>
           </a>
+          <nav className="epic-primary-nav" aria-label="Navegación principal">
+            <a href="#penal-economico" onClick={navigate(2)}>Especialidades</a>
+            <a href="#el-estudio" onClick={navigate(6)}>El estudio</a>
+            <Link href="/publicaciones">Publicaciones</Link>
+          </nav>
           <div>
             <a
               className="epic-contact-shortcut"
@@ -357,7 +329,7 @@ export function EpicExperience() {
               onClick={() => setMenu(!menu)}
               aria-expanded={menu}
               aria-controls="epic-index"
-              aria-label={menu ? "Cerrar capítulos" : "Explorar capítulos"}
+              aria-label={menu ? "Cerrar menú" : "Abrir menú"}
             >
               {menu ? <X size={19} /> : <Menu size={19} />}
             </button>
@@ -368,7 +340,7 @@ export function EpicExperience() {
             id="epic-index"
             data-lenis-prevent
             className="epic-index"
-            aria-label="Capítulos de la experiencia"
+            aria-label="Navegación del sitio"
           >
             {acts.map((act, i) => (
               <a
@@ -391,7 +363,7 @@ export function EpicExperience() {
             aria-label="El primer movimiento"
           >
             <div className="epic-copy">
-              <p className="epic-kicker">Fausto Vásquez presenta</p>
+              <p className="epic-kicker">Estrategia penal · Quito, Ecuador</p>
               <h1>
                 El arte de
                 <br />
@@ -402,9 +374,10 @@ export function EpicExperience() {
                 <br />
                 del primer movimiento.
               </p>
-              <p className="epic-location">
-                ABOGADO PENALISTA · QUITO, ECUADOR
-              </p>
+              <div className="epic-hero-actions">
+                <a className="epic-link" href="#consulta-rapida" onClick={navigate(9)}>Consultar mi caso <ArrowUpRight size={18} /></a>
+                <a className="epic-scroll-link" href="#estrategia" onClick={navigate(1)}>Descubrir el estudio <ArrowDown size={16} /></a>
+              </div>
             </div>
           </section>
           <section id="estrategia" className="epic-act epic-center">
@@ -471,6 +444,18 @@ export function EpicExperience() {
             id="el-estudio"
             className="epic-act epic-jurist epic-align-right"
           >
+          <div className="epic-portrait">
+            <picture>
+              <source
+                media="(max-width: 760px)"
+                srcSet={tallPortrait.srcSet}
+                sizes={tallPortrait.sizes}
+              />
+              <img {...widePortrait} alt="" />
+            </picture>
+            <div />
+          </div>
+
             <div className="epic-copy">
               <p className="epic-kicker">
                 III / El criterio detrás de la defensa
@@ -502,6 +487,21 @@ export function EpicExperience() {
             id="conocimiento"
             className="epic-act epic-align-right epic-knowledge"
           >
+          <div className="epic-library">
+            <div className="epic-volume">
+              <span>FV</span>
+              <small>
+                DOGMÁTICA
+                <br />
+                PENAL
+              </small>
+              <i>Pensamiento jurídico</i>
+              <b>Fausto Vásquez</b>
+            </div>
+            <div className="epic-volume epic-volume-back" />
+            <div className="epic-volume epic-volume-last" />
+          </div>
+
             <div className="epic-copy">
               <p className="epic-kicker">IV / El conocimiento deja huella</p>
               <h2>
@@ -544,10 +544,8 @@ export function EpicExperience() {
             </div>
             <div
               className="epic-questions"
-              data-lenis-prevent
-              tabIndex={0}
               role="region"
-              aria-label="Preguntas frecuentes; desplácese para ver todas"
+              aria-label="Preguntas frecuentes"
             >
               {faqs.map((faq, i) => (
                 <details key={faq.question}>
@@ -622,35 +620,7 @@ export function EpicExperience() {
             </footer>
           </section>
         </div>
-        <div className="epic-controls">
-          <span className="epic-act-count">
-            <b>{String(active + 1).padStart(2, "0")}</b>
-            <i>/ 10</i>
-            <span>{acts[active].label}</span>
-          </span>
-          <nav aria-label="Recorrido cinematográfico">
-            {acts.map((act, i) => (
-              <a
-                key={act.id}
-                href={`#${act.id}`}
-                onClick={navigate(i)}
-                aria-label={`Escena ${i + 1}: ${act.label}`}
-                aria-current={active === i ? "step" : undefined}
-              >
-                <span />
-              </a>
-            ))}
-          </nav>
-          <button
-            className="epic-next"
-            onClick={() => go(active === 9 ? 0 : active + 1)}
-            aria-label={
-              active === 9 ? "Volver al comienzo" : "Siguiente escena"
-            }
-          >
-            {active === 9 ? "Volver al comienzo" : "Continúe la historia"}
-            <ArrowDown size={15} />
-          </button>
+        <div className="epic-motion-toggle">
           <button
             className="epic-pause"
             onClick={() => setPaused(!paused)}

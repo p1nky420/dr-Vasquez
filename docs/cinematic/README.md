@@ -56,3 +56,20 @@ Abrir `http://localhost:3101`. No se ha publicado ni fusionado con `main`.
 - Sin errores JavaScript en el recorrido verificado.
 
 Las pruebas se ejecutan localmente con tamaños emulados. No se afirma una puntuación Lighthouse ni pruebas en dispositivos físicos o resultados de posicionamiento.
+
+## Continuous web layout (current)
+
+The home page now uses normal document flow instead of a sticky full-screen stage.
+Sections have content-driven, varied heights and remain accessible throughout the
+page. The camera interpolates against actual section positions; ResizeObserver
+keeps it aligned when FAQ answers expand. Portrait and book visuals belong to their
+sections. Desktop navigation and hero actions provide direct access; the scene
+counter, segmented timeline, and next-scene controls have been removed. FAQs expand
+in the document without a nested scrolling container. Reduced motion and the pause
+control remain available.
+
+Validation: ESLint and production build passed. In-app browser verified at 1440×1000,
+390×844 and 320×667: no horizontal overflow, one H1, natural section flow, rendered
+3D canvas, working contact navigation and FAQ expansion. No browser console errors
+were reported. Earlier scene/inert assertions in verification.json describe the
+superseded presentation layout and do not apply to this revision.

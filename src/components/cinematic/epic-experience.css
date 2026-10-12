@@ -1439,3 +1439,95 @@
     padding-top: 0;
   }
 }
+/* Continuous editorial layout: the document scrolls; only the 3D world persists. */
+.epic-site.epic-flow { height: auto; }
+.epic-site.epic-flow .epic-screen { position: relative; height: auto; overflow: clip; background: transparent; }
+.epic-site.epic-flow .epic-world { position: fixed; inset: 0; height: 100svh; z-index: -1; opacity: 1; }
+.epic-site.epic-flow .epic-header { position: fixed; inset: 0 0 auto; backdrop-filter: blur(18px); background: #05070bd9; }
+.epic-site.epic-flow .epic-index { position: fixed; inset: 82px 0 0; }
+.epic-site.epic-flow .epic-act { position: relative; inset: auto; min-height: 0; height: auto; padding: 110px 9vw; opacity: 1; visibility: visible; will-change: auto; overflow: visible; scroll-margin-top: 80px; }
+.epic-site.epic-flow .epic-act h2 { font-size: clamp(48px, 5.6vw, 98px); }
+.epic-site.epic-flow .epic-intro { min-height: 94svh; padding-top: 165px; padding-bottom: 110px !important; }
+.epic-site.epic-flow .epic-intro h1 { font-size: clamp(88px, 11vw, 175px); }
+.epic-primary-nav { display: flex; gap: 32px; font-size: 11px; color: #c4c1bc; }
+.epic-primary-nav a { padding-block: 16px; }
+.epic-primary-nav a:hover { color: var(--epic-gold); }
+.epic-hero-actions { display: flex; align-items: center; gap: 35px; margin-top: 30px; flex-wrap: wrap; }
+.epic-hero-actions .epic-link { margin-top: 0; }
+.epic-scroll-link { display: inline-flex; align-items: center; gap: 14px; font-size: 11px; min-height: 44px; color: #c4c1bc !important; }
+.epic-site.epic-flow #estrategia { padding-block: 110px 130px; border-block: 1px solid #c8a45d22; background: linear-gradient(115deg,#0a1720e8,#05070b96); text-align: left; justify-content: flex-start; }
+.epic-site.epic-flow #estrategia .epic-copy { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0 8vw; max-width: none; }
+.epic-site.epic-flow #estrategia .epic-kicker { grid-column: 1 / -1; }
+.epic-site.epic-flow #estrategia h2 { grid-row: span 2; }
+.epic-site.epic-flow #estrategia .epic-description { margin: 10px 0 0 !important; }
+.epic-site.epic-flow .epic-method { gap: 20px; justify-content: flex-start; align-self: start; }
+.epic-site.epic-flow .epic-method span { min-width: 85px; }
+.epic-site.epic-flow .epic-service { min-height: 650px; padding-block: 100px; border-bottom: 1px solid #c8a45d22; }
+.epic-site.epic-flow .epic-service .epic-copy { padding-top: 0; }
+.epic-site.epic-flow .epic-service h2 { font-size: clamp(46px, 5.1vw, 86px); }
+.epic-site.epic-flow .epic-service:nth-of-type(even) { background: linear-gradient(90deg,#07121dbd,#05070b22); }
+.epic-site.epic-flow .epic-ghost-number { font-size: clamp(230px, 30vw, 450px); top: 15%; color: #c8a45d12; right: 8%; }
+.epic-site.epic-flow .epic-service.epic-align-right .epic-ghost-number { right: auto; left: 8%; }
+.epic-site.epic-flow .epic-jurist { min-height: 850px; margin-block: 70px; padding-block: 150px !important; }
+.epic-site.epic-flow .epic-portrait { position: absolute; inset: 0; opacity: 1; overflow: hidden; }
+.epic-site.epic-flow .epic-portrait img { transform: scale(var(--photo-zoom,1)); }
+.epic-site.epic-flow .epic-jurist .epic-copy { width: 44%; }
+.epic-site.epic-flow .epic-jurist h2 { font-size: clamp(75px, 8vw, 140px); }
+.epic-site.epic-flow .epic-knowledge { min-height: 730px; padding-block: 130px !important; background: linear-gradient(115deg,#0b1829df,#05070bc4); border-block: 1px solid #c8a45d22; }
+.epic-site.epic-flow .epic-library { position: absolute; inset: 0; opacity: 1; pointer-events: none; }
+.epic-site.epic-flow .epic-volume { height: 410px; top: 20%; left: 11%; }
+.epic-site.epic-flow .epic-volume-back { left: 17%; top: 18%; }
+.epic-site.epic-flow .epic-volume-last { left: 22%; top: 22%; }
+.epic-site.epic-flow .epic-clarity { align-items: flex-start; padding-block: 130px; background: #05090ff0; }
+.epic-site.epic-flow .epic-clarity .epic-copy { position: sticky; top: 125px; padding-top: 0; }
+.epic-site.epic-flow .epic-clarity h2 { font-size: clamp(44px,4.4vw,78px); }
+.epic-site.epic-flow .epic-questions { max-height: none; overflow: visible; padding: 0; overscroll-behavior: auto; }
+.epic-site.epic-flow .epic-questions summary { font-size: 14px; }
+.epic-site.epic-flow .epic-questions details > p { font-size: 14px; }
+.epic-site.epic-flow .epic-finale { min-height: 760px; display: flex; flex-direction: column; padding-block: 140px 35px; border-top: 1px solid #c8a45d44; }
+.epic-site.epic-flow .epic-finale .epic-copy { padding-bottom: 90px; }
+.epic-site.epic-flow .epic-credits { position: relative; inset: auto; width: 100%; margin-top: 0; }
+.epic-site.epic-flow .epic-motion-toggle { position: fixed; bottom: 20px; right: 22px; z-index: 12; }
+.epic-site.epic-flow .epic-pause { background: #05070bd9; backdrop-filter: blur(12px); }
+.epic-site.epic-flow .epic-book-presence { opacity: 1; }
+.epic-site.epic-flow :is(a,button,summary):focus-visible { outline: 2px solid var(--epic-gold); outline-offset: 6px; }
+@media (max-width: 1000px) {
+  .epic-primary-nav { gap: 18px; }
+  .epic-site.epic-flow #estrategia .epic-copy { grid-template-columns: 1fr; }
+  .epic-site.epic-flow #estrategia .epic-description { margin-top: 30px !important; }
+  .epic-site.epic-flow .epic-volume { height: 340px; }
+  .epic-site.epic-flow .epic-service { min-height: 590px; }
+}
+@media (max-width: 760px) {
+  .epic-primary-nav { display: none; }
+  .epic-site.epic-flow .epic-act { padding: 75px 7vw; }
+  .epic-site.epic-flow .epic-index { inset: 70px 0 0; }
+  .epic-site.epic-flow .epic-intro { min-height: 92svh; padding-top: 180px; padding-bottom: 75px !important; }
+  .epic-site.epic-flow .epic-intro h1 { font-size: clamp(58px,17vw,115px); }
+  .epic-site.epic-flow .epic-act h2 { font-size: clamp(40px,11.8vw,80px); }
+  .epic-site.epic-flow #estrategia { padding-block: 70px; }
+  .epic-site.epic-flow .epic-hero-actions { gap: 12px 24px; }
+  .epic-site.epic-flow .epic-copy, .epic-site.epic-flow .epic-align-right .epic-copy { width: 100%; }
+  .epic-site.epic-flow .epic-service { min-height: 0; padding-block: 90px; }
+  .epic-site.epic-flow .epic-service h2 { font-size: clamp(38px,11vw,70px); }
+  .epic-site.epic-flow .epic-service .epic-description { font-size: 14px !important; }
+  .epic-site.epic-flow .epic-ghost-number { font-size: 65vw; top: 15%; }
+  .epic-site.epic-flow .epic-service.epic-align-right .epic-ghost-number { left: auto; right: 5%; }
+  .epic-site.epic-flow .epic-jurist { min-height: 850px; margin-block: 0; padding-top: 380px !important; padding-bottom: 80px !important; }
+  .epic-site.epic-flow .epic-jurist h2 { font-size: 20vw; }
+  .epic-site.epic-flow .epic-portrait img { object-position: center top; }
+  .epic-site.epic-flow .epic-portrait > div { background: linear-gradient(0deg,#05070b 5%,#05070bc9 43%,#05070b00 90%); }
+  .epic-site.epic-flow .epic-knowledge { min-height: 0; padding-top: 390px !important; padding-bottom: 75px !important; }
+  .epic-site.epic-flow .epic-volume { top: 55px; left: 17%; height: 270px; }
+  .epic-site.epic-flow .epic-volume-back { top: 45px; left: 30%; }
+  .epic-site.epic-flow .epic-volume-last { top: 65px; left: 43%; }
+  .epic-site.epic-flow .epic-clarity { padding-block: 75px; gap: 35px; }
+  .epic-site.epic-flow .epic-clarity .epic-copy { position: relative; top: auto; }
+  .epic-site.epic-flow .epic-clarity .epic-description { display: block; }
+  .epic-site.epic-flow .epic-questions { flex: none; }
+  .epic-site.epic-flow .epic-finale { min-height: 0; padding-block: 90px 40px; }
+  .epic-site.epic-flow .epic-finale h2 { font-size: 11vw; }
+  .epic-site.epic-flow .epic-finale .epic-copy { padding-bottom: 60px; }
+  .epic-site.epic-flow .epic-motion-toggle { bottom: 12px; right: 12px; }
+  .epic-site.epic-flow .epic-credits { padding-right: 30px; }
+}
