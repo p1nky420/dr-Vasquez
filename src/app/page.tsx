@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CinematicHome } from "@/components/cinematic/cinematic-home";
+import { EpicExperience } from "@/components/cinematic/epic-experience";
 import { faqs, serviceCategories } from "@/lib/home-content";
 
 export const metadata: Metadata = {
@@ -91,7 +91,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
       />
-      <CinematicHome />
+      <EpicExperience />
     </>
   );
 }

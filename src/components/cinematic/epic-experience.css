@@ -1,0 +1,1441 @@
+.epic-site {
+  --epic-gold: #c8a45d;
+  --epic-white: #f2ece8;
+  --epic-ink: #05070b;
+  --portrait-presence: 0;
+  --book-presence: 0;
+  --reading-shade: 0;
+  position: relative;
+  background: var(--epic-ink);
+  color: var(--epic-white);
+  font-family: var(--font-text), Arial, sans-serif;
+  isolation: isolate;
+}
+.epic-site * {
+  box-sizing: border-box;
+}
+.epic-site a {
+  text-decoration: none;
+  color: inherit;
+}
+.epic-site button {
+  font: inherit;
+  cursor: pointer;
+}
+.epic-site :is(h1, h2, p) {
+  margin: 0;
+}
+.epic-site :is(h1, h2) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+.epic-site em {
+  font-weight: 300;
+  color: var(--epic-gold);
+}
+.epic-site button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.epic-site :is(a, button) {
+  -webkit-tap-highlight-color: transparent;
+}
+.epic-site[data-enhanced="true"] {
+  height: 1000svh;
+}
+.epic-site[data-enhanced="true"] .epic-screen {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 0;
+  overflow: hidden;
+}
+.epic-screen {
+  position: relative;
+  background: #05070b;
+}
+.epic-world {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.epic-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: calc(1 - max(var(--portrait-presence), var(--book-presence)) * 0.97);
+  transition: opacity 0.18s linear;
+}
+.epic-canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+.epic-canvas[data-ready="true"] canvas {
+  opacity: 1;
+}
+.epic-fallback {
+  position: absolute;
+  right: 10vw;
+  top: 8vh;
+  font-family: Georgia, serif;
+  font-size: 70vh;
+  color: #95764455;
+  line-height: 1;
+  transform: rotate(-12deg);
+}
+.epic-canvas[data-ready="true"] .epic-fallback {
+  display: none;
+}
+.epic-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    #030508db,
+    transparent 25%,
+    transparent 75%,
+    #03050880
+  );
+  box-shadow: inset 0 0 150px 40px #03050866;
+}
+.epic-horizon {
+  position: absolute;
+  left: 5vw;
+  right: 5vw;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8a45d14, transparent);
+}
+.epic-reading-shade {
+  position: absolute;
+  inset: 0;
+  background: #04070be0;
+  opacity: var(--reading-shade);
+}
+.epic-header {
+  position: relative;
+  height: 82px;
+  padding: 0 4.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c8a45d22;
+  background: #05070bee;
+  z-index: 20;
+}
+.epic-logo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.epic-logo b {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: -0.08em;
+  color: var(--epic-gold);
+}
+.epic-logo > span {
+  font-size: 9px;
+  letter-spacing: 0.21em;
+}
+.epic-logo small {
+  display: block;
+  margin-top: 6px;
+  font-size: 6px;
+  color: #aaa49b;
+  letter-spacing: 0.28em;
+}
+.epic-header > div {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+.epic-contact-shortcut {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-height: 44px;
+}
+.epic-contact-shortcut svg {
+  color: var(--epic-gold);
+}
+.epic-header button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #c8a45d38;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--epic-gold);
+}
+.epic-index {
+  position: absolute;
+  inset: 82px 0 70px;
+  background: #05080bf7;
+  backdrop-filter: blur(30px);
+  z-index: 15;
+  padding: 4vh 9vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 8vw;
+  align-content: center;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.epic-index a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #c8a45d22;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 30px;
+}
+.epic-index small {
+  font-family: var(--font-text), Arial;
+  font-size: 9px;
+  color: var(--epic-gold);
+}
+.epic-index svg {
+  margin-left: auto;
+  color: var(--epic-gold);
+}
+.epic-index [aria-current="step"] {
+  color: var(--epic-gold);
+}
+.epic-act {
+  position: relative;
+  min-height: 100svh;
+  padding: 100px 9vw;
+  display: flex;
+  align-items: center;
+}
+.epic-site[data-enhanced="true"] .epic-act {
+  position: absolute;
+  inset: 82px 0 76px;
+  min-height: 0;
+  height: auto;
+  padding: 35px 9vw;
+  will-change: opacity, transform;
+  visibility: hidden;
+  opacity: 0;
+}
+.epic-site[data-enhanced="true"] .epic-act:first-child {
+  visibility: visible;
+  opacity: 1;
+}
+.epic-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 710px;
+  width: 55%;
+}
+.epic-kicker {
+  font-size: 9px !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase;
+  color: #c3a979;
+  margin-bottom: 30px !important;
+}
+.epic-act h1 {
+  font-size: clamp(90px, 11vw, 190px);
+}
+.epic-act h2 {
+  font-size: clamp(60px, 6.8vw, 115px);
+}
+.epic-intro .epic-copy {
+  width: 75%;
+  max-width: 1000px;
+}
+.epic-intro h1 {
+  animation: epic-title 2.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.epic-intro .epic-kicker {
+  animation: epic-title 1.7s both;
+}
+.epic-description {
+  font-size: 14px !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0.01em !important;
+  color: #c4c1bc;
+  max-width: 440px;
+  margin-top: 30px !important;
+}
+.epic-location {
+  margin-top: 45px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.19em !important;
+  color: #8b8e95;
+}
+.epic-center {
+  justify-content: center;
+  text-align: center;
+}
+.epic-center .epic-copy {
+  width: 100%;
+  max-width: 1150px;
+}
+.epic-center .epic-description {
+  margin-inline: auto;
+}
+.epic-center:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse, #03050866, transparent 75%);
+}
+.epic-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  margin-top: 38px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #dad3c8;
+}
+.epic-method span {
+  border-top: 1px solid #c8a45d66;
+  padding-top: 14px;
+  min-width: 100px;
+  text-align: left;
+}
+.epic-method small {
+  color: var(--epic-gold);
+  margin-right: 15px;
+  font-size: 8px;
+}
+.epic-align-right {
+  justify-content: flex-end;
+}
+.epic-align-right .epic-copy {
+  width: 50%;
+}
+.epic-service:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #05070b99, transparent 70%);
+}
+.epic-service.epic-align-right:before {
+  background: linear-gradient(90deg, transparent 25%, #05070bcb 75%);
+}
+.epic-service h2 {
+  font-size: clamp(55px, 5.7vw, 105px);
+  max-width: 680px;
+}
+.epic-service .epic-description {
+  font-size: 13px !important;
+  margin-top: 30px !important;
+  max-width: 450px;
+}
+.epic-ghost-number {
+  position: absolute;
+  right: 8vw;
+  top: 12%;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: min(48vw, 680px);
+  line-height: 1;
+  letter-spacing: -0.1em;
+  color: #c8a45d08;
+  pointer-events: none;
+}
+.epic-align-right .epic-ghost-number {
+  left: 4vw;
+  right: auto;
+}
+.epic-practice-note {
+  font-size: 9px !important;
+  letter-spacing: 0.15em !important;
+  color: #c9b891;
+  margin-top: 25px !important;
+}
+.epic-link {
+  display: inline-flex;
+  gap: 35px;
+  align-items: center;
+  min-height: 48px;
+  margin-top: 30px;
+  padding: 13px 0;
+  border-bottom: 1px solid #c8a45d66;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  transition:
+    gap 0.3s,
+    color 0.3s;
+}
+.epic-link svg {
+  color: var(--epic-gold);
+  flex-shrink: 0;
+}
+.epic-link:hover {
+  color: var(--epic-gold);
+  gap: 45px;
+}
+.epic-sub-link {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  gap: 12px;
+  align-items: center;
+  font-size: 9px;
+  color: #c9b891 !important;
+  min-height: 44px;
+  margin-top: 12px;
+}
+.epic-portrait {
+  position: absolute;
+  inset: 0;
+  opacity: var(--portrait-presence);
+  overflow: hidden;
+}
+.epic-portrait img {
+  object-fit: cover;
+  object-position: 30% center;
+  transform: scale(var(--photo-zoom, 1.06));
+  filter: saturate(0.65) brightness(0.64);
+}
+.epic-portrait > div {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #05070b00 10%,
+    #05070b55 45%,
+    #05070bed 75%,
+    #05070b
+  );
+}
+.epic-jurist h2 {
+  font-size: clamp(95px, 9vw, 160px);
+}
+.epic-jurist .epic-description {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 25px !important;
+  line-height: 1.3 !important;
+  color: #e1d9cd;
+}
+.epic-support {
+  font-size: 12px !important;
+  color: #b5b4b3;
+  max-width: 370px;
+  line-height: 1.9 !important;
+  margin-top: 24px !important;
+}
+.epic-photo-credit {
+  position: absolute;
+  bottom: 30px;
+  left: 9vw;
+  font-size: 7px;
+  letter-spacing: 0.22em;
+  color: #b7afa0;
+}
+.epic-library {
+  position: absolute;
+  inset: 0;
+  opacity: var(--book-presence);
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.epic-volume {
+  position: absolute;
+  left: 15%;
+  top: 22%;
+  height: 52%;
+  aspect-ratio: 0.68;
+  background: linear-gradient(
+    100deg,
+    #625035,
+    #18222e 5%,
+    #091522 92%,
+    #27394a
+  );
+  border: 1px solid #b5965055;
+  border-left: 7px solid #806b42;
+  box-shadow:
+    30px 35px 60px #0009,
+    inset 0 0 0 18px #b6964920;
+  transform: rotateY(var(--book-turn, -22deg)) rotateZ(-7deg);
+  z-index: 3;
+  padding: 35px 30px;
+  color: var(--epic-gold);
+  font-family: var(--font-display), Georgia, serif;
+}
+.epic-volume > span {
+  font-size: 55px;
+  display: block;
+  border-bottom: 1px solid #c8a45d55;
+  padding-bottom: 24px;
+}
+.epic-volume small {
+  display: block;
+  font-size: 27px;
+  letter-spacing: 0.13em;
+  margin-top: 30px;
+  line-height: 1.4;
+}
+.epic-volume i {
+  display: block;
+  font-size: 13px;
+  margin-top: 25px;
+  color: #c2b899;
+}
+.epic-volume b {
+  display: block;
+  position: absolute;
+  bottom: 40px;
+  font-weight: 300;
+  font-size: 18px;
+}
+.epic-volume-back {
+  left: 23%;
+  top: 20%;
+  transform: rotateY(var(--book-turn, -22deg)) rotateZ(7deg) translateZ(-80px);
+  background: linear-gradient(95deg, #615137, #b7a886);
+  z-index: 2;
+}
+.epic-volume-last {
+  left: 29%;
+  top: 25%;
+  transform: rotateY(var(--book-turn, -22deg)) rotateZ(18deg) translateZ(-130px);
+  background: linear-gradient(95deg, #263b4b, #102437);
+  z-index: 1;
+}
+.epic-knowledge h2 {
+  font-size: clamp(65px, 6.8vw, 115px);
+}
+.epic-knowledge-links {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+.epic-knowledge-links .epic-link {
+  gap: 20px;
+  font-size: 10px;
+}
+.epic-clarity {
+  justify-content: space-between;
+  gap: 6vw;
+}
+.epic-clarity .epic-copy {
+  width: 44%;
+  align-self: flex-start;
+  padding-top: 10vh;
+}
+.epic-clarity h2 {
+  font-size: clamp(55px, 5.5vw, 95px);
+}
+.epic-questions {
+  position: relative;
+  z-index: 3;
+  width: 49%;
+  max-height: 65vh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #9e834a #ffffff08;
+  padding-right: 20px;
+  touch-action: pan-y;
+}
+.epic-questions details {
+  border-bottom: 1px solid #c8a45d30;
+}
+.epic-questions details:first-child {
+  border-top: 1px solid #c8a45d30;
+}
+.epic-questions summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.epic-questions summary::-webkit-details-marker {
+  display: none;
+}
+.epic-questions summary > span {
+  display: flex;
+  gap: 20px;
+}
+.epic-questions summary small {
+  font-size: 8px;
+  color: var(--epic-gold);
+  padding-top: 3px;
+}
+.epic-questions svg {
+  flex-shrink: 0;
+  color: var(--epic-gold);
+  transition: transform 0.25s;
+}
+.epic-questions details[open] svg {
+  transform: rotate(45deg);
+}
+.epic-questions details > p {
+  font-size: 12px;
+  color: #b9b6b0;
+  line-height: 1.85;
+  padding: 0 10px 25px 32px;
+}
+.epic-finale .epic-copy {
+  padding-bottom: 75px;
+}
+.epic-finale h2 {
+  font-size: clamp(65px, 7.5vw, 132px);
+}
+.epic-finale:before {
+  background: radial-gradient(ellipse, #030508aa, transparent 90%);
+}
+.epic-final-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+  margin-top: 30px;
+  min-height: 60px;
+  color: var(--epic-gold) !important;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.epic-final-cta > span {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #c8a45d99;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+.epic-final-cta:hover > span {
+  background: var(--epic-gold);
+  color: #080c10;
+  transform: rotate(45deg);
+}
+.epic-final-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+  font-size: 10px;
+  color: #b7b2a9;
+}
+.epic-final-options a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.epic-confidential {
+  font-size: 8px !important;
+  color: #999b9d;
+  letter-spacing: 0.07em !important;
+  margin-top: 5px !important;
+}
+.epic-credits {
+  position: absolute;
+  bottom: 25px;
+  left: 9vw;
+  right: 9vw;
+  border-top: 1px solid #c8a45d33;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: #bcb5a8;
+  text-align: left;
+}
+.epic-credits small {
+  display: block;
+  margin-top: 7px;
+  font-size: 8px;
+  letter-spacing: 0;
+  color: #929399;
+}
+.epic-credits nav {
+  display: flex;
+  gap: 25px;
+}
+.epic-credits a {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+.epic-credits p {
+  width: 100%;
+  font-size: 8px !important;
+  color: #8b8e95;
+  line-height: 1.5 !important;
+  letter-spacing: 0;
+}
+.epic-controls {
+  position: relative;
+  min-height: 76px;
+  padding: 0 4.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  background: #05070bf5;
+  border-top: 1px solid #c8a45d26;
+  z-index: 12;
+}
+.epic-site[data-enhanced="true"] .epic-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.epic-controls:before {
+  position: absolute;
+  content: "";
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--epic-gold);
+  transform: scaleX(var(--epic-progress, 0));
+  transform-origin: left;
+}
+.epic-act-count {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 9px;
+  white-space: nowrap;
+  min-width: 230px;
+}
+.epic-act-count b {
+  font-weight: 400;
+  color: var(--epic-gold);
+}
+.epic-act-count i {
+  font-style: normal;
+  color: #7e8187;
+  font-size: 8px;
+}
+.epic-act-count > span {
+  margin-left: 12px;
+  color: #b0ada6;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+}
+.epic-controls > nav {
+  display: flex;
+  gap: 8px;
+}
+.epic-controls > nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  width: 26px;
+}
+.epic-controls > nav a > span {
+  width: 100%;
+  height: 2px;
+  background: #8c754442;
+  transition: background 0.3s;
+}
+.epic-controls > nav a[aria-current="step"] > span {
+  background: var(--epic-gold);
+}
+.epic-next {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: none;
+  border: 0;
+  color: #cbbd9f;
+  font-size: 9px !important;
+  letter-spacing: 0.04em;
+  min-height: 44px;
+}
+.epic-pause {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  border: 1px solid #c8a45d44;
+  border-radius: 50%;
+  background: none;
+  color: var(--epic-gold);
+}
+.epic-still * {
+  animation: none !important;
+  transition: none !important;
+}
+.epic-site:not([data-enhanced="true"]) .epic-index {
+  position: fixed;
+}
+.epic-site:not([data-enhanced="true"]) .epic-world {
+  position: fixed;
+  opacity: 0.25;
+}
+.epic-site:not([data-enhanced="true"]) .epic-controls {
+  display: none;
+}
+@keyframes epic-title {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@media (min-width: 1800px) {
+  .epic-site[data-enhanced="true"] .epic-act {
+    padding-inline: max(9vw, calc((100vw - 1550px) / 2));
+  }
+}
+@media (max-width: 1100px) {
+  .epic-header {
+    height: 72px;
+  }
+  .epic-site[data-enhanced="true"] .epic-act {
+    inset: 72px 0 70px;
+    padding: 35px 7vw;
+  }
+  .epic-copy {
+    width: 60%;
+  }
+  .epic-act h2 {
+    font-size: 7vw;
+  }
+  .epic-service h2 {
+    font-size: 6vw;
+  }
+  .epic-act h1 {
+    font-size: 12vw;
+  }
+  .epic-controls {
+    padding-inline: 4vw;
+    gap: 12px;
+    min-height: 70px;
+  }
+  .epic-act-count {
+    min-width: 180px;
+  }
+  .epic-controls > nav {
+    gap: 5px;
+  }
+  .epic-controls > nav a {
+    width: 17px;
+  }
+  .epic-next {
+    font-size: 8px !important;
+    gap: 10px;
+  }
+  .epic-jurist h2 {
+    font-size: 11vw;
+  }
+  .epic-volume {
+    padding: 25px 22px;
+    height: 45%;
+    top: 27%;
+  }
+  .epic-volume > span {
+    font-size: 35px;
+  }
+  .epic-volume small {
+    font-size: 21px;
+    margin-top: 20px;
+  }
+  .epic-volume-back {
+    top: 25%;
+  }
+  .epic-volume-last {
+    top: 30%;
+  }
+  .epic-knowledge-links {
+    gap: 10px;
+  }
+  .epic-clarity .epic-copy {
+    padding-top: 8vh;
+  }
+  .epic-index {
+    inset: 72px 0 70px;
+  }
+  .epic-index a {
+    font-size: 25px;
+  }
+}
+@media (max-width: 760px) {
+  .epic-site[data-enhanced="true"] {
+    height: 1000svh;
+  }
+  .epic-header {
+    height: 70px;
+    padding: 0 6vw;
+  }
+  .epic-logo {
+    gap: 12px;
+  }
+  .epic-logo b {
+    font-size: 27px;
+  }
+  .epic-logo > span {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+  .epic-logo small {
+    font-size: 5px;
+    margin-top: 5px;
+  }
+  .epic-header > div {
+    gap: 10px;
+  }
+  .epic-contact-shortcut {
+    font-size: 0;
+  }
+  .epic-contact-shortcut svg {
+    width: 18px;
+    height: 18px;
+  }
+  .epic-header button {
+    width: 40px;
+    height: 40px;
+  }
+  .epic-site[data-enhanced="true"] .epic-act {
+    inset: 70px 0 76px;
+    padding: 30px 7vw;
+    align-items: center;
+  }
+  .epic-copy,
+  .epic-align-right .epic-copy,
+  .epic-intro .epic-copy {
+    width: 100%;
+    max-width: none;
+  }
+  .epic-kicker {
+    font-size: 8px !important;
+    letter-spacing: 0.17em !important;
+    margin-bottom: 24px !important;
+  }
+  .epic-act h1 {
+    font-size: 17vw;
+    line-height: 0.95;
+  }
+  .epic-act h2,
+  .epic-service h2 {
+    font-size: 12vw;
+    line-height: 1.01;
+  }
+  .epic-description,
+  .epic-service .epic-description {
+    font-size: 13px !important;
+    line-height: 1.85 !important;
+    margin-top: 24px !important;
+    max-width: 100%;
+  }
+  .epic-location {
+    font-size: 7px !important;
+    margin-top: 30px !important;
+  }
+  .epic-intro {
+    align-items: flex-end !important;
+    padding-bottom: 10vh !important;
+  }
+  .epic-intro .epic-description {
+    max-width: 290px;
+  }
+  .epic-vignette {
+    background: linear-gradient(0deg, #030508ef 10%, #03050870 60%, #0305081a);
+    box-shadow: inset 0 0 80px 10px #03050888;
+  }
+  .epic-service:before,
+  .epic-service.epic-align-right:before {
+    background: linear-gradient(0deg, #030508ed 0%, #030508a8 65%, #03050822);
+  }
+  .epic-service .epic-copy {
+    padding-top: 11vh;
+  }
+  .epic-practice-note {
+    font-size: 8px !important;
+    letter-spacing: 0.06em !important;
+    margin-top: 21px !important;
+  }
+  .epic-link {
+    font-size: 11px;
+    margin-top: 23px;
+    gap: 28px;
+  }
+  .epic-sub-link {
+    font-size: 9px;
+    margin-top: 10px;
+  }
+  .epic-ghost-number {
+    font-size: 85vw;
+    right: 8%;
+    top: 3%;
+    color: #c8a45d0b;
+  }
+  .epic-method {
+    gap: 20px;
+    margin-top: 30px;
+    font-size: 9px;
+  }
+  .epic-method span {
+    min-width: 75px;
+  }
+  .epic-method small {
+    display: block;
+    margin: 0 0 8px;
+    font-size: 8px;
+  }
+  .epic-portrait img {
+    object-position: 31% center;
+    filter: saturate(0.65) brightness(0.66);
+  }
+  .epic-portrait > div {
+    background: linear-gradient(0deg, #05070b 0%, #05070bc9 40%, #05070b22 90%);
+  }
+  .epic-jurist {
+    align-items: flex-end !important;
+    padding-bottom: 50px !important;
+  }
+  .epic-jurist h2 {
+    font-size: 20vw;
+    line-height: 0.88;
+  }
+  .epic-jurist .epic-description {
+    font-size: 21px !important;
+    margin-top: 24px !important;
+  }
+  .epic-support {
+    font-size: 12px !important;
+    margin-top: 15px !important;
+    max-width: 330px;
+  }
+  .epic-jurist .epic-kicker {
+    font-size: 7px !important;
+    margin-bottom: 20px !important;
+  }
+  .epic-photo-credit {
+    font-size: 6px;
+    bottom: 19px;
+    left: 7vw;
+  }
+  .epic-knowledge {
+    align-items: flex-end !important;
+    padding-bottom: 7vh !important;
+  }
+  .epic-knowledge h2 {
+    font-size: 13vw;
+  }
+  .epic-knowledge .epic-description {
+    font-size: 12px !important;
+    max-width: 300px;
+  }
+  .epic-knowledge-links {
+    gap: 25px;
+  }
+  .epic-knowledge-links .epic-link {
+    font-size: 10px;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  .epic-volume {
+    height: 34%;
+    left: 16%;
+    top: 12%;
+    padding: 22px 18px;
+    border-left-width: 4px;
+    box-shadow:
+      20px 25px 45px #0008,
+      inset 0 0 0 10px #b6964920;
+  }
+  .epic-volume > span {
+    font-size: 30px;
+    padding-bottom: 12px;
+  }
+  .epic-volume small {
+    font-size: 17px;
+    margin-top: 14px;
+  }
+  .epic-volume i {
+    font-size: 9px;
+    margin-top: 14px;
+  }
+  .epic-volume b {
+    font-size: 12px;
+    bottom: 20px;
+  }
+  .epic-volume-back {
+    left: 31%;
+    top: 11%;
+  }
+  .epic-volume-last {
+    left: 43%;
+    top: 14%;
+  }
+  .epic-clarity {
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 20px;
+  }
+  .epic-clarity .epic-copy {
+    width: 100%;
+    padding-top: 0;
+  }
+  .epic-clarity .epic-kicker {
+    font-size: 7px !important;
+    margin-bottom: 14px !important;
+  }
+  .epic-clarity h2 {
+    font-size: 11vw;
+  }
+  .epic-clarity .epic-description {
+    font-size: 11px !important;
+    margin-top: 15px !important;
+    line-height: 1.7 !important;
+  }
+  .epic-questions {
+    width: 100%;
+    min-height: 0;
+    max-height: none;
+    flex: 1;
+    padding-right: 12px;
+    margin-bottom: 10px;
+  }
+  .epic-questions summary {
+    font-size: 12px;
+    padding: 18px 0;
+    gap: 10px;
+  }
+  .epic-questions summary > span {
+    gap: 13px;
+  }
+  .epic-questions details > p {
+    font-size: 12px;
+    padding-left: 22px;
+  }
+  .epic-finale .epic-copy {
+    padding-bottom: 110px;
+  }
+  .epic-finale h2 {
+    font-size: 12.1vw;
+  }
+  .epic-finale .epic-kicker {
+    font-size: 7px !important;
+    margin-bottom: 24px !important;
+  }
+  .epic-finale .epic-description {
+    font-size: 12px !important;
+  }
+  .epic-final-cta {
+    font-size: 10px;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .epic-final-cta > span {
+    width: 49px;
+    height: 49px;
+  }
+  .epic-final-options {
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 9px;
+  }
+  .epic-confidential {
+    font-size: 7px !important;
+    letter-spacing: 0 !important;
+  }
+  .epic-credits {
+    left: 7vw;
+    right: 7vw;
+    bottom: 13px;
+    padding-top: 15px;
+    gap: 10px;
+    font-size: 7px;
+  }
+  .epic-credits > span {
+    width: 100%;
+    line-height: 1.6;
+  }
+  .epic-credits small {
+    font-size: 7px;
+    margin-top: 4px;
+    max-width: 290px;
+  }
+  .epic-credits nav {
+    gap: 24px;
+  }
+  .epic-credits a {
+    min-height: 30px;
+  }
+  .epic-credits p {
+    font-size: 6px !important;
+    max-width: 310px;
+  }
+  .epic-controls {
+    min-height: 76px;
+    padding: 0 6vw;
+    gap: 15px;
+  }
+  .epic-act-count {
+    min-width: 0;
+    flex: 1;
+    gap: 6px;
+    font-size: 9px;
+  }
+  .epic-act-count > span {
+    display: none;
+  }
+  .epic-controls > nav {
+    position: absolute;
+    top: 0;
+    left: 6vw;
+    right: 6vw;
+    justify-content: space-between;
+    gap: 5px;
+    transform: translateY(-3px);
+  }
+  .epic-controls > nav a {
+    height: 20px;
+    min-height: 20px;
+    flex: 1;
+  }
+  .epic-controls > nav a > span {
+    height: 1px;
+  }
+  .epic-next {
+    font-size: 8px !important;
+    gap: 10px;
+    min-height: 44px;
+  }
+  .epic-pause {
+    min-width: 40px;
+    height: 40px;
+  }
+  .epic-index {
+    inset: 70px 0 76px;
+    display: block;
+    padding: 12px 7vw;
+    align-content: start;
+  }
+  .epic-index a {
+    font-size: 23px;
+    padding: 17px 0;
+    gap: 18px;
+  }
+  .epic-index small {
+    font-size: 8px;
+  }
+  .epic-fallback {
+    font-size: 60vh;
+    right: -5vw;
+    top: 6vh;
+  }
+  .epic-site:not([data-enhanced="true"]) .epic-act {
+    padding: 80px 7vw;
+    min-height: 100svh;
+  }
+  .epic-site:not([data-enhanced="true"]) .epic-questions {
+    max-height: 60vh;
+    flex: auto;
+  }
+  .epic-site:not([data-enhanced="true"]) .epic-finale {
+    min-height: 1100px;
+  }
+}
+@media (max-height: 730px) {
+  .epic-site[data-enhanced="true"] .epic-act {
+    padding-block: 20px;
+  }
+  .epic-kicker {
+    margin-bottom: 17px !important;
+  }
+  .epic-description {
+    margin-top: 20px !important;
+  }
+  .epic-act h1 {
+    font-size: 9.8vw;
+  }
+  .epic-act h2 {
+    font-size: 5.5vw;
+  }
+  .epic-service .epic-description {
+    font-size: 12px !important;
+  }
+  .epic-link {
+    margin-top: 16px;
+  }
+  .epic-final-cta {
+    margin-top: 18px;
+  }
+  .epic-support {
+    margin-top: 16px !important;
+  }
+  .epic-jurist .epic-description {
+    margin-top: 18px !important;
+  }
+}
+@media (max-height: 730px) and (max-width: 760px) {
+  .epic-act h1 {
+    font-size: 16vw;
+  }
+  .epic-act h2 {
+    font-size: 10.8vw;
+  }
+  .epic-intro {
+    padding-bottom: 7vh !important;
+  }
+  .epic-service .epic-copy {
+    padding-top: 3vh;
+  }
+  .epic-service .epic-description {
+    font-size: 12px !important;
+    margin-top: 18px !important;
+  }
+  .epic-kicker {
+    font-size: 7px !important;
+  }
+  .epic-practice-note {
+    margin-top: 14px !important;
+  }
+  .epic-sub-link {
+    margin-top: 0;
+  }
+  .epic-jurist h2 {
+    font-size: 17vw;
+  }
+  .epic-jurist .epic-description {
+    font-size: 18px !important;
+  }
+  .epic-support {
+    font-size: 11px !important;
+    line-height: 1.7 !important;
+  }
+  .epic-jurist {
+    padding-bottom: 37px !important;
+  }
+  .epic-knowledge h2 {
+    font-size: 11vw;
+  }
+  .epic-volume {
+    top: 13%;
+    height: 28%;
+  }
+  .epic-volume i {
+    display: none;
+  }
+  .epic-volume small {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .epic-volume > span {
+    font-size: 24px;
+    padding-bottom: 8px;
+  }
+  .epic-volume b {
+    font-size: 9px;
+    bottom: 14px;
+  }
+  .epic-clarity .epic-description {
+    display: none;
+  }
+  .epic-finale .epic-copy {
+    padding-bottom: 125px;
+  }
+  .epic-finale h2 {
+    font-size: 10.6vw;
+  }
+  .epic-finale .epic-kicker {
+    margin-bottom: 15px !important;
+  }
+  .epic-final-cta {
+    margin-top: 10px;
+    min-height: 45px;
+  }
+  .epic-final-cta > span {
+    width: 42px;
+    height: 42px;
+  }
+  .epic-final-options {
+    margin-top: 2px;
+  }
+  .epic-final-options a {
+    min-height: 34px;
+  }
+  .epic-confidential {
+    margin-top: 0 !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .epic-site * {
+    animation: none !important;
+    transition: none !important;
+  }
+  html:has(.epic-site) {
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .epic-portrait img {
+    object-position: 50% 28%;
+  }
+}
+/* Short landscape screens and zoomed viewports retain access to every line. */
+@media (max-height: 550px) {
+  .epic-site[data-enhanced="true"] .epic-act {
+    overflow-y: auto;
+    align-items: flex-start;
+    scrollbar-width: thin;
+    scrollbar-color: #9e834a #ffffff08;
+  }
+  .epic-act .epic-copy {
+    flex-shrink: 0;
+    padding-top: 0;
+    padding-bottom: 25px;
+  }
+  .epic-site[data-enhanced="true"] .epic-intro,
+  .epic-site[data-enhanced="true"] .epic-jurist,
+  .epic-site[data-enhanced="true"] .epic-knowledge {
+    align-items: flex-start !important;
+  }
+  .epic-finale {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .epic-finale .epic-copy {
+    padding-bottom: 25px;
+  }
+  .epic-finale .epic-credits {
+    position: relative;
+    inset: auto;
+    margin-top: 10px;
+    flex-shrink: 0;
+    width: 100%;
+  }
+  .epic-clarity .epic-copy {
+    padding-top: 0;
+  }
+}

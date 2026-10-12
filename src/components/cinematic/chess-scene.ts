@@ -9,7 +9,7 @@ const smooth = (a: number, b: number, p: number) =>
 /** A procedural sculpture: no remote model, texture, tracking or asset request. */
 export function mountChessScene(
   host: HTMLElement,
-  mode: "story" | "film" = "story",
+  mode: "story" | "film" | "epic" = "story",
 ) {
   const mobile = matchMedia("(max-width: 760px)").matches;
   const renderer = new THREE.WebGLRenderer({
@@ -220,7 +220,7 @@ export function mountChessScene(
       depthWrite: false,
     }),
   );
-  dust.visible = mode === "film";
+  dust.visible = mode !== "story";
   scene.add(dust);
 
   let progress = 0,
@@ -298,6 +298,54 @@ export function mountChessScene(
       rim.intensity = 4;
       scene.environmentIntensity = 0.22;
       renderer.toneMappingExposure = 0.85;
+    }
+    if (mode === "epic") {
+      const act = progress * 9;
+      const index = Math.min(8, Math.floor(act));
+      const t = THREE.MathUtils.smoothstep(act - index, 0.25, 0.85);
+      // x, y, camera distance, yaw, separation, orbital presence
+      const shots = [
+        [1.55, -0.25, 4.1, -0.85, 0, 0],
+        [1.2, -0.4, 8.1, 0.4, 1, 0],
+        [-2.05, -0.35, 8.6, 1.4, 0, 1],
+        [2.15, -0.7, 8.5, 2.2, 1.2, 0.5],
+        [-2.3, -0.15, 7.6, 3.5, 0.15, 1],
+        [2.3, -0.1, 9.2, 4.1, 0, 0.25],
+        [0, -0.3, 13, 4.5, 0, 0],
+        [-2.2, -0.4, 13, 5, 0, 0],
+        [0, -0.5, 14, 5.4, 0, 0],
+        [0, -0.1, 7.8, 6.05, 0, 0.4],
+      ];
+      const a = shots[index],
+        b = shots[index + 1];
+      const values = a.map((value, i) => mix(value, b[i], t));
+      camera.position.set(
+        0,
+        0.6,
+        narrow ? Math.max(values[2] * 1.12, 7.2) : values[2],
+      );
+      camera.lookAt(0, 0.1, 0);
+      sculpture.position.set(
+        narrow ? 0.1 : values[0],
+        narrow ? -0.35 : values[1],
+        0,
+      );
+      sculpture.scale.setScalar(narrow ? 0.83 : 1);
+      sculpture.rotation.set(0.05, values[3], -0.03);
+      body.position.y = values[4] * 0.25;
+      crown.position.y = values[4] * 0.75;
+      crown.rotation.y = values[4] * 0.4;
+      base.position.y = -values[4] * 0.1;
+      board.visible = false;
+      orbit.visible = values[5] > 0.01;
+      orbit.position.copy(sculpture.position);
+      orbit.scale.setScalar(narrow ? 0.8 : 1);
+      subtleGold.opacity = values[5] * 0.28;
+      dust.rotation.y = progress * 0.65;
+      key.intensity = 1.45;
+      rim.intensity = 4;
+      scene.environmentIntensity = 0.23;
+      renderer.toneMappingExposure = 0.92;
     }
     renderer.render(scene, camera);
     if (Math.abs(progress - target) > 0.0002)

@@ -17,6 +17,7 @@ export function SmoothScroll() {
       lerp: 0.075,
       smoothWheel: true,
       syncTouch: false,
+      allowNestedScroll: true,
       anchors: {
         offset: -88,
       },
