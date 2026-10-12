@@ -1531,3 +1531,22 @@
   .epic-site.epic-flow .epic-motion-toggle { bottom: 12px; right: 12px; }
   .epic-site.epic-flow .epic-credits { padding-right: 30px; }
 }
+
+/* Editorial hierarchy and a quieter reading rhythm. */
+.epic-practice-heading { position: relative; padding: 90px 9vw 65px; background: #050a11e8; border-bottom: 1px solid #c8a45d30; }
+.epic-practice-heading h2 { font-size: clamp(42px,5vw,82px); line-height: 1.05; }
+.epic-practice-heading > p:last-child { max-width: 380px; margin-top: 28px; font-size: 14px; line-height: 1.85; color: #b9b6b0; }
+.epic-site.epic-flow .epic-service-prevention { min-height: 480px; background: linear-gradient(110deg,#142538ef,#080f19bb); }
+.epic-site.epic-flow .epic-service-rights { min-height: 500px; }
+.epic-site.epic-flow .epic-more-questions > summary { color: var(--epic-gold); font-size: 12px; letter-spacing: 0.04em; }
+.epic-more-questions[open] > div { border-top: 1px solid #c8a45d30; }
+.epic-site.epic-flow .epic-more-questions details:not([open]) svg { transform: none; }
+.epic-site.epic-flow .epic-link svg { transition: transform .25s ease; }
+.epic-site.epic-flow .epic-link:hover svg { transform: translate(3px,-3px); }
+.epic-site.epic-flow .epic-hero-actions .epic-link { padding: 16px 22px; background: #c8a45d; color: #101720; border: 1px solid #c8a45d; }
+.epic-site.epic-flow .epic-hero-actions .epic-link:hover { background: #dfbd7a; }
+@media(max-width:760px) {
+  .epic-practice-heading { padding: 65px 7vw 50px; }
+  .epic-practice-heading h2 { font-size: clamp(38px,10vw,64px); }
+  .epic-site.epic-flow .epic-service-prevention, .epic-site.epic-flow .epic-service-rights { min-height: 0; }
+}

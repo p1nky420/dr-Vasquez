@@ -302,7 +302,7 @@ export function mountChessScene(
     if (mode === "epic") {
       const act = progress * 9;
       const index = Math.min(8, Math.floor(act));
-      const t = THREE.MathUtils.smoothstep(act - index, 0.25, 0.85);
+      const t = THREE.MathUtils.smoothstep(act - index, 0, 1);
       // x, y, camera distance, yaw, separation, orbital presence
       const shots = [
         [1.55, -0.25, 4.1, -0.85, 0, 0],
@@ -320,9 +320,9 @@ export function mountChessScene(
         b = shots[index + 1];
       const values = a.map((value, i) => mix(value, b[i], t));
       camera.position.set(
-        0,
-        0.6,
-        narrow ? Math.max(values[2] * 1.12, 7.2) : values[2],
+        Math.sin(act * 1.1) * (narrow ? 0.2 : 0.8),
+        0.8 + Math.sin(act * 1.3) * 1.8,
+        narrow ? Math.max(values[2] * 1.2, 8) : values[2] + 1.2,
       );
       camera.lookAt(0, 0.1, 0);
       sculpture.position.set(
@@ -331,21 +331,35 @@ export function mountChessScene(
         0,
       );
       sculpture.scale.setScalar(narrow ? 0.83 : 1);
-      sculpture.rotation.set(0.05, values[3], -0.03);
+      sculpture.rotation.set(
+        Math.sin(act * 1.7) * 0.2,
+        values[3] + act * 1.7,
+        Math.sin(act * 1.1) * 0.22,
+      );
       body.position.y = values[4] * 0.25;
       crown.position.y = values[4] * 0.75;
-      crown.rotation.y = values[4] * 0.4;
+      crown.rotation.y = values[4] * Math.PI * 1.5;
       base.position.y = -values[4] * 0.1;
-      board.visible = false;
+      const boardReveal = Math.max(
+        1 - smooth(0, 0.8, Math.abs(act - 1)),
+        1 - smooth(0, 0.8, Math.abs(act - 4)),
+      );
+      board.visible = boardReveal > 0.01;
+      board.scale.setScalar(Math.max(0.001, boardReveal));
+      board.position.y = -(1 - boardReveal) * 0.8;
+      board.rotation.y = -act * 0.35;
+      orbit.rotation.set(act * 0.45, act * 0.8, act * 0.3);
+      marker.position.set(Math.cos(act * 2.2) * 2.85, Math.sin(act * 2.2) * 2.85, 0);
       orbit.visible = values[5] > 0.01;
       orbit.position.copy(sculpture.position);
       orbit.scale.setScalar(narrow ? 0.8 : 1);
       subtleGold.opacity = values[5] * 0.28;
       dust.rotation.y = progress * 0.65;
-      key.intensity = 1.45;
-      rim.intensity = 4;
-      scene.environmentIntensity = 0.23;
-      renderer.toneMappingExposure = 0.92;
+      key.position.set(3 + Math.sin(act) * 2, 5, 6);
+      key.intensity = 2.3;
+      rim.intensity = 5.2;
+      scene.environmentIntensity = 0.34;
+      renderer.toneMappingExposure = 1.02;
     }
     renderer.render(scene, camera);
     if (Math.abs(progress - target) > 0.0002)

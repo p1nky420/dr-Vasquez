@@ -408,6 +408,11 @@ export function EpicExperience() {
               </div>
             </div>
           </section>
+          <div className="epic-practice-heading">
+            <p className="epic-kicker">Áreas de práctica</p>
+            <h2>Una mirada integral.<br /><em>Una estrategia propia.</em></h2>
+            <p>Cada asunto exige una lectura distinta. Explore cómo abordamos el suyo.</p>
+          </div>
           {serviceScenes.map((item, index) => {
             const service = serviceCategories[item.source];
             return (
@@ -487,7 +492,7 @@ export function EpicExperience() {
             id="conocimiento"
             className="epic-act epic-align-right epic-knowledge"
           >
-          <div className="epic-library">
+          <div className="epic-library" aria-hidden="true">
             <div className="epic-volume">
               <span>FV</span>
               <small>
@@ -547,7 +552,7 @@ export function EpicExperience() {
               role="region"
               aria-label="Preguntas frecuentes"
             >
-              {faqs.map((faq, i) => (
+              {faqs.slice(0, 6).map((faq, i) => (
                 <details key={faq.question}>
                   <summary>
                     <span>
@@ -559,6 +564,21 @@ export function EpicExperience() {
                   <p>{faq.answer}</p>
                 </details>
               ))}
+              <details className="epic-more-questions">
+                <summary>Ver todas las preguntas <Plus size={16} /></summary>
+                <div>              {faqs.slice(6).map((faq, i) => (
+                <details key={faq.question}>
+                  <summary>
+                    <span>
+                      <small>{String(i + 7).padStart(2, "0")}</small>
+                      {faq.question}
+                    </span>
+                    <Plus size={16} />
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}</div>
+              </details>
             </div>
           </section>
           <section
