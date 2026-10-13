@@ -62,6 +62,7 @@ const serviceScenes = [
     route: "/derecho-penal-economico",
     visual: "economic",
     note: "Empresa · Patrimonio · Reputación",
+    principle: "Comprender el escenario",
   },
   {
     source: 0,
@@ -75,6 +76,7 @@ const serviceScenes = [
     route: "/areas-de-practica/litigio-penal-estrategico",
     visual: "defense",
     note: "Hechos · Prueba · Teoría del caso",
+    principle: "Construir una posición de defensa",
   },
   {
     source: 2,
@@ -88,6 +90,7 @@ const serviceScenes = [
     route: "/areas-de-practica",
     visual: "prevention",
     note: "Anticipación · Análisis · Criterio",
+    principle: "Trazar la ruta antes de avanzar",
   },
   {
     source: 3,
@@ -101,6 +104,7 @@ const serviceScenes = [
     route: "/areas-de-practica/constitucional-penal",
     visual: "rights",
     note: "Libertad · Debido proceso · Garantías",
+    principle: "Preservar el equilibrio",
   },
 ];
 
@@ -175,7 +179,7 @@ export function EpicExperience() {
       if (disposed || document.hidden || !visible) return;
       // Interpolate camera positions from the actual document sections, including
       // expanded FAQ content; the page itself remains in normal scroll flow.
-      const anchor = innerHeight * 0.35;
+      const anchor = 80;
       const tops = sections.map(section => section.getBoundingClientRect().top);
       let index = 0;
       while (index < tops.length - 1 && tops[index + 1] <= anchor) index++;
@@ -429,6 +433,7 @@ export function EpicExperience() {
                   <h2>{item.title}</h2>
                   <p className="epic-description">{service.description}</p>
                   <p className="epic-practice-note">{item.note}</p>
+                  <p className="epic-principle"><span aria-hidden="true" />{item.principle}</p>
                   <Link className="epic-link" href={item.route}>
                     Explorar esta especialidad <ArrowUpRight size={17} />
                   </Link>
@@ -480,6 +485,9 @@ export function EpicExperience() {
                 reúne análisis de la prueba, preparación del litigio y atención
                 personal.
               </p>
+              <div className="epic-jurist-fields" aria-label="Práctica profesional">
+                <span>Defensa penal</span><span>Docencia</span><span>Pensamiento jurídico</span>
+              </div>
               <Link className="epic-link" href="/firma">
                 Conocer su trayectoria <ArrowUpRight size={17} />
               </Link>
@@ -586,11 +594,11 @@ export function EpicExperience() {
             className="epic-act epic-finale epic-center"
           >
             <div className="epic-copy">
-              <p className="epic-kicker">El siguiente movimiento es suyo</p>
+              <p className="epic-kicker">Conversemos. En absoluta reserva.</p>
               <h2>
-                Conversemos.
+                Su siguiente
                 <br />
-                <em>En absoluta reserva.</em>
+                <em>movimiento.</em>
               </h2>
               <p className="epic-description">
                 Su caso merece rigor, criterio y serenidad.

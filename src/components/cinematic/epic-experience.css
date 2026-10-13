@@ -1550,3 +1550,27 @@
   .epic-practice-heading h2 { font-size: clamp(38px,10vw,64px); }
   .epic-site.epic-flow .epic-service-prevention, .epic-site.epic-flow .epic-service-rights { min-height: 0; }
 }
+
+/* Narrative contrast: strategy in shadow, knowledge on paper. */
+.epic-site.epic-flow .epic-service-prevention { background: linear-gradient(110deg,#14253898,#080f1944); }
+.epic-principle { display: flex; align-items: center; gap: 12px; margin-top: 22px !important; color: #dfc792; font-size: 11px; letter-spacing: .025em; }
+.epic-principle > span { width: 26px; height: 1px; background: currentColor; }
+.epic-jurist-fields { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 26px; color: #e6d5ae; font-size: 10px; }
+.epic-jurist-fields span { border-top: 1px solid #c8a45d66; padding-top: 12px; }
+.epic-site.epic-flow .epic-knowledge { background: #f2ece2; color: #172434; border-color: #c1b395; }
+.epic-site.epic-flow .epic-knowledge .epic-kicker { color: #76603c; }
+.epic-site.epic-flow .epic-knowledge em { color: #87682f; }
+.epic-site.epic-flow .epic-knowledge .epic-description { color: #53606a; }
+.epic-site.epic-flow .epic-knowledge .epic-link { color: #172434; border-color: #9b814e; }
+.epic-site.epic-flow .epic-knowledge .epic-link svg { color: #87682f; }
+.epic-site.epic-flow .epic-knowledge .epic-volume { box-shadow: 25px 35px 50px #24354733, inset 0 0 0 18px #b6964920; }
+.epic-site.epic-flow .epic-jurist { margin-block: 0; min-height: 920px; }
+.epic-site.epic-flow .epic-finale { min-height: 880px; }
+.epic-site.epic-flow .epic-finale h2 { font-size: clamp(78px,9vw,145px); }
+.epic-site.epic-flow .epic-finale:before { background: radial-gradient(ellipse at 50% 35%,#03050888,transparent 85%); }
+@media(max-width:760px) {
+  .epic-site.epic-flow .epic-jurist { min-height: 920px; }
+  .epic-site.epic-flow .epic-finale { min-height: 820px; }
+  .epic-site.epic-flow .epic-finale h2 { font-size: 16vw; }
+  .epic-principle { font-size: 10px; }
+}

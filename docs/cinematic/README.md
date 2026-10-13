@@ -73,3 +73,19 @@ Validation: ESLint and production build passed. In-app browser verified at 1440�
 3D canvas, working contact navigation and FAQ expansion. No browser console errors
 were reported. Earlier scene/inert assertions in verification.json describe the
 superseded presentation layout and do not apply to this revision.
+
+## Narrative chess scene
+
+The scene now adds four shared-geometry defenders (two when initialized on mobile),
+a progressively illuminated route and a final pawn move. Defense assembles a
+protective formation, prevention reveals the route, guarantees balance the pieces,
+and the consultation finale completes the move. Camera elevation and board framing
+support these beats; section alignment uses the header offset. Knowledge introduces
+an ivory editorial section, the profile highlights existing professional fields,
+and the final headline is “Su siguiente movimiento.”
+
+Validation: lint and production build passed. Browser checks at 1440×1000 and
+390×844 confirmed the board, route, portrait/publications layout, contact finale,
+no mobile horizontal overflow, one H1 and working pause/resume control. No console
+errors were reported. Motion remains scroll-driven with the existing reduced-motion
+handling and on-demand rendering.

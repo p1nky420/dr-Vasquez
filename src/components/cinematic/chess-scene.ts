@@ -179,6 +179,48 @@ export function mountChessScene(
   bottom.position.y = -2.3;
   board.add(bottom);
 
+  // A small cast shares geometry/materials; mobile keeps only two defenders.
+  const defenders: THREE.Group[] = [];
+  const pawnBody = new THREE.LatheGeometry([
+    new THREE.Vector2(0, 0), new THREE.Vector2(0.26, 0),
+    new THREE.Vector2(0.28, 0.1), new THREE.Vector2(0.2, 0.18),
+    new THREE.Vector2(0.12, 0.42), new THREE.Vector2(0.16, 0.55),
+    new THREE.Vector2(0, 0.57),
+  ], mobile ? 20 : 32);
+  const pawnHead = new THREE.SphereGeometry(0.18, mobile ? 12 : 24, 12);
+  for (let i = 0; i < (mobile ? 2 : 4); i++) {
+    const piece = new THREE.Group();
+    piece.visible = mode === "epic";
+    piece.add(new THREE.Mesh(pawnBody, i % 2 ? dark : ivory));
+    const head = new THREE.Mesh(pawnHead, gold);
+    head.position.y = 0.69;
+    piece.add(head);
+    board.add(piece);
+    defenders.push(piece);
+  }
+  const routeMaterial = new THREE.MeshBasicMaterial({
+    color: 0xe8c783, transparent: true, opacity: 0, depthWrite: false,
+  });
+  const route = new THREE.Group();
+  board.add(route);
+  // An L-shaped illuminated route across squares, revealed segment by segment.
+  const routeSegments: THREE.Mesh[] = [];
+  for (let i = 0; i < 3; i++) {
+    const segment = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.014, 0.035), routeMaterial);
+    segment.position.set(-1.36 + i * 0.68, -1.953, 1.36);
+    route.add(segment);
+    routeSegments.push(segment);
+  }
+  const turn = new THREE.Mesh(new THREE.BoxGeometry(0.035, 0.014, 0.68), routeMaterial);
+  turn.position.set(0, -1.953, 1.02);
+  route.add(turn);
+  routeSegments.push(turn);
+  const destination = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.018, 8, 32), routeMaterial);
+  destination.rotation.x = Math.PI / 2;
+  destination.position.set(0, -1.95, 0.68);
+  route.add(destination);
+  board.visible = mode === "story";
+
   const orbit = new THREE.Group();
   scene.add(orbit);
   for (let i = 0; i < 2; i++) {
@@ -308,20 +350,23 @@ export function mountChessScene(
         [1.55, -0.25, 4.1, -0.85, 0, 0],
         [1.2, -0.4, 8.1, 0.4, 1, 0],
         [-2.05, -0.35, 8.6, 1.4, 0, 1],
-        [2.15, -0.7, 8.5, 2.2, 1.2, 0.5],
-        [-2.3, -0.15, 7.6, 3.5, 0.15, 1],
-        [2.3, -0.1, 9.2, 4.1, 0, 0.25],
+        [1.7, -0.1, 11.8, 2.2, 0, 0.25],
+        [-1.8, -0.1, 12.2, 3.5, 0, 0.3],
+        [1.8, -0.1, 11.8, 4.1, 0, 0.25],
         [0, -0.3, 13, 4.5, 0, 0],
         [-2.2, -0.4, 13, 5, 0, 0],
         [0, -0.5, 14, 5.4, 0, 0],
-        [0, -0.1, 7.8, 6.05, 0, 0.4],
+        [0, 0, 12.5, 6.05, 0, 0.2],
       ];
       const a = shots[index],
         b = shots[index + 1];
       const values = a.map((value, i) => mix(value, b[i], t));
+      const strategyPresence = smooth(2.2, 2.9, act) * (1 - smooth(5.2, 5.8, act));
+      const finalePresence = smooth(8.3, 8.85, act);
+      const stagePresence = Math.max(strategyPresence, finalePresence);
       camera.position.set(
         Math.sin(act * 1.1) * (narrow ? 0.2 : 0.8),
-        0.8 + Math.sin(act * 1.3) * 1.8,
+        mix(0.8 + Math.sin(act * 1.3) * 1.8, 4.5, stagePresence),
         narrow ? Math.max(values[2] * 1.2, 8) : values[2] + 1.2,
       );
       camera.lookAt(0, 0.1, 0);
@@ -332,9 +377,9 @@ export function mountChessScene(
       );
       sculpture.scale.setScalar(narrow ? 0.83 : 1);
       sculpture.rotation.set(
-        Math.sin(act * 1.7) * 0.2,
-        values[3] + act * 1.7,
-        Math.sin(act * 1.1) * 0.22,
+        Math.sin(act * 1.7) * 0.2 * (1 - stagePresence),
+        mix(values[3] + act * 1.7, Math.PI * 2 * 2 - 0.35 + (act - 3) * 0.13, stagePresence),
+        Math.sin(act * 1.1) * 0.22 * (1 - stagePresence),
       );
       body.position.y = values[4] * 0.25;
       crown.position.y = values[4] * 0.75;
@@ -342,12 +387,43 @@ export function mountChessScene(
       base.position.y = -values[4] * 0.1;
       const boardReveal = Math.max(
         1 - smooth(0, 0.8, Math.abs(act - 1)),
-        1 - smooth(0, 0.8, Math.abs(act - 4)),
+        stagePresence,
       );
       board.visible = boardReveal > 0.01;
       board.scale.setScalar(Math.max(0.001, boardReveal));
       board.position.y = -(1 - boardReveal) * 0.8;
-      board.rotation.y = -act * 0.35;
+      board.rotation.y = mix(-act * 0.35, 0, stagePresence);
+      const formation = smooth(2.3, 3.2, act);
+      const balance = smooth(4.5, 5.15, act);
+      defenders.forEach((piece, i) => {
+        const side = i % 2 ? 1 : -1;
+        const row = Math.floor(i / 2);
+        const targetX = side * (row ? 1.36 : 0.68);
+        piece.position.set(
+          mix(side * 2.5, targetX, formation),
+          -1.95 + Math.sin(formation * Math.PI) * 0.35,
+          mix(1.36 + row * 0.1, row ? -0.68 : 0.68, balance),
+        );
+        piece.scale.setScalar(Math.max(0.001, stagePresence));
+      });
+      const routePresence = (1 - smooth(0.35, 1, Math.abs(act - 4))) + finalePresence;
+      routeMaterial.opacity = Math.min(0.9, routePresence);
+      route.visible = routePresence > 0.01;
+      const pathProgress = Math.max(smooth(3.5, 4.4, act) * (1 - smooth(4.6, 5.2, act)), finalePresence);
+      routeSegments.forEach((segment, i) => {
+        const reveal = smooth(i / 4, (i + 1) / 4, pathProgress);
+        segment.scale.set(i === 3 ? 1 : Math.max(0.001, reveal), 1, i === 3 ? Math.max(0.001, reveal) : 1);
+        segment.visible = reveal > 0.01;
+      });
+      destination.visible = pathProgress > 0.95;
+      // The final pawn follows the same marked route and settles at its end.
+      if (finalePresence > 0) {
+        const moving = defenders[0];
+        const advance = smooth(8.3, 8.95, act);
+        moving.position.x = mix(-1.36, 0, Math.min(1, advance * 1.5));
+        moving.position.z = mix(1.36, 0.68, smooth(0.65, 1, advance));
+        moving.position.y = -1.95;
+      }
       orbit.rotation.set(act * 0.45, act * 0.8, act * 0.3);
       marker.position.set(Math.cos(act * 2.2) * 2.85, Math.sin(act * 2.2) * 2.85, 0);
       orbit.visible = values[5] > 0.01;
