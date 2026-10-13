@@ -1574,3 +1574,12 @@
   .epic-site.epic-flow .epic-finale h2 { font-size: 16vw; }
   .epic-principle { font-size: 10px; }
 }
+
+.epic-endgame { position:relative; height:190svh; border-top:1px solid #c8a45d30; }
+.epic-endgame-stage { position:sticky; top:80px; height:calc(100svh - 80px); padding:65px 9vw; text-align:center; display:flex; flex-direction:column; align-items:center; pointer-events:none; }
+.epic-endgame h2 { font-size:clamp(55px,7.5vw,120px); line-height:1; text-shadow:0 3px 35px #000; opacity:var(--finale-reveal,1); transform:translateY(calc((1 - var(--finale-reveal,1))*24px)); }
+.epic-endgame-caption { display:flex; gap:32px; margin-top:auto; color:#dfc792; font-size:12px; letter-spacing:.1em; text-shadow:0 2px 15px #000; }
+.epic-endgame-skip { pointer-events:auto; display:flex; align-items:center; gap:15px; padding:18px; font-size:11px; margin-top:12px; background:#05070b99; }
+.epic-site:not([data-enhanced="true"]) .epic-endgame { height:auto; }
+@media(max-width:760px) { .epic-endgame { height:160svh; } .epic-endgame-stage { top:70px; height:calc(100svh - 70px); padding:50px 7vw 25px; } .epic-endgame h2 {font-size:12vw;} .epic-endgame-caption {gap:20px;font-size:10px;} }
+@media(prefers-reduced-motion:reduce) { .epic-endgame {height:auto;} .epic-endgame-stage {position:relative;top:auto;min-height:450px;height:auto;gap:30px;} }

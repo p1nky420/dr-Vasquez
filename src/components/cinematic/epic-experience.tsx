@@ -115,6 +115,7 @@ export function EpicExperience() {
   const current = useRef(0);
   const motionOff = useRef(false);
   const cameraProgress = useRef(0);
+  const finaleProgress = useRef(0);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -172,6 +173,8 @@ export function EpicExperience() {
       visible = true,
       entrance = 0;
     let started = performance.now();
+    let cursorX = 0, cursorY = 0, contactHover = 0;
+    const finale = el.querySelector<HTMLElement>(".epic-endgame");
     const sections = Array.from(el.querySelectorAll<HTMLElement>(".epic-act"));
     const clamp = (n: number) => Math.max(0, Math.min(1, n));
     const render = () => {
@@ -221,13 +224,26 @@ export function EpicExperience() {
       el.dataset.act = String(next);
       if (!motionOff.current)
         cameraProgress.current = Math.min(1, raw + entrance * 0.009);
-      scene.current?.update(cameraProgress.current, 0, 0, motionOff.current);
+      const finish = finale ? clamp((innerHeight - finale.getBoundingClientRect().top) / finale.offsetHeight) : 0;
+      if (!motionOff.current) finaleProgress.current = finish;
+      el.style.setProperty("--finale-reveal", String(motionOff.current ? 1 : clamp((finish - 0.42) / 0.3)));
+      scene.current?.update(cameraProgress.current, motionOff.current ? 0 : cursorX, motionOff.current ? 0 : cursorY, motionOff.current, finaleProgress.current, contactHover);
       if (entrance < 1 && !motionOff.current && raw < 0.02)
         frame = requestAnimationFrame(render);
     };
     const schedule = () => {
       if (!frame && !disposed) frame = requestAnimationFrame(render);
     };
+    const pointer = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" || motionOff.current) return;
+      cursorX = event.clientX / innerWidth * 2 - 1;
+      cursorY = event.clientY / innerHeight * 2 - 1;
+      contactHover = event.target instanceof Element && event.target.closest(".epic-final-cta") ? 1 : 0;
+      schedule();
+    };
+    const resetPointer = () => { cursorX = 0; cursorY = 0; contactHover = 0; schedule(); };
+    window.addEventListener("pointermove", pointer, { passive: true });
+    document.documentElement.addEventListener("pointerleave", resetPointer);
     el.dataset.enhanced = "true";
     const connection = (
       navigator as Navigator & { connection?: { saveData?: boolean } }
@@ -272,6 +288,8 @@ export function EpicExperience() {
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
+      window.removeEventListener("pointermove", pointer);
+      document.documentElement.removeEventListener("pointerleave", resetPointer);
       observer.disconnect();
       resizeObserver.disconnect();
       scene.current?.destroy();
@@ -587,6 +605,14 @@ export function EpicExperience() {
                 </details>
               ))}</div>
               </details>
+            </div>
+          </section>
+          <section id="ultima-jugada" className="epic-endgame" aria-label="La última jugada">
+            <div className="epic-endgame-stage">
+              <p className="epic-kicker">Toda estrategia tiene un propósito</p>
+              <h2>Hacer que cada<br /><em>movimiento cuente.</em></h2>
+              <div className="epic-endgame-caption"><span>Anticipar.</span><span>Proteger.</span><span>Actuar.</span></div>
+              <a href="#consulta-rapida" onClick={navigate(9)} className="epic-endgame-skip">Ir a la consulta <ArrowDown size={15} /></a>
             </div>
           </section>
           <section

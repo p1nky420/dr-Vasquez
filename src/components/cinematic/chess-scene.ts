@@ -221,6 +221,28 @@ export function mountChessScene(
   route.add(destination);
   board.visible = mode === "story";
 
+  const rook = new THREE.Group();
+  lathe([[0,0],[0.3,0],[0.32,0.12],[0.22,0.2],[0.2,0.72],[0.31,0.8],[0.31,0.94],[0,0.94]], dark, rook);
+  for (let i = 0; i < 6; i++) {
+    const tooth = new THREE.Mesh(new THREE.BoxGeometry(0.13,0.17,0.13), gold);
+    tooth.position.set(Math.cos(i * Math.PI / 3) * 0.24,1,Math.sin(i * Math.PI / 3) * 0.24);
+    rook.add(tooth);
+  }
+  board.add(rook);
+  rook.visible = false;
+  const signature = new THREE.Group();
+  board.add(signature);
+  const signatureMaterial = new THREE.MeshBasicMaterial({color:0xf2cd81,transparent:true,opacity:0,depthWrite:false});
+  const strokes = [[-0.9,0.8,-0.9,-0.5],[-0.9,-0.5,-0.2,-0.5],[-0.9,0.1,-0.35,0.1],[0,-0.5,0.5,0.8],[0.5,0.8,1,-0.5]];
+  const signatureBars = strokes.map(([x1,z1,x2,z2]) => {
+    const bar = new THREE.Mesh(new THREE.BoxGeometry(Math.hypot(x2-x1,z2-z1),0.025,0.04),signatureMaterial);
+    bar.position.set((x1+x2)/2,-1.94,(z1+z2)/2+1.1);
+    bar.rotation.y = -Math.atan2(z2-z1,x2-x1);
+    signature.add(bar);
+    return bar;
+  });
+  signature.visible = false;
+
   const orbit = new THREE.Group();
   scene.add(orbit);
   for (let i = 0; i < 2; i++) {
@@ -265,6 +287,7 @@ export function mountChessScene(
   dust.visible = mode !== "story";
   scene.add(dust);
 
+  let finale = 0, finaleTarget = 0, hover = 0;
   let progress = 0,
     target = 0,
     pointerX = 0,
@@ -279,6 +302,7 @@ export function mountChessScene(
     frame = 0;
     if (!alive || !visible || document.hidden) return;
     progress = first ? target : mix(progress, target, 0.095);
+    finale = first ? finaleTarget : mix(finale, finaleTarget, 0.095);
     first = false;
     const narrow = width < 760;
     const split =
@@ -436,9 +460,54 @@ export function mountChessScene(
       rim.intensity = 5.2;
       scene.environmentIntensity = 0.34;
       renderer.toneMappingExposure = 1.02;
+      if (finale > 0.001) {
+        const enter = smooth(0,0.18,finale);
+        const lift = smooth(0.5,0.88,finale);
+        const settle = smooth(0.82,1,finale);
+        // Descend between the pieces, then crane up to reveal the signature.
+        camera.position.lerp(new THREE.Vector3(
+          mix(-1.5,0,lift) + pointerX * 0.22,
+          mix(-0.5,5.8,lift) + pointerY * 0.12,
+          mix(narrow ? 11 : 8, narrow ? 15 : 12.8,lift)),enter);
+        camera.lookAt(0,mix(-0.65,-0.35,lift),0);
+        sculpture.position.lerp(new THREE.Vector3(0,mix(-0.1,-0.6,settle),0),enter);
+        sculpture.rotation.set(0,mix(sculpture.rotation.y,Math.PI*4+mix(-0.3,0.12,settle),enter),0);
+        board.visible = true;
+        board.scale.setScalar(1);
+        board.position.y = 0;
+        board.rotation.y = 0;
+        body.position.y = crown.position.y = base.position.y = 0;
+        crown.rotation.y = 0;
+        defenders.forEach((piece,i) => {
+          const move = smooth(0.12+i*0.065,0.28+i*0.065,finale);
+          piece.scale.setScalar(1);
+          piece.position.set((i%2 ? 1 : -1)*(i<2 ? 1.36 : 2.04),-1.95+Math.sin(move*Math.PI)*0.15,mix(1.36,-0.68,move));
+        });
+        rook.visible = true;
+        const rookMove = smooth(0.36,0.56,finale);
+        rook.position.set(mix(-2.04,1.36,rookMove),-1.95,-1.36);
+        rook.scale.setScalar(enter);
+        routeMaterial.opacity = (1-lift)*0.85;
+        signature.visible = true;
+        signatureMaterial.opacity = smooth(0.56,0.8,finale)*(0.7+hover*0.3);
+        signatureBars.forEach((bar,i) => { bar.scale.x = Math.max(0.001,smooth(0.53+i*0.035,0.66+i*0.035,finale)); });
+        destination.visible = true;
+        destination.material = signatureMaterial;
+        destination.position.set(1.36,-1.94,-1.36);
+        destination.scale.setScalar(1+hover*0.3);
+        orbit.visible = false;
+        key.position.set(mix(4,-3,lift),6,5);
+        key.intensity = 2.8+hover*0.6;
+      } else {
+        rook.visible = signature.visible = false;
+        destination.material = routeMaterial;
+        destination.position.set(0,-1.95,0.68);
+        destination.scale.setScalar(1);
+      }
+
     }
     renderer.render(scene, camera);
-    if (Math.abs(progress - target) > 0.0002)
+    if (Math.abs(progress - target) > 0.0002 || Math.abs(finale - finaleTarget) > 0.0002)
       frame = requestAnimationFrame(draw);
   }
   const requestDraw = () => {
@@ -469,8 +538,11 @@ export function mountChessScene(
   draw();
   host.dataset.ready = "true";
   return {
-    update(value: number, x = 0, y = 0, immediate = false) {
+    update(value: number, x = 0, y = 0, immediate = false, finish = 0, highlight = 0) {
       target = clamp(value, 0, 1);
+      finaleTarget = clamp(finish, 0, 1);
+      hover = highlight;
+      if (immediate) finale = finaleTarget;
       pointerX = x;
       pointerY = y;
       if (immediate) progress = target;
@@ -496,6 +568,8 @@ export function mountChessScene(
       });
       geometries.forEach((geometry) => geometry.dispose());
       materials.forEach((material) => material.dispose());
+      routeMaterial.dispose();
+      signatureMaterial.dispose();
       environment.dispose();
       renderer.dispose();
       renderer.domElement.remove();
