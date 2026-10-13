@@ -21,7 +21,8 @@ import {
   whatsappHref,
 } from "@/lib/site";
 import { trackCta, trackEvent } from "@/lib/analytics";
-import type { mountChessScene } from "./chess-scene";
+import type { mountChessScene, SceneFrame } from "./chess-scene";
+import { findStage } from "./stage-zone";
 import "./epic-experience.css";
 
 const widePortrait = getImageProps({
@@ -126,7 +127,8 @@ export function EpicExperience() {
   const go = useCallback((index: number, instant = false) => {
     const el = root.current;
     if (!el) return;
-    const target = (document.getElementById(acts[index].id)?.getBoundingClientRect().top ?? 0) + scrollY - 80;
+    const offset = el.querySelector<HTMLElement>(".epic-header")?.offsetHeight ?? 80;
+    const target = (document.getElementById(acts[index].id)?.getBoundingClientRect().top ?? 0) + scrollY - offset;
     window.scrollTo({
       top: target,
       behavior: instant || motionOff.current ? "instant" : "smooth",
@@ -174,15 +176,42 @@ export function EpicExperience() {
       entrance = 0;
     let started = performance.now();
     let cursorX = 0, cursorY = 0, contactHover = 0;
+    let axis: "column" | "row" = "column";
+    const header = el.querySelector<HTMLElement>(".epic-header");
     const finale = el.querySelector<HTMLElement>(".epic-endgame");
+    const cta = el.querySelector<HTMLElement>(".epic-final-cta");
+    const leader = el.querySelector<SVGSVGElement>(".epic-leader");
     const sections = Array.from(el.querySelectorAll<HTMLElement>(".epic-act"));
+    const reveals = Array.from(el.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const blocks = Array.from(el.querySelectorAll<HTMLElement>("[data-block]"));
     const clamp = (n: number) => Math.max(0, Math.min(1, n));
+
+    // Leader line from the final call to action to the 3D destination square.
+    const onFrame = (state: SceneFrame) => {
+      if (navigator.webdriver)
+        (window as Window & { __epicFrame?: SceneFrame }).__epicFrame = state;
+      if (!leader || !cta) return;
+      const line = leader.querySelector("line"), dot = leader.querySelector("circle");
+      const box = cta.getBoundingClientRect();
+      const wide = innerWidth > 760;
+      const show = wide && state.destination && box.bottom > 0 && box.top < innerHeight;
+      leader.style.opacity = show ? String(1 - state.dim) : "0";
+      if (!show || !state.destination || !line || !dot) return;
+      const x2 = state.destination.x * innerWidth, y2 = state.destination.y * innerHeight;
+      line.setAttribute("x1", String(box.right + 14));
+      line.setAttribute("y1", String(box.top + box.height / 2));
+      line.setAttribute("x2", String(x2));
+      line.setAttribute("y2", String(y2));
+      dot.setAttribute("cx", String(x2));
+      dot.setAttribute("cy", String(y2));
+    };
+
     const render = () => {
       frame = 0;
       if (disposed || document.hidden || !visible) return;
+      const anchor = header?.offsetHeight ?? 80;
       // Interpolate camera positions from the actual document sections, including
       // expanded FAQ content; the page itself remains in normal scroll flow.
-      const anchor = 80;
       const tops = sections.map(section => section.getBoundingClientRect().top);
       let index = 0;
       while (index < tops.length - 1 && tops[index + 1] <= anchor) index++;
@@ -194,40 +223,43 @@ export function EpicExperience() {
         current.current = next;
         setActive(next);
       }
-      entrance = Math.max(
-        entrance,
-        clamp((performance.now() - started) / 4500),
-      );
+      entrance = Math.max(entrance, clamp((performance.now() - started) / 4500));
+      // Copy enters as its section rises (--in) and its accents follow the
+      // 3D beat of the act (--beat), so words and pieces move together.
+      for (const item of reveals) {
+        const box = item.getBoundingClientRect();
+        item.style.setProperty("--in", motionOff.current ? "1" : clamp((innerHeight * 0.95 - box.top) / (innerHeight * 0.5)).toFixed(3));
+        item.style.setProperty("--beat", motionOff.current ? "1" : clamp((innerHeight * 0.7 - box.top) / Math.max(innerHeight * 0.6, box.height * 0.6)).toFixed(3));
+      }
       el.style.setProperty("--epic-progress", String(raw));
-      el.style.setProperty(
-        "--portrait-presence",
-        String(clamp(1 - Math.abs(position - 6) * 1.5)),
-      );
-      el.style.setProperty(
-        "--book-presence",
-        String(clamp(1 - Math.abs(position - 7) * 1.6)),
-      );
+      el.style.setProperty("--portrait-presence", String(clamp(1 - Math.abs(position - 6) * 1.5)));
+      el.style.setProperty("--book-presence", String(clamp(1 - Math.abs(position - 7) * 1.6)));
       el.style.setProperty("--book-turn", `${-22 + (position - 7) * 28}deg`);
       el.style.setProperty(
         "--reading-shade",
-        String(
-          Math.max(
-            clamp(1 - Math.abs(position - 8) * 1.8),
-            clamp(1 - Math.abs(position - 7) * 1.7) * 0.45,
-          ),
-        ),
+        String(Math.max(clamp(1 - Math.abs(position - 8) * 1.8), clamp(1 - Math.abs(position - 7) * 1.7) * 0.45)),
       );
-      el.style.setProperty(
-        "--photo-zoom",
-        String(motionOff.current ? 1 : 1.06 + (position - 6) * 0.07),
-      );
+      el.style.setProperty("--photo-zoom", String(motionOff.current ? 1 : 1.06 + (position - 6) * 0.07));
       el.dataset.act = String(next);
-      if (!motionOff.current)
-        cameraProgress.current = Math.min(1, raw + entrance * 0.009);
+      if (!motionOff.current) cameraProgress.current = Math.min(1, raw + entrance * 0.009);
       const finish = finale ? clamp((innerHeight - finale.getBoundingClientRect().top) / finale.offsetHeight) : 0;
       if (!motionOff.current) finaleProgress.current = finish;
       el.style.setProperty("--finale-reveal", String(motionOff.current ? 1 : clamp((finish - 0.42) / 0.3)));
-      scene.current?.update(cameraProgress.current, motionOff.current ? 0 : cursorX, motionOff.current ? 0 : cursorY, motionOff.current, finaleProgress.current, contactHover);
+      const stage = findStage(
+        blocks.map((block) => block.getBoundingClientRect()),
+        { width: innerWidth, height: innerHeight, top: anchor },
+        axis,
+      );
+      axis = stage.axis;
+      scene.current?.update({
+        progress: cameraProgress.current,
+        finale: finaleProgress.current,
+        pointerX: motionOff.current ? 0 : cursorX,
+        pointerY: motionOff.current ? 0 : cursorY,
+        hover: contactHover,
+        zone: stage.zone,
+        immediate: motionOff.current,
+      });
       if (entrance < 1 && !motionOff.current && raw < 0.02)
         frame = requestAnimationFrame(render);
     };
@@ -253,7 +285,7 @@ export function EpicExperience() {
         .then(({ mountChessScene }) => {
           if (disposed) return;
           try {
-            scene.current = mountChessScene(host, "epic");
+            scene.current = mountChessScene(host, onFrame);
             started = performance.now();
             schedule();
           } catch {
@@ -310,7 +342,7 @@ export function EpicExperience() {
   return (
     <div
       ref={root}
-      className={`epic-site epic-flow ${paused || reduced ? "epic-still" : ""}`}
+      className={`epic-site ${paused || reduced ? "epic-still" : ""}`}
     >
       <div className="epic-screen">
         <div className="epic-world" aria-hidden="true">
@@ -319,7 +351,10 @@ export function EpicExperience() {
           </div>
           <div className="epic-vignette" />
           <div className="epic-reading-shade" />
-          <div className="epic-horizon" />
+          <svg className="epic-leader">
+            <line />
+            <circle r="5" />
+          </svg>
         </div>
         <header className="epic-header">
           <a
@@ -381,10 +416,10 @@ export function EpicExperience() {
         <div className="epic-acts">
           <section
             id="vision"
-            className="epic-act epic-intro"
+            data-reveal className="epic-act epic-intro"
             aria-label="El primer movimiento"
           >
-            <div className="epic-copy">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">Estrategia penal · Quito, Ecuador</p>
               <h1>
                 El arte de
@@ -402,8 +437,8 @@ export function EpicExperience() {
               </div>
             </div>
           </section>
-          <section id="estrategia" className="epic-act epic-center">
-            <div className="epic-copy">
+          <section id="estrategia" data-reveal className="epic-act epic-method-act">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">I / Ver más allá</p>
               <h2>
                 Una defensa
@@ -430,7 +465,7 @@ export function EpicExperience() {
               </div>
             </div>
           </section>
-          <div className="epic-practice-heading">
+          <div className="epic-practice-heading" data-reveal data-block>
             <p className="epic-kicker">Áreas de práctica</p>
             <h2>Una mirada integral.<br /><em>Una estrategia propia.</em></h2>
             <p>Cada asunto exige una lectura distinta. Explore cómo abordamos el suyo.</p>
@@ -440,13 +475,14 @@ export function EpicExperience() {
             return (
               <section
                 id={service.id}
+                data-reveal
                 className={`epic-act epic-service epic-service-${item.visual} ${index % 2 === 0 ? "epic-align-right" : ""}`}
                 key={service.id}
               >
                 <span className="epic-ghost-number" aria-hidden="true">
                   0{index + 1}
                 </span>
-                <div className="epic-copy">
+                <div className="epic-copy" data-block>
                   <p className="epic-kicker">II / {service.title}</p>
                   <h2>{item.title}</h2>
                   <p className="epic-description">{service.description}</p>
@@ -470,7 +506,7 @@ export function EpicExperience() {
           })}
           <section
             id="el-estudio"
-            className="epic-act epic-jurist epic-align-right"
+            data-reveal data-occludes className="epic-act epic-jurist epic-align-right"
           >
           <div className="epic-portrait">
             <picture>
@@ -484,7 +520,7 @@ export function EpicExperience() {
             <div />
           </div>
 
-            <div className="epic-copy">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">
                 III / El criterio detrás de la defensa
               </p>
@@ -516,7 +552,7 @@ export function EpicExperience() {
           </section>
           <section
             id="conocimiento"
-            className="epic-act epic-align-right epic-knowledge"
+            data-reveal data-occludes className="epic-act epic-align-right epic-knowledge"
           >
           <div className="epic-library" aria-hidden="true">
             <div className="epic-volume">
@@ -533,7 +569,7 @@ export function EpicExperience() {
             <div className="epic-volume epic-volume-last" />
           </div>
 
-            <div className="epic-copy">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">IV / El conocimiento deja huella</p>
               <h2>
                 Las ideas
@@ -557,8 +593,8 @@ export function EpicExperience() {
               </div>
             </div>
           </section>
-          <section id="faq" className="epic-act epic-clarity">
-            <div className="epic-copy">
+          <section id="faq" data-reveal data-occludes className="epic-act epic-clarity">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">
                 V / La serenidad empieza con claridad
               </p>
@@ -575,6 +611,7 @@ export function EpicExperience() {
             </div>
             <div
               className="epic-questions"
+              data-block
               role="region"
               aria-label="Preguntas frecuentes"
             >
@@ -607,19 +644,23 @@ export function EpicExperience() {
               </details>
             </div>
           </section>
-          <section id="ultima-jugada" className="epic-endgame" aria-label="La última jugada">
+          <section id="ultima-jugada" data-reveal className="epic-endgame" aria-label="La última jugada">
             <div className="epic-endgame-stage">
-              <p className="epic-kicker">Toda estrategia tiene un propósito</p>
-              <h2>Hacer que cada<br /><em>movimiento cuente.</em></h2>
-              <div className="epic-endgame-caption"><span>Anticipar.</span><span>Proteger.</span><span>Actuar.</span></div>
-              <a href="#consulta-rapida" onClick={navigate(9)} className="epic-endgame-skip">Ir a la consulta <ArrowDown size={15} /></a>
+              <div className="epic-endgame-title" data-block>
+                <p className="epic-kicker">Toda estrategia tiene un propósito</p>
+                <h2>Hacer que cada<br /><em>movimiento cuente.</em></h2>
+              </div>
+              <div className="epic-endgame-foot" data-block>
+                <div className="epic-endgame-caption"><span>Anticipar.</span><span>Proteger.</span><span>Actuar.</span></div>
+                <a href="#consulta-rapida" onClick={navigate(9)} className="epic-endgame-skip">Ir a la consulta <ArrowDown size={15} /></a>
+              </div>
             </div>
           </section>
           <section
             id="consulta-rapida"
-            className="epic-act epic-finale epic-center"
+            data-reveal className="epic-act epic-finale"
           >
-            <div className="epic-copy">
+            <div className="epic-copy" data-block>
               <p className="epic-kicker">Conversemos. En absoluta reserva.</p>
               <h2>
                 Su siguiente
@@ -653,7 +694,7 @@ export function EpicExperience() {
                 Primer contacto sin documentos confidenciales.
               </p>
             </div>
-            <footer className="epic-credits">
+            <footer className="epic-credits" data-block>
               <span>
                 FAUSTO VÁSQUEZ · ESTUDIO JURÍDICO
                 <br />

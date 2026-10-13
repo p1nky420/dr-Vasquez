@@ -1,91 +1,85 @@
-# Experiencia cinematográfica continua — Fausto Vásquez
+# Portada cinematográfica — Fausto Vásquez
 
-Rama: `codex/vasquez-cinematic`. El checkout original de `main` permanece intacto.
+La portada (`/`) es un recorrido continuo de diez actos sobre un único mundo 3D
+de ajedrez (Three.js, geometría procedural, sin modelos ni texturas remotas).
+El documento hace scroll con normalidad; el lienzo WebGL está fijo detrás.
 
-## Diseño actual
+Archivos:
 
-Toda la portada es un recorrido cinematográfico de diez escenas. Una sola cámara y escena WebGL mantienen el hilo del ajedrez desde la apertura hasta la consulta final. No existe una transición a un catálogo convencional debajo del prólogo.
+- `src/components/cinematic/epic-experience.tsx` — contenido, navegación y bucle de scroll.
+- `src/components/cinematic/chess-scene.ts` — escena, coreografía y encuadre.
+- `src/components/cinematic/stage-zone.ts` — cálculo del hueco libre que deja el texto.
+- `src/components/cinematic/epic-experience.css` — maquetación y tipografía.
+- `tests/cinematic-legibility.spec.ts` — garantías de legibilidad (Playwright).
 
-1. El arte de anticiparse: plano cercano de la pieza y título de apertura.
-2. El método: descomposición de la pieza y construcción de la defensa.
-3. Penal económico: cambio de cámara y encuadre de la especialidad.
-4. Defensa estratégica: prueba, expediente y decisiones.
-5. Prevención: anticipación de contingencias.
-6. Garantías: libertad y debido proceso.
-7. El jurista: retrato fotográfico a pantalla completa.
-8. El conocimiento: libros en profundidad y enlaces a publicaciones y Academia.
-9. La claridad: preguntas frecuentes dentro de la misma puesta en escena.
-10. La consulta: cierre cinematográfico, contacto y créditos legales.
+## Principio: el texto manda, el 3D se adapta sin perder intensidad
 
-La referencia es el **Plan Maestro, edición 02, octubre de 2026**, entregado por el usuario: ajedrez como símbolo, grafito, azul profundo, dorado sobrio, marfil y consulta reservada. Las fotografías provienen del banco del PDF; el documento confidencial no se incluye en el repositorio. La pieza es geometría original programada con Three.js; los libros son una ilustración conceptual. No se presentan como reproducciones de portadas oficiales.
+La coreografía se escribe en el espacio del mundo y no se recorta: giros,
+separación de la corona, tablero que aparece y se inclina, captura, cámara
+entre las piezas y la jugada final con torre y firma.
 
-## Interacción y accesibilidad
+El encuadre se resuelve después de cada fotograma:
 
-- Scroll nativo con diez capítulos, índice, avance por escena y acceso directo al contacto.
-- Todos los textos, FAQ y enlaces existen en el HTML prerenderizado. Sin JavaScript se muestran como una secuencia normal de secciones legibles.
-- Los capítulos inactivos no capturan clics ni foco. El índice cierra con Escape.
-- Pausa de movimiento y respeto de `prefers-reduced-motion`; sin bloqueo de scroll ni reproducción de audio.
-- FAQ con scroll propio, aptas para teclado y tacto. Pantallas muy bajas o con zoom pueden desplazar el contenido de cada escena.
-- Alternativa gráfica sin WebGL y sin descargar Three.js cuando `saveData` está activo.
-- Un renderer, carga dinámica, resolución limitada (1.25 DPR en celular y 1.6 en escritorio), render bajo demanda y limpieza de recursos al salir.
-- El retrato utiliza fuentes distintas para móvil y escritorio, evitando ampliar un recorte horizontal de baja resolución en el teléfono.
+1. Cada bloque de texto lleva `data-block`. En cada scroll se miden sus
+   rectángulos y `findStage` calcula el mayor hueco libre, ya sea una columna
+   (al lado del texto, escritorio) o una franja (encima o debajo, móvil y remate).
+2. La escena proyecta la caja de la pieza (y del tablero cuando está presente) y
+   aplica un desplazamiento óptico (`camera.setViewOffset`) y un zoom para que el
+   sujeto caiga dentro de ese hueco. La perspectiva y el movimiento no cambian;
+   solo cambia dónde aterriza en la pantalla.
+3. Si no hay espacio suficiente, el lienzo se atenúa (`--scene-dim`) en lugar de
+   tapar el texto.
+4. Cada bloque de texto lleva además un halo oscuro suave, de modo que en los
+   cruces entre actos sigue siendo legible aunque una pieza pase por detrás.
 
-## SEO y alcance
+En móvil, cada acto 3D abre con una franja vacía (~44 % de la altura) donde se
+sitúa la pieza; el texto va debajo.
 
-Se conservan título, descripción, canonical, Open Graph, Twitter, idioma `es-EC`, sitemap y robots. Un H1. Las 25 preguntas visibles y su JSON-LD usan la misma fuente. Los servicios conservan sus identificadores. Los enlaces de las especialidades, la firma, Academia y publicaciones llevan a las páginas interiores existentes. Esas páginas mantienen su diseño original; esta revisión corresponde a la portada completa.
+## Coreografía por acto
 
-Se reutilizan WhatsApp, contacto, privacidad y los eventos de analítica. No se envían mensajes ni formularios en pruebas. No se añaden precios, ofertas futuras ni campañas propuestas en el PDF.
+| Acto | Texto | 3D |
+| --- | --- | --- |
+| 1 El arte de anticiparse | izquierda | plano macro del rey |
+| 2 El método | izquierda | la corona se separa; los pasos 01–03 se dibujan a la vez |
+| 3 Penal económico | derecha | órbitas doradas |
+| 4 Defensa estratégica | izquierda | formación de peones; un rival avanza y es capturado, sale despedido del tablero |
+| 5 Prevención | derecha | el tablero se inclina como un mapa; la ruta en L se ilumina |
+| 6 Garantías | izquierda | la cámara baja entre las piezas; el tablero oscila y se equilibra |
+| 7 El jurista | derecha | retrato (el lienzo se retira) |
+| 8 El conocimiento | derecha | libros sobre papel marfil (el lienzo se retira) |
+| 9 La claridad | — | preguntas frecuentes sobre fondo opaco |
+| Remate | arriba / abajo | descenso entre las piezas, torre, firma; el tablero ocupa el centro |
+| 10 Su siguiente movimiento | izquierda | tablero final a la derecha; una línea guía une el botón con la casilla de destino |
 
-## Vista previa
+El texto entra con su sección (`--in`) y los acentos (línea del principio, pasos
+del método, lema del remate) avanzan con el compás 3D del acto (`--beat`,
+`--finale-reveal`).
+
+## Accesibilidad y rendimiento
+
+- Todo el contenido está en el HTML prerenderizado; sin JavaScript se lee como
+  secciones normales.
+- Pausa de movimiento y `prefers-reduced-motion`.
+- Sin WebGL o con `saveData` no se descarga Three.js; queda un fondo estático.
+- Un renderer, render bajo demanda (solo mientras algo se mueve), resolución
+  limitada (1.25 DPR en móvil, 1.6 en escritorio) y limpieza al salir.
+- Tamaño mínimo de texto: 11 px (rótulos); lectura a 15–17 px.
+
+## Pruebas
 
 ```sh
-npm ci
 npm run build
-npm run start -- --port 3101
+npm run test:e2e
 ```
 
-Abrir `http://localhost:3101`. No se ha publicado ni fusionado con `main`.
+La suite levanta `next start` en el puerto 3101 (o reutiliza uno ya abierto) y,
+en 1440×900, 1280×720 y 390×844:
 
-## Validación
+- recorre toda la portada en pasos de un tercio de pantalla y, una vez asentada
+  la escena, comprueba que la caja proyectada de las piezas no cubra más del 12 %
+  de ningún texto ya visible (titulares, rótulos, párrafos, enlaces, botón final);
+- comprueba que el botón final tenga contraste ≥ 7:1 y al menos 44 px de alto;
+- comprueba un único H1, que no haya desbordamiento horizontal ni errores de script.
 
-- ESLint y build de producción correctos; TypeScript y 22 páginas prerenderizadas.
-- Recorrido de las diez escenas con Chromium en 1440×1000, 390×844 y 320×667; textos dentro del marco y sin desbordamiento horizontal.
-- Índice, selección de capítulos, Escape y FAQ desplegables.
-- Acceso directo por hash a la consulta, movimiento reducido y contenido sin JavaScript.
-- Un H1 y correspondencia de las 25 FAQ con el JSON-LD.
-- Sin errores JavaScript en el recorrido verificado.
-
-Las pruebas se ejecutan localmente con tamaños emulados. No se afirma una puntuación Lighthouse ni pruebas en dispositivos físicos o resultados de posicionamiento.
-
-## Continuous web layout (current)
-
-The home page now uses normal document flow instead of a sticky full-screen stage.
-Sections have content-driven, varied heights and remain accessible throughout the
-page. The camera interpolates against actual section positions; ResizeObserver
-keeps it aligned when FAQ answers expand. Portrait and book visuals belong to their
-sections. Desktop navigation and hero actions provide direct access; the scene
-counter, segmented timeline, and next-scene controls have been removed. FAQs expand
-in the document without a nested scrolling container. Reduced motion and the pause
-control remain available.
-
-Validation: ESLint and production build passed. In-app browser verified at 1440×1000,
-390×844 and 320×667: no horizontal overflow, one H1, natural section flow, rendered
-3D canvas, working contact navigation and FAQ expansion. No browser console errors
-were reported. Earlier scene/inert assertions in verification.json describe the
-superseded presentation layout and do not apply to this revision.
-
-## Narrative chess scene
-
-The scene now adds four shared-geometry defenders (two when initialized on mobile),
-a progressively illuminated route and a final pawn move. Defense assembles a
-protective formation, prevention reveals the route, guarantees balance the pieces,
-and the consultation finale completes the move. Camera elevation and board framing
-support these beats; section alignment uses the header offset. Knowledge introduces
-an ivory editorial section, the profile highlights existing professional fields,
-and the final headline is “Su siguiente movimiento.”
-
-Validation: lint and production build passed. Browser checks at 1440×1000 and
-390×844 confirmed the board, route, portrait/publications layout, contact finale,
-no mobile horizontal overflow, one H1 and working pause/resume control. No console
-errors were reported. Motion remains scroll-driven with the existing reduced-motion
-handling and on-demand rendering.
+WebGL se ejecuta por software (SwiftShader), así que la pasada completa tarda
+varios minutos en escritorio.
