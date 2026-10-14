@@ -73,7 +73,7 @@
   inset: 0;
   opacity: calc(
     (1 - max(var(--portrait-presence), var(--book-presence)) * 0.97) *
-      (1 - var(--scene-dim, 0) * 0.7)
+      (1 - var(--scene-dim, 0) * 0.7) * (1 - var(--scene-cut, 0))
   );
   transition: opacity 0.18s linear;
 }
@@ -245,6 +245,10 @@
 }
 
 /* ——— Acts ——— */
+/* Empty band each 3D act reserves for the pieces on phones (see below). */
+.epic-stage {
+  display: none;
+}
 .epic-act {
   position: relative;
   min-height: 100svh;
@@ -1041,6 +1045,28 @@
     min-height: 0;
     padding: calc(var(--head) + 44svh) var(--gutter) 72px;
     align-items: flex-end;
+  }
+  /* The pieces ride this band with the scroll; between acts they cut, never slide over copy. */
+  .epic-stage {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: calc(var(--head) + 44svh - 24px);
+    pointer-events: none;
+  }
+  .epic-intro .epic-stage {
+    top: var(--head);
+    height: calc(46svh - 12px);
+  }
+  .epic-endgame-stage .epic-stage {
+    position: relative;
+    top: auto;
+    flex: 1;
+    align-self: stretch;
+    height: auto;
+    margin-block: 12px;
   }
   .epic-copy,
   .epic-intro .epic-copy,

@@ -21,7 +21,7 @@ import {
   whatsappHref,
 } from "@/lib/site";
 import { trackCta, trackEvent } from "@/lib/analytics";
-import type { mountChessScene, SceneFrame } from "./chess-scene";
+import type { mountChessScene, SceneFrame, StageZone } from "./chess-scene";
 import { findStage } from "./stage-zone";
 import "./epic-experience.css";
 
@@ -184,6 +184,8 @@ export function EpicExperience() {
     const sections = Array.from(el.querySelectorAll<HTMLElement>(".epic-act"));
     const reveals = Array.from(el.querySelectorAll<HTMLElement>("[data-reveal]"));
     const blocks = Array.from(el.querySelectorAll<HTMLElement>("[data-block]"));
+    const stages = Array.from(el.querySelectorAll<HTMLElement>("[data-stage]"));
+    let anchoredStage = -1;
     const clamp = (n: number) => Math.max(0, Math.min(1, n));
 
     // Leader line from the final call to action to the 3D destination square.
@@ -245,19 +247,40 @@ export function EpicExperience() {
       const finish = finale ? clamp((innerHeight - finale.getBoundingClientRect().top) / finale.offsetHeight) : 0;
       if (!motionOff.current) finaleProgress.current = finish;
       el.style.setProperty("--finale-reveal", String(motionOff.current ? 1 : clamp((finish - 0.42) / 0.3)));
-      const stage = findStage(
-        blocks.map((block) => block.getBoundingClientRect()),
-        { width: innerWidth, height: innerHeight, top: anchor },
-        axis,
-      );
-      axis = stage.axis;
+      // Phones: the subject rides the empty band of the most visible act and
+      // cuts to the next band, instead of chasing gaps across the copy.
+      const bands = innerWidth <= 760 ? stages.map((band) => band.getBoundingClientRect()) : [];
+      let zone: StageZone, band: number | undefined;
+      if (bands.some((box) => box.height > 0)) {
+        const shown = bands.map((box) => Math.max(0, Math.min(box.bottom, innerHeight) - Math.max(box.top, anchor)));
+        const best = shown.indexOf(Math.max(...shown));
+        if (anchoredStage < 0 || !bands[anchoredStage]?.height) anchoredStage = best;
+        else if (shown[best] > shown[anchoredStage] * 1.15 + 1) anchoredStage = best;
+        if (!shown[anchoredStage]) {
+          const middle = (anchor + innerHeight) / 2;
+          const distance = bands.map((box) => box.height ? Math.abs((box.top + box.bottom) / 2 - middle) : Infinity);
+          anchoredStage = distance.indexOf(Math.min(...distance));
+        }
+        const box = bands[anchoredStage];
+        zone = { x: box.left / innerWidth, y: box.top / innerHeight, w: box.width / innerWidth, h: box.height / innerHeight };
+        band = anchoredStage;
+      } else {
+        const stage = findStage(
+          blocks.map((block) => block.getBoundingClientRect()),
+          { width: innerWidth, height: innerHeight, top: anchor },
+          axis,
+        );
+        axis = stage.axis;
+        zone = stage.zone;
+      }
       scene.current?.update({
         progress: cameraProgress.current,
         finale: finaleProgress.current,
         pointerX: motionOff.current ? 0 : cursorX,
         pointerY: motionOff.current ? 0 : cursorY,
         hover: contactHover,
-        zone: stage.zone,
+        zone,
+        stage: band,
         immediate: motionOff.current,
       });
       if (entrance < 1 && !motionOff.current && raw < 0.02)
@@ -419,6 +442,7 @@ export function EpicExperience() {
             data-reveal className="epic-act epic-intro"
             aria-label="El primer movimiento"
           >
+            <div className="epic-stage" data-stage aria-hidden="true" />
             <div className="epic-copy" data-block>
               <p className="epic-kicker">Estrategia penal · Quito, Ecuador</p>
               <h1>
@@ -438,6 +462,7 @@ export function EpicExperience() {
             </div>
           </section>
           <section id="estrategia" data-reveal className="epic-act epic-method-act">
+            <div className="epic-stage" data-stage aria-hidden="true" />
             <div className="epic-copy" data-block>
               <p className="epic-kicker">I / Ver más allá</p>
               <h2>
@@ -479,6 +504,7 @@ export function EpicExperience() {
                 className={`epic-act epic-service epic-service-${item.visual} ${index % 2 === 0 ? "epic-align-right" : ""}`}
                 key={service.id}
               >
+                <div className="epic-stage" data-stage aria-hidden="true" />
                 <span className="epic-ghost-number" aria-hidden="true">
                   0{index + 1}
                 </span>
@@ -650,6 +676,7 @@ export function EpicExperience() {
                 <p className="epic-kicker">Toda estrategia tiene un propósito</p>
                 <h2>Hacer que cada<br /><em>movimiento cuente.</em></h2>
               </div>
+              <div className="epic-stage" data-stage aria-hidden="true" />
               <div className="epic-endgame-foot" data-block>
                 <div className="epic-endgame-caption"><span>Anticipar.</span><span>Proteger.</span><span>Actuar.</span></div>
                 <a href="#consulta-rapida" onClick={navigate(9)} className="epic-endgame-skip">Ir a la consulta <ArrowDown size={15} /></a>
@@ -660,6 +687,7 @@ export function EpicExperience() {
             id="consulta-rapida"
             data-reveal className="epic-act epic-finale"
           >
+            <div className="epic-stage" data-stage aria-hidden="true" />
             <div className="epic-copy" data-block>
               <p className="epic-kicker">Conversemos. En absoluta reserva.</p>
               <h2>

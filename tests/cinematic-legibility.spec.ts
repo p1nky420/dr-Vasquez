@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 type Zone = { x: number; y: number; w: number; h: number };
-type Frame = { subject: Zone; dim: number; settled: boolean };
+type Frame = { subject: Zone; dim: number; settled: boolean; stage?: number; cut: number };
 
 /** Text that must never sit under the pieces once it has finished entering. */
 const TEXT = [
@@ -73,6 +73,37 @@ test("the pieces never cover finished copy while scrolling the whole home", asyn
       if (hit.overlap > MAX_OVERLAP) failures.push(`y=${y}: "${hit.text}" ${Math.round(hit.overlap * 100)}%`);
   }
   expect(failures, failures.join("\n")).toEqual([]);
+});
+
+test("on phones the pieces ride with the page and only change place through a cut", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "anchored bands are a phone layout");
+  await page.goto("/", { waitUntil: "networkidle" });
+  await expect(page.locator(".epic-canvas")).toHaveAttribute("data-ready", "true", { timeout: 20_000 });
+  const read = () => page.evaluate(() => {
+    const f = (window as Window & { __epicFrame?: Frame }).__epicFrame;
+    return f && { stage: f.stage, cut: f.cut, center: (f.subject.y + f.subject.h / 2) * innerHeight, y: scrollY };
+  });
+  const freshFrame = async () => {
+    for (let i = 0; i < 2; i++) {
+      await page.evaluate(() => delete (window as Window & { __epicFrame?: Frame }).__epicFrame);
+      await page.waitForFunction(() => (window as Window & { __epicFrame?: Frame }).__epicFrame, undefined, { timeout: 2_000 }).catch(() => undefined);
+    }
+  };
+  const jumps: string[] = [];
+  let previous = await read();
+  const end = await page.evaluate(() => (document.getElementById("el-estudio")?.offsetTop ?? 6000));
+  for (let y = 40; y < end; y += 40) {
+    await page.evaluate((top) => window.scrollTo({ top, behavior: "instant" }), y);
+    await freshFrame();
+    const now = await read();
+    if (previous && now && now.stage === previous.stage && now.cut === 0 && previous.cut === 0) {
+      // Within one band the subject moves with the page, give or take its own animation.
+      const drift = Math.abs(now.center - previous.center + (now.y - previous.y));
+      if (drift > 36) jumps.push(`y=${y}: drift ${Math.round(drift)} px in band ${now.stage}`);
+    }
+    previous = now;
+  }
+  expect(jumps, jumps.join("\n")).toEqual([]);
 });
 
 test("final call to action is high contrast and reachable", async ({ page }) => {

@@ -32,8 +32,10 @@ El encuadre se resuelve después de cada fotograma:
 4. Cada bloque de texto lleva además un halo oscuro suave, de modo que en los
    cruces entre actos sigue siendo legible aunque una pieza pase por detrás.
 
-En móvil, cada acto 3D abre con una franja vacía (~44 % de la altura) donde se
-sitúa la pieza; el texto va debajo.
+En móvil, cada acto 3D abre con una franja vacía (~44 % de la altura,
+`.epic-stage`). La pieza va anclada a la franja más visible y sube con la página
+como si estuviera impresa en ella; al pasar a la franja del acto siguiente no
+cruza la pantalla: se desvanece y reaparece (un corte de cámara de ~0,4 s).
 
 ## Coreografía por acto
 
@@ -78,6 +80,8 @@ en 1440×900, 1280×720 y 390×844:
 - recorre toda la portada en pasos de un tercio de pantalla y, una vez asentada
   la escena, comprueba que la caja proyectada de las piezas no cubra más del 12 %
   de ningún texto ya visible (titulares, rótulos, párrafos, enlaces, botón final);
+- en móvil, avanza de 40 en 40 px y comprueba que la pieza se mueve con la
+  página dentro de su franja y que solo cambia de franja mediante el corte;
 - comprueba que el botón final tenga contraste ≥ 7:1 y al menos 44 px de alto;
 - comprueba un único H1, que no haya desbordamiento horizontal ni errores de script.
 
