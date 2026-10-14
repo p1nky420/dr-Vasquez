@@ -23,12 +23,6 @@ export type SceneInput = {
   hover: number;
   /** Free space left by the text; the subject is framed inside it. */
   zone: StageZone;
-  /**
-   * Set when the zone is a band anchored in the page (phones). The subject
-   * then rides the band with the scroll, and moving to another band is a
-   * fade cut rather than a slide across the copy.
-   */
-  stage?: number;
   immediate?: boolean;
 };
 
@@ -41,10 +35,6 @@ export type SceneFrame = {
   destination: { x: number; y: number } | null;
   /** 0 when the subject is fully shown, 1 when there was no room and it receded. */
   dim: number;
-  /** Anchored band the subject is in, if any. */
-  stage?: number;
-  /** 0 when fully shown, 1 at the dark point of a cut between bands. */
-  cut: number;
   settled: boolean;
 };
 
@@ -303,10 +293,6 @@ export function mountChessScene(
   const zoneTarget: StageZone = { ...zone };
   // Framing state, eased so the subject glides rather than snaps between gaps.
   const lens = { zoom: 1, x: 0, y: 0, dim: 0 };
-  // Cut between anchored bands: fade out in place, jump, fade back in.
-  const CUT_OUT = 160, CUT_IN = 260;
-  let stage: number | undefined, stageTarget: number | undefined;
-  let cutStart = 0, cutPhase: "none" | "out" | "in" = "none", cut = 0;
   let boardWeight = 0;
   const v = new THREE.Vector3();
   const kingBox = new THREE.Box3();
@@ -556,58 +542,27 @@ export function mountChessScene(
   function draw() {
     frame = 0;
     if (!alive || !visible || document.hidden) return;
-    const ease = first ? 1 : 0.095;
+    // Quick enough to feel tied to the finger on phones, still eased.
+    const ease = first ? 1 : 0.14;
     progress = mix(progress, target, ease);
     finale = mix(finale, finaleTarget, ease);
-    const anchored = stageTarget !== undefined;
-    let snap = first;
-    if (anchored && stage !== undefined && stage !== stageTarget && cutPhase === "none" && !first) {
-      cutPhase = "out";
-      cutStart = performance.now();
-    }
-    if (cutPhase === "out") {
-      // Never exactly 0 while fading out: the subject is already held in place.
-      cut = clamp((performance.now() - cutStart) / CUT_OUT, 0.01, 1);
-      if (cut >= 1) {
-        cutPhase = "in";
-        cutStart = performance.now();
-        stage = stageTarget;
-        snap = true;
-      }
-    } else if (cutPhase === "in") {
-      cut = 1 - clamp((performance.now() - cutStart) / CUT_IN, 0, 1);
-      if (cut <= 0) cutPhase = "none";
-    } else {
-      stage = stageTarget;
-      cut = 0;
-    }
-    // A band moves with the page, so the subject tracks it exactly; a free
-    // zone (desktop) is eased so the subject glides between gaps.
-    const holding = cutPhase === "out";
-    if (!holding) {
-      const zoneEase = snap || anchored ? 1 : 0.22;
-      zone.x = mix(zone.x, zoneTarget.x, zoneEase);
-      zone.y = mix(zone.y, zoneTarget.y, zoneEase);
-      zone.w = mix(zone.w, zoneTarget.w, zoneEase);
-      zone.h = mix(zone.h, zoneTarget.h, zoneEase);
-    }
+    const zoneEase = first ? 1 : 0.22;
+    zone.x = mix(zone.x, zoneTarget.x, zoneEase);
+    zone.y = mix(zone.y, zoneTarget.y, zoneEase);
+    zone.w = mix(zone.w, zoneTarget.w, zoneEase);
+    zone.h = mix(zone.h, zoneTarget.h, zoneEase);
     first = false;
     pose();
     // Framing follows the copy closely; only the choreography itself lingers.
-    const framed = frameSubject(snap || anchored ? 1 : 0.35);
-    host.style.setProperty("--scene-cut", cut.toFixed(3));
+    const framed = frameSubject(ease === 1 ? 1 : 0.35);
     renderer.render(scene, camera);
     const settled =
-      cutPhase === "none" &&
       Math.abs(progress - target) < 0.0002 &&
       Math.abs(finale - finaleTarget) < 0.0002 &&
       Math.abs(zone.x - zoneTarget.x) + Math.abs(zone.y - zoneTarget.y) +
         Math.abs(zone.w - zoneTarget.w) + Math.abs(zone.h - zoneTarget.h) < 0.001 &&
       framed.gap < 0.5;
-    onFrame?.({
-      zone: { ...zone }, subject: framed.subject, destination: framed.destination,
-      dim: framed.dim, stage, cut, settled,
-    });
+    onFrame?.({ zone: { ...zone }, subject: framed.subject, destination: framed.destination, dim: framed.dim, settled });
     if (!settled) frame = requestAnimationFrame(draw);
   }
   const requestDraw = () => {
@@ -644,18 +599,9 @@ export function mountChessScene(
       pointerX = input.pointerX;
       pointerY = input.pointerY;
       Object.assign(zoneTarget, input.zone);
-      // Entering or leaving band mode (rotation, resize) snaps without a cut.
-      if ((input.stage === undefined) !== (stageTarget === undefined)) {
-        stage = input.stage;
-        first = true;
-      }
-      stageTarget = input.stage;
       if (input.immediate) {
         progress = target;
         finale = finaleTarget;
-        stage = stageTarget;
-        cutPhase = "none";
-        cut = 0;
         Object.assign(zone, zoneTarget);
         first = true;
       }
@@ -685,7 +631,6 @@ export function mountChessScene(
       renderer.dispose();
       renderer.domElement.remove();
       host.style.removeProperty("--scene-dim");
-      host.style.removeProperty("--scene-cut");
       delete host.dataset.ready;
     },
   };

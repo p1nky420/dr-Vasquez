@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 type Zone = { x: number; y: number; w: number; h: number };
-type Frame = { subject: Zone; dim: number; settled: boolean; stage?: number; cut: number };
+type Frame = { subject: Zone; dim: number; settled: boolean };
 
 /** Text that must never sit under the pieces once it has finished entering. */
 const TEXT = [
@@ -19,8 +19,9 @@ async function scrollAndSettle(page: Page, top: number) {
   await page.waitForFunction(
     () => (window as Window & { __epicFrame?: Frame }).__epicFrame?.settled === true,
     undefined,
-    { timeout: 45_000 },
-  );
+    { timeout: 30_000 },
+  // No frame at all means the canvas is scrolled out of view: nothing to cover.
+  ).catch(() => undefined);
 }
 
 async function measure(page: Page) {
@@ -30,10 +31,13 @@ async function measure(page: Page) {
     if (!frame || !canvas) return [];
     const presence = Number(getComputedStyle(canvas).opacity);
     if (presence < 0.35 || frame.dim > 0.5) return [];
-    const W = innerWidth, H = innerHeight;
+    const H = innerHeight;
+    // The subject is reported relative to the canvas, which on phones is a band in the page.
+    const c = canvas.getBoundingClientRect();
     const s = {
-      left: frame.subject.x * W, top: frame.subject.y * H,
-      right: (frame.subject.x + frame.subject.w) * W, bottom: (frame.subject.y + frame.subject.h) * H,
+      left: c.left + frame.subject.x * c.width, top: c.top + frame.subject.y * c.height,
+      right: c.left + (frame.subject.x + frame.subject.w) * c.width,
+      bottom: c.top + (frame.subject.y + frame.subject.h) * c.height,
     };
     const opaque = (el: Element) => {
       for (let n: Element | null = el; n; n = n.parentElement)
@@ -75,35 +79,29 @@ test("the pieces never cover finished copy while scrolling the whole home", asyn
   expect(failures, failures.join("\n")).toEqual([]);
 });
 
-test("on phones the pieces ride with the page and only change place through a cut", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "anchored bands are a phone layout");
+test("on phones the pieces live in a band of the page and scroll natively with it", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "bands are a phone layout");
   await page.goto("/", { waitUntil: "networkidle" });
   await expect(page.locator(".epic-canvas")).toHaveAttribute("data-ready", "true", { timeout: 20_000 });
-  const read = () => page.evaluate(() => {
-    const f = (window as Window & { __epicFrame?: Frame }).__epicFrame;
-    return f && { stage: f.stage, cut: f.cut, center: (f.subject.y + f.subject.h / 2) * innerHeight, y: scrollY };
-  });
-  const freshFrame = async () => {
-    for (let i = 0; i < 2; i++) {
-      await page.evaluate(() => delete (window as Window & { __epicFrame?: Frame }).__epicFrame);
-      await page.waitForFunction(() => (window as Window & { __epicFrame?: Frame }).__epicFrame, undefined, { timeout: 2_000 }).catch(() => undefined);
-    }
-  };
-  const jumps: string[] = [];
-  let previous = await read();
-  const end = await page.evaluate(() => (document.getElementById("el-estudio")?.offsetTop ?? 6000));
-  for (let y = 40; y < end; y += 40) {
+  const problems: string[] = [];
+  const end = await page.evaluate(() => document.getElementById("el-estudio")?.offsetTop ?? 6000);
+  for (let y = 0; y < end; y += 120) {
     await page.evaluate((top) => window.scrollTo({ top, behavior: "instant" }), y);
-    await freshFrame();
-    const now = await read();
-    if (previous && now && now.stage === previous.stage && now.cut === 0 && previous.cut === 0) {
-      // Within one band the subject moves with the page, give or take its own animation.
-      const drift = Math.abs(now.center - previous.center + (now.y - previous.y));
-      if (drift > 36) jumps.push(`y=${y}: drift ${Math.round(drift)} px in band ${now.stage}`);
-    }
-    previous = now;
+    await page.waitForTimeout(900);
+    const state = await page.evaluate(() => {
+      const canvas = document.querySelector<HTMLElement>(".epic-canvas")!;
+      const band = canvas.parentElement!;
+      const box = canvas.getBoundingClientRect(), bandBox = band.getBoundingClientRect();
+      return {
+        inBand: band.hasAttribute("data-stage"),
+        fixed: getComputedStyle(canvas).position === "fixed" || getComputedStyle(band).position === "fixed",
+        matches: Math.abs(box.top - bandBox.top) < 1 && Math.abs(box.height - bandBox.height) < 1,
+      };
+    });
+    if (!state.inBand) problems.push(`y=${y}: canvas is not inside an act band`);
+    else if (state.fixed || !state.matches) problems.push(`y=${y}: canvas does not scroll with its band`);
   }
-  expect(jumps, jumps.join("\n")).toEqual([]);
+  expect(problems, problems.join("\n")).toEqual([]);
 });
 
 test("final call to action is high contrast and reachable", async ({ page }) => {

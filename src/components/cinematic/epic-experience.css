@@ -88,6 +88,10 @@
 .epic-canvas[data-ready="true"] canvas {
   opacity: 1;
 }
+/* Fade cut while the canvas moves to the next act's band (phones). */
+.epic-canvas[data-cut] {
+  opacity: 0;
+}
 .epic-fallback {
   position: absolute;
   right: 10vw;
@@ -1004,6 +1008,16 @@
   }
   .epic-header {
     padding: 0 5vw;
+    /* Blurring a live WebGL backdrop is costly on phones; a solid bar reads the same. */
+    background: #05070bf2;
+    backdrop-filter: none;
+  }
+  .epic-pause {
+    backdrop-filter: none;
+  }
+  /* The band layout keeps pieces off the copy, so the glow shadows can go. */
+  .epic-copy :is(h1, h2, p, a, span) {
+    text-shadow: none;
   }
   .epic-logo {
     gap: 10px;
@@ -1050,6 +1064,7 @@
   .epic-stage {
     display: block;
     position: absolute;
+    z-index: 1;
     top: 12px;
     left: 0;
     right: 0;

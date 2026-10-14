@@ -185,7 +185,6 @@ export function EpicExperience() {
     const reveals = Array.from(el.querySelectorAll<HTMLElement>("[data-reveal]"));
     const blocks = Array.from(el.querySelectorAll<HTMLElement>("[data-block]"));
     const stages = Array.from(el.querySelectorAll<HTMLElement>("[data-stage]"));
-    let anchoredStage = -1;
     const clamp = (n: number) => Math.max(0, Math.min(1, n));
 
     // Leader line from the final call to action to the 3D destination square.
@@ -208,16 +207,56 @@ export function EpicExperience() {
       dot.setAttribute("cy", String(y2));
     };
 
+    // Phones: the canvas lives inside the empty band of the most visible act,
+    // so the browser scrolls it with the page (no script lag). Moving to the
+    // next act is a quick fade cut. Desktop keeps the fixed full-screen world.
+    const world = host.parentElement;
+    let mountedBand: HTMLElement | null = null;
+    let pendingBand: HTMLElement | null | undefined;
+    let cutTimer = 0;
+    const placeCanvas = (target: HTMLElement | null, instant: boolean) => {
+      if (target === (pendingBand === undefined ? mountedBand : pendingBand)) return;
+      pendingBand = target;
+      window.clearTimeout(cutTimer);
+      world?.prepend(host);
+      const move = () => {
+        (target ?? world)?.prepend(host);
+        mountedBand = target;
+        pendingBand = undefined;
+        void host.offsetWidth;
+        delete host.dataset.cut;
+        schedule();
+      };
+      if (instant) return move();
+      host.dataset.cut = "true";
+      cutTimer = window.setTimeout(move, 170);
+    };
+    const revealCache = new Map<HTMLElement, string>();
+    const setVar = (item: HTMLElement, name: string, value: string) => {
+      const key = name + value;
+      if (revealCache.get(item) === key) return;
+      revealCache.set(item, key);
+      item.style.setProperty(name, value);
+    };
+
     const render = () => {
       frame = 0;
       if (disposed || document.hidden || !visible) return;
+      // Read every box first, then write: interleaving forces a layout per element.
+      const width = innerWidth, height = innerHeight, narrow = width <= 760;
       const anchor = header?.offsetHeight ?? 80;
+      const tops = sections.map(section => section.getBoundingClientRect().top);
+      const revealBoxes = reveals.map((item) => item.getBoundingClientRect());
+      const finaleTop = finale?.getBoundingClientRect().top ?? 0;
+      const finaleHeight = finale?.offsetHeight ?? 1;
+      const bandBoxes = narrow ? stages.map((band) => band.getBoundingClientRect()) : [];
+      const blockBoxes = narrow ? [] : blocks.map((block) => block.getBoundingClientRect());
+
       // Interpolate camera positions from the actual document sections, including
       // expanded FAQ content; the page itself remains in normal scroll flow.
-      const tops = sections.map(section => section.getBoundingClientRect().top);
       let index = 0;
       while (index < tops.length - 1 && tops[index + 1] <= anchor) index++;
-      const span = index < tops.length - 1 ? tops[index + 1] - tops[index] : innerHeight;
+      const span = index < tops.length - 1 ? tops[index + 1] - tops[index] : height;
       const position = Math.min(acts.length - 1, index + clamp((anchor - tops[index]) / span));
       const raw = position / (acts.length - 1);
       const next = Math.round(position);
@@ -228,48 +267,38 @@ export function EpicExperience() {
       entrance = Math.max(entrance, clamp((performance.now() - started) / 4500));
       // Copy enters as its section rises (--in) and its accents follow the
       // 3D beat of the act (--beat), so words and pieces move together.
-      for (const item of reveals) {
-        const box = item.getBoundingClientRect();
-        item.style.setProperty("--in", motionOff.current ? "1" : clamp((innerHeight * 0.95 - box.top) / (innerHeight * 0.5)).toFixed(3));
-        item.style.setProperty("--beat", motionOff.current ? "1" : clamp((innerHeight * 0.7 - box.top) / Math.max(innerHeight * 0.6, box.height * 0.6)).toFixed(3));
-      }
-      el.style.setProperty("--epic-progress", String(raw));
-      el.style.setProperty("--portrait-presence", String(clamp(1 - Math.abs(position - 6) * 1.5)));
-      el.style.setProperty("--book-presence", String(clamp(1 - Math.abs(position - 7) * 1.6)));
-      el.style.setProperty("--book-turn", `${-22 + (position - 7) * 28}deg`);
+      reveals.forEach((item, i) => {
+        const box = revealBoxes[i];
+        setVar(item, "--in", motionOff.current ? "1" : clamp((height * 0.95 - box.top) / (height * 0.4)).toFixed(2));
+        setVar(item, "--beat", motionOff.current ? "1" : clamp((height * 0.7 - box.top) / Math.max(height * 0.6, box.height * 0.6)).toFixed(2));
+      });
+      el.style.setProperty("--epic-progress", raw.toFixed(3));
+      el.style.setProperty("--portrait-presence", clamp(1 - Math.abs(position - 6) * 1.5).toFixed(3));
+      el.style.setProperty("--book-presence", clamp(1 - Math.abs(position - 7) * 1.6).toFixed(3));
+      el.style.setProperty("--book-turn", `${(-22 + (position - 7) * 28).toFixed(1)}deg`);
       el.style.setProperty(
         "--reading-shade",
-        String(Math.max(clamp(1 - Math.abs(position - 8) * 1.8), clamp(1 - Math.abs(position - 7) * 1.7) * 0.45)),
+        Math.max(clamp(1 - Math.abs(position - 8) * 1.8), clamp(1 - Math.abs(position - 7) * 1.7) * 0.45).toFixed(3),
       );
-      el.style.setProperty("--photo-zoom", String(motionOff.current ? 1 : 1.06 + (position - 6) * 0.07));
+      el.style.setProperty("--photo-zoom", motionOff.current ? "1" : (1.06 + (position - 6) * 0.07).toFixed(3));
       el.dataset.act = String(next);
       if (!motionOff.current) cameraProgress.current = Math.min(1, raw + entrance * 0.009);
-      const finish = finale ? clamp((innerHeight - finale.getBoundingClientRect().top) / finale.offsetHeight) : 0;
+      const finish = finale ? clamp((height - finaleTop) / finaleHeight) : 0;
       if (!motionOff.current) finaleProgress.current = finish;
-      el.style.setProperty("--finale-reveal", String(motionOff.current ? 1 : clamp((finish - 0.42) / 0.3)));
-      // Phones: the subject rides the empty band of the most visible act and
-      // cuts to the next band, instead of chasing gaps across the copy.
-      const bands = innerWidth <= 760 ? stages.map((band) => band.getBoundingClientRect()) : [];
-      let zone: StageZone, band: number | undefined;
-      if (bands.some((box) => box.height > 0)) {
-        const shown = bands.map((box) => Math.max(0, Math.min(box.bottom, innerHeight) - Math.max(box.top, anchor)));
+      el.style.setProperty("--finale-reveal", motionOff.current ? "1" : clamp((finish - 0.42) / 0.3).toFixed(3));
+
+      let zone: StageZone;
+      if (narrow && bandBoxes.some((box) => box.height > 0)) {
+        const shown = bandBoxes.map((box) => Math.max(0, Math.min(box.bottom, height) - Math.max(box.top, anchor)));
         const best = shown.indexOf(Math.max(...shown));
-        if (anchoredStage < 0 || !bands[anchoredStage]?.height) anchoredStage = best;
-        else if (shown[best] > shown[anchoredStage] * 1.15 + 1) anchoredStage = best;
-        if (!shown[anchoredStage]) {
-          const middle = (anchor + innerHeight) / 2;
-          const distance = bands.map((box) => box.height ? Math.abs((box.top + box.bottom) / 2 - middle) : Infinity);
-          anchoredStage = distance.indexOf(Math.min(...distance));
-        }
-        const box = bands[anchoredStage];
-        zone = { x: box.left / innerWidth, y: box.top / innerHeight, w: box.width / innerWidth, h: box.height / innerHeight };
-        band = anchoredStage;
+        const currentBand = mountedBand ? stages.indexOf(mountedBand) : -1;
+        const chosen = currentBand < 0 || shown[best] > shown[currentBand] * 1.15 + 1 ? best : currentBand;
+        placeCanvas(stages[chosen], currentBand < 0 || motionOff.current);
+        // The canvas is the band: frame the subject inside it with a small margin.
+        zone = { x: 0.03, y: 0.03, w: 0.94, h: 0.94 };
       } else {
-        const stage = findStage(
-          blocks.map((block) => block.getBoundingClientRect()),
-          { width: innerWidth, height: innerHeight, top: anchor },
-          axis,
-        );
+        placeCanvas(null, true);
+        const stage = findStage(blockBoxes, { width, height, top: anchor }, axis);
         axis = stage.axis;
         zone = stage.zone;
       }
@@ -280,7 +309,6 @@ export function EpicExperience() {
         pointerY: motionOff.current ? 0 : cursorY,
         hover: contactHover,
         zone,
-        stage: band,
         immediate: motionOff.current,
       });
       if (entrance < 1 && !motionOff.current && raw < 0.02)
@@ -343,6 +371,7 @@ export function EpicExperience() {
     return () => {
       disposed = true;
       cancelAnimationFrame(frame);
+      window.clearTimeout(cutTimer);
       window.removeEventListener("pointermove", pointer);
       document.documentElement.removeEventListener("pointerleave", resetPointer);
       observer.disconnect();
