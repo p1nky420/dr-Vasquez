@@ -124,6 +124,14 @@ export function QuickIntake({ source = "home-quick" }: { source?: string }) {
         </label>
       </div>
 
+      <label className="quick-intake__consent">
+        <input type="checkbox" name="consent" required />
+        <span>
+          Autorizo el tratamiento de estos datos para evaluar mi consulta. Sin
+          compromiso: el envío no crea una relación abogado-cliente.
+        </span>
+      </label>
+
       <button className="quick-intake__submit" type="submit" disabled={state === "submitting"}>
         {state === "submitting" ? (
           <>
@@ -136,13 +144,6 @@ export function QuickIntake({ source = "home-quick" }: { source?: string }) {
         )}
       </button>
 
-      <label className="quick-intake__consent">
-        <input type="checkbox" name="consent" required />
-        <span>
-          Autorizo el tratamiento de estos datos para evaluar mi consulta. Sin costo
-          y sin compromiso: el envío no crea una relación abogado-cliente.
-        </span>
-      </label>
 
       {state === "error" ? (
         <p role="alert" className="quick-intake__error">

@@ -56,8 +56,8 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <SearchButton />
-          <Link href="/#consulta-rapida" className="hidden whitespace-nowrap border border-[#ecc058]/55 px-4 py-3 text-[0.66rem] font-semibold uppercase tracking-[0.15em] text-[#f3eee4] transition-colors hover:bg-[#ecc058] hover:text-[#15130f] md:inline-flex">
-            Consulta privada
+          <Link href="/#consulta-form" className="hidden whitespace-nowrap border border-[#ecc058]/55 px-4 py-3 text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[#f3eee4] transition-colors hover:bg-[#ecc058] hover:text-[#15130f] md:inline-flex">
+            Evaluación confidencial
           </Link>
           <button type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Cerrar menú" : "Abrir menú"} aria-expanded={open} aria-controls="mobile-navigation" className="grid size-12 place-items-center border border-white/15 text-[#ecc058] touch-manipulation lg:hidden">
             {open ? <X size={19} /> : <Menu size={19} />}

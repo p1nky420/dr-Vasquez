@@ -1,25 +1,22 @@
 "use client";
 
 import {
-  ArrowDownRight,
   ArrowRight,
+  ArrowUpRight,
   Check,
   ChevronRight,
   LockKeyhole,
   MapPin,
   MessageCircle,
-  Quote,
   ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { EditorialReveal, MaskReveal, ParallaxLayer } from "@/components/editorial-motion";
-import { IntakeForm } from "@/components/intake-form";
 import { QuickIntake } from "@/components/quick-intake";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { SwipeableCard } from "@/components/swipeable-card";
 import { TrajectoryAtlas } from "@/components/trajectory-atlas";
-import { SectionDivider } from "@/components/section-divider";
 import { faqs, tacticalServices, proofInstitutions } from "@/lib/home-content";
 import { whatsappHref } from "@/lib/site";
 import { trackCta } from "@/lib/analytics";
@@ -148,7 +145,7 @@ const featuredFaqs = FEATURED_QUESTIONS
 
 function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.26em] ${dark ? "text-[#8a6941]" : "text-[#ecc058]"}`}>
+    <p className={`flex items-center gap-3 text-[0.75rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-[#8a6941]" : "text-[#ecc058]"}`}>
       <span className={`h-px w-9 ${dark ? "bg-[#8a6941]" : "bg-[#ecc058]"}`} />
       {children}
     </p>
@@ -207,7 +204,7 @@ export function HomeLanding() {
         <div className="relative mx-auto flex min-h-[100svh] max-w-[94rem] items-end px-5 pb-28 pt-28 md:px-8 md:pb-20 lg:items-center lg:pb-10">
           <div className="max-w-[45rem] lg:ml-[2vw]">
             <EditorialReveal>
-              <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
                 Jurista penalista · Ecuador
               </p>
             </EditorialReveal>
@@ -231,7 +228,7 @@ export function HomeLanding() {
             </EditorialReveal>
             <EditorialReveal delay={0.28} className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#consulta-rapida"
+                href="#consulta-form"
                 onClick={() => trackCta("hero", "Solicitar evaluación")}
                 className="premium-button group"
               >
@@ -245,7 +242,7 @@ export function HomeLanding() {
                 onClick={() => trackCta("hero", "WhatsApp")}
                 className="premium-button premium-button--ghost group"
               >
-                <MessageCircle size={15} /> WhatsApp directo
+                <MessageCircle size={15} /> Escribir por WhatsApp
               </a>
             </EditorialReveal>
             <EditorialReveal delay={0.34}>
@@ -261,14 +258,12 @@ export function HomeLanding() {
         <EditorialReveal delay={0.62} className="absolute bottom-[5rem] right-[4vw] hidden text-right lg:block">
           <div className="rounded-sm bg-black/28 px-5 py-4 backdrop-blur-[3px]">
             <p className="font-serif text-xl text-[#fffaf0]">Dr. Fausto Vásquez</p>
-            <p className="mt-1.5 text-[0.52rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
+            <p className="mt-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
               Dirección personal de la defensa
             </p>
           </div>
         </EditorialReveal>
       </section>
-
-      <SectionDivider />
 
       {/* ─────────────────────────────────────────────────────────────────
           Captación inmediata. El único punto de conversión estaba al 69 %
@@ -311,11 +306,14 @@ export function HomeLanding() {
             />
           </div>
 
-          <EditorialReveal delay={0.08}>
-            <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
-              Evaluación confidencial · Respuesta el mismo día hábil
-            </p>
-            <QuickIntake source="home-hero" />
+          {/* On phones the form comes first: the hero CTA must land on something to fill in. */}
+          <EditorialReveal delay={0.08} className="order-first lg:order-none">
+            <div id="consulta-form" className="scroll-mt-28">
+              <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
+                Evaluación confidencial · Respuesta el mismo día hábil
+              </p>
+              <QuickIntake source="home-hero" />
+            </div>
 
             <div className="mt-8 border-t border-[#ecc058]/15 pt-6">
               <p className="text-[0.8125rem] uppercase tracking-[0.14em] text-[#8f877c]">
@@ -331,8 +329,6 @@ export function HomeLanding() {
         </div>
       </section>
 
-      <SectionDivider />
-
       <section id="legado" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[88rem]">
           <div className="grid gap-16 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-24">
@@ -345,8 +341,8 @@ export function HomeLanding() {
                   sizes="(min-width: 1024px) 42vw, 100vw"
                   className="object-cover object-[center_20%] grayscale-[15%]"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,rgba(20,17,12,.44)_100%)]" />
-                <p className="absolute bottom-6 left-6 right-6 border-t border-white/35 pt-4 text-[0.6rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-white/80">
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(20,17,12,.82)_100%)]" />
+                <p className="absolute bottom-6 left-6 right-6 border-t border-white/35 pt-4 text-[0.75rem] uppercase tracking-[0.22em] text-[#fffaf0]">
                   Jurista · Docente · Autor · Estratega
                 </p>
               </div>
@@ -371,20 +367,7 @@ export function HomeLanding() {
                     </p>
                   ))}
                 </div>
-                <div className="mt-10 grid gap-px divide-y divide-[#15130f]/10 border-t border-b border-[#15130f]/10 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
-                  {[
-                    { stat: "20+", label: "años de experiencia" },
-                    { stat: "Profesor", label: "universitario" },
-                    { stat: "Autor", label: "publicaciones jurídicas" },
-                    { stat: "Formación", label: "internacional" },
-                  ].map(({ stat, label }) => (
-                    <div key={label} className="py-5 text-center sm:py-6">
-                      <p className="font-serif text-2xl tracking-tight text-[#15130f] md:text-3xl">{stat}</p>
-                      <p className="mt-1 text-[0.6rem] max-sm:text-[0.65rem] uppercase tracking-[0.16em] text-[#6d655b]">{label}</p>
-                    </div>
-                  ))}
-                </div>
-                <Link href="/firma" className="mt-10 inline-flex items-center gap-3 border-b border-[#8a6941] pb-2 text-[0.67rem] font-bold uppercase tracking-[0.18em] text-[#6f512f]">
+                <Link href="/firma" className="mt-10 inline-flex min-h-11 items-center gap-3 border-b border-[#8a6941] pb-2 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-[#6f512f]">
                   Conocer el perfil profesional <ArrowRight size={14} />
                 </Link>
               </EditorialReveal>
@@ -392,8 +375,6 @@ export function HomeLanding() {
           </div>
         </div>
       </section>
-
-      <SectionDivider />
 
       <section id="trayectoria" className="relative bg-[#080706] px-5 py-16 md:px-8 md:py-28">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(201,173,120,0.02),transparent_55%)]" />
@@ -415,8 +396,6 @@ export function HomeLanding() {
         </div>
       </section>
 
-      <SectionDivider />
-
       <section id="practica" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[88rem]">
           <SectionIntro
@@ -431,8 +410,8 @@ export function HomeLanding() {
                 <SwipeableCard href={practice.href}>
                   <Link href={practice.href} className="group flex min-h-[28rem] flex-col border border-[#15130f]/15 bg-[#f3ede3] p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(21,19,15,0.12)] sm:p-8 md:p-10">
                   <div className="flex items-start justify-between gap-6">
-                    <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
-                    <ArrowDownRight className="shrink-0 text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
+                    <p className="text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
+                    <ArrowUpRight className="shrink-0 text-[#8a6941] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" size={18} />
                   </div>
 
                   <div className="flex-1 flex flex-col">
@@ -440,7 +419,7 @@ export function HomeLanding() {
                     <p className="mt-5 text-[0.9rem] leading-[1.9] tracking-[0.02em] text-[#514b43]">{practice.text}</p>
 
                     <div className="mt-auto space-y-3 pt-8">
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Doctrina relacionada</p>
+                      <p className="text-[0.75rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Doctrina relacionada</p>
                       <ul className="space-y-2">
                         {practice.methodology.map((item) => (
                           <li key={item} className="flex items-start gap-3 text-[0.82rem] leading-relaxed text-[#514b43]">
@@ -452,16 +431,16 @@ export function HomeLanding() {
                     </div>
 
                     <div className="mt-6 space-y-2">
-                      <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Publicaciones</p>
+                      <p className="text-[0.75rem] font-bold uppercase tracking-[0.24em] text-[#8a6941]">Publicaciones</p>
                       {practice.publications.map((pub) => (
-                        <p key={pub} className="flex items-center gap-2 text-[0.7rem] leading-snug text-[#6f512f] underline decoration-[#8a6941]/30 underline-offset-2">
+                        <p key={pub} className="flex items-center gap-2 text-[0.8125rem] leading-snug text-[#6f512f] underline decoration-[#8a6941]/30 underline-offset-2">
                           <span className="size-1 rounded-full bg-[#8a6941]/40 shrink-0" />
                           {pub}
                         </p>
                       ))}
                     </div>
 
-                    <span className="mt-6 inline-flex items-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-[#8a6941] transition-colors group-hover:text-[#6f512f]">
+                    <span className="mt-6 inline-flex items-center gap-2 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#8a6941] transition-colors group-hover:text-[#6f512f]">
                       Explorar especialidad <ArrowRight size={13} />
                     </span>
                   </div>
@@ -473,13 +452,8 @@ export function HomeLanding() {
         </div>
       </section>
 
-      <SectionDivider />
-
       <section id="metodo" className="relative bg-[#15120f] px-5 py-16 md:px-8 md:py-24 overflow-hidden ">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(201,173,120,0.07),transparent_40%)]" />
-        <div className="pointer-events-none absolute left-[5%] top-[10%] w-[25%] opacity-[0.1]">
-          <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
-        </div>
         <div className="mx-auto max-w-[88rem]">
           <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
             <div>
@@ -491,15 +465,14 @@ export function HomeLanding() {
               <EditorialReveal delay={0.12}>
                 <div className="mt-10 flex items-center gap-4 border-l border-[#ecc058] pl-5">
                   <ShieldCheck className="shrink-0 text-[#ecc058]" size={24} />
-                  <p className="text-[0.8rem] uppercase leading-7 tracking-[0.14em] text-[#c8c0b5]">Admisión selectiva · Conflicto de interés · Secreto profesional</p>
+                  <p className="text-[0.8rem] uppercase leading-7 tracking-[0.14em] text-[#c8c0b5]">Revisión de conflicto de interés · Secreto profesional</p>
                 </div>
               </EditorialReveal>
             </div>
             <div className="grid border-t border-[#ecc058]/20 sm:grid-cols-2">
               {principles.map(([title, text], index) => (
                 <EditorialReveal key={title} delay={index * 0.06} className="border-b border-[#ecc058]/20 p-7 sm:min-h-64 sm:[&:nth-child(odd)]:border-r md:p-9">
-                  <span className="font-serif text-2xl text-[#ecc058]/55">0{index + 1}</span>
-                  <h3 className="mt-10 font-serif text-2xl">{title}</h3>
+                  <h3 className="font-serif text-2xl">{title}</h3>
                   <p className="mt-4 text-[0.98rem] leading-[1.85] text-[#c2baae]">{text}</p>
                 </EditorialReveal>
               ))}
@@ -508,13 +481,9 @@ export function HomeLanding() {
 
         </div>
       </section>
-      <SectionDivider />
 
       <section id="proceso" className="relative bg-[#0c0b09] px-5 py-16 md:px-8 md:py-24 overflow-hidden ">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(201,173,120,.08),transparent_28%)]" />
-        <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
-          <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
-        </div>
         <div className="relative mx-auto grid max-w-[88rem] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <SectionIntro
             eyebrow="Proceso privado"
@@ -535,21 +504,24 @@ export function HomeLanding() {
                 </li>
               ))}
             </ol>
+            <a
+              href="#consulta-form"
+              onClick={() => trackCta("proceso", "Solicitar evaluación")}
+              className="premium-button group mt-12"
+            >
+              Solicitar evaluación confidencial
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </a>
           </EditorialReveal>
         </div>
       </section>
 
-      <SectionDivider />
-
       <section id="pensamiento-juridico" className="relative overflow-hidden bg-[#e9e1d4] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(138,105,65,.13),transparent_28%),linear-gradient(90deg,transparent_49.9%,rgba(21,19,15,.08)_50%,transparent_50.1%)]" />
-        <div className="pointer-events-none absolute -right-12 top-12 font-serif text-[16rem] leading-none tracking-[-0.1em] text-[#8a6941]/[0.045] md:text-[28rem]" aria-hidden="true">
-          FV
-        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(138,105,65,.13),transparent_28%)]" />
 
         <div className="relative mx-auto max-w-[92rem]">
           <EditorialReveal>
-            <p className="text-[0.64rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">
               Pensamiento jurídico
             </p>
             <blockquote className="mt-8 max-w-[88rem] font-serif text-[clamp(2.4rem,5.2vw,5rem)] leading-[1] tracking-[0.01em]">
@@ -561,7 +533,7 @@ export function HomeLanding() {
           </EditorialReveal>
 
           <EditorialReveal delay={0.12} className="mx-auto mt-16 max-w-4xl border-t border-b border-[#8a6941]/15 py-12 md:mt-20 md:py-16">
-            <p className="text-[0.55rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">Manifiesto</p>
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[#8a6941]">Manifiesto</p>
             <p className="mt-8 font-serif text-[1.05rem] leading-[2] tracking-[0.02em] text-[#4a443c] md:text-[1.15rem]">
               En un tiempo donde el discurso jurídico se ha simplificado hasta volverse operativo, este despacho sostiene que la defensa penal no puede reducirse a una técnica de litigación. Es, ante todo, un ejercicio de pensamiento.
             </p>
@@ -580,11 +552,11 @@ export function HomeLanding() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,9,8,.08),rgba(10,9,8,.28)_45%,rgba(10,9,8,.94)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 p-7 md:p-11">
-              <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
                 Producción intelectual
               </p>
               <span className="mt-4 block font-serif text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[-0.03em] text-[#f3eee4]">
-                PUBLICACIONES
+                Publicaciones
               </span>
               <p className="mt-5 max-w-2xl text-[1rem] leading-[1.85] text-[#cec6ba]">
                 Libros, doctrina y análisis jurídico que trascienden el expediente y
@@ -593,16 +565,7 @@ export function HomeLanding() {
             </div>
           </EditorialReveal>
 
-          <div className="mt-5 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
-            <EditorialReveal delay={0.12}>
-              <article className="flex min-h-80 flex-col justify-between border border-[#15130f]/20 p-8 md:p-10">
-                <Quote className="text-[#8a6941]" size={30} strokeWidth={1.3} />
-                <blockquote className="font-serif text-3xl leading-[1.18] tracking-[-0.025em] md:text-4xl">
-                  “La defensa eficaz comienza en la comprensión exacta del problema.”
-                </blockquote>
-                <p className="text-[0.58rem] max-sm:text-[0.65rem] uppercase tracking-[0.2em] text-[#6d655b]">Fragmento editorial · Fausto Vásquez</p>
-              </article>
-            </EditorialReveal>
+          <div className="mt-5">
             <EditorialReveal delay={0.18}>
               <article className="relative min-h-80 overflow-hidden bg-[#15120f] text-[#f3eee4]">
                 <Image
@@ -614,15 +577,15 @@ export function HomeLanding() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#15120f] via-[#15120f]/82 to-[#15120f]/28" />
                 <div className="relative flex min-h-80 max-w-xl flex-col justify-end p-8 md:p-10">
-                  <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
+                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
                     Archivo académico
                   </p>
                   <h3 className="mt-5 font-serif text-4xl leading-tight">Conferencias, entrevistas y formación avanzada.</h3>
                   <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
-                    <Link href="/publicaciones" className="inline-flex min-h-6 items-center gap-3 py-0.5 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]">
+                    <Link href="/publicaciones" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]">
                       Ver publicaciones y conferencias <ArrowRight size={14} />
                     </Link>
-                    <Link href="/eventos" className="inline-flex min-h-6 items-center gap-3 py-0.5 text-[0.62rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]/70">
+                    <Link href="/eventos" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]/70">
                       Actividad académica <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -632,8 +595,6 @@ export function HomeLanding() {
           </div>
         </div>
       </section>
-
-      <SectionDivider />
 
       <section id="consulta" className="bg-[#15120f] px-5 py-16 md:px-8 md:py-24 relative overflow-hidden ">
         {/* Decorative elements representing private safe room */}
@@ -663,19 +624,6 @@ export function HomeLanding() {
                 </div>
               </EditorialReveal>
 
-              {/* Insignia de Privacidad */}
-              <EditorialReveal delay={0.1} className="mt-10 flex items-center gap-4 border border-[#ecc058]/25 bg-[#ecc058]/[0.03] p-5 rounded-sm">
-                <div className="size-12 rounded-full border border-[#ecc058]/30 flex items-center justify-center bg-[#15120f] shrink-0">
-                  <svg className="size-6 text-[#ecc058]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058] font-semibold">Garantía Constitucional</h3>
-                  <p className="text-[0.62rem] max-sm:text-[0.65rem] text-[#bbb2a6] mt-0.5 uppercase tracking-wider">Admisión Selectiva bajo Secreto Profesional</p>
-                </div>
-              </EditorialReveal>
-
               <EditorialReveal delay={0.12} className="mt-10 grid gap-5">
                 <a href={whatsappHref("Hola, deseo agendar una llamada privada de evaluación confidencial con el Dr. Fausto Vásquez.")} target="_blank" rel="noreferrer" className="contact-line hover:border-[#ecc058]/50 transition-all duration-300">
                   <MessageCircle size={18} />
@@ -688,31 +636,32 @@ export function HomeLanding() {
                 </div>
                 <div className="contact-line">
                   <LockKeyhole size={18} />
-                  <span><small>Protocolo de ingreso</small>Filtro de admisión selectiva y confidencial</span>
+                  <span><small>Primer contacto</small>Sin documentos confidenciales hasta confirmar un canal seguro</span>
                 </div>
               </EditorialReveal>
             </div>
             
             <EditorialReveal delay={0.14}>
-              <div className="consultation-vault-card p-6 md:p-9 rounded-sm border border-[#ecc058]/30">
-                <div className="mb-8 flex items-center justify-between border-b border-[#ecc058]/18 pb-6">
+              <div className="consultation-vault-card rounded-sm border border-[#ecc058]/30 p-6 md:p-9">
+                <div className="mb-8 flex items-start justify-between gap-6 border-b border-[#ecc058]/18 pb-6">
                   <div>
-                    <p className="text-[0.56rem] max-sm:text-[0.65rem] uppercase tracking-[0.22em] text-[#ecc058]">Solicitud de Evaluación Estratégica</p>
-                    <h3 className="mt-2 font-serif text-2xl">Sala de Admisión Privada</h3>
+                    <p className="text-[0.75rem] uppercase tracking-[0.18em] text-[#ecc058]">Evaluación confidencial</p>
+                    <h3 className="mt-2 font-serif text-2xl">Comparta solo lo necesario para empezar.</h3>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[0.55rem] max-sm:text-[0.65rem] uppercase tracking-wider text-[#8f877c] font-medium hidden sm:inline">Cifrado de Extremo a Extremo</span>
-                    <LockKeyhole className="text-[#ecc058]" size={20} />
-                  </div>
+                  <LockKeyhole className="mt-1 shrink-0 text-[#ecc058]" size={20} aria-hidden="true" />
                 </div>
-                <IntakeForm />
+                <QuickIntake source="home-consulta" />
+                <Link
+                  href="/contacto"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-[0.875rem] text-[#c2baae] underline decoration-[#ecc058]/40 underline-offset-4 hover:text-[#ecc058]"
+                >
+                  ¿Prefiere detallar su caso? Use el formulario completo <ArrowRight size={14} />
+                </Link>
               </div>
             </EditorialReveal>
           </div>
         </div>
       </section>
-
-      <SectionDivider />
 
       <section id="faq" className="bg-[#ece5d9] px-5 py-16 text-[#15130f] md:px-8 md:py-24">
         <div className="mx-auto max-w-[72rem]">
@@ -734,15 +683,13 @@ export function HomeLanding() {
         </div>
       </section>
 
-      <SectionDivider />
-
       <section className="relative min-h-[72vh] overflow-hidden px-5 py-16 md:px-8">
         <Image src="/quito_night.png" alt="Quito de noche" fill sizes="100vw" className="object-cover grayscale" />
         <div className="absolute inset-0 bg-[#080706]/82" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,173,120,.16),transparent_35%)]" />
         <div className="relative mx-auto flex min-h-[55vh] max-w-5xl flex-col items-center justify-center text-center">
           <EditorialReveal>
-            <p className="text-[0.62rem] max-sm:text-[0.65rem] uppercase tracking-[0.3em] text-[#ecc058]">Dr. Fausto Vásquez — Estudio Jurídico</p>
+            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#ecc058]">Dr. Fausto Vásquez — Estudio Jurídico</p>
             <h2 className="mt-7 font-serif text-[clamp(3rem,9vw,7rem)] leading-[0.94] tracking-[-0.055em]">
               Su libertad, reputación y legado merecen una defensa estratégica.
             </h2>
@@ -750,7 +697,7 @@ export function HomeLanding() {
               Consulte con un profesional dedicado a la excelencia, la discreción y los más altos estándares de defensa penal.
             </p>
             <a href="#consulta" className="premium-button mx-auto mt-9">
-              Solicitar consulta privada <ArrowRight size={15} />
+              Solicitar evaluación confidencial <ArrowRight size={15} />
             </a>
           </EditorialReveal>
         </div>
