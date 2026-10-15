@@ -289,17 +289,20 @@ export function HomeLanding() {
               es posible hacer.
             </p>
 
-            <div className="mt-9 grid gap-px bg-[#ecc058]/12 sm:grid-cols-2">
+            {/* Editorial index, not a card grid: a title column and its reading, ruled like a dossier. */}
+            <ul className="mt-10 border-t border-[#ecc058]/20">
               {tacticalServices.map((service) => (
-                <EditorialReveal key={service.number} className="bg-[#0e0c0a] p-6">
-                  <span className="font-serif text-xl text-[#ecc058]/55">{service.number}</span>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#f3eee4]">
+                <li
+                  key={service.title}
+                  className="grid gap-2 border-b border-[#ecc058]/12 py-6 md:grid-cols-[minmax(0,14.5rem)_1fr] md:gap-10 md:py-7"
+                >
+                  <h3 className="font-serif text-[1.35rem] leading-[1.25] text-[#f3eee4]">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[0.9rem] leading-[1.7] text-[#b5ada2]">{service.text}</p>
-                </EditorialReveal>
+                  <p className="text-[0.95rem] leading-[1.75] text-[#b5ada2]">{service.text}</p>
+                </li>
               ))}
-            </div>
+            </ul>
 
             <WhatsappCta
               className="mt-9"
@@ -427,13 +430,12 @@ export function HomeLanding() {
               <EditorialReveal key={practice.title} delay={index * 0.08}>
                 <SwipeableCard href={practice.href}>
                   <Link href={practice.href} className="group flex min-h-[28rem] flex-col border border-[#15130f]/15 bg-[#f3ede3] p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(21,19,15,0.12)] sm:p-8 md:p-10">
-                  <div className="flex items-start justify-between">
-                    <span className="font-serif text-5xl leading-[0.95] tracking-[0.01em] text-[#15130f]/10">{practice.number}</span>
-                    <ArrowDownRight className="text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
+                  <div className="flex items-start justify-between gap-6">
+                    <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
+                    <ArrowDownRight className="shrink-0 text-[#8a6941] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={18} />
                   </div>
 
-                  <div className="mt-8 flex-1 flex flex-col">
-                    <p className="text-[0.58rem] max-sm:text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#8a6941]">{practice.specialty}</p>
+                  <div className="flex-1 flex flex-col">
                     <h3 className="mt-4 font-serif text-3xl leading-[1.04] tracking-[-0.04em] text-[#15130f] md:text-4xl">{practice.title}</h3>
                     <p className="mt-5 text-[0.9rem] leading-[1.9] tracking-[0.02em] text-[#514b43]">{practice.text}</p>
 

@@ -135,25 +135,21 @@ export const specializations = [
 
 export const tacticalServices = [
   {
-    number: "01",
     title: "Revisión de expedientes",
     text: "Segunda opinión técnica sobre actuaciones fiscales, elementos de convicción, estrategia actual, posibles errores y riesgos para las siguientes etapas.",
     cta: "Solicitar revisión de expediente",
   },
   {
-    number: "02",
     title: "Preparación de audiencias",
     text: "Análisis del objetivo procesal, orden de argumentos, revisión de prueba, riesgos y preparación estratégica de la intervención.",
     cta: "Preparar audiencia penal",
   },
   {
-    number: "03",
     title: "Apelación, casación y revisión",
     text: "Estudio de decisiones judiciales, errores jurídicos, motivación, garantías y posibles vías de impugnación.",
     cta: "Consultar recurso penal",
   },
   {
-    number: "04",
     title: "Defensa de alta complejidad",
     text: "Intervención en expedientes voluminosos, prueba financiera o contable, varios procesados y escenarios de exposición pública.",
     cta: "Evaluar caso complejo",
