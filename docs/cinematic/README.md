@@ -59,6 +59,23 @@ El texto entra con su sección (`--in`) y los acentos (línea del principio, pas
 del método, lema del remate) avanzan con el compás 3D del acto (`--beat`,
 `--finale-reveal`).
 
+## Funcional además de épica
+
+- **Consulta a un toque:** el botón del inicio, el de la cabecera («Consulta» en
+  móvil) y la barra fija de móvil abren WhatsApp con el mensaje preparado; el
+  teléfono está junto a cada uno. Una sola acción con un solo nombre:
+  «Solicitar consulta reservada». La barra de móvil aparece tras el primer acto
+  y se retira en la consulta final, que tiene su propio botón.
+- **La partida a la vista (escritorio):** una columna de casillas en el borde
+  derecho marca el acto actual y permite saltar a cualquiera.
+- **Velo:** si la pieza llega a tocar un bloque de texto durante una
+  transición, el lienzo se atenúa al instante (`--scene-veil`).
+- **Servicios con nombre:** cada acto de especialidad muestra su nombre y los
+  asuntos concretos (lavado de activos, cohecho, peculado, prisión
+  preventiva…), tomados de `serviceCategories`.
+- **Sin numeración de plantilla:** fuera los números romanos de los rótulos, los
+  numerales gigantes de fondo y la numeración de las preguntas.
+
 ## Accesibilidad y rendimiento
 
 - Todo el contenido está en el HTML prerenderizado; sin JavaScript se lee como

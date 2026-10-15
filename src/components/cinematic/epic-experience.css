@@ -73,7 +73,8 @@
   inset: 0;
   opacity: calc(
     (1 - max(var(--portrait-presence), var(--book-presence)) * 0.97) *
-      (1 - var(--scene-dim, 0) * 0.7) * (1 - var(--scene-cut, 0))
+      (1 - var(--scene-dim, 0) * 0.7) * (1 - var(--scene-cut, 0)) *
+      (1 - var(--scene-veil, 0) * 0.78)
   );
   transition: opacity 0.18s linear;
 }
@@ -164,14 +165,14 @@
   color: var(--epic-gold);
 }
 .epic-logo > span {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
 }
 .epic-logo small {
   display: block;
   margin-top: 5px;
-  font-size: 9px;
-  letter-spacing: 0.26em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   color: var(--epic-quiet);
 }
 .epic-primary-nav {
@@ -201,6 +202,9 @@
 }
 .epic-contact-shortcut svg {
   color: var(--epic-gold);
+}
+.epic-shortcut-short {
+  display: none;
 }
 .epic-header button {
   display: grid;
@@ -353,6 +357,15 @@
 .epic-intro .epic-kicker {
   animation: epic-title 1.7s both;
 }
+.epic-urgent {
+  max-width: 460px;
+  margin-top: 22px;
+  padding-left: 16px;
+  border-left: 1px solid var(--epic-gold);
+  font-size: 16px;
+  line-height: 1.55;
+  color: #efe8dc;
+}
 .epic-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -455,36 +468,38 @@
   max-width: 680px;
   font-size: clamp(42px, 4.9vw, 84px);
 }
-.epic-ghost-number {
+/* The service is named plainly above the line of thought, so a scared reader finds their matter. */
+.epic-service-name {
+  margin-bottom: 20px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--epic-gold-soft);
+}
+.epic-offences {
+  display: grid;
+  gap: 8px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #e2dbcf;
+}
+.epic-offences li {
+  position: relative;
+  padding-left: 22px;
+}
+/* A small chess square as the bullet: the motif, at the scale of a mark. */
+.epic-offences li::before {
+  content: "";
   position: absolute;
-  top: 50%;
-  translate: 0 -50%;
-  left: var(--gutter);
-  font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(220px, 28vw, 440px);
-  line-height: 1;
-  letter-spacing: -0.1em;
-  color: #c8a45d0f;
-  pointer-events: none;
-}
-.epic-align-right .epic-ghost-number {
-  left: auto;
-  right: var(--gutter);
-}
-.epic-service.epic-align-right .epic-ghost-number {
-  right: auto;
-  left: var(--gutter);
-}
-.epic-service:not(.epic-align-right) .epic-ghost-number {
-  left: auto;
-  right: var(--gutter);
-}
-.epic-practice-note {
-  margin-top: 24px;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #d4c398;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--epic-gold);
+  transform: rotate(45deg);
 }
 .epic-principle {
   display: flex;
@@ -1026,11 +1041,12 @@
     font-size: 26px;
   }
   .epic-logo > span {
-    font-size: 10px;
-    letter-spacing: 0.14em;
+    font-size: 12px;
+    letter-spacing: 0.12em;
   }
   .epic-logo small {
-    font-size: 8px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
   }
   .epic-primary-nav {
     display: none;
@@ -1039,13 +1055,16 @@
     gap: 8px;
   }
   .epic-contact-shortcut {
-    width: 44px;
-    justify-content: center;
-    font-size: 0;
+    gap: 6px;
+    padding: 0 12px;
+    border: 1px solid #c8a45d66;
+    font-size: 13px;
   }
-  .epic-contact-shortcut svg {
-    width: 20px;
-    height: 20px;
+  .epic-shortcut-long {
+    display: none;
+  }
+  .epic-shortcut-short {
+    display: inline;
   }
   .epic-index {
     display: block;
@@ -1147,15 +1166,6 @@
   .epic-service::before,
   .epic-service.epic-align-right::before {
     background: none;
-  }
-  .epic-ghost-number,
-  .epic-service.epic-align-right .epic-ghost-number,
-  .epic-service:not(.epic-align-right) .epic-ghost-number {
-    top: calc(var(--head) + 6svh);
-    translate: none;
-    left: auto;
-    right: 4vw;
-    font-size: 58vw;
   }
   .epic-jurist {
     min-height: 0;
@@ -1270,6 +1280,111 @@
     top: 6vh;
     right: -5vw;
     font-size: 60vh;
+  }
+}
+
+/* ——— Progress rail: the game as a file of squares (desktop) ——— */
+.epic-rail {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  z-index: 11;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  translate: 0 -50%;
+}
+.epic-rail a {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+.epic-rail a::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 1px solid #c8a45d73;
+  background: #05070b99;
+  transition: background 0.3s, transform 0.3s, border-color 0.3s;
+}
+.epic-rail a:nth-child(even)::before {
+  background: #f2ece833;
+}
+.epic-rail a[aria-current="step"]::before {
+  border-color: var(--epic-gold);
+  background: var(--epic-gold);
+  transform: rotate(45deg) scale(1.15);
+}
+.epic-rail-label {
+  position: absolute;
+  right: 34px;
+  top: 50%;
+  translate: 0 -50%;
+  padding: 6px 10px;
+  white-space: nowrap;
+  background: #05070bf0;
+  border: 1px solid #c8a45d44;
+  font-size: 13px;
+  color: var(--epic-white);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.epic-rail a:hover .epic-rail-label,
+.epic-rail a:focus-visible .epic-rail-label {
+  opacity: 1;
+}
+@media (min-width: 1000px) {
+  .epic-site[data-enhanced="true"] .epic-rail {
+    display: flex;
+  }
+}
+
+/* ——— Contact dock: the consultation within thumb's reach (phones) ——— */
+.epic-dock {
+  display: none;
+}
+@media (max-width: 760px) {
+  .epic-dock {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 13;
+    display: flex;
+    gap: 8px;
+    translate: 0 calc(100% + 24px);
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .epic-site[data-dock="true"] .epic-dock {
+    translate: 0 0;
+  }
+  .epic-dock-main {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    background: var(--epic-gold);
+    color: #0b0f14;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 14px 40px #000c;
+  }
+  .epic-dock-call {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    min-height: 52px;
+    border: 1px solid var(--epic-gold);
+    background: #05070bf2;
+    color: var(--epic-gold);
+  }
+  .epic-site[data-dock="true"] .epic-motion-toggle {
+    bottom: 76px;
   }
 }
 

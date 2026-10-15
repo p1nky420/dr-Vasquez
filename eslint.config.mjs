@@ -10,6 +10,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party skills (Impeccable and others) are vendored as-is.
+    ".claude/**",
   ]),
 ]);
 

@@ -9,6 +9,8 @@ import {
   Pause,
   Play,
   Menu,
+  MessageCircle,
+  Phone,
   X,
   Plus,
 } from "lucide-react";
@@ -62,7 +64,6 @@ const serviceScenes = [
     ),
     route: "/derecho-penal-economico",
     visual: "economic",
-    note: "Empresa · Patrimonio · Reputación",
     principle: "Comprender el escenario",
   },
   {
@@ -76,7 +77,6 @@ const serviceScenes = [
     ),
     route: "/areas-de-practica/litigio-penal-estrategico",
     visual: "defense",
-    note: "Hechos · Prueba · Teoría del caso",
     principle: "Construir una posición de defensa",
   },
   {
@@ -90,7 +90,6 @@ const serviceScenes = [
     ),
     route: "/areas-de-practica",
     visual: "prevention",
-    note: "Anticipación · Análisis · Criterio",
     principle: "Trazar la ruta antes de avanzar",
   },
   {
@@ -104,7 +103,6 @@ const serviceScenes = [
     ),
     route: "/areas-de-practica/constitucional-penal",
     visual: "rights",
-    note: "Libertad · Debido proceso · Garantías",
     principle: "Preservar el equilibrio",
   },
 ];
@@ -123,6 +121,9 @@ export function EpicExperience() {
   const [menu, setMenu] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const contact = whatsappHref(contactMessage);
+  // The phone dock appears once the visitor is past the opening act and
+  // steps aside for the final consultation, which carries its own button.
+  const showDock = active >= 1 && active < acts.length - 1;
 
   const go = useCallback((index: number, instant = false) => {
     const el = root.current;
@@ -191,6 +192,21 @@ export function EpicExperience() {
     const onFrame = (state: SceneFrame) => {
       if (navigator.webdriver)
         (window as Window & { __epicFrame?: SceneFrame }).__epicFrame = state;
+      // Text rules: if the framed subject still grazes copy mid-transition,
+      // the scene steps back (veils) instead of sitting behind the words.
+      if (host.parentElement === world) {
+        const sx = state.subject.x * innerWidth, sy = state.subject.y * innerHeight;
+        const sw = state.subject.w * innerWidth, sh = state.subject.h * innerHeight;
+        let worst = 0;
+        for (const block of blocks) {
+          const b = block.getBoundingClientRect();
+          if (b.bottom < 0 || b.top > innerHeight) continue;
+          const ix = Math.min(sx + sw, b.right) - Math.max(sx, b.left);
+          const iy = Math.min(sy + sh, b.bottom) - Math.max(sy, b.top);
+          if (ix > 0 && iy > 0) worst = Math.max(worst, (ix * iy) / Math.max(1, Math.min(sw * sh, b.width * b.height)));
+        }
+        host.style.setProperty("--scene-veil", clamp((worst - 0.03) / 0.15).toFixed(2));
+      } else host.style.removeProperty("--scene-veil");
       if (!leader || !cta) return;
       const line = leader.querySelector("line"), dot = leader.querySelector("circle");
       const box = cta.getBoundingClientRect();
@@ -386,15 +402,16 @@ export function EpicExperience() {
       delete el.dataset.enhanced;
     };
   }, [go]);
-  const track = () => {
-    trackCta("epic_finale", "whatsapp");
-    trackEvent("whatsapp_click", { location: "epic_finale" });
+  const track = (location: string) => () => {
+    trackCta(location, "whatsapp");
+    trackEvent("whatsapp_click", { location });
   };
 
   return (
     <div
       ref={root}
       className={`epic-site ${paused || reduced ? "epic-still" : ""}`}
+      data-dock={showDock ? "true" : "false"}
     >
       <div className="epic-screen">
         <div className="epic-world" aria-hidden="true">
@@ -413,7 +430,7 @@ export function EpicExperience() {
             href="#vision"
             onClick={navigate(0)}
             className="epic-logo"
-            aria-label="Fausto Vásquez, primer movimiento"
+            aria-label="Fausto Vásquez, inicio"
           >
             <b>FV</b>
             <span>
@@ -428,10 +445,14 @@ export function EpicExperience() {
           <div>
             <a
               className="epic-contact-shortcut"
-              href="#consulta-rapida"
-              onClick={navigate(9)}
+              href={contact}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={track("epic_header")}
             >
-              Consulta reservada <ArrowUpRight size={14} />
+              <span className="epic-shortcut-long">Consulta reservada</span>
+              <span className="epic-shortcut-short">Consulta</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
             </a>
             <button
               ref={menuButton}
@@ -465,6 +486,27 @@ export function EpicExperience() {
             ))}
           </nav>
         )}
+        {/* The game's progress as a file of squares: where you are, and a jump to any act. */}
+        <nav className="epic-rail" aria-label="Avance de la partida">
+          {acts.map((act, i) => (
+            <a
+              key={act.id}
+              href={`#${act.id}`}
+              onClick={navigate(i)}
+              aria-current={active === i ? "step" : undefined}
+            >
+              <span className="epic-rail-label">{act.label}</span>
+            </a>
+          ))}
+        </nav>
+        <div className="epic-dock" inert={!showDock}>
+          <a className="epic-dock-main" href={contact} target="_blank" rel="noopener noreferrer" onClick={track("epic_dock")}>
+            <MessageCircle size={18} aria-hidden="true" /> Solicitar consulta reservada
+          </a>
+          <a className="epic-dock-call" href={phoneHref} aria-label={`Llamar al ${phoneDisplay}`}>
+            <Phone size={18} aria-hidden="true" />
+          </a>
+        </div>
         <div className="epic-acts">
           <section
             id="vision"
@@ -484,16 +526,22 @@ export function EpicExperience() {
                 <br />
                 del primer movimiento.
               </p>
+              <p className="epic-urgent">
+                ¿Recibió una notificación de Fiscalía? Escriba hoy al Dr. Vásquez,
+                en absoluta reserva.
+              </p>
               <div className="epic-hero-actions">
-                <a className="epic-link" href="#consulta-rapida" onClick={navigate(9)}>Consultar mi caso <ArrowUpRight size={18} /></a>
-                <a className="epic-scroll-link" href="#estrategia" onClick={navigate(1)}>Descubrir el estudio <ArrowDown size={16} /></a>
+                <a className="epic-link" href={contact} target="_blank" rel="noopener noreferrer" onClick={track("epic_hero")}>
+                  Solicitar consulta reservada <ArrowUpRight size={18} />
+                </a>
+                <a className="epic-scroll-link" href={phoneHref}>Llamar al {phoneDisplay}</a>
               </div>
             </div>
           </section>
           <section id="estrategia" data-reveal className="epic-act epic-method-act">
             <div className="epic-stage" data-stage aria-hidden="true" />
             <div className="epic-copy" data-block>
-              <p className="epic-kicker">I / Ver más allá</p>
+              <p className="epic-kicker">Ver más allá</p>
               <h2>
                 Una defensa
                 <br />
@@ -534,14 +582,15 @@ export function EpicExperience() {
                 key={service.id}
               >
                 <div className="epic-stage" data-stage aria-hidden="true" />
-                <span className="epic-ghost-number" aria-hidden="true">
-                  0{index + 1}
-                </span>
                 <div className="epic-copy" data-block>
-                  <p className="epic-kicker">II / {service.title}</p>
+                  <p className="epic-service-name">{service.title}</p>
                   <h2>{item.title}</h2>
                   <p className="epic-description">{service.description}</p>
-                  <p className="epic-practice-note">{item.note}</p>
+                  <ul className="epic-offences" aria-label={`Asuntos de ${service.title}`}>
+                    {service.services.map((matter) => (
+                      <li key={matter}>{matter}</li>
+                    ))}
+                  </ul>
                   <p className="epic-principle"><span aria-hidden="true" />{item.principle}</p>
                   <Link className="epic-link" href={item.route}>
                     Explorar esta especialidad <ArrowUpRight size={17} />
@@ -577,7 +626,7 @@ export function EpicExperience() {
 
             <div className="epic-copy" data-block>
               <p className="epic-kicker">
-                III / El criterio detrás de la defensa
+                El criterio detrás de la defensa
               </p>
               <h2>
                 Fausto
@@ -625,7 +674,7 @@ export function EpicExperience() {
           </div>
 
             <div className="epic-copy" data-block>
-              <p className="epic-kicker">IV / El conocimiento deja huella</p>
+              <p className="epic-kicker">El conocimiento deja huella</p>
               <h2>
                 Las ideas
                 <br />
@@ -651,7 +700,7 @@ export function EpicExperience() {
           <section id="faq" data-reveal data-occludes className="epic-act epic-clarity">
             <div className="epic-copy" data-block>
               <p className="epic-kicker">
-                V / La serenidad empieza con claridad
+                La serenidad empieza con claridad
               </p>
               <h2>
                 Antes de actuar,
@@ -670,11 +719,10 @@ export function EpicExperience() {
               role="region"
               aria-label="Preguntas frecuentes"
             >
-              {faqs.slice(0, 6).map((faq, i) => (
+              {faqs.slice(0, 6).map((faq) => (
                 <details key={faq.question}>
                   <summary>
                     <span>
-                      <small>{String(i + 1).padStart(2, "0")}</small>
                       {faq.question}
                     </span>
                     <Plus size={16} />
@@ -684,11 +732,10 @@ export function EpicExperience() {
               ))}
               <details className="epic-more-questions">
                 <summary>Ver todas las preguntas <Plus size={16} /></summary>
-                <div>              {faqs.slice(6).map((faq, i) => (
+                <div>              {faqs.slice(6).map((faq) => (
                 <details key={faq.question}>
                   <summary>
                     <span>
-                      <small>{String(i + 7).padStart(2, "0")}</small>
                       {faq.question}
                     </span>
                     <Plus size={16} />
@@ -734,9 +781,9 @@ export function EpicExperience() {
                 href={contact}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={track}
+                onClick={track("epic_finale")}
               >
-                Solicitar evaluación reservada{" "}
+                Solicitar consulta reservada{" "}
                 <span>
                   <ArrowUpRight size={26} />
                 </span>
