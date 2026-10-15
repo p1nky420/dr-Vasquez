@@ -126,10 +126,10 @@ const visionNodes = [
 ];
 
 const process = [
-  ["01", "Evaluación estratégica", "Comprensión inicial del asunto, su urgencia, jurisdicción y posibles conflictos de interés."],
-  ["02", "Investigación preliminar", "Lectura jurídica y probatoria para identificar exposición, decisiones críticas y escenarios."],
-  ["03", "Diseño de defensa", "Construcción de teoría del caso, estrategia de prueba y ruta de intervención procesal."],
-  ["04", "Ejecución procesal", "Ejecución rigurosa, comunicación directa y revisión continua de la estrategia."],
+  ["Evaluación estratégica", "Comprensión inicial del asunto, su urgencia, jurisdicción y posibles conflictos de interés."],
+  ["Investigación preliminar", "Lectura jurídica y probatoria para identificar exposición, decisiones críticas y escenarios."],
+  ["Diseño de defensa", "Construcción de teoría del caso, estrategia de prueba y ruta de intervención procesal."],
+  ["Ejecución procesal", "Ejecución rigurosa, comunicación directa y revisión continua de la estrategia."],
 ];
 
 
@@ -515,25 +515,27 @@ export function HomeLanding() {
         <div className="pointer-events-none absolute left-[5%] top-[20%] w-[25%] opacity-[0.1]">
           <Image src="/logoFV-solo.png" alt="" width={826} height={644} className="w-full h-auto" />
         </div>
-        <div className="relative mx-auto max-w-[88rem]">
+        <div className="relative mx-auto grid max-w-[88rem] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <SectionIntro
             eyebrow="Proceso privado"
             title="Claridad desde la primera conversación."
             text="Un proceso de admisión serio, discreto y diseñado para convertir incertidumbre en decisiones jurídicas concretas."
           />
-          <div className="mt-16 grid border-l border-t border-[#ecc058]/20 lg:grid-cols-4 sm:snap-scroll">
-            {process.map(([number, title, text], index) => (
-              <EditorialReveal key={number} delay={index * 0.07} className="border-b border-r border-[#ecc058]/20">
-                <article className="flex min-h-[18rem] flex-col justify-between p-6 sm:p-7 md:p-8">
-                  <span className="font-serif text-6xl text-[#ecc058]">{number}</span>
-                  <div>
-                    <h3 className="font-serif text-2xl">{title}</h3>
-                    <p className="mt-4 text-[0.98rem] leading-[1.85] text-[#e8e2d5]">{text}</p>
-                  </div>
-                </article>
-              </EditorialReveal>
-            ))}
-          </div>
+          {/* A route, not a card grid: one gold rule carries the order, so no step numbers are needed. */}
+          <EditorialReveal delay={0.08}>
+            <ol className="relative border-l border-[#ecc058]/30 lg:mt-3">
+              {process.map(([title, text]) => (
+                <li key={title} className="relative pb-11 pl-9 last:pb-0 md:pl-12">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[5px] top-[0.7rem] h-[9px] w-[9px] rounded-full border border-[#ecc058] bg-[#0c0b09]"
+                  />
+                  <h3 className="font-serif text-[1.6rem] leading-[1.2] text-[#f3eee4] md:text-[1.85rem]">{title}</h3>
+                  <p className="mt-3 max-w-xl text-[0.98rem] leading-[1.8] text-[#c2baae]">{text}</p>
+                </li>
+              ))}
+            </ol>
+          </EditorialReveal>
         </div>
       </section>
 
