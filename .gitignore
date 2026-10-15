@@ -45,3 +45,6 @@ public/ivory-archival-paper-v1.png
 # playwright
 /test-results/
 /playwright-report/
+
+# impeccable: estado temporal del servidor de revisión
+/.impeccable/live/
