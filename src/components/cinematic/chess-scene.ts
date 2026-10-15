@@ -576,8 +576,10 @@ export function mountChessScene(
   }
   const observer = new ResizeObserver(resize);
   observer.observe(host);
-  const visibility = new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
+  // Moving the canvas between bands queues "hidden" then "shown" in one batch:
+  // the latest entry is the truth, the first one is stale.
+  const visibility = new IntersectionObserver((entries) => {
+    visible = entries[entries.length - 1].isIntersecting;
     requestDraw();
   });
   visibility.observe(host);

@@ -354,8 +354,8 @@ export function EpicExperience() {
       if (alias >= 0) go(alias, true);
       schedule();
     };
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
+    const observer = new IntersectionObserver((entries) => {
+      visible = entries[entries.length - 1].isIntersecting;
       schedule();
     });
     observer.observe(el);

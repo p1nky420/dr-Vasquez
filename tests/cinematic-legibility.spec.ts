@@ -83,6 +83,12 @@ test("on phones the pieces live in a band of the page and scroll natively with i
   test.skip(!isMobile, "bands are a phone layout");
   await page.goto("/", { waitUntil: "networkidle" });
   await expect(page.locator(".epic-canvas")).toHaveAttribute("data-ready", "true", { timeout: 20_000 });
+  // Moving the canvas into a band must not freeze the scene: the hero frame has to settle.
+  await page.waitForFunction(
+    () => (window as Window & { __epicFrame?: Frame }).__epicFrame?.settled === true,
+    undefined,
+    { timeout: 45_000 },
+  );
   const problems: string[] = [];
   const end = await page.evaluate(() => document.getElementById("el-estudio")?.offsetTop ?? 6000);
   for (let y = 0; y < end; y += 120) {
