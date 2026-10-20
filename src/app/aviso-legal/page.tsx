@@ -25,8 +25,8 @@ export default function AvisoLegalPage() {
         Abogado de los Tribunales y Juzgados de la República del Ecuador.
         Oficina en Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8,
         Oficina 802, Quito.{" "}
-        <a href="mailto:contacto@faustovasquezabogados.com">
-          contacto@faustovasquezabogados.com
+        <a href="mailto:contacto@faustovasquezabogado.com">
+          contacto@faustovasquezabogado.com
         </a>{" "}
         · <a href="tel:+593983076881">+593 98 307 6881</a>.
       </p>

@@ -37,7 +37,7 @@ const text = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://faustovasquezabogados.com"),
+  metadataBase: new URL("https://www.faustovasquezabogado.com"),
   title: {
     default: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
     template: "%s | Dr. Fausto Vásquez — Estudio Jurídico",
@@ -105,7 +105,7 @@ const institutionalJsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://faustovasquezabogados.com/#person",
+      "@id": "https://www.faustovasquezabogado.com/#person",
       name: "Fausto Ramiro Vásquez Cevallos",
       givenName: "Fausto Ramiro",
       familyName: "Vásquez Cevallos",
@@ -113,13 +113,13 @@ const institutionalJsonLd = {
       jobTitle: "Abogado Penalista · Profesor Universitario · Autor · Investigador · Litigante",
       description:
         "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Doctor Honoris Causa por la Universidad del Golfo de México. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
-      url: "https://faustovasquezabogados.com",
+      url: "https://www.faustovasquezabogado.com",
       image:
-        "https://faustovasquezabogados.com/portrait-editorial-authority-v2.png",
+        "https://www.faustovasquezabogado.com/portrait-editorial-authority-v2.png",
       telephone: "+593983076881",
-      email: "contacto@faustovasquezabogados.com",
+      email: "contacto@faustovasquezabogado.com",
       worksFor: {
-        "@id": "https://faustovasquezabogados.com/#legal-service",
+        "@id": "https://www.faustovasquezabogado.com/#legal-service",
       },
       sameAs: [
         "https://www.facebook.com/share/1AFRvUQQiB/?mibextid=wwXIfr",
@@ -150,15 +150,15 @@ const institutionalJsonLd = {
     },
     {
       "@type": ["LegalService", "Attorney"],
-      "@id": "https://faustovasquezabogados.com/#legal-service",
+      "@id": "https://www.faustovasquezabogado.com/#legal-service",
       name: "Dr. Fausto Vásquez — Estudio Jurídico",
-      url: "https://faustovasquezabogados.com",
-      image: "https://faustovasquezabogados.com/reception_marble.png",
+      url: "https://www.faustovasquezabogado.com",
+      image: "https://www.faustovasquezabogado.com/reception_marble.png",
       telephone: "+593983076881",
-      email: "contacto@faustovasquezabogados.com",
+      email: "contacto@faustovasquezabogado.com",
       availableLanguage: "Spanish",
       founder: {
-        "@id": "https://faustovasquezabogados.com/#person",
+        "@id": "https://www.faustovasquezabogado.com/#person",
       },
       areaServed: [
         { "@type": "City", name: "Quito" },
@@ -204,7 +204,7 @@ const institutionalJsonLd = {
       department: [
         {
           "@type": "LegalService",
-          "@id": "https://faustovasquezabogados.com/#sede-quito",
+          "@id": "https://www.faustovasquezabogado.com/#sede-quito",
           name: "Dr. Fausto Vásquez — Estudio Jurídico · Quito",
           telephone: "+593983076881",
           address: {
@@ -219,7 +219,7 @@ const institutionalJsonLd = {
         },
         {
           "@type": "LegalService",
-          "@id": "https://faustovasquezabogados.com/#sede-guayaquil",
+          "@id": "https://www.faustovasquezabogado.com/#sede-guayaquil",
           name: "Dr. Fausto Vásquez — Estudio Jurídico · Guayaquil",
           telephone: "+593983076881",
           address: {
@@ -237,11 +237,11 @@ const institutionalJsonLd = {
         "@type": "OfferCatalog",
         name: "Servicios legales",
         itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal económico", url: "https://faustovasquezabogados.com/derecho-penal-economico" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lavado de activos y delitos financieros", url: "https://faustovasquezabogados.com/areas-de-practica/lavado-de-activos" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Delitos contra la administración pública", url: "https://faustovasquezabogados.com/areas-de-practica/delitos-administracion-publica" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Constitucional penal y garantías", url: "https://faustovasquezabogados.com/areas-de-practica/constitucional-penal" }},
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Litigio penal estratégico", url: "https://faustovasquezabogados.com/areas-de-practica/litigio-penal-estrategico" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal económico", url: "https://www.faustovasquezabogado.com/derecho-penal-economico" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lavado de activos y delitos financieros", url: "https://www.faustovasquezabogado.com/areas-de-practica/lavado-de-activos" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Delitos contra la administración pública", url: "https://www.faustovasquezabogado.com/areas-de-practica/delitos-administracion-publica" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Constitucional penal y garantías", url: "https://www.faustovasquezabogado.com/areas-de-practica/constitucional-penal" }},
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Litigio penal estratégico", url: "https://www.faustovasquezabogado.com/areas-de-practica/litigio-penal-estrategico" }},
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal empresarial" }},
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Derecho penal político" }},
         ],
@@ -249,16 +249,16 @@ const institutionalJsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://faustovasquezabogados.com/#website",
-      url: "https://faustovasquezabogados.com",
+      "@id": "https://www.faustovasquezabogado.com/#website",
+      url: "https://www.faustovasquezabogado.com",
       name: "Dr. Fausto Vásquez — Estudio Jurídico",
       inLanguage: "es-EC",
       publisher: {
-        "@id": "https://faustovasquezabogados.com/#legal-service",
+        "@id": "https://www.faustovasquezabogado.com/#legal-service",
       },
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://faustovasquezabogados.com/?s={search_term_string}",
+        target: "https://www.faustovasquezabogado.com/?s={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     },

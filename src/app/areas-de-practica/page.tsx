@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Defensa especializada en Derecho Penal Económico, lavado de activos, delitos financieros y litigio estratégico en Quito, Ecuador.",
   alternates: {
-    canonical: "https://faustovasquezabogados.com/areas-de-practica",
+    canonical: "https://www.faustovasquezabogado.com/areas-de-practica",
   },
 };
 

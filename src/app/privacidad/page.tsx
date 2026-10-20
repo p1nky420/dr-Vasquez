@@ -24,8 +24,8 @@ export default function PrivacidadPage() {
         Vásquez</strong>, con oficina en Av. 12 de Octubre N26-97 y Lincoln,
         Torre 1492, Piso 8, Oficina 802, Quito, Ecuador. Para cualquier asunto
         relacionado con sus datos puede escribir a{" "}
-        <a href="mailto:contacto@faustovasquezabogados.com">
-          contacto@faustovasquezabogados.com
+        <a href="mailto:contacto@faustovasquezabogado.com">
+          contacto@faustovasquezabogado.com
         </a>.
       </p>
 
@@ -111,8 +111,8 @@ export default function PrivacidadPage() {
       </ul>
       <p>
         Escriba a{" "}
-        <a href="mailto:contacto@faustovasquezabogados.com">
-          contacto@faustovasquezabogados.com
+        <a href="mailto:contacto@faustovasquezabogado.com">
+          contacto@faustovasquezabogado.com
         </a>{" "}
         indicando qué derecho desea ejercer. Si considera que sus derechos no
         han sido atendidos, puede acudir a la Superintendencia de Protección de

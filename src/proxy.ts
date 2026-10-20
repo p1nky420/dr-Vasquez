@@ -9,8 +9,8 @@ import { NextResponse, type NextRequest } from "next/server";
  * any host other than the canonical one (previews included).
  */
 const CANONICAL_HOSTS = new Set([
-  "faustovasquezabogados.com",
-  "www.faustovasquezabogados.com",
+  "faustovasquezabogado.com",
+  "www.faustovasquezabogado.com",
 ]);
 
 export function proxy(request: NextRequest) {

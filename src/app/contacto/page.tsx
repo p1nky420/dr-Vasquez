@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Solicite una evaluación confidencial con el Dr. Fausto Vásquez para asuntos penales complejos, empresariales y patrimoniales en Quito.",
   alternates: {
-    canonical: "https://faustovasquezabogados.com/contacto",
+    canonical: "https://www.faustovasquezabogado.com/contacto",
   },
 };
 
@@ -23,8 +23,8 @@ const contactChannels = [
   },
   {
     label: "Correo",
-    value: "contacto@faustovasquezabogados.com",
-    href: "mailto:contacto@faustovasquezabogados.com",
+    value: "contacto@faustovasquezabogado.com",
+    href: "mailto:contacto@faustovasquezabogado.com",
     icon: Mail,
   },
 ];

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Jurista penalista en Quito especializado en defensa penal económica, litigio constitucional y casos complejos. Consulta privada y confidencial.",
   alternates: {
-    canonical: "https://faustovasquezabogados.com",
+    canonical: "https://www.faustovasquezabogado.com",
   },
   openGraph: {
     title: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Inteligencia jurídica, excelencia académica y estrategia procesal para asuntos penales de alta complejidad.",
     locale: "es_EC",
     type: "website",
-    url: "https://faustovasquezabogados.com",
+    url: "https://www.faustovasquezabogado.com",
     images: [
       {
         url: "/portrait-editorial-quito-v2.png",
@@ -34,40 +34,40 @@ const pageJsonLd = {
   "@graph": [
     ...serviceCategories.slice(0, 4).map((service) => ({
       "@type": "Service",
-      "@id": `https://faustovasquezabogados.com/#${service.id}`,
+      "@id": `https://www.faustovasquezabogado.com/#${service.id}`,
       name: service.title,
       description: service.description,
-      url: `https://faustovasquezabogados.com/#${service.id}`,
-      provider: { "@id": "https://faustovasquezabogados.com/#legal-service" },
+      url: `https://www.faustovasquezabogado.com/#${service.id}`,
+      provider: { "@id": "https://www.faustovasquezabogado.com/#legal-service" },
       areaServed: { "@type": "Country", name: "Ecuador" },
     })),
     {
       "@type": "WebPage",
-      "@id": "https://faustovasquezabogados.com/#webpage",
-      url: "https://faustovasquezabogados.com",
+      "@id": "https://www.faustovasquezabogado.com/#webpage",
+      url: "https://www.faustovasquezabogado.com",
       name: "Abogado Penalista en Quito | Dr. Fausto Vásquez — Estudio Jurídico",
       description:
         "Defensa penal estratégica en Quito para asuntos económicos, financieros y corporativos complejos.",
       inLanguage: "es-EC",
-      isPartOf: { "@id": "https://faustovasquezabogados.com/#website" },
-      about: { "@id": "https://faustovasquezabogados.com/#legal-service" },
-      mainEntity: { "@id": "https://faustovasquezabogados.com/#legal-service" },
+      isPartOf: { "@id": "https://www.faustovasquezabogado.com/#website" },
+      about: { "@id": "https://www.faustovasquezabogado.com/#legal-service" },
+      mainEntity: { "@id": "https://www.faustovasquezabogado.com/#legal-service" },
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://faustovasquezabogados.com/#breadcrumb",
+      "@id": "https://www.faustovasquezabogado.com/#breadcrumb",
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
           name: "Inicio",
-          item: "https://faustovasquezabogados.com",
+          item: "https://www.faustovasquezabogado.com",
         },
       ],
     },
     {
       "@type": "FAQPage",
-      "@id": "https://faustovasquezabogados.com/#faq",
+      "@id": "https://www.faustovasquezabogado.com/#faq",
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,

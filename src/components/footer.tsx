@@ -37,7 +37,7 @@ export function Footer() {
           <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Contacto</p>
           <div className="mt-6 space-y-3 text-[0.95rem] leading-6 text-[#b8b0a5]">
             <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="tel:+593983076881">+593 98 307 6881</a></p>
-            <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogados.com">contacto@faustovasquezabogados.com</a></p>
+            <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogado.com">contacto@faustovasquezabogado.com</a></p>
             <p>Oficinas en Quito y Guayaquil<br />Atención con cita previa</p>
           </div>
         </div>

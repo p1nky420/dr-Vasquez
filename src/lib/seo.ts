@@ -1,8 +1,8 @@
-export const SITE_URL = "https://faustovasquezabogados.com";
+export const SITE_URL = "https://www.faustovasquezabogado.com";
 
 export const CANONICAL_HOSTS = [
-  "faustovasquezabogados.com",
-  "www.faustovasquezabogados.com",
+  "faustovasquezabogado.com",
+  "www.faustovasquezabogado.com",
 ];
 
 export type PracticeLanding = {

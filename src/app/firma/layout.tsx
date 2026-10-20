@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Conozca la trayectoria del Dr. Fausto Ramiro Vásquez Cevallos, abogado penalista en Quito especializado en defensa penal económica y litigio estratégico.",
   alternates: {
-    canonical: "https://faustovasquezabogados.com/firma",
+    canonical: "https://www.faustovasquezabogado.com/firma",
   },
 };
 
