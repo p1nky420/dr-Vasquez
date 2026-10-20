@@ -41,3 +41,6 @@ next-env.d.ts
 
 # Generated source texture; the optimized WebP is committed instead.
 public/ivory-archival-paper-v1.png
+
+# Documentos internos del cliente (el repositorio es público)
+docs/marca/
