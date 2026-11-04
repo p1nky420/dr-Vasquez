@@ -31,7 +31,7 @@ export function WhatsappCta({
       <a
         href={phoneHref}
         onClick={() => trackEvent("phone_click", { location })}
-        className="inline-flex min-h-13 items-center justify-center gap-2.5 border border-[#ecc058]/40 px-5 py-3.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[#ecc058] transition-colors hover:border-[#ecc058] hover:bg-[#ecc058] hover:text-[#15130f]"
+        className="inline-flex min-h-13 items-center justify-center gap-2.5 border border-[#c9a96a]/40 px-5 py-3.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[#c9a96a] transition-colors hover:border-[#c9a96a] hover:bg-[#c9a96a] hover:text-[#15130f]"
       >
         <Phone size={16} /> {phoneDisplay}
       </a>

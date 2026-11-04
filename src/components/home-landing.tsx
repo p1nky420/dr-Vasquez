@@ -145,8 +145,8 @@ const featuredFaqs = FEATURED_QUESTIONS
 
 function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-[0.75rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-[#8a6941]" : "text-[#ecc058]"}`}>
-      <span className={`h-px w-9 ${dark ? "bg-[#8a6941]" : "bg-[#ecc058]"}`} />
+    <p className={`flex items-center gap-3 text-[0.75rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-[#8a6941]" : "text-[#c9a96a]"}`}>
+      <span className={`h-px w-9 ${dark ? "bg-[#8a6941]" : "bg-[#c9a96a]"}`} />
       {children}
     </p>
   );
@@ -204,7 +204,7 @@ export function HomeLanding() {
         <div className="relative mx-auto flex min-h-[100svh] max-w-[94rem] items-end px-5 pb-28 pt-28 md:px-8 md:pb-20 lg:items-center lg:pb-10">
           <div className="max-w-[45rem] lg:ml-[2vw]">
             <EditorialReveal>
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[#ecc058]">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[#c9a96a]">
                 Jurista penalista · Ecuador
               </p>
             </EditorialReveal>
@@ -212,7 +212,7 @@ export function HomeLanding() {
                 y estaba oculto hasta que React hidrataba. */}
             <h1 className="hero-title mt-5 font-serif text-[clamp(2.9rem,8.4vw,5.6rem)] leading-[0.94] tracking-[-0.02em]">
               <MaskReveal>Derecho penal</MaskReveal>
-              <MaskReveal delay={0.08} className="text-[#ecc058]">más allá</MaskReveal>
+              <MaskReveal delay={0.08} className="text-[#c9a96a]">más allá</MaskReveal>
               <MaskReveal delay={0.16}>del litigio.</MaskReveal>
             </h1>
             {/* Señal de relevancia local que el h1 de marca no da. */}
@@ -258,7 +258,7 @@ export function HomeLanding() {
         <EditorialReveal delay={0.62} className="absolute bottom-[5rem] right-[4vw] hidden text-right lg:block">
           <div className="rounded-sm bg-black/28 px-5 py-4 backdrop-blur-[3px]">
             <p className="font-serif text-xl text-[#fffaf0]">Dr. Fausto Vásquez</p>
-            <p className="mt-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-[#ecc058]">
+            <p className="mt-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-[#c9a96a]">
               Dirección personal de la defensa
             </p>
           </div>
@@ -285,11 +285,11 @@ export function HomeLanding() {
             </p>
 
             {/* Editorial index, not a card grid: a title column and its reading, ruled like a dossier. */}
-            <ul className="mt-10 border-t border-[#ecc058]/20">
+            <ul className="mt-10 border-t border-[#c9a96a]/20">
               {tacticalServices.map((service) => (
                 <li
                   key={service.title}
-                  className="grid gap-2 border-b border-[#ecc058]/12 py-6 md:grid-cols-[minmax(0,14.5rem)_1fr] md:gap-10 md:py-7"
+                  className="grid gap-2 border-b border-[#c9a96a]/12 py-6 md:grid-cols-[minmax(0,14.5rem)_1fr] md:gap-10 md:py-7"
                 >
                   <h3 className="font-serif text-[1.35rem] leading-[1.25] text-[#f3eee4]">
                     {service.title}
@@ -309,13 +309,13 @@ export function HomeLanding() {
           {/* On phones the form comes first: the hero CTA must land on something to fill in. */}
           <EditorialReveal delay={0.08} className="order-first lg:order-none">
             <div id="consulta-form" className="scroll-mt-28">
-              <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
+              <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#c9a96a]">
                 Evaluación confidencial · Respuesta el mismo día hábil
               </p>
               <QuickIntake source="home-hero" />
             </div>
 
-            <div className="mt-8 border-t border-[#ecc058]/15 pt-6">
+            <div className="mt-8 border-t border-[#c9a96a]/15 pt-6">
               <p className="text-[0.8125rem] uppercase tracking-[0.14em] text-[#8f877c]">
                 Trayectoria construida en
               </p>
@@ -463,15 +463,15 @@ export function HomeLanding() {
                 text="La representación de alto nivel exige una combinación poco común: profundidad doctrinal, experiencia procesal, capacidad de anticipación y comunicación directa."
               />
               <EditorialReveal delay={0.12}>
-                <div className="mt-10 flex items-center gap-4 border-l border-[#ecc058] pl-5">
-                  <ShieldCheck className="shrink-0 text-[#ecc058]" size={24} />
+                <div className="mt-10 flex items-center gap-4 border-l border-[#c9a96a] pl-5">
+                  <ShieldCheck className="shrink-0 text-[#c9a96a]" size={24} />
                   <p className="text-[0.8rem] uppercase leading-7 tracking-[0.14em] text-[#c8c0b5]">Revisión de conflicto de interés · Secreto profesional</p>
                 </div>
               </EditorialReveal>
             </div>
-            <div className="grid border-t border-[#ecc058]/20 sm:grid-cols-2">
+            <div className="grid border-t border-[#c9a96a]/20 sm:grid-cols-2">
               {principles.map(([title, text], index) => (
-                <EditorialReveal key={title} delay={index * 0.06} className="border-b border-[#ecc058]/20 p-7 sm:min-h-64 sm:[&:nth-child(odd)]:border-r md:p-9">
+                <EditorialReveal key={title} delay={index * 0.06} className="border-b border-[#c9a96a]/20 p-7 sm:min-h-64 sm:[&:nth-child(odd)]:border-r md:p-9">
                   <h3 className="font-serif text-2xl">{title}</h3>
                   <p className="mt-4 text-[0.98rem] leading-[1.85] text-[#c2baae]">{text}</p>
                 </EditorialReveal>
@@ -492,12 +492,12 @@ export function HomeLanding() {
           />
           {/* A route, not a card grid: one gold rule carries the order, so no step numbers are needed. */}
           <EditorialReveal delay={0.08}>
-            <ol className="relative border-l border-[#ecc058]/30 lg:mt-3">
+            <ol className="relative border-l border-[#c9a96a]/30 lg:mt-3">
               {process.map(([title, text]) => (
                 <li key={title} className="relative pb-11 pl-9 last:pb-0 md:pl-12">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[5px] top-[0.7rem] h-[9px] w-[9px] rounded-full border border-[#ecc058] bg-[#0c0b09]"
+                    className="absolute -left-[5px] top-[0.7rem] h-[9px] w-[9px] rounded-full border border-[#c9a96a] bg-[#0c0b09]"
                   />
                   <h3 className="font-serif text-[1.6rem] leading-[1.2] text-[#f3eee4] md:text-[1.85rem]">{title}</h3>
                   <p className="mt-3 max-w-xl text-[0.98rem] leading-[1.8] text-[#c2baae]">{text}</p>
@@ -552,7 +552,7 @@ export function HomeLanding() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,9,8,.08),rgba(10,9,8,.28)_45%,rgba(10,9,8,.94)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 p-7 md:p-11">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#c9a96a]">
                 Producción intelectual
               </p>
               <span className="mt-4 block font-serif text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[-0.03em] text-[#f3eee4]">
@@ -577,15 +577,15 @@ export function HomeLanding() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#15120f] via-[#15120f]/82 to-[#15120f]/28" />
                 <div className="relative flex min-h-80 max-w-xl flex-col justify-end p-8 md:p-10">
-                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#ecc058]">
+                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-[#c9a96a]">
                     Archivo académico
                   </p>
                   <h3 className="mt-5 font-serif text-4xl leading-tight">Conferencias, entrevistas y formación avanzada.</h3>
                   <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
-                    <Link href="/publicaciones" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]">
+                    <Link href="/publicaciones" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#c9a96a]">
                       Ver publicaciones y conferencias <ArrowRight size={14} />
                     </Link>
-                    <Link href="/eventos" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#ecc058]/70">
+                    <Link href="/eventos" className="inline-flex min-h-11 items-center gap-3 py-0.5 text-[0.75rem] font-bold uppercase tracking-[0.18em] text-[#c9a96a]/70">
                       Actividad académica <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -609,23 +609,23 @@ export function HomeLanding() {
                 text="Comparta únicamente la información inicial necesaria. Antes de recibir documentos o detalles sensibles, la firma verificará disponibilidad y posibles conflictos de interés."
               />
               
-              <EditorialReveal delay={0.08} className="mt-8 space-y-5 border-l border-[#ecc058]/30 pl-5">
+              <EditorialReveal delay={0.08} className="mt-8 space-y-5 border-l border-[#c9a96a]/30 pl-5">
                 <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
-                  <span className="text-[#ecc058] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#ecc058]" />
+                  <span className="text-[#c9a96a] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#c9a96a]" />
                   <p>
-                    <strong className="text-[#ecc058] font-medium">Atención exclusiva:</strong> Su caso será atendido directamente por el Dr. Fausto Vásquez.
+                    <strong className="text-[#c9a96a] font-medium">Atención exclusiva:</strong> Su caso será atendido directamente por el Dr. Fausto Vásquez.
                   </p>
                 </div>
                 <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
-                  <span className="text-[#ecc058] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#ecc058]" />
+                  <span className="text-[#c9a96a] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#c9a96a]" />
                   <p>
-                    <strong className="text-[#ecc058] font-medium">Secreto Profesional:</strong> Toda información compartida será tratada bajo estricta confidencialidad profesional.
+                    <strong className="text-[#c9a96a] font-medium">Secreto Profesional:</strong> Toda información compartida será tratada bajo estricta confidencialidad profesional.
                   </p>
                 </div>
               </EditorialReveal>
 
               <EditorialReveal delay={0.12} className="mt-10 grid gap-5">
-                <a href={whatsappHref("Hola, deseo agendar una llamada privada de evaluación confidencial con el Dr. Fausto Vásquez.")} target="_blank" rel="noreferrer" className="contact-line hover:border-[#ecc058]/50 transition-all duration-300">
+                <a href={whatsappHref("Hola, deseo agendar una llamada privada de evaluación confidencial con el Dr. Fausto Vásquez.")} target="_blank" rel="noreferrer" className="contact-line hover:border-[#c9a96a]/50 transition-all duration-300">
                   <MessageCircle size={18} />
                   <span><small>Llamada / WhatsApp privado</small>+593 98 307 6881</span>
                   <ChevronRight size={16} />
@@ -642,18 +642,18 @@ export function HomeLanding() {
             </div>
             
             <EditorialReveal delay={0.14}>
-              <div className="consultation-vault-card rounded-sm border border-[#ecc058]/30 p-6 md:p-9">
-                <div className="mb-8 flex items-start justify-between gap-6 border-b border-[#ecc058]/18 pb-6">
+              <div className="consultation-vault-card rounded-sm border border-[#c9a96a]/30 p-6 md:p-9">
+                <div className="mb-8 flex items-start justify-between gap-6 border-b border-[#c9a96a]/18 pb-6">
                   <div>
-                    <p className="text-[0.75rem] uppercase tracking-[0.18em] text-[#ecc058]">Evaluación confidencial</p>
+                    <p className="text-[0.75rem] uppercase tracking-[0.18em] text-[#c9a96a]">Evaluación confidencial</p>
                     <h3 className="mt-2 font-serif text-2xl">Comparta solo lo necesario para empezar.</h3>
                   </div>
-                  <LockKeyhole className="mt-1 shrink-0 text-[#ecc058]" size={20} aria-hidden="true" />
+                  <LockKeyhole className="mt-1 shrink-0 text-[#c9a96a]" size={20} aria-hidden="true" />
                 </div>
                 <QuickIntake source="home-consulta" />
                 <Link
                   href="/contacto"
-                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-[0.875rem] text-[#c2baae] underline decoration-[#ecc058]/40 underline-offset-4 hover:text-[#ecc058]"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 text-[0.875rem] text-[#c2baae] underline decoration-[#c9a96a]/40 underline-offset-4 hover:text-[#c9a96a]"
                 >
                   ¿Prefiere detallar su caso? Use el formulario completo <ArrowRight size={14} />
                 </Link>
@@ -689,7 +689,7 @@ export function HomeLanding() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,173,120,.16),transparent_35%)]" />
         <div className="relative mx-auto flex min-h-[55vh] max-w-5xl flex-col items-center justify-center text-center">
           <EditorialReveal>
-            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#ecc058]">Dr. Fausto Vásquez — Estudio Jurídico</p>
+            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#c9a96a]">Dr. Fausto Vásquez — Estudio Jurídico</p>
             <h2 className="mt-7 font-serif text-[clamp(3rem,9vw,7rem)] leading-[0.94] tracking-[-0.055em]">
               Su libertad, reputación y legado merecen una defensa estratégica.
             </h2>

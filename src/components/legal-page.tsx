@@ -23,11 +23,11 @@ export function LegalPage({
       <section className="px-5 pb-10 pt-32 md:px-8 md:pt-40">
         <div className="mx-auto max-w-[48rem]">
           <nav aria-label="Ruta de navegación" className="text-[0.8125rem] text-[#9a9287]">
-            <Link href="/" className="inline-flex min-h-6 items-center hover:text-[#ecc058]">
+            <Link href="/" className="inline-flex min-h-6 items-center hover:text-[#c9a96a]">
               Inicio
             </Link>
           </nav>
-          <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+          <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
             {eyebrow}
           </p>
           <h1 className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.025em] text-[#fffaf0]">
@@ -41,7 +41,7 @@ export function LegalPage({
       </section>
 
       <section className="px-5 pb-24 md:px-8">
-        <div className="legal mx-auto max-w-[48rem] border-t border-[#ecc058]/20 pt-10">
+        <div className="legal mx-auto max-w-[48rem] border-t border-[#c9a96a]/20 pt-10">
           {children}
         </div>
       </section>

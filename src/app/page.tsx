@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomeLanding } from "@/components/home-landing";
+import { FusionHome } from "@/components/fusion/fusion-home";
 import { faqs, serviceCategories } from "@/lib/home-content";
 
 export const metadata: Metadata = {
@@ -84,12 +84,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
       />
-      <HomeLanding />
-      {false && (
-        <section aria-hidden="true">
-          <h2>Academia</h2>
-        </section>
-      )}
+      <FusionHome />
     </>
   );
 }

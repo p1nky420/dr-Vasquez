@@ -85,7 +85,7 @@ export function IntakeForm() {
           </label>
         </div>
 
-        <fieldset className="grid gap-5 border-t border-[#ecc058]/18 pt-6 md:grid-cols-2">
+        <fieldset className="grid gap-5 border-t border-[#c9a96a]/18 pt-6 md:grid-cols-2">
           <legend className="px-0 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#8f877c]">
             Opcional — acelera la evaluación
           </legend>
@@ -137,7 +137,7 @@ export function IntakeForm() {
         </fieldset>
 
         <label className="flex cursor-pointer select-none items-start gap-3 text-[0.875rem] leading-6 text-[#a9a196]">
-          <input className="mt-1 accent-[#ecc058]" type="checkbox" name="consent" required />
+          <input className="mt-1 accent-[#c9a96a]" type="checkbox" name="consent" required />
           <span>Autorizo el tratamiento inicial de estos datos para evaluar mi consulta.</span>
         </label>
 
@@ -145,7 +145,7 @@ export function IntakeForm() {
           <p role="alert" className="text-[0.9rem] leading-6 text-[#d6a98f]">
             {error}{" "}
             {fallbackUrl ? (
-              <a className="font-semibold text-[#ecc058] underline" href={fallbackUrl} target="_blank" rel="noreferrer">
+              <a className="font-semibold text-[#c9a96a] underline" href={fallbackUrl} target="_blank" rel="noreferrer">
                 Abrir WhatsApp
               </a>
             ) : null}
@@ -162,18 +162,18 @@ export function IntakeForm() {
         </button>
 
         {/* Los avisos legales van después de la decisión, no antes. */}
-        <div className="grid gap-3 border-t border-[#ecc058]/20 pt-5 text-[0.8125rem] leading-6 text-[#9d958a] sm:grid-cols-2">
+        <div className="grid gap-3 border-t border-[#c9a96a]/20 pt-5 text-[0.8125rem] leading-6 text-[#9d958a] sm:grid-cols-2">
           <p className="flex items-center gap-3">
-            <LockKeyhole size={15} className="shrink-0 text-[#ecc058]" /> Transmisión cifrada
+            <LockKeyhole size={15} className="shrink-0 text-[#c9a96a]" /> Transmisión cifrada
           </p>
           <p className="flex items-center gap-3">
-            <ShieldCheck size={15} className="shrink-0 text-[#ecc058]" /> Secreto profesional estricto
+            <ShieldCheck size={15} className="shrink-0 text-[#c9a96a]" /> Secreto profesional estricto
           </p>
           <p className="flex items-center gap-3 sm:col-span-2">
-            <CheckCircle2 size={15} className="shrink-0 text-[#ecc058]" /> Respuesta el mismo día hábil
+            <CheckCircle2 size={15} className="shrink-0 text-[#c9a96a]" /> Respuesta el mismo día hábil
           </p>
           <p className="flex items-start gap-3 sm:col-span-2">
-            <ShieldAlert size={15} className="mt-1 shrink-0 text-[#ecc058]/70" />
+            <ShieldAlert size={15} className="mt-1 shrink-0 text-[#c9a96a]/70" />
             No adjunte documentos en esta etapa. El envío no crea una relación abogado-cliente.
           </p>
         </div>

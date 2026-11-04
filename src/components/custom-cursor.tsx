@@ -62,7 +62,7 @@ export function CustomCursor() {
     <>
       <motion.div
         aria-hidden="true"
-        className="fixed top-0 left-0 w-8 h-8 border border-[#ecc058] rounded-full pointer-events-none z-[99999] origin-center -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 border border-[#c9a96a] rounded-full pointer-events-none z-[99999] origin-center -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -73,7 +73,7 @@ export function CustomCursor() {
       />
       <motion.div
         aria-hidden="true"
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-[#ecc058] rounded-full pointer-events-none z-[99999] origin-center -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-[#c9a96a] rounded-full pointer-events-none z-[99999] origin-center -translate-x-1/2 -translate-y-1/2"
         style={{ x: cursorX, y: cursorY, scale: isHovered ? 0.5 : 1, opacity: 0.9 }}
       />
     </>

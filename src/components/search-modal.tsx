@@ -299,7 +299,7 @@ export function SearchModal() {
           >
             {/* Search input */}
             <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
-              <Search size={18} className="shrink-0 text-[#ecc058]" />
+              <Search size={18} className="shrink-0 text-[#c9a96a]" />
               <input
                 ref={inputRef}
                 type="text"
@@ -356,9 +356,9 @@ export function SearchModal() {
                   <div key={group.category}>
                     <div className="sticky top-0 flex items-center gap-2 border-b border-white/5 bg-[#0f0d0b]/90 px-5 py-2.5 backdrop-blur-sm">
                       {group.icon ? (
-                        <group.icon size={13} className="text-[#ecc058]" />
+                        <group.icon size={13} className="text-[#c9a96a]" />
                       ) : null}
-                      <span className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+                      <span className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
                         {group.category}
                       </span>
                       <span className="ml-auto text-[0.55rem] text-[#8f877c]/50">
@@ -376,12 +376,12 @@ export function SearchModal() {
                           data-index={flatIdx}
                           className={`flex items-start gap-3.5 border-b border-white/[0.03] px-5 py-3.5 text-left transition-colors ${
                             isActive
-                              ? "bg-[#ecc058]/8 border-[#ecc058]/20"
+                              ? "bg-[#c9a96a]/8 border-[#c9a96a]/20"
                               : "hover:bg-white/[0.03]"
                           }`}
                         >
                           {item.icon ? (
-                            <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-md border border-white/10 bg-white/[0.04] text-[#ecc058]">
+                            <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-md border border-white/10 bg-white/[0.04] text-[#c9a96a]">
                               <item.icon size={14} />
                             </span>
                           ) : (
@@ -432,7 +432,7 @@ export function SearchButton() {
       type="button"
       onClick={() => setOpen(true)}
       aria-label="Buscar"
-      className="grid size-12 place-items-center border border-white/15 text-[#ecc058] transition-colors hover:border-[#ecc058]/40 hover:text-[#f3eee4] touch-manipulation"
+      className="grid size-12 place-items-center border border-white/15 text-[#c9a96a] transition-colors hover:border-[#c9a96a]/40 hover:text-[#f3eee4] touch-manipulation"
     >
       <Search size={19} />
     </button>

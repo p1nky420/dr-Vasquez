@@ -82,9 +82,9 @@ export default function FaqPage() {
         <section id="intro" className="px-5 pb-12 pt-32 md:px-8 md:pt-40">
           <div className="mx-auto max-w-[76rem]">
             <nav aria-label="Ruta de navegación" className="text-[0.8125rem] text-[#9a9287]">
-              <Link href="/" className="hover:text-[#ecc058]">Inicio</Link>
+              <Link href="/" className="hover:text-[#c9a96a]">Inicio</Link>
             </nav>
-            <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+            <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
               Orientación inicial
             </p>
             <h1 className="mt-5 max-w-3xl font-serif text-[clamp(2.2rem,5.2vw,4rem)] leading-[1.04] tracking-[-0.03em] text-[#fffaf0]">
@@ -113,12 +113,12 @@ export default function FaqPage() {
               <h2 className="font-serif text-[clamp(1.6rem,3.2vw,2.4rem)] leading-tight text-[#f3eee4]">
                 {group.title}
               </h2>
-              <div className="mt-8 border-t border-[#ecc058]/18">
+              <div className="mt-8 border-t border-[#c9a96a]/18">
                 {group.items.map((faq) => (
-                  <details key={faq.question} className="group border-b border-[#ecc058]/18 py-5">
+                  <details key={faq.question} className="group border-b border-[#c9a96a]/18 py-5">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg leading-snug text-[#f3eee4] md:text-xl">
                       {faq.question}
-                      <span className="text-[#ecc058] transition-transform group-open:rotate-45">+</span>
+                      <span className="text-[#c9a96a] transition-transform group-open:rotate-45">+</span>
                     </summary>
                     <p className="max-w-3xl pt-4 text-[0.98rem] leading-[1.85] text-[#c2baae]">
                       {faq.answer}

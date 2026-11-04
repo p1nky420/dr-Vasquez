@@ -61,7 +61,7 @@ export function QuickIntake({ source = "home-quick" }: { source?: string }) {
   if (state === "done") {
     return (
       <div className="quick-intake quick-intake--done" role="status">
-        <CheckCircle2 className="shrink-0 text-[#ecc058]" size={30} strokeWidth={1.4} />
+        <CheckCircle2 className="shrink-0 text-[#c9a96a]" size={30} strokeWidth={1.4} />
         <div>
           <p className="font-serif text-2xl leading-tight text-[#f3eee4]">
             Solicitud recibida.

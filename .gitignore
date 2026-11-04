@@ -44,3 +44,6 @@ public/ivory-archival-paper-v1.png
 
 # Documentos internos del cliente (el repositorio es público)
 docs/marca/
+
+# Material original del cliente (pesado; las versiones web están en public/estudio)
+/public/fausto fotos/

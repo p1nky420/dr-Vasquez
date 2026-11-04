@@ -1,31 +1,29 @@
-import Image from "next/image";
 import Link from "next/link";
 import { navItems } from "@/lib/site";
+import { Seal } from "@/components/fusion/seal";
 
 export function Footer() {
   return (
     <footer className="relative border-t border-white/10 bg-[#080706] pb-24 text-[#f3eee4] md:pb-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-[8%] opacity-[0.12]">
-        <div className="relative w-[35%] aspect-[826/644] md:w-[25%]">
-          <Image src="/logoFV-solo.png" alt="" fill className="object-contain" sizes="300px" />
-        </div>
+        <Seal className="w-[45%] text-[#c9a96a] md:w-[22%]" title="" />
       </div>
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-16 md:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] md:px-8 md:py-20">
         <div>
           <p className="font-serif text-4xl tracking-[-0.04em]">Fausto Vásquez</p>
-          <p className="mt-2 text-[0.68rem] uppercase tracking-[0.22em] text-[#ecc058]">Estudio Jurídico · Derecho penal estratégico</p>
+          <p className="mt-2 text-[0.68rem] uppercase tracking-[0.22em] text-[#c9a96a]">Estudio Jurídico · Derecho penal estratégico</p>
           <p className="mt-7 max-w-md text-[0.95rem] leading-7 text-[#b8b0a5]">
             Defensa penal, pensamiento jurídico y dirección estratégica para asuntos de alta complejidad.
           </p>
         </div>
         <div>
-          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Institución</p>
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#c9a96a]">Institución</p>
           <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#b8b0a5]">
             {navItems.map((item) => <Link key={item.href} href={item.href} className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">{item.label}</Link>)}
           </nav>
         </div>
         <div>
-          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Biblioteca</p>
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#c9a96a]">Biblioteca</p>
           <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#b8b0a5]">
             <Link href="/academia" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Academia</Link>
             <Link href="/publicaciones" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#f3eee4]">Publicaciones</Link>
@@ -34,7 +32,7 @@ export function Footer() {
           </nav>
         </div>
         <div>
-          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#ecc058]">Contacto</p>
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#c9a96a]">Contacto</p>
           <div className="mt-6 space-y-3 text-[0.95rem] leading-6 text-[#b8b0a5]">
             <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="tel:+593983076881">+593 98 307 6881</a></p>
             <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#f3eee4]" href="mailto:contacto@faustovasquezabogado.com">contacto@faustovasquezabogado.com</a></p>
@@ -45,16 +43,16 @@ export function Footer() {
       <div className="border-t border-white/10 px-5 py-5 text-center text-[0.66rem] uppercase tracking-[0.13em] text-[#948c81] sm:text-[0.72rem]">
         <p>© {new Date().getFullYear()} Dr. Fausto Vásquez — Estudio Jurídico · La información publicada no constituye asesoría jurídica.</p>
         <nav aria-label="Información legal" className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
-          <Link href="/aviso-legal" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#ecc058]">
+          <Link href="/aviso-legal" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#c9a96a]">
             Aviso legal
           </Link>
-          <Link href="/privacidad" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#ecc058]">
+          <Link href="/privacidad" className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#c9a96a]">
             Política de privacidad
           </Link>
         </nav>
       </div>
       <div className="border-t border-white/5 px-5 py-4 text-center text-[0.6rem] uppercase tracking-[0.2em] text-[#6d655b] sm:text-[0.65rem]">
-        Diseñado y desarrollado por <a href="https://mateoguerrero.lat" target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center py-0.5 text-[#ecc058] hover:text-[#f3eee4] transition-colors">MG Web Studio</a>
+        Diseñado y desarrollado por <a href="https://mateoguerrero.lat" target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center py-0.5 text-[#c9a96a] hover:text-[#f3eee4] transition-colors">MG Web Studio</a>
       </div>
     </footer>
   );

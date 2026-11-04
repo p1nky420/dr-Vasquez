@@ -91,12 +91,12 @@ export default async function PracticeLandingPage({ params }: Params) {
 
           <div className="relative mx-auto max-w-[88rem]">
             <nav aria-label="Ruta de navegación" className="text-[0.8125rem] text-[#9a9287]">
-              <Link href="/" className="hover:text-[#ecc058]">Inicio</Link>
-              <span className="mx-2 text-[#ecc058]/40">/</span>
-              <Link href="/areas-de-practica" className="hover:text-[#ecc058]">Áreas de práctica</Link>
+              <Link href="/" className="hover:text-[#c9a96a]">Inicio</Link>
+              <span className="mx-2 text-[#c9a96a]/40">/</span>
+              <Link href="/areas-de-practica" className="hover:text-[#c9a96a]">Áreas de práctica</Link>
             </nav>
 
-            <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+            <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
               {landing.eyebrow}
             </p>
             <h1 className="mt-5 max-w-4xl font-serif text-[clamp(2.4rem,5.6vw,4.4rem)] leading-[1.02] tracking-[-0.03em] text-[#fffaf0]">
@@ -114,7 +114,7 @@ export default async function PracticeLandingPage({ params }: Params) {
                 <ul className="mt-6 grid gap-4">
                   {landing.situations.map((situation) => (
                     <li key={situation} className="flex gap-3 text-[0.98rem] leading-[1.75] text-[#c2baae]">
-                      <Check size={17} className="mt-1 shrink-0 text-[#ecc058]" />
+                      <Check size={17} className="mt-1 shrink-0 text-[#c9a96a]" />
                       {situation}
                     </li>
                   ))}
@@ -127,7 +127,7 @@ export default async function PracticeLandingPage({ params }: Params) {
               </div>
 
               <div>
-                <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
+                <p className="mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#c9a96a]">
                   Evaluación confidencial · Respuesta el mismo día hábil
                 </p>
                 <QuickIntake source={`area-${landing.slug}`} />
@@ -171,12 +171,12 @@ export default async function PracticeLandingPage({ params }: Params) {
             <h2 className="font-serif text-[clamp(1.9rem,4vw,3rem)] leading-[1.15] text-[#f3eee4]">
               Preguntas frecuentes
             </h2>
-            <div className="mt-10 border-t border-[#ecc058]/20">
+            <div className="mt-10 border-t border-[#c9a96a]/20">
               {landing.faqs.map((faq) => (
-                <details key={faq.question} className="group border-b border-[#ecc058]/20 py-6">
+                <details key={faq.question} className="group border-b border-[#c9a96a]/20 py-6">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl leading-snug text-[#f3eee4] md:text-2xl">
                     {faq.question}
-                    <span className="text-[#ecc058] transition-transform group-open:rotate-45">+</span>
+                    <span className="text-[#c9a96a] transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <p className="max-w-3xl pt-5 text-[0.98rem] leading-[1.85] text-[#c2baae]">
                     {faq.answer}
@@ -193,15 +193,15 @@ export default async function PracticeLandingPage({ params }: Params) {
                   <Link
                     key={slug}
                     href={`/areas-de-practica/${slug}`}
-                    className="group border border-[#ecc058]/20 p-6 transition-colors hover:border-[#ecc058]/60"
+                    className="group border border-[#c9a96a]/20 p-6 transition-colors hover:border-[#c9a96a]/60"
                   >
-                    <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#ecc058]">
+                    <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-[#c9a96a]">
                       {related.eyebrow}
                     </p>
                     <p className="mt-3 font-serif text-xl leading-snug text-[#f3eee4]">
                       {related.title}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-[#ecc058]">
+                    <span className="mt-4 inline-flex items-center gap-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-[#c9a96a]">
                       Ver área <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </span>
                   </Link>

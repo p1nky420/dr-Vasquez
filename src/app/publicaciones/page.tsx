@@ -76,9 +76,9 @@ export default function PublicacionesPage() {
       <section id="intro" className="bg-[#0a0908] px-5 pb-14 pt-32 text-[#f3eee4] md:px-8 md:pb-20 md:pt-40">
         <div className="mx-auto max-w-[88rem]">
           <nav aria-label="Ruta de navegación" className="text-[0.8125rem] text-[#9a9287]">
-            <Link href="/" className="hover:text-[#ecc058]">Inicio</Link>
+            <Link href="/" className="hover:text-[#c9a96a]">Inicio</Link>
           </nav>
-          <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#ecc058]">
+          <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
             Producción jurídica
           </p>
           <h1 className="mt-5 max-w-4xl font-serif text-[clamp(2.3rem,5.4vw,4.2rem)] leading-[1.04] tracking-[-0.03em] text-[#fffaf0]">
@@ -111,7 +111,7 @@ export default function PublicacionesPage() {
                           <Image src="/practice-economic-glass-v1.png" alt="" fill className="object-cover" />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Ergo Editores<br />2016</p>
+                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#c9a96a]">Ergo Editores<br />2016</p>
                           </div>
                         </div>
                         <div className="flex-1">
@@ -125,7 +125,7 @@ export default function PublicacionesPage() {
                           <Image src="/practice-defense-marble-v1.png" alt="" fill className="object-cover" />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#15130f]/90 via-[#15130f]/30 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-2.5">
-                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#ecc058]">Publicación<br />2018</p>
+                            <p className="text-[0.4rem] max-sm:text-[0.65rem] leading-tight text-[#c9a96a]">Publicación<br />2018</p>
                           </div>
                         </div>
                         <div>
@@ -191,14 +191,14 @@ export default function PublicacionesPage() {
               {/* Entrevistas */}
               <EditorialReveal delay={0.16}>
                 <div className="flex h-full flex-col border border-[#15130f]/15 bg-[#15130f] p-8 text-[#f3eee4] md:p-10">
-                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#ecc058]">Entrevistas y medios</p>
+                  <p className="text-[0.5rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#c9a96a]">Entrevistas y medios</p>
                   <div className="mt-8 space-y-6">
                     {[
                       { label: "Análisis jurídico en medios nacionales", desc: "Entrevistas y columnas de opinión sobre actualidad penal y procesal." },
                       { label: "Participación en foros académicos", desc: "Paneles, debates y espacios de discusión jurídica especializada." },
                       { label: "Contenido editorial y publicaciones digitales", desc: "Artículos de análisis doctrinal publicados en plataformas jurídicas." },
                     ].map((item) => (
-                      <div key={item.label} className="border-l-2 border-[#ecc058]/25 pl-4 transition-colors hover:border-[#ecc058]">
+                      <div key={item.label} className="border-l-2 border-[#c9a96a]/25 pl-4 transition-colors hover:border-[#c9a96a]">
                         <p className="font-serif text-base leading-snug md:text-lg">{item.label}</p>
                         <p className="mt-1.5 text-[0.75rem] leading-relaxed text-[#cec6ba]">{item.desc}</p>
                       </div>
@@ -208,7 +208,7 @@ export default function PublicacionesPage() {
                     href="https://www.facebook.com/fausto.vasquez.9083"
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-8 inline-flex items-center gap-2 text-[0.55rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#ecc058] transition-colors hover:text-[#f3eee4]"
+                    className="mt-8 inline-flex items-center gap-2 text-[0.55rem] max-sm:text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#c9a96a] transition-colors hover:text-[#f3eee4]"
                   >
                     Ver contenido en redes <ArrowRight size={13} />
                   </a>
@@ -233,7 +233,7 @@ export default function PublicacionesPage() {
             </p>
             <Link
               href="/areas-de-practica"
-              className="mt-7 inline-flex items-center gap-3 border-b border-[#ecc058] pb-2 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-[#ecc058]"
+              className="mt-7 inline-flex items-center gap-3 border-b border-[#c9a96a] pb-2 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-[#c9a96a]"
             >
               Ver áreas de práctica <ArrowRight size={14} />
             </Link>
