@@ -47,3 +47,7 @@ docs/marca/
 
 # Material original del cliente (pesado; las versiones web están en public/estudio)
 /public/fausto fotos/
+
+# Notas privadas de producto y estado de la herramienta de diseño (repo público)
+PRODUCT.md
+.impeccable/
