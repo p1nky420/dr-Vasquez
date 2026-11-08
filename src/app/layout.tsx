@@ -131,8 +131,6 @@ const institutionalJsonLd = {
       ],
       alumniOf: [
         { "@type": "CollegeOrUniversity", name: "Universidad Central del Ecuador" },
-        { "@type": "CollegeOrUniversity", name: "Universitat Pompeu Fabra" },
-        { "@type": "CollegeOrUniversity", name: "Universidad Externado de Colombia" },
       ],
       knowsAbout: [
         "Derecho penal económico",
