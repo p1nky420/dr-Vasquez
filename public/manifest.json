@@ -1,11 +1,11 @@
 {
-  "name": "Dr. Fausto Vásquez — Estudio Jurídico",
-  "short_name": "Fausto Vásquez",
+  "name": "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
+  "short_name": "Fausto Vásquez Cevallos",
   "description": "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0908",
-  "theme_color": "#ecc058",
+  "background_color": "#faf7f1",
+  "theme_color": "#faf7f1",
   "icons": [
     {
       "src": "/logoFV-solo.png",

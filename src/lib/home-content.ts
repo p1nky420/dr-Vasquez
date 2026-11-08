@@ -98,7 +98,7 @@ export const serviceCategories: ServiceCategory[] = [
     image: "/office.jpg",
     icon: BookOpen,
     services: [
-      "Biblioteca Jurídica Fausto Vásquez",
+      "Biblioteca Jurídica Fausto Vásquez Cevallos",
       "Venta y envío nacional de libros jurídicos",
       "Asesoría online por hora",
       "Asistente Jurídico FV",
@@ -250,7 +250,7 @@ export const internalSeoLinks = [
   },
   {
     eyebrow: "Experiencia y autoridad",
-    title: "Perfil del Dr. Fausto Vásquez",
+    title: "Perfil del Dr. Fausto Vásquez Cevallos",
     text: "Conozca su formación, trayectoria académica, publicaciones y criterio profesional.",
     href: "/firma",
   },
@@ -264,102 +264,127 @@ export const internalSeoLinks = [
 
 export const faqs = [
   {
+    topic: "Proceso penal",
     question: "¿Qué debo hacer si recibo una notificación de Fiscalía?",
     answer: "Debe solicitar asesoría inmediata antes de rendir versión o entregar documentación, para evitar errores estratégicos desde el inicio.",
   },
   {
+    topic: "Proceso penal",
     question: "¿Qué ocurre después de una formulación de cargos?",
     answer: "Se abre una etapa procesal en la que la defensa debe analizar la imputación, los elementos de convicción, los riesgos procesales y la estrategia probatoria.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Puedo solicitar una segunda opinión jurídica?",
     answer: "Sí. La firma puede revisar el estado del caso y emitir una evaluación estratégica independiente, con absoluta confidencialidad y respeto al abogado titular.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Atienden casos fuera de Quito?",
     answer: "Sí. Se atienden casos en Quito, Guayaquil y otras ciudades del Ecuador, previa evaluación de la naturaleza y etapa del caso.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Qué documentos debo preparar para una evaluación jurídica?",
     answer: "Denuncia, versiones, providencias, partes policiales, informes, impulsos fiscales, escritos presentados y cualquier documento relacionado con el caso.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Atienden urgencias penales?",
-    answer: "Sí, previa disponibilidad y evaluación de la situación por parte del Dr. Fausto Vásquez.",
+    answer: "Sí, previa disponibilidad y evaluación de la situación por parte del Dr. Fausto Vásquez Cevallos.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿La primera consulta tiene costo?",
     answer: "La evaluación jurídica privada tiene un valor definido. Consulte directamente para conocer las condiciones vigentes.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Puedo agendar una consulta online?",
     answer: "Sí. La asesoría online está disponible para clientes dentro y fuera de Ecuador, a través de videollamada o llamada telefónica.",
   },
   {
+    topic: "Especialidades",
     question: "¿Manejan casos de lavado de activos?",
     answer: "Sí. La firma trabaja en defensa penal económica y casos complejos relacionados con delitos financieros, lavado de activos y delitos societarios.",
   },
   {
+    topic: "Especialidades",
     question: "¿Manejan delitos contra la administración pública?",
     answer: "Sí. Se atienden casos relacionados con cohecho, peculado, concusión, tráfico de influencias y otras figuras penales contra la administración pública.",
   },
   {
+    topic: "Proceso penal",
     question: "¿Qué diferencia tiene una defensa penal estratégica?",
     answer: "No se limita a responder escritos. Analiza riesgos, prueba, teoría del caso, dogmática penal, tiempos procesales y escenarios de decisión para construir una arquitectura de defensa.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Pueden revisar un caso que ya tiene abogado?",
     answer: "Sí. Se puede realizar una segunda opinión o auditoría estratégica del caso, con absoluta confidencialidad y respeto al profesional titular.",
   },
   {
+    topic: "Confidencialidad",
     question: "¿La información del cliente es confidencial?",
     answer: "Sí. Toda consulta y documentación recibida se maneja bajo estricta confidencialidad profesional, incluso si no se formaliza una representación.",
   },
   {
+    topic: "Confidencialidad",
     question: "¿Publican casos reales en la web?",
     answer: "Solo se publican casos anónimos y autorizados, sin revelar nombres, datos sensibles ni información que vulnere el secreto profesional.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Cómo se agenda una cita?",
     answer: "El cliente debe contactarse por WhatsApp o formulario web, enviar información básica del caso y coordinar fecha, modalidad y condiciones de atención.",
   },
   {
+    topic: "Especialidades",
     question: "¿Qué tipo de clientes atiende la firma?",
     answer: "Personas naturales, empresarios, directivos, funcionarios, profesionales y organizaciones involucradas en asuntos penales o constitucionales complejos.",
   },
   {
+    topic: "Especialidades",
     question: "¿Atienden casos constitucionales?",
     answer: "Sí. Se trabaja en temas constitucionales vinculados a procesos penales, garantías jurisdiccionales y defensa de derechos fundamentales.",
   },
   {
-    question: "¿El doctor Fausto atiende personalmente?",
-    answer: "Sí, el Dr. Fausto Vásquez dirige personalmente cada caso. La modalidad de atención depende del tipo de servicio contratado y su disponibilidad.",
+    topic: "Evaluación y cita",
+    question: "¿El Dr. Fausto Vásquez Cevallos atiende personalmente?",
+    answer: "Sí, el Dr. Fausto Vásquez Cevallos dirige personalmente cada caso. La modalidad de atención depende del tipo de servicio contratado y su disponibilidad.",
   },
   {
+    topic: "Publicaciones",
     question: "¿Se puede comprar libros desde la web?",
     answer: "Consulte disponibilidad y condiciones de compra y envío a través del formulario de contacto o WhatsApp.",
   },
   {
+    topic: "Proceso penal",
     question: "¿Qué debo hacer si tengo un proceso penal en curso?",
     answer: "Solicite una evaluación estratégica para revisar el estado del proceso, identificar riesgos procesales y recibir una recomendación jurídica fundamentada.",
   },
   {
+    topic: "Proceso penal",
     question: "¿La formación académica del abogado influye en la defensa?",
     answer: "Sí. La profundidad doctrinal permite construir teoría del caso, argumentar con solidez y anticipar líneas de imputación. No es lo mismo litigar con oficio que con conocimiento.",
   },
   {
+    topic: "Proceso penal",
     question: "¿Cuánto puede durar un proceso penal en Ecuador?",
     answer: "Depende de la etapa, la complejidad del caso y la carga del órgano judicial. Puede durar desde meses hasta varios años. La defensa debe estar preparada para la duración del proceso.",
   },
   {
+    topic: "Especialidades",
     question: "¿Atienden casos de funcionarios públicos?",
     answer: "Sí. La firma cuenta con experiencia en defensa de funcionarios, servidores públicos y exautoridades investigadas por delitos contra la administración pública o relacionados con el ejercicio del cargo.",
   },
   {
+    topic: "Evaluación y cita",
     question: "¿Qué diferencia hay entre evaluación jurídica y representación?",
     answer: "La evaluación es un diagnóstico estratégico del caso, sus riesgos y escenarios. La representación implica la dirección técnica y jurídica del proceso desde la etapa en que se encuentre.",
   },
   {
+    topic: "Proceso penal",
     question: "¿Se puede cambiar de abogado durante el proceso?",
     answer: "Sí. El imputado o procesado tiene derecho a designar un nuevo defensor en cualquier etapa del proceso. La firma puede asumir la defensa previa evaluación del estado procesal.",
   },

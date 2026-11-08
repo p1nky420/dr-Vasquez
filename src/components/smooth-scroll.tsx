@@ -17,9 +17,8 @@ export function SmoothScroll() {
       lerp: 0.075,
       smoothWheel: true,
       syncTouch: false,
-      anchors: {
-        offset: -88,
-      },
+      // Section styles already account for the fixed header and sticky scenes.
+      anchors: { immediate: true },
     });
 
     return () => lenis.destroy();

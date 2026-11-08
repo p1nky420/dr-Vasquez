@@ -9,7 +9,7 @@ const smooth = (a: number, b: number, p: number) =>
 /** A procedural sculpture: no remote model, texture, tracking or asset request. */
 export function mountChessScene(
   host: HTMLElement,
-  mode: "story" | "film" | "epic" = "story",
+  mode: "story" | "film" | "epic" | "strategy" = "story",
 ) {
   const mobile = matchMedia("(max-width: 760px)").matches;
   const renderer = new THREE.WebGLRenderer({
@@ -179,7 +179,7 @@ export function mountChessScene(
   bottom.position.y = -2.3;
   board.add(bottom);
 
-  // A small cast shares geometry/materials; mobile keeps only two defenders.
+  // A small cast shares geometry and materials.
   const defenders: THREE.Group[] = [];
   const pawnBody = new THREE.LatheGeometry([
     new THREE.Vector2(0, 0), new THREE.Vector2(0.26, 0),
@@ -188,9 +188,9 @@ export function mountChessScene(
     new THREE.Vector2(0, 0.57),
   ], mobile ? 20 : 32);
   const pawnHead = new THREE.SphereGeometry(0.18, mobile ? 12 : 24, 12);
-  for (let i = 0; i < (mobile ? 2 : 4); i++) {
+  for (let i = 0; i < (mode === "strategy" ? (mobile ? 4 : 6) : mobile ? 2 : 4); i++) {
     const piece = new THREE.Group();
-    piece.visible = mode === "epic";
+    piece.visible = mode === "epic" || mode === "strategy";
     piece.add(new THREE.Mesh(pawnBody, i % 2 ? dark : ivory));
     const head = new THREE.Mesh(pawnHead, gold);
     head.position.y = 0.69;
@@ -505,6 +505,55 @@ export function mountChessScene(
         destination.scale.setScalar(1);
       }
 
+    }
+    if (mode === "strategy") {
+      const approach = smooth(0.02, 0.31, progress);
+      const counter = smooth(0.36, 0.64, progress);
+      const commitment = smooth(0.7, 0.98, progress);
+      const distance = Math.max(1, 1.15 / aspect);
+      camera.position.set(3.7 - approach * 0.9 + commitment * 0.55, 5.8 * distance, 9.8 * distance);
+      camera.lookAt(0, -1.34, 0);
+      camera.zoom = 1.25;
+      camera.updateProjectionMatrix();
+      sculpture.position.set(0, 0, 0);
+      sculpture.scale.setScalar(1);
+      sculpture.rotation.set(0, 0.64 - progress * 0.23, 0);
+      [base, body, crown].forEach(part => {
+        part.scale.setScalar(0.48);
+        part.position.set(0.68, -1.06, -1.36);
+        part.rotation.y = 0;
+      });
+      board.visible = true;
+      board.scale.setScalar(1);
+      board.position.y = 0;
+      board.rotation.y = 0;
+      orbit.visible = dust.visible = signature.visible = false;
+      const files = [-1.36, 0, 1.36];
+      defenders.forEach((piece, i) => {
+        const lightSide = i % 2 === 0;
+        const file = files[Math.floor(i / 2)];
+        const move = lightSide ? approach : counter;
+        const advance = i === 2 ? commitment * 0.68 : 0;
+        const start = lightSide ? 1.36 : -1.36;
+        const end = lightSide ? 0.68 : -0.68;
+        piece.visible = true;
+        piece.scale.setScalar(i === 2 ? 1.08 : 0.9);
+        piece.position.set(file, -1.95 + Math.sin((i === 2 && commitment > 0 ? commitment : move) * Math.PI) * 0.1, mix(start, end, move) - advance);
+      });
+      route.visible = counter > 0.02;
+      routeMaterial.opacity = counter * (1 - commitment * 0.5);
+      for (let i = 0; i < 3; i++) routeSegments[i].visible = false;
+      turn.position.set(0, -1.946, 0.34);
+      destination.position.set(0, -1.944, 0);
+      destination.visible = counter > 0.5;
+      rook.visible = true;
+      rook.scale.setScalar(0.85);
+      rook.position.set(mix(2.04, 1.36, smooth(0.78, 0.98, progress)), -1.95, -2.04);
+      key.position.set(2 - progress * 5, 5, 5);
+      key.intensity = 2.8;
+      rim.intensity = 4.1;
+      scene.environmentIntensity = 0.48;
+      renderer.toneMappingExposure = 0.96;
     }
     renderer.render(scene, camera);
     if (Math.abs(progress - target) > 0.0002 || Math.abs(finale - finaleTarget) > 0.0002)

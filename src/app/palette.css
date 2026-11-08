@@ -1,0 +1,21 @@
+:root {
+  --fv-ink: #111110;
+  --fv-charcoal: #232120;
+  --fv-paper: #f6f2eb;
+  --fv-white: #fffdf9;
+  --fv-text: #24211e;
+  --fv-muted: #d0c9be;
+  --fv-bronze: #76572f;
+  --fv-secondary: #594f46;
+  --fv-line: #9c7c542e;
+}
+
+:is(.ed-contact, .ed-cta, .sv-contact) .contact-actions__primary {
+  background: var(--fv-ink);
+  border-color: var(--fv-ink);
+  color: var(--fv-white);
+}
+:is(.ed-contact, .ed-cta, .sv-contact) .contact-actions__primary:hover { background: #473729; }
+:is(.ed-contact, .ed-cta, .sv-contact) .contact-actions__phone { color: var(--fv-text); }
+:is(.ed-contact, .ed-cta, .sv-contact) .contact-actions__phone small,
+:is(.ed-contact, .sv-contact) .consult-actions__form > summary { color: var(--fv-bronze); }

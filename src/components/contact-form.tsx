@@ -1,7 +1,3 @@
 "use client";
-
-import { IntakeForm } from "@/components/intake-form";
-
-export function ContactForm() {
-  return <IntakeForm />;
-}
+import { QuickIntake } from "@/components/quick-intake";
+export function ContactForm() { return <QuickIntake source="contacto" />; }

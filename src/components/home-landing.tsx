@@ -190,7 +190,7 @@ export function HomeLanding() {
         <ParallaxLayer className="absolute -top-12 bottom-[-8rem] right-0 w-full lg:w-[51%]">
           <Image
             src="/portrait-editorial-authority-v2.png"
-            alt="Dr. Fausto Vásquez, jurista penalista ecuatoriano"
+            alt="Dr. Fausto Vásquez Cevallos, jurista penalista ecuatoriano"
             fill
             priority
             loading="eager"
@@ -249,7 +249,7 @@ export function HomeLanding() {
               <p className="proof-strip mt-6">
                 <span>+20 años de ejercicio</span>
                 <span>Formación en 4 países</span>
-                <span>Atención personal del Dr. Vásquez</span>
+                <span>Atención personal del Dr. Fausto Vásquez Cevallos</span>
               </p>
             </EditorialReveal>
           </div>
@@ -257,7 +257,7 @@ export function HomeLanding() {
 
         <EditorialReveal delay={0.62} className="absolute bottom-[5rem] right-[4vw] hidden text-right lg:block">
           <div className="rounded-sm bg-black/28 px-5 py-4 backdrop-blur-[3px]">
-            <p className="font-serif text-xl text-[#fffaf0]">Dr. Fausto Vásquez</p>
+            <p className="font-serif text-xl text-[#fffaf0]">Dr. Fausto Vásquez Cevallos</p>
             <p className="mt-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-[#c9a96a]">
               Dirección personal de la defensa
             </p>
@@ -336,7 +336,7 @@ export function HomeLanding() {
               <div className="relative aspect-[4/5] overflow-hidden bg-[#d8cebe]">
                 <Image
                   src="/portrait-editorial-quito-v2.png"
-                  alt="Retrato editorial del Dr. Fausto Ramiro Vásquez Cevallos"
+                  alt="Retrato editorial del Dr. Fausto Vásquez Cevallos"
                   fill
                   sizes="(min-width: 1024px) 42vw, 100vw"
                   className="object-cover object-[center_20%] grayscale-[15%]"
@@ -353,7 +353,7 @@ export function HomeLanding() {
               <SectionIntro
                 eyebrow="El legado"
                 title="Una vida dedicada al pensamiento penal."
-                text="La trayectoria del Dr. Fausto Vásquez une el ejercicio de la defensa con la investigación, la docencia y la producción jurídica. Su método parte de una convicción: los asuntos complejos exigen comprender el derecho con profundidad antes de actuar con precisión."
+                text="La trayectoria del Dr. Fausto Vásquez Cevallos une el ejercicio de la defensa con la investigación, la docencia y la producción jurídica. Su método parte de una convicción: los asuntos complejos exigen comprender el derecho con profundidad antes de actuar con precisión."
                 dark
               />
               <EditorialReveal delay={0.12}>
@@ -545,7 +545,7 @@ export function HomeLanding() {
           <EditorialReveal className="relative mt-16 min-h-[26rem] overflow-hidden bg-[#15120f] text-[#f3eee4] md:mt-20 md:min-h-[32rem]">
             <Image
               src="/portrait-editorial-desk-v2.png"
-              alt="Dr. Fausto Vásquez durante una sesión de análisis jurídico"
+              alt="Dr. Fausto Vásquez Cevallos durante una sesión de análisis jurídico"
               fill
               sizes="(min-width: 1024px) 88vw, 100vw"
               className="object-cover object-center"
@@ -613,7 +613,7 @@ export function HomeLanding() {
                 <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
                   <span className="text-[#c9a96a] mt-1.5 shrink-0 size-1.5 rounded-full bg-[#c9a96a]" />
                   <p>
-                    <strong className="text-[#c9a96a] font-medium">Atención exclusiva:</strong> Su caso será atendido directamente por el Dr. Fausto Vásquez.
+                    <strong className="text-[#c9a96a] font-medium">Atención exclusiva:</strong> Su caso será atendido directamente por el Dr. Fausto Vásquez Cevallos.
                   </p>
                 </div>
                 <div className="flex gap-3 items-start text-[0.92rem] leading-[1.85] tracking-[0.02em] text-[#e8e2d5]">
@@ -625,7 +625,7 @@ export function HomeLanding() {
               </EditorialReveal>
 
               <EditorialReveal delay={0.12} className="mt-10 grid gap-5">
-                <a href={whatsappHref("Hola, deseo agendar una llamada privada de evaluación confidencial con el Dr. Fausto Vásquez.")} target="_blank" rel="noreferrer" className="contact-line hover:border-[#c9a96a]/50 transition-all duration-300">
+                <a href={whatsappHref("Hola, deseo agendar una llamada privada de evaluación confidencial con el Dr. Fausto Vásquez Cevallos.")} target="_blank" rel="noreferrer" className="contact-line hover:border-[#c9a96a]/50 transition-all duration-300">
                   <MessageCircle size={18} />
                   <span><small>Llamada / WhatsApp privado</small>+593 98 307 6881</span>
                   <ChevronRight size={16} />
@@ -689,7 +689,7 @@ export function HomeLanding() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,173,120,.16),transparent_35%)]" />
         <div className="relative mx-auto flex min-h-[55vh] max-w-5xl flex-col items-center justify-center text-center">
           <EditorialReveal>
-            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#c9a96a]">Dr. Fausto Vásquez — Estudio Jurídico</p>
+            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#c9a96a]">Dr. Fausto Vásquez Cevallos — Estudio Jurídico</p>
             <h2 className="mt-7 font-serif text-[clamp(3rem,9vw,7rem)] leading-[0.94] tracking-[-0.055em]">
               Su libertad, reputación y legado merecen una defensa estratégica.
             </h2>

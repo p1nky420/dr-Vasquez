@@ -18,8 +18,6 @@ declare global {
 export const CONVERSION_EVENTS = [
   "lead_submitted",
   "quick_lead_submitted",
-  "whatsapp_click",
-  "phone_click",
 ] as const;
 
 function isConversion(name: string) {

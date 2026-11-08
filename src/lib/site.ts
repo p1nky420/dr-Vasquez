@@ -15,16 +15,11 @@ export const whatsappNumber = "593983076881";
 export const phoneHref = "tel:+593983076881";
 export const phoneDisplay = "+593 98 307 6881";
 export const navItems = [
-  { href: "/", label: "Inicio" },
-  { href: "/firma", label: "El Estudio" },
-  { href: "/areas-de-practica", label: "Áreas" },
-  { href: "/academia", label: "Academia" },
+  { href: "/firma", label: "Trayectoria" },
+  { href: "/areas-de-practica", label: "Especialidades" },
   { href: "/publicaciones", label: "Publicaciones" },
-  { href: "/#consulta-rapida", label: "Evaluación" },
-  { href: "/#faq", label: "FAQs" },
   { href: "/contacto", label: "Contacto" },
 ];
-
 export type PracticeArea = {
   title: string;
   description: string;
@@ -231,4 +226,4 @@ export function whatsappHref(message: string) {
 }
 
 export const contactMessage =
-  "Hola, deseo solicitar una evaluación estratégica de mi caso con Dr. Fausto Vásquez — Estudio Jurídico.";
+  "Hola, deseo solicitar una evaluación estratégica de mi caso con Dr. Fausto Vásquez Cevallos — Estudio Jurídico.";

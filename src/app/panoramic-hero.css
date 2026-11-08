@@ -1,0 +1,140 @@
+.fv-panorama {
+  --hero-nav-height: 6rem;
+  --hero-image-height: clamp(35rem, calc(100svh - var(--hero-nav-height)), 56rem);
+  --hero-image-width: 100%;
+  --hero-fade-direction: 90deg;
+  --hero-copy-width: 41%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: var(--hero-nav-height) minmax(var(--hero-image-height), auto);
+  isolation: isolate;
+  background: var(--fv-white);
+  color: var(--fv-text);
+}
+.fv-cover { --hero-image-width: 106%; }
+.fv-panorama__photo {
+  position: relative;
+  grid-area: 2 / 1;
+  margin: 0;
+  overflow: hidden;
+}
+.fv-panorama__photo img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  display: block;
+  width: var(--hero-image-width);
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 41%;
+  filter: saturate(.84);
+}
+.fv-panorama__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--hero-fade-direction), transparent 51%, #fffdf94d 58%, #fffdf9ae 62%, #fffdf9cc 75%, #fffdf9e3 100%);
+}
+.fv-panorama__copy {
+  position: relative;
+  grid-area: 2 / 1;
+  align-self: center;
+  justify-self: end;
+  width: var(--hero-copy-width);
+  min-width: 0;
+  padding: clamp(2rem, 4.5vw, 5.5rem) clamp(1.8rem, 4.5vw, 5.5rem) clamp(3.5rem, 7.5vw, 8rem) 2.5vw;
+}
+.fv-panorama[data-copy-side="left"] { --hero-fade-direction: 270deg; }
+.fv-panorama[data-copy-side="left"] .fv-panorama__copy {
+  justify-self: start;
+  padding-inline: clamp(1.8rem, 4.5vw, 5.5rem) 2.5vw;
+}
+.ed-hero {
+  --hero-image-height: clamp(33rem, calc(91svh - var(--hero-nav-height)), 52rem);
+  --hero-copy-width: 42%;
+}
+.ed-hero h1 {
+  font-size: clamp(2.7rem, 4.75vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  text-wrap: pretty;
+  margin: .8rem 0 1.2rem;
+}
+.ed-hero .ed-lead {
+  max-width: 45ch;
+  margin: 0 0 1.4rem;
+  color: #453c33;
+  font-size: clamp(.92rem, 1.15vw, 1.03rem);
+  line-height: 1.7;
+}
+
+.fv-cover__action {
+  display: inline-flex;
+  min-height: 51px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  padding: .65rem 1.2rem;
+  border: 1px solid var(--fv-ink);
+  border-radius: 0;
+  background: var(--fv-ink);
+  color: var(--fv-paper);
+  font-size: .74rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: background .25s, color .25s;
+}
+.fv-cover__action:hover { background: #4d3a28; }
+.fv-cover__action svg { flex-shrink: 0; color: #e3c491; }
+
+@media (max-width: 767px) {
+  .fv-panorama { grid-template-rows: 5rem auto auto; }
+  .fv-panorama__photo img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .fv-panorama__photo::after { content: none; }
+  .fv-panorama .fv-panorama__copy,
+  .fv-panorama[data-copy-side="left"] .fv-panorama__copy {
+    grid-row: 3;
+    width: 100%;
+    padding: 1.3rem 6vw 2rem;
+  }
+  .ed-hero h1 { font-size: clamp(2.4rem, 9vw, 4.35rem); }
+  .ed-hero .ed-lead { margin-bottom: 1.1rem; }
+}
+
+/* Portada en penumbra: el texto se apoya en sombra cálida, no en un velo claro */
+@media (min-width: 768px) {
+  .fv-panorama__photo { background: #2b2722; }
+  .fv-panorama__photo img { filter: saturate(.78) brightness(.92); }
+  .fv-panorama__photo::after {
+    background: linear-gradient(var(--hero-fade-direction), transparent 38%, #14110ecc 62%, #14110ef2 100%),
+      linear-gradient(0deg, #14110e66, transparent 35%);
+  }
+  .fv-panorama__copy { color: var(--fv-paper); }
+  .fv-panorama :is(.sv-kicker, .ed-kicker) { color: #cdb27f; }
+  .fv-panorama .ed-breadcrumb { color: #cfc6b8; }
+  .fv-panorama .ed-breadcrumb a:hover { color: var(--fv-paper); }
+  .ed-hero h1 { font-weight: 300; }
+  .ed-hero .ed-lead { color: #e2dacd; }
+  .fv-panorama .fv-cover__action {
+    min-height: 0;
+    padding: 1rem 0;
+    gap: 2.4rem;
+    border: 0;
+    border-bottom: 1px solid #cdb27f99;
+    border-radius: 0;
+    background: none;
+    color: var(--fv-paper);
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: gap .4s, border-color .4s;
+  }
+  .fv-panorama .fv-cover__action:hover { background: none; gap: 3.2rem; border-color: #d4b985; }
+}

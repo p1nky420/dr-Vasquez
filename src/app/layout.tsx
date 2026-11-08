@@ -8,11 +8,14 @@ import { AnalyticsConsent } from "@/components/analytics-consent";
 import { EvaluationVault } from "@/components/evaluation-vault";
 import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { CustomCursor } from "@/components/custom-cursor";
 import { SearchProvider, SearchModal } from "@/components/search-modal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
 import "./globals.css";
+import "./palette.css";
+import "./interiors.css";
+import "./interior-sections.css";
+import "./panoramic-hero.css";
 
 /**
  * Playfair Display + Inter es la pareja más usada de la web: lee como
@@ -39,13 +42,13 @@ const text = Instrument_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.faustovasquezabogado.com"),
   title: {
-    default: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
-    template: "%s | Dr. Fausto Vásquez — Estudio Jurídico",
+    default: "Dr. Fausto Vásquez Cevallos | Derecho Penal Estratégico",
+    template: "%s | Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
   },
   description:
     "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Su práctica profesional combina litigación técnica, análisis dogmático, estrategia probatoria y experiencia académica para la defensa de personas, empresarios, funcionarios y organizaciones involucradas en procesos complejos.",
   keywords: [
-    "Dr. Fausto Vásquez — Estudio Jurídico",
+    "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
     "derecho penal económico",
     "litigio estratégico",
     "delitos financieros",
@@ -56,28 +59,28 @@ export const metadata: Metadata = {
       "delitos complejos",
   ],
   openGraph: {
-    title: "Dr. Fausto Vásquez — Estudio Jurídico",
+    title: "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
     description:
       "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
     type: "website",
     locale: "es_EC",
-    siteName: "Dr. Fausto Vásquez — Estudio Jurídico",
+    siteName: "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
     url: "/",
     images: [
       {
-        url: "/portrait-editorial-authority-v2.png",
-        width: 1003,
-        height: 1568,
-        alt: "Dr. Fausto Vásquez, jurista penalista ecuatoriano",
+        url: "/estudio/portada-editorial.webp",
+        width: 960,
+        height: 1280,
+        alt: "Dr. Fausto Vásquez Cevallos, jurista penalista ecuatoriano",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Fausto Vásquez — Estudio Jurídico | Abogado Penalista Quito",
+    title: "Dr. Fausto Vásquez Cevallos — Estudio Jurídico | Abogado Penalista Quito",
     description:
       "Defensa penal estratégica para casos económicos, constitucionales, políticos y de alta complejidad en Ecuador.",
-    images: ["/portrait-editorial-authority-v2.png"],
+    images: ["/estudio/portada-editorial.webp"],
   },
   robots: {
     index: true,
@@ -106,18 +109,16 @@ const institutionalJsonLd = {
     {
       "@type": "Person",
       "@id": "https://www.faustovasquezabogado.com/#person",
-      name: "Fausto Ramiro Vásquez Cevallos",
-      givenName: "Fausto Ramiro",
+      name: "Fausto Vásquez Cevallos",
+      givenName: "Fausto",
       familyName: "Vásquez Cevallos",
-      honorificSuffix: "Doctor Honoris Causa",
       jobTitle: "Abogado Penalista · Profesor Universitario · Autor · Investigador · Litigante",
       description:
-        "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Doctor Honoris Causa por la Universidad del Golfo de México. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
+        "Abogado penalista ecuatoriano especializado en defensa penal estratégica, derecho penal económico, derecho constitucional, derecho penal político y casos de alta complejidad. Autor de obras jurídicas sobre imputación objetiva y falsedad documental.",
       url: "https://www.faustovasquezabogado.com",
       image:
-        "https://www.faustovasquezabogado.com/portrait-editorial-authority-v2.png",
+        "https://www.faustovasquezabogado.com/estudio/portada-editorial.webp",
       telephone: "+593983076881",
-      email: "contacto@faustovasquezabogado.com",
       worksFor: {
         "@id": "https://www.faustovasquezabogado.com/#legal-service",
       },
@@ -129,7 +130,6 @@ const institutionalJsonLd = {
         { "@type": "CollegeOrUniversity", name: "Universidad Central del Ecuador" },
         { "@type": "CollegeOrUniversity", name: "Universitat Pompeu Fabra" },
         { "@type": "CollegeOrUniversity", name: "Universidad Externado de Colombia" },
-        { "@type": "CollegeOrUniversity", name: "Universidad del Golfo de México" },
       ],
       knowsAbout: [
         "Derecho penal económico",
@@ -151,11 +151,10 @@ const institutionalJsonLd = {
     {
       "@type": ["LegalService", "Attorney"],
       "@id": "https://www.faustovasquezabogado.com/#legal-service",
-      name: "Dr. Fausto Vásquez — Estudio Jurídico",
+      name: "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
       url: "https://www.faustovasquezabogado.com",
       image: "https://www.faustovasquezabogado.com/reception_marble.png",
       telephone: "+593983076881",
-      email: "contacto@faustovasquezabogado.com",
       availableLanguage: "Spanish",
       founder: {
         "@id": "https://www.faustovasquezabogado.com/#person",
@@ -164,75 +163,7 @@ const institutionalJsonLd = {
         { "@type": "City", name: "Quito" },
         { "@type": "City", name: "Guayaquil" },
       ],
-      address: [
-        {
-          "@type": "PostalAddress",
-          streetAddress:
-            "Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8, Oficina 802",
-          addressLocality: "Quito",
-          addressRegion: "Pichincha",
-          postalCode: "170522",
-          addressCountry: "EC",
-        },
-        {
-          "@type": "PostalAddress",
-          streetAddress:
-            "Av. Malecón Simón Bolívar y Loja, Edificio The Point, Piso 12, Oficina 1203",
-          addressLocality: "Guayaquil",
-          addressRegion: "Guayas",
-          postalCode: "090150",
-          addressCountry: "EC",
-        },
-      ],
-      priceRange: "$$$",
-      currenciesAccepted: "USD",
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "09:00",
-          closes: "18:00",
-        },
-      ],
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: -0.2058,
-        longitude: -78.4903,
-      },
-      hasMap: "https://www.google.com/maps/search/?api=1&query=Torre+1492+Av+12+de+Octubre+Quito",
-      knowsLanguage: "es",
-      department: [
-        {
-          "@type": "LegalService",
-          "@id": "https://www.faustovasquezabogado.com/#sede-quito",
-          name: "Dr. Fausto Vásquez — Estudio Jurídico · Quito",
-          telephone: "+593983076881",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8, Oficina 802",
-            addressLocality: "Quito",
-            addressRegion: "Pichincha",
-            postalCode: "170522",
-            addressCountry: "EC",
-          },
-          geo: { "@type": "GeoCoordinates", latitude: -0.2058, longitude: -78.4903 },
-        },
-        {
-          "@type": "LegalService",
-          "@id": "https://www.faustovasquezabogado.com/#sede-guayaquil",
-          name: "Dr. Fausto Vásquez — Estudio Jurídico · Guayaquil",
-          telephone: "+593983076881",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Av. Malecón Simón Bolívar y Loja, Edificio The Point, Piso 12, Oficina 1203",
-            addressLocality: "Guayaquil",
-            addressRegion: "Guayas",
-            postalCode: "090150",
-            addressCountry: "EC",
-          },
-          geo: { "@type": "GeoCoordinates", latitude: -2.1894, longitude: -79.8807 },
-        },
-      ],
+      openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:30", closes: "19:00" }],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Servicios legales",
@@ -251,7 +182,7 @@ const institutionalJsonLd = {
       "@type": "WebSite",
       "@id": "https://www.faustovasquezabogado.com/#website",
       url: "https://www.faustovasquezabogado.com",
-      name: "Dr. Fausto Vásquez — Estudio Jurídico",
+      name: "Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
       inLanguage: "es-EC",
       publisher: {
         "@id": "https://www.faustovasquezabogado.com/#legal-service",
@@ -303,7 +234,6 @@ export default function RootLayout({
         />
           <SearchProvider>
             <ScrollProgress />
-            <CustomCursor />
           <Header />
           <main id="main-content">{children}</main>
           <Footer />

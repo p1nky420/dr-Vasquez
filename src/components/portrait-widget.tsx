@@ -48,7 +48,7 @@ export function PortraitWidget() {
       >
         <Image
           src="/portrait_fausto.jpg"
-          alt="Retrato oficial Dr. Fausto Vásquez"
+          alt="Retrato oficial Dr. Fausto Vásquez Cevallos"
           fill
           className="object-cover transition duration-700 group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 340px"
@@ -63,7 +63,7 @@ export function PortraitWidget() {
         style={{ transform: "translateZ(15px)" }}
       >
         <h3 className="font-serif text-lg font-bold text-ivory group-hover:text-gold transition duration-300">
-          Dr. Fausto Vásquez
+          Dr. Fausto Vásquez Cevallos
         </h3>
         <p className="text-[0.58rem] max-sm:text-[0.65rem] uppercase tracking-[0.24em] text-steel mt-1 font-semibold">
           Socio Fundador & Director Legal

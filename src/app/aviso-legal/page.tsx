@@ -4,9 +4,9 @@ import { LegalPage } from "@/components/legal-page";
 import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Aviso legal | Dr. Fausto Vásquez — Estudio Jurídico" },
+  title: { absolute: "Aviso legal | Dr. Fausto Vásquez Cevallos — Estudio Jurídico" },
   description:
-    "Condiciones de uso del sitio del Estudio Jurídico Dr. Fausto Vásquez, alcance de la información publicada y naturaleza de la relación profesional.",
+    "Condiciones de uso del sitio del Estudio Jurídico Dr. Fausto Vásquez Cevallos, alcance de la información publicada y naturaleza de la relación profesional.",
   alternates: { canonical: `${SITE_URL}/aviso-legal` },
   robots: { index: true, follow: true },
 };
@@ -21,14 +21,11 @@ export default function AvisoLegalPage() {
     >
       <h2>Titular del sitio</h2>
       <p>
-        <strong>Dr. Fausto Ramiro Vásquez Cevallos</strong> — Estudio Jurídico.
+        <strong>Dr. Fausto Vásquez Cevallos</strong> — Estudio Jurídico.
         Abogado de los Tribunales y Juzgados de la República del Ecuador.
-        Oficina en Av. 12 de Octubre N26-97 y Lincoln, Torre 1492, Piso 8,
-        Oficina 802, Quito.{" "}
-        <a href="mailto:contacto@faustovasquezabogado.com">
-          contacto@faustovasquezabogado.com
-        </a>{" "}
-        · <a href="tel:+593983076881">+593 98 307 6881</a>.
+        Atención en Quito, Ecuador, con cita previa.{" "}
+        <a href="tel:+593983076881">+593 98 307 6881</a>{" "}
+        .
       </p>
 
       <h2>La información publicada no es asesoría jurídica</h2>

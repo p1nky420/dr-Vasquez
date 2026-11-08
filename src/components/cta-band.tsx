@@ -1,33 +1,27 @@
-import { ArrowRight } from "lucide-react";
-import { ButtonLink } from "@/components/button-link";
-import { Reveal } from "@/components/animated";
-import { contactMessage, whatsappHref } from "@/lib/site";
-
-type CtaBandProps = {
+import { WhatsappCta } from "@/components/whatsapp-cta";
+export function CtaBand({
+  title = "Una conversación privada. Un punto de partida claro.",
+  text = "Revisamos disponibilidad y posibles conflictos antes de coordinar una reunión. Comparta solo sus datos de contacto.",
+  message = "Hola, deseo coordinar una evaluación privada.",
+  label,
+  id,
+}: {
   title?: string;
   text?: string;
-};
-
-export function CtaBand({
-  title = "Solicite una evaluación estratégica de su caso",
-  text = "La defensa penal de alto nivel no se improvisa. Se construye con estrategia, técnica y precisión desde el primer momento.",
-}: CtaBandProps) {
+  message?: string;
+  label?: string;
+  id?: string;
+}) {
   return (
-    <section className="px-5 py-20 md:px-8">
-      <Reveal>
-        <div className="mx-auto grid max-w-7xl gap-8 border border-gold/30 bg-[linear-gradient(135deg,rgba(14,42,54,0.85),rgba(11,15,20,0.96))] p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10">
-          <div>
-            <p className="eyebrow">Defensa estratégica</p>
-            <h2 className="mt-3 max-w-3xl font-serif text-3xl leading-tight text-ivory md:text-5xl">
-              {title}
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-steel">{text}</p>
-          </div>
-          <ButtonLink href={whatsappHref(contactMessage)} target="_blank">
-            WhatsApp <ArrowRight size={17} />
-          </ButtonLink>
-        </div>
-      </Reveal>
+    <section className="ed-cta" id={id}>
+      <div>
+        <p className="ed-kicker">El siguiente paso</p>
+        <h2>{title}</h2>
+      </div>
+      <div>
+        <p>{text}</p>
+        <WhatsappCta location="interior-cierre" message={message} label={label} />
+      </div>
     </section>
   );
 }

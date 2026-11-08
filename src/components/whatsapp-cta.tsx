@@ -1,8 +1,8 @@
 "use client";
 
-import { MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Phone } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { whatsappHref, phoneHref, phoneDisplay } from "@/lib/site";
+import { contactMessage, whatsappHref, phoneHref, phoneDisplay } from "@/lib/site";
 
 /**
  * The immediate-contact pair, for visitors who will not fill a form.
@@ -10,30 +10,24 @@ import { whatsappHref, phoneHref, phoneDisplay } from "@/lib/site";
  */
 export function WhatsappCta({
   location,
-  message,
+  message = contactMessage,
+  label = "Solicitar evaluación privada",
   className = "",
 }: {
   location: string;
-  message: string;
+  message?: string;
+  label?: string;
   className?: string;
 }) {
   return (
-    <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${className}`}>
-      <a
-        href={whatsappHref(message)}
-        target="_blank"
-        rel="noreferrer"
-        onClick={() => trackEvent("whatsapp_click", { location })}
-        className="inline-flex min-h-13 items-center justify-center gap-2.5 border border-[#25d366]/45 bg-[#25d366]/10 px-5 py-3.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[#f3eee4] transition-colors hover:bg-[#25d366] hover:text-[#08130c]"
-      >
-        <MessageCircle size={17} /> Escribir por WhatsApp
+    <div className={`contact-actions ${className}`}>
+      <a href={whatsappHref(message)} target="_blank" rel="noreferrer" onClick={() => trackEvent("whatsapp_click", { location })} className="contact-actions__primary">
+        <span className="contact-actions__icon"><MessageCircle size={19} strokeWidth={1.5} /></span>
+        <span><strong>{label}</strong><small>Por WhatsApp</small></span>
+        <ArrowUpRight size={18} aria-hidden="true" />
       </a>
-      <a
-        href={phoneHref}
-        onClick={() => trackEvent("phone_click", { location })}
-        className="inline-flex min-h-13 items-center justify-center gap-2.5 border border-[#c9a96a]/40 px-5 py-3.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[#c9a96a] transition-colors hover:border-[#c9a96a] hover:bg-[#c9a96a] hover:text-[#15130f]"
-      >
-        <Phone size={16} /> {phoneDisplay}
+      <a href={phoneHref} onClick={() => trackEvent("phone_click", { location })} className="contact-actions__phone">
+        <Phone size={16} strokeWidth={1.5} aria-hidden="true" /><span><small>Llamar al despacho</small><strong>{phoneDisplay}</strong></span>
       </a>
     </div>
   );

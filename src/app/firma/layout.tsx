@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dr. Fausto Vásquez | Abogado Penalista Quito",
+  title: { absolute: "Fausto Vásquez Cevallos | Jurista penalista en Quito" },
   description:
-    "Conozca la trayectoria del Dr. Fausto Ramiro Vásquez Cevallos, abogado penalista en Quito especializado en defensa penal económica y litigio estratégico.",
+    "Conozca la trayectoria del Dr. Fausto Vásquez Cevallos, abogado penalista en Quito especializado en defensa penal económica y litigio estratégico.",
   alternates: {
     canonical: "https://www.faustovasquezabogado.com/firma",
   },

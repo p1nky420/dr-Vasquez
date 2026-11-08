@@ -1,17 +1,20 @@
+"use client";
+
 import { MessageCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import { contactMessage, whatsappHref } from "@/lib/site";
 
 export function FloatingWhatsapp() {
   return (
     <a
       aria-label="Contactar por WhatsApp"
-      className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 flex min-h-14 touch-manipulation items-center justify-center gap-3 border border-[#c9a96a]/55 bg-[#0b0a08]/95 px-5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#f3eee4] shadow-[0_16px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl transition hover:bg-[#c9a96a] hover:text-[#11100e] md:inset-x-auto md:bottom-5 md:right-5 md:grid md:size-14 md:place-items-center md:rounded-full md:px-0"
+      className="fixed bottom-5 right-5 z-40 hidden size-12 place-items-center rounded-full border border-[#c9a96a]/55 bg-[#0b0a08]/95 text-[#f3eee4] shadow-lg backdrop-blur-xl transition hover:bg-[#c9a96a] hover:text-[#11100e] xl:grid"
       href={whatsappHref(contactMessage)}
+      onClick={() => trackEvent("whatsapp_click", { location: "floating-desktop" })}
       target="_blank"
       rel="noreferrer"
     >
       <MessageCircle size={21} />
-      <span className="md:hidden">Conversación privada por WhatsApp</span>
     </a>
   );
 }

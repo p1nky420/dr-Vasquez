@@ -1,350 +1,84 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, LockKeyhole } from "lucide-react";
-import { QuickIntake } from "@/components/quick-intake";
-import { WhatsappCta } from "@/components/whatsapp-cta";
-import { TrajectoryAtlas, type TrajectoryNode } from "@/components/trajectory-atlas";
+import { ArrowUpRight, ArrowRight, LockKeyhole } from "lucide-react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { AcademicCredentials } from "@/components/academic-credentials";
+import { PanoramicHero } from "@/components/panoramic-hero";
+import { heroPhotos } from "@/lib/hero-photos";
+import { ConsultationActions } from "@/components/consultation-actions";
+import { books } from "@/lib/publications";
 import { faqs } from "@/lib/home-content";
-import { heritage, heritageCredits } from "@/lib/patrimonio";
 import { MethodChess } from "./method-chess";
-import { Seal } from "./seal";
 import "./fusion.css";
+import "./signature.css";
 
 const practices = [
-  {
-    title: "Delitos contra la administración pública",
-    detail: "Peculado, cohecho, concusión, enriquecimiento ilícito y tráfico de influencias. Defensa de funcionarios, exfuncionarios y contratistas del Estado.",
-    href: "/areas-de-practica/delitos-administracion-publica",
-  },
-  {
-    title: "Derecho penal económico",
-    detail: "Fraude, estafa, abuso de confianza, delitos societarios y tributarios cuando una investigación compromete empresa y patrimonio.",
-    href: "/derecho-penal-economico",
-  },
-  {
-    title: "Lavado de activos y delitos financieros",
-    detail: "Análisis de origen de fondos, operaciones patrimoniales y estructuras financieras complejas.",
-    href: "/areas-de-practica/lavado-de-activos",
-  },
-  {
-    title: "Garantías constitucionales",
-    detail: "Debido proceso, libertad y tutela judicial efectiva frente a actuaciones que exceden los límites de la ley.",
-    href: "/areas-de-practica/constitucional-penal",
-  },
-  {
-    title: "Litigio penal estratégico",
-    detail: "Audiencias decisivas, juicio oral, apelación y casación, con teoría del caso desde la investigación previa.",
-    href: "/areas-de-practica/litigio-penal-estrategico",
-  },
+  { title: "Administración pública", label: "La responsabilidad no se presume por el cargo.", text: "Peculado, cohecho, concusión y enriquecimiento ilícito. Defensa de funcionarios, exfuncionarios y contratistas. Representación de instituciones, previa revisión de conflictos de interés.", href: "/areas-de-practica/delitos-administracion-publica", image: "/estudio/preparacion-expediente.webp", tags: "Peculado · Cohecho · Concusión" },
+  { title: "Penal económico", label: "Leer más allá de los números.", text: "Defensa ante investigaciones que involucran decisiones empresariales, documentación, operaciones comerciales y patrimonio.", href: "/derecho-penal-economico", image: "/estudio/laptop-quito.webp", tags: "Empresa · Patrimonio · Prueba" },
+  { title: "Delitos financieros", label: "Cada operación necesita contexto.", text: "Análisis de origen de fondos, trazabilidad patrimonial y prueba financiera en investigaciones por lavado de activos.", href: "/areas-de-practica/lavado-de-activos", image: "/estudio/firmando.webp", tags: "Origen de fondos · Pericias" },
+  { title: "Garantías y litigio", label: "La estrategia también está en los límites.", text: "Debido proceso, garantías constitucionales, audiencias y recursos. Segunda opinión técnica sobre asuntos penales complejos.", href: "/areas-de-practica/litigio-penal-estrategico", image: "/estudio/mesa-litigio.webp", tags: "Libertad · Debido proceso · Recursos" },
 ];
+const featured = faqs.filter(f => ["¿Qué debo hacer si recibo una notificación de Fiscalía?", "¿El Dr. Fausto Vásquez Cevallos atiende personalmente?", "¿La información del cliente es confidencial?", "¿Atienden casos de funcionarios públicos?"].includes(f.question));
+const ease = [0.22, 1, 0.36, 1] as const;
 
+function Hero() {
+  return (
+    <PanoramicHero photo={heroPhotos.home} variant="home" titleId="sv-title">
+      <p className="sv-kicker">Quito, Ecuador · Ejercicio desde 2000</p>
+      <h1 id="sv-title">Fausto <span>Vásquez Cevallos<span className="fv-cover__point">.</span></span></h1>
+      <p className="fv-cover__line">El arte de <em>anticiparse.</em></p>
+      <p className="fv-cover__lead">Defensa penal en Quito. Delitos contra la administración pública y derecho penal económico.</p>
+      <Link className="fv-cover__action" href="#consulta-form">
+        Solicitar evaluación privada <ArrowUpRight size={19} aria-hidden="true" />
+      </Link>
+    </PanoramicHero>
+  );
+}
 
-const teaching = [
-  "Universidad Central del Ecuador",
-  "Universidad de las Américas",
-  "Universidad Internacional del Ecuador",
-  "Universidad del Azuay",
-  "Universidad de Cuenca",
-  "Universidad Técnica del Norte",
-];
+function PracticeExplorer() {
+  const [active, setActive] = useState(0);
+  const reduced = useReducedMotion();
+  const p = practices[active];
+  return <section id="especialidades" className="sv-practice">
+    <div className="sv-section-heading"><p className="sv-kicker">El ámbito de la defensa</p><h2>Ámbitos de<br /><em>defensa.</em></h2><p>Libertad. Patrimonio. Reputación.<br />Cada asunto exige una lectura propia.</p></div>
+    <div className="sv-explorer"><div className="sv-explorer__tabs" role="tablist" aria-label="Especialidades">{practices.map((item,index) => <button key={item.title} type="button" role="tab" id={`practice-tab-${index}`} aria-selected={active===index} aria-controls={`practice-panel-${index}`} tabIndex={active===index ? 0 : -1} onClick={()=>setActive(index)} onKeyDown={e=>{if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?practices.length-1:(index+(['ArrowDown','ArrowRight'].includes(e.key)?1:-1)+practices.length)%practices.length;setActive(n);document.getElementById(`practice-tab-${n}`)?.focus();}}}><span>{item.title}</span><ArrowUpRight size={24}/></button>)}</div>
+    <div className="sv-explorer__visual"><AnimatePresence mode="wait"><motion.div key={p.title} role="tabpanel" id={`practice-panel-${active}`} aria-labelledby={`practice-tab-${active}`} className="sv-practice-panel" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : .2, ease }}><Image src={p.image} alt="Detalle del trabajo y despacho del Dr. Fausto Vásquez Cevallos" width={960} height={1280} sizes="(max-width:760px) 88vw, 32vw"/><div className="sv-practice-panel__body"><p className="sv-kicker">{p.tags}</p><h3>{p.label}</h3><p>{p.text}</p><Link href={p.href} className="sv-link">Explorar esta especialidad <ArrowUpRight size={20}/></Link></div></motion.div></AnimatePresence></div></div>
+    <Link href="/areas-de-practica" className="sv-all-practices">Todas las áreas de práctica <ArrowRight size={18}/></Link>
+  </section>;
+}
 
-const books = [
-  { title: "Falsedad documental en materia penal", note: "Autor" },
-  { title: "La sustanciación del proceso penal", note: "Autor · dos tomos" },
-  { title: "Punto de inflexión en el COIP", note: "Autor" },
-];
-
-/** Trayectoria académica de la versión clásica (A), con foto real del despacho en la última etapa. */
-const trajectory: TrajectoryNode[] = [
-  { number: "I", country: "Ecuador", institution: "Universidad Central del Ecuador", title: "Los fundamentos.", description: "Doctor en Jurisprudencia y Abogado de los Tribunales y Juzgados de la República.", logo: "/university-uce.png" },
-  { number: "II", country: "España", institution: "Universitat Pompeu Fabra", title: "La tradición.", description: "Formación de posgrado en derecho penal en una de las escuelas penales de referencia en Europa.", logo: "/university-upf-transparent.png" },
-  { number: "III", country: "Colombia", institution: "Universidad Externado de Colombia", title: "La interdisciplinariedad.", description: "Derecho penal y procesal penal desde la dogmática, el proceso y las garantías.", logo: "/university-externado.svg" },
-  { number: "IV", country: "México", institution: "Universidad del Golfo de México", title: "El reconocimiento.", description: "Doctorado Honoris Causa.", logo: "/university-ugm-transparent.png" },
-  { number: "V", country: "Aulas", institution: "Docencia en seis universidades del Ecuador", title: "La transmisión del conocimiento.", description: "Clases y conferencias de derecho penal para nuevas generaciones de juristas.", image: "/estudio/lectura.webp" },
-];
-
-const studio = [
-  { src: "/estudio/muro-logo.webp", w: 1280, h: 960, alt: "El Dr. Fausto Vásquez junto al muro con el nombre del estudio jurídico", cls: "fx-studio__wide" },
-  { src: "/estudio/firma-detalle.webp", w: 960, h: 1280, alt: "Detalle de la mano del Dr. Vásquez firmando un documento con pluma", cls: "" },
-  { src: "/estudio/pasillo-camina.webp", w: 960, h: 1280, alt: "El Dr. Vásquez caminando por el pasillo del estudio", cls: "" },
-  { src: "/estudio/sala-tablero.webp", w: 1800, h: 1350, alt: "Sala de trabajo del estudio con el muro de tablero de ajedrez y vista a la ciudad", cls: "fx-studio__wide" },
-  { src: "/estudio/sofa.webp", w: 960, h: 1280, alt: "El Dr. Vásquez sentado en la sala del despacho", cls: "" },
-  { src: "/estudio/laptop-quito.webp", w: 960, h: 1280, alt: "El Dr. Vásquez trabajando frente al ventanal con vista a Quito", cls: "" },
-];
-
-const FEATURED = [
-  "¿Qué debo hacer si recibo una notificación de Fiscalía?",
-  "¿El doctor Fausto atiende personalmente?",
-  "¿La información del cliente es confidencial?",
-  "¿Atienden casos de funcionarios públicos?",
-];
-const featuredFaqs = FEATURED.map((q) => faqs.find((f) => f.question === q)).filter(
-  (f): f is (typeof faqs)[number] => Boolean(f),
-);
-
-function Caption({ children }: { children: React.ReactNode }) {
-  return <p className="fx-caption">{children}</p>;
+function JuristPortrait() {
+  const [selected, setSelected] = useState("litigio");
+  const views = [
+    {id:"litigio", name:"El litigante", title:"La práctica afina el criterio.", text:"Ejercicio profesional desde el año 2000. Lectura del expediente, análisis de la prueba y estrategia para asuntos penales de alta complejidad.", href:"/firma", link:"Conocer su trayectoria"},
+    {id:"docencia", name:"El profesor", title:"Enseñar también es profundizar.", text:"La docencia en derecho penal complementa el ejercicio profesional: examinar los fundamentos, discutir los argumentos y transmitir el conocimiento jurídico.", href:"/academia", link:"Explorar la actividad académica"},
+    {id:"obra", name:"El autor", title:"El pensamiento queda escrito.", text:"Obras dedicadas al derecho penal, la prueba documental y el proceso. Una biblioteca que prolonga la conversación entre teoría y práctica.", href:"/publicaciones", link:"Consultar publicaciones"},
+  ];
+  const current = views.find(view=>view.id===selected)!;
+  return <section id="jurista" className="sv-jurist sv-jurist--curated"><figure className="sv-jurist__frame"><Image src="/estudio/fausto-trayectoria.webp" alt="Fausto Vásquez Cevallos sentado junto a los diplomas de su despacho" fill sizes="(max-width:760px) 100vw, 48vw"/><figcaption><span>Fausto Vásquez Cevallos</span><small>Jurista penalista · Quito</small></figcaption></figure><div className="sv-jurist__body"><p className="sv-kicker">El criterio tiene autor</p><h2>Litigante, profesor<br /><em>y autor.</em></h2><div className="sv-jurist__tabs" aria-label="Perspectivas del jurista">{views.map(view=><button type="button" key={view.id} aria-pressed={selected===view.id} onClick={()=>setSelected(view.id)}>{view.name}</button>)}</div><div className="sv-jurist__perspective" aria-live="polite"><h3>{current.title}</h3><p>{current.text}</p><Link className="sv-link" href={current.href}>{current.link}<ArrowUpRight size={18}/></Link></div><div className="sv-books"><p className="sv-kicker">Obra jurídica</p>{books.map(book=><Link href={`/publicaciones#${book.id}`} key={book.id}><span>{book.title}</span><ArrowUpRight size={18}/></Link>)}</div></div></section>;
 }
 
 export function FusionHome() {
-  return (
-    <div className="fx">
-      {/* ── Apertura ─────────────────────────────────────────────── */}
-      <section id="inicio" className="fx-hero" aria-labelledby="fx-titulo">
-        <div className="fx-hero__image">
-          <Image
-            src="/estudio/despacho-escritorio.webp"
-            alt="El Dr. Fausto Vásquez en su escritorio, frente al ventanal del estudio en Quito"
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 55vw"
-            className="fx-kenburns"
-          />
-        </div>
-        <div className="fx-hero__veil" />
-        <div className="fx-wrap fx-hero__inner">
-          <Seal className="fx-hero__seal" />
-          <p className="fx-eyebrow">Estudio jurídico · Quito · Desde 2000</p>
-          <h1 id="fx-titulo" className="fx-hero__title">
-            <span className="fx-hero__name">Fausto Vásquez</span>
-            <span className="fx-hero__role">El arte de anticiparse.</span>
-          </h1>
-          <p className="fx-hero__lead">
-            Defensa penal estratégica. Veintiséis años defendiendo a personas, empresas y funcionarios en procesos de alta
-            complejidad, con el rigor de quien también enseña y escribe derecho penal.
-          </p>
-          <div className="fx-actions">
-            <Link href="#consulta-form" className="fx-btn fx-btn--solid">
-              Solicitar evaluación confidencial <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-            <Link href="#estudio" className="fx-btn fx-btn--line">
-              Conocer el estudio
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── La ciudad ────────────────────────────────────────────── */}
-      <section className="fx-city" aria-labelledby="fx-ciudad">
-        <Image src={heritage.panorama.src} alt="Vista del Centro Histórico de Quito desde El Panecillo, con la Basílica del Voto Nacional" fill sizes="100vw" className="fx-city__img" />
-        <div className="fx-city__veil" />
-        <div className="fx-wrap fx-city__inner">
-          <p className="fx-eyebrow">Quito</p>
-          <h2 id="fx-ciudad" className="fx-h2 fx-h2--light">
-            Una ciudad que fue sede de la Real Audiencia desde 1563. Aquí el derecho tiene memoria.
-          </h2>
-          <p className="fx-city__text">
-            La defensa penal exige la paciencia con que se levantó esta ciudad: piedra sobre piedra, prueba sobre prueba.
-          </p>
-          <figure className="fx-city__window">
-            <Image src="/estudio/ventana-quito.webp" alt="El Dr. Vásquez mirando la ciudad de Quito desde el ventanal de su estudio" width={960} height={1280} sizes="(max-width: 900px) 70vw, 26vw" />
-          </figure>
-          <figure className="fx-city__archive">
-            <Image src={heritage.archivo.src} alt="Fotografía antigua de Quito a comienzos del siglo XX" width={heritage.archivo.width} height={heritage.archivo.height} sizes="240px" />
-            <figcaption>{heritage.archivo.place}</figcaption>
-          </figure>
-        </div>
-        <Caption>{heritage.panorama.place}</Caption>
-      </section>
-
-      {/* ── Especialidades ───────────────────────────────────────── */}
-      <section id="practica" className="fx-practice" aria-labelledby="fx-practica">
-        <div className="fx-wrap fx-practice__grid">
-          <div className="fx-practice__aside">
-            <p className="fx-eyebrow fx-eyebrow--dark">Especialidades</p>
-            <h2 id="fx-practica" className="fx-h2 fx-h2--dark">Donde se juegan la libertad, el patrimonio y el nombre.</h2>
-            <figure className="fx-practice__figure">
-              <Image src={heritage.portico.src} alt="Puerta tallada del pórtico de la Basílica del Voto Nacional en Quito" width={heritage.portico.width} height={heritage.portico.height} sizes="(max-width: 900px) 90vw, 30vw" />
-              <figcaption>{heritage.portico.place}</figcaption>
-            </figure>
-          </div>
-          <ul className="fx-practice__list">
-            {practices.map((practice) => (
-              <li key={practice.title}>
-                <Link href={practice.href} className="fx-practice__item">
-                  <h3>{practice.title}</h3>
-                  <p>{practice.detail}</p>
-                  <span className="fx-practice__more">
-                    Ver especialidad <ArrowUpRight size={15} aria-hidden="true" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ── Método (ajedrez) ─────────────────────────────────────── */}
-      <MethodChess />
-
-      {/* ── El jurista ───────────────────────────────────────────── */}
-      <section id="jurista" className="fx-jurist" aria-labelledby="fx-jurista">
-        <div className="fx-wrap fx-jurist__grid">
-          <figure className="fx-jurist__portrait">
-            <Image src="/estudio/biblioteca-brazos.webp" alt="El Dr. Fausto Vásquez de brazos cruzados frente a la biblioteca jurídica de su estudio" fill sizes="(max-width: 900px) 90vw, 40vw" />
-          </figure>
-          <div className="fx-jurist__body">
-            <p className="fx-eyebrow fx-eyebrow--dark">El jurista</p>
-            <h2 id="fx-jurista" className="fx-h2 fx-h2--dark">Litigante, profesor y autor.</h2>
-            <p className="fx-jurist__lead">
-              Ejerce la abogacía desde el año 2000. Dirige personalmente la estrategia de cada caso y comparte en las aulas lo que
-              aprende en los tribunales.
-            </p>
-
-            <div className="fx-jurist__cols">
-              <div>
-                <h3 className="fx-label">Obra</h3>
-                <ul className="fx-plainlist">
-                  {books.map((book) => (
-                    <li key={book.title}>{book.title}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="fx-label">Docencia</h3>
-                <ul className="fx-plainlist">
-                  {teaching.map((place) => (
-                    <li key={place}>{place}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <Link href="/firma" className="fx-textlink">
-              Trayectoria completa <ArrowRight size={15} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Trayectoria (versión A) ──────────────────────────────── */}
-      <section id="trayectoria" className="fx-trajectory" aria-labelledby="fx-trayectoria">
-        <div className="fx-wrap">
-          <p className="fx-eyebrow">Trayectoria</p>
-          <h2 id="fx-trayectoria" className="fx-h2 fx-h2--light">Formado en tres países. Enseña en seis universidades.</h2>
-          <div className="fx-trajectory__atlas">
-            <TrajectoryAtlas nodes={trajectory} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── El estudio ───────────────────────────────────────────── */}
-      <section id="estudio" className="fx-studio" aria-labelledby="fx-estudio">
-        <div className="fx-wrap">
-          <header className="fx-studio__head">
-            <p className="fx-eyebrow fx-eyebrow--dark">El estudio</p>
-            <h2 id="fx-estudio" className="fx-h2 fx-h2--dark">Un despacho en altura, con Quito a la vista.</h2>
-            <p className="fx-studio__text">Aquí se reciben los casos, se estudian los expedientes y se prepara cada audiencia. Atención con cita previa.</p>
-          </header>
-          <div className="fx-studio__grid">
-            <figure className="fx-studio__video">
-              <video src="/estudio/despacho-loop.mp4" poster="/estudio/despacho-loop-poster.jpg" muted loop playsInline autoPlay preload="none" aria-label="El Dr. Vásquez trabajando en su escritorio" />
-            </figure>
-            {studio.map((photo) => (
-              <figure key={photo.src} className={photo.cls}>
-                <Image src={photo.src} alt={photo.alt} width={photo.w} height={photo.h} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" />
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Obra ─────────────────────────────────────────────────── */}
-      <section id="obra" className="fx-books" aria-labelledby="fx-obra">
-        <div className="fx-wrap">
-          <header className="fx-books__head">
-            <p className="fx-eyebrow">Pensamiento jurídico</p>
-            <h2 id="fx-obra" className="fx-h2 fx-h2--light">Lo que defiende en audiencia, lo ha escrito antes.</h2>
-          </header>
-          <ul className="fx-books__shelf">
-            {books.map((book) => (
-              <li key={book.title} className="fx-book">
-                <span className="fx-book__mark">FV</span>
-                <span className="fx-book__title">{book.title}</span>
-                <span className="fx-book__note">{book.note}</span>
-              </li>
-            ))}
-          </ul>
-          <Link href="/publicaciones" className="fx-textlink fx-textlink--light">
-            Ver publicaciones <ArrowRight size={15} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
-
-      {/* ── Consulta ─────────────────────────────────────────────── */}
-      <section id="consulta-rapida" className="fx-consult" aria-labelledby="fx-consulta">
-        <div className="fx-wrap fx-consult__grid">
-          <div>
-            <p className="fx-eyebrow">Evaluación confidencial</p>
-            <h2 id="fx-consulta" className="fx-h2 fx-h2--light">La primera conversación es el primer movimiento.</h2>
-            <p className="fx-consult__text">
-              Cuéntenos lo esencial. No comparta detalles sensibles del caso por este medio: los revisaremos en una reunión privada.
-            </p>
-            <ul className="fx-consult__facts">
-              <li><LockKeyhole size={15} aria-hidden="true" /> Información protegida por el secreto profesional</li>
-              <li>Atención con cita previa · 9:30 a 19:00</li>
-              <li>Despacho en Quito; casos en todo el Ecuador, previa evaluación</li>
-            </ul>
-            <WhatsappCta className="mt-8" location="fusion-consulta" message="Hola, deseo solicitar una evaluación confidencial de mi caso." />
-          </div>
-          <div id="consulta-form" className="fx-consult__form">
-            <QuickIntake source="home-fusion" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Preguntas ────────────────────────────────────────────── */}
-      <section id="faq" className="fx-faq" aria-labelledby="fx-faq">
-        <div className="fx-wrap fx-faq__grid">
-          <div>
-            <p className="fx-eyebrow fx-eyebrow--dark">Preguntas frecuentes</p>
-            <h2 id="fx-faq" className="fx-h2 fx-h2--dark">Antes de la primera reunión.</h2>
-            <Link href="/preguntas-frecuentes" className="fx-textlink">
-              Todas las preguntas <ArrowRight size={15} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="fx-faq__list">
-            {featuredFaqs.map((faq) => (
-              <details key={faq.question}>
-                <summary>{faq.question}</summary>
-                <p>{faq.answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Cierre ───────────────────────────────────────────────── */}
-      <section className="fx-close" aria-labelledby="fx-cierre">
-        <Image src={heritage.garciaMoreno.src} alt="Calle García Moreno del Centro Histórico de Quito, con El Panecillo al fondo" fill sizes="100vw" className="fx-close__img" />
-        <div className="fx-close__veil" />
-        <div className="fx-wrap fx-close__inner">
-          <Seal className="fx-close__seal" />
-          <h2 id="fx-cierre" className="fx-close__title">Cada caso merece una estrategia propia.</h2>
-          <Link href="#consulta-form" className="fx-btn fx-btn--solid">
-            Solicitar evaluación confidencial <ArrowRight size={16} aria-hidden="true" />
-          </Link>
-        </div>
-        <Caption>{heritage.garciaMoreno.place}</Caption>
-      </section>
-
-      <details className="fx-credits fx-wrap">
-        <summary>Créditos de las fotografías del Centro Histórico</summary>
-        <ul>
-          {heritageCredits.map((image) => (
-            <li key={image.src}>
-              {image.place}. Foto: {image.author}, <a href={image.source} target="_blank" rel="noreferrer">Wikimedia Commons</a>
-              {image.licenseUrl ? (
-                <>
-                  , <a href={image.licenseUrl} target="_blank" rel="noreferrer">{image.license}</a>
-                </>
-              ) : (
-                <>, {image.license}</>
-              )}
-              . Versión en blanco y negro{image.license.startsWith("CC BY-SA") ? `, publicada con la misma licencia` : ""}.
-            </li>
-          ))}
-        </ul>
-      </details>
-    </div>
-  );
+  return <div className="sv"><Hero/><AcademicCredentials showAcademicLink/><PracticeExplorer/>
+    <MethodChess/>
+    <JuristPortrait/>
+    <section id="consulta-rapida" className="sv-contact" aria-labelledby="sv-contact-title">
+      <div className="sv-contact__intro">
+        <p className="sv-kicker"><LockKeyhole size={13} aria-hidden="true" /> Admisión confidencial</p>
+        <h2 id="sv-contact-title">Evaluación <em>privada.</em></h2>
+        <p>Revisamos disponibilidad y posibles conflictos de interés antes de coordinar una reunión privada.</p>
+      </div>
+      <div className="fv-contact-card" id="consulta-form">
+        <p className="sv-kicker">Quito · Con cita previa</p>
+        <h3>Coordine su consulta.</h3>
+        <p>Atención de 9:30 a 19:00. Comparta solo sus datos de contacto en el primer mensaje.</p>
+        <ConsultationActions source="home-signature" message="Hola, deseo coordinar una evaluación privada con el Dr. Fausto Vásquez Cevallos." />
+      </div>
+    </section>
+    <section className="sv-faq" id="faq"><p className="sv-kicker">Antes de conversar</p><div>{featured.map(faq=><details key={faq.question}><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div></section>
+    <section className="sv-close" id="perspectiva"><div className="sv-close__copy"><p className="sv-kicker">Fausto Vásquez Cevallos · Estudio Jurídico</p><p>El arte de<br /><em>anticiparse.</em></p><Link className="sv-link" href="#consulta-form">Solicitar evaluación privada <ArrowUpRight size={20}/></Link></div><figure className="sv-close__portrait"><Image src="/estudio/ventana-quito.webp" alt="El Dr. Fausto Vásquez Cevallos junto al ventanal del despacho, con el rostro y la ciudad de Quito a la vista" fill sizes="(max-width:760px) 88vw, 40vw"/></figure></section>
+  </div>;
 }

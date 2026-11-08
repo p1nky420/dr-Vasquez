@@ -432,7 +432,7 @@ export function SearchButton() {
       type="button"
       onClick={() => setOpen(true)}
       aria-label="Buscar"
-      className="grid size-12 place-items-center border border-white/15 text-[#c9a96a] transition-colors hover:border-[#c9a96a]/40 hover:text-[#f3eee4] touch-manipulation"
+      className="grid size-12 place-items-center border border-[#76572f]/25 text-[#76572f] transition-colors hover:border-[#76572f]/70 hover:text-[#24211e] touch-manipulation"
     >
       <Search size={19} />
     </button>

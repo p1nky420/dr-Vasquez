@@ -1,13 +1,13 @@
 import { useId } from "react";
 
 /**
- * Sello circular FV, la opción que eligió el Dr. Vásquez entre las
+ * Sello circular FV, la opción que eligió el Dr. Fausto Vásquez Cevallos entre las
  * propuestas de logotipo. Dibujado en SVG para que se mantenga nítido en
  * cualquier tamaño y tome el color del contexto (currentColor).
  */
 export function Seal({
   className = "",
-  title = "Fausto Vásquez · Estudio Jurídico",
+  title = "Fausto Vásquez Cevallos · Estudio Jurídico",
   showRing = true,
 }: {
   className?: string;
@@ -35,10 +35,10 @@ export function Seal({
             fontFamily="var(--font-text), ui-sans-serif, system-ui"
             fontSize="10.4"
             fontWeight="600"
-            letterSpacing="4.1"
+            letterSpacing="2.5"
           >
             <textPath href={`#${ring}`} startOffset="0">
-              FAUSTO VÁSQUEZ · ESTUDIO JURÍDICO · QUITO ·
+              FAUSTO VÁSQUEZ CEVALLOS · ESTUDIO JURÍDICO · QUITO ·
             </textPath>
           </text>
           <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.85" />

@@ -8,7 +8,8 @@ const GA4_ENDPOINT = "https://www.google-analytics.com/mp/collect";
  * Envía la conversión de lead a GA4 por Measurement Protocol, desde el
  * servidor.
  *
- * Es la única cifra del sitio que debe ser exacta: el conteo de leads no puede
+ * Registro operativo separado del generate_lead del navegador para evitar
+ * duplicar solicitudes. Es la única cifra del sitio que debe ser exacta: el conteo de leads no puede
  * depender de que el visitante acepte un banner, ni de que su bloqueador deje
  * pasar gtag. El evento del navegador sigue existiendo para atribución
  * (campaña, origen, dispositivo); este es el contador de verdad.
@@ -45,7 +46,7 @@ export async function reportLeadToGa4(params: {
         non_personalized_ads: true,
         events: [
           {
-            name: "generate_lead",
+            name: "lead_received_server",
             params: {
               lead_source: params.source ?? "web",
               urgent: params.urgent,

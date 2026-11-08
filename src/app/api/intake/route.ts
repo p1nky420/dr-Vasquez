@@ -8,6 +8,15 @@ export const runtime = "nodejs";
 
 const WHATSAPP_FALLBACK = "https://wa.me/593983076881";
 
+/** Only readiness is exposed; recipients, keys and storage locations stay private. */
+export async function GET() {
+  const email = Boolean(process.env.RESEND_API_KEY && process.env.INTAKE_NOTIFICATION_EMAIL && process.env.INTAKE_NOTIFICATION_FROM);
+  const webhook = Boolean(process.env.INTAKE_NOTIFICATION_WEBHOOK_URL);
+  const storage = Boolean(process.env.INTAKE_STORAGE_URL && process.env.INTAKE_STORAGE_TOKEN && process.env.INTAKE_ENCRYPTION_KEY);
+  const canVerify = !process.env.TURNSTILE_SECRET_KEY || Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
+  return NextResponse.json({ deliveryAvailable: canVerify && (email || webhook || storage) }, { headers: { "Cache-Control": "no-store" } });
+}
+
 export async function POST(request: NextRequest) {
   const contentLength = Number(request.headers.get("content-length") ?? 0);
   if (contentLength > 20_000) {
@@ -42,7 +51,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "No pudimos registrar su solicitud automáticamente. Escríbanos por WhatsApp y le responderemos de inmediato.",
+            "No pudimos registrar su solicitud automáticamente. Puede continuar por WhatsApp para coordinar la atención.",
           fallbackUrl: WHATSAPP_FALLBACK,
         },
         { status: 503 },

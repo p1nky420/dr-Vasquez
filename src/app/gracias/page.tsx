@@ -1,46 +1,28 @@
 import type { Metadata } from "next";
-import { CheckCircle2, Lock } from "lucide-react";
 import Link from "next/link";
-
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { heroPhotos } from "@/lib/hero-photos";
+import { PageHero } from "@/components/page-hero";
+import { WhatsappCta } from "@/components/whatsapp-cta";
 export const metadata: Metadata = {
-  title: "Solicitud recibida",
-  description:
-    "Confirmación confidencial de recepción de solicitud para Dr. Fausto Vásquez — Estudio Jurídico.",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: { absolute: "Atención privada | Dr. Fausto Vásquez Cevallos" },
+  robots: { index: false, follow: false },
 };
-
 export default function GraciasPage() {
   return (
-    <section className="flex min-h-screen items-center bg-slate-50 px-5 py-32 text-slate-950 dark:bg-[#0A1128] dark:text-[#F4F4F6] md:px-8">
-      <div className="mx-auto w-full max-w-2xl rounded-sm border border-slate-200 bg-white p-8 text-center dark:border-slate-700 dark:bg-[#050D1F] md:p-12">
-        <div className="mx-auto grid size-14 place-items-center rounded-sm border border-[#C5A059]/50 text-[#C5A059]">
-          <CheckCircle2 size={26} strokeWidth={1.5} />
-        </div>
-        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#C5A059]">
-          Recepción confidencial confirmada
-        </p>
-        <h1 className="mt-4 font-serif text-4xl md:text-5xl">
-          Gracias por confiar su caso.
-        </h1>
-        <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-[#9CA3AF]">
-          Su información ha sido recibida para una evaluación inicial bajo
-          estricto secreto profesional. El equipo se comunicará por el canal
-          indicado.
-        </p>
-        <div className="mt-7 flex items-center justify-center gap-2 text-xs text-[#C5A059]">
-          <Lock size={14} />
-          Secreto Profesional
-        </div>
-        <Link
-          href="/"
-          className="mt-9 inline-flex rounded-sm border border-[#C5A059] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-[#C5A059] transition-colors hover:bg-[#C5A059] hover:text-[#0A1128]"
-        >
-          Volver al inicio
-        </Link>
-      </div>
-    </section>
+    <div className="ed-page">
+      <PageHero
+        eyebrow="Atención privada"
+        title="Gracias por contactar al despacho."
+        text="Si completó el envío de su solicitud, el equipo coordinará la atención por el canal indicado. También puede continuar en una conversación privada por WhatsApp."
+        photo={heroPhotos.chessRoom}
+      />
+      <section id="contenido" className="in-wrap in-confirmation" aria-labelledby="atencion-canales">
+        <MessageCircle size={32} strokeWidth={1.3} aria-hidden="true" />
+        <h2 id="atencion-canales">Continuar la conversación</h2>
+        <WhatsappCta location="gracias" label="Consultar sobre mi solicitud" message="Hola, deseo consultar sobre mi solicitud de evaluación privada." />
+        <Link className="ed-text-link" href="/">Volver al inicio <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      </section>
+    </div>
   );
 }

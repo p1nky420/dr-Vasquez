@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { FusionHome } from "@/components/fusion/fusion-home";
-import { faqs, serviceCategories } from "@/lib/home-content";
+import { practiceLandings } from "@/lib/seo";
+import { faqs } from "@/lib/home-content";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Dr. Fausto Vásquez | Derecho Penal Estratégico en Ecuador",
+    absolute: "Abogado Penalista en Quito | Dr. Fausto Vásquez Cevallos",
   },
   description:
-    "Jurista penalista en Quito especializado en defensa penal económica, litigio constitucional y casos complejos. Consulta privada y confidencial.",
+    "Defensa penal en Quito: peculado, cohecho, concusión y enriquecimiento ilícito. Ejercicio profesional desde 2000. Evaluación privada con cita previa.",
   alternates: {
     canonical: "https://www.faustovasquezabogado.com",
   },
   openGraph: {
-    title: "Dr. Fausto Vásquez | Derecho Penal Estratégico",
+    title: "Dr. Fausto Vásquez Cevallos | Derecho Penal Estratégico",
     description:
       "Inteligencia jurídica, excelencia académica y estrategia procesal para asuntos penales de alta complejidad.",
     locale: "es_EC",
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
     url: "https://www.faustovasquezabogado.com",
     images: [
       {
-        url: "/portrait-editorial-quito-v2.png",
-        width: 1003,
-        height: 1568,
-        alt: "Dr. Fausto Vásquez, jurista penalista ecuatoriano",
+        url: "/estudio/portada-panoramica.webp",
+        width: 2400,
+        height: 1800,
+        alt: "Dr. Fausto Vásquez Cevallos, jurista penalista ecuatoriano",
       },
     ],
   },
@@ -32,12 +33,12 @@ export const metadata: Metadata = {
 const pageJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    ...serviceCategories.slice(0, 4).map((service) => ({
+    ...practiceLandings.map((service) => ({
       "@type": "Service",
-      "@id": `https://www.faustovasquezabogado.com/#${service.id}`,
+      "@id": `https://www.faustovasquezabogado.com/areas-de-practica/${service.slug}`,
       name: service.title,
-      description: service.description,
-      url: `https://www.faustovasquezabogado.com/#${service.id}`,
+      description: service.lede,
+      url: `https://www.faustovasquezabogado.com/areas-de-practica/${service.slug}`,
       provider: { "@id": "https://www.faustovasquezabogado.com/#legal-service" },
       areaServed: { "@type": "Country", name: "Ecuador" },
     })),
@@ -45,7 +46,7 @@ const pageJsonLd = {
       "@type": "WebPage",
       "@id": "https://www.faustovasquezabogado.com/#webpage",
       url: "https://www.faustovasquezabogado.com",
-      name: "Abogado Penalista en Quito | Dr. Fausto Vásquez — Estudio Jurídico",
+      name: "Abogado Penalista en Quito | Dr. Fausto Vásquez Cevallos — Estudio Jurídico",
       description:
         "Defensa penal estratégica en Quito para asuntos económicos, financieros y corporativos complejos.",
       inLanguage: "es-EC",
@@ -68,7 +69,7 @@ const pageJsonLd = {
     {
       "@type": "FAQPage",
       "@id": "https://www.faustovasquezabogado.com/#faq",
-      mainEntity: faqs.map((faq) => ({
+      mainEntity: faqs.filter(f => ["¿Qué debo hacer si recibo una notificación de Fiscalía?", "¿El Dr. Fausto Vásquez Cevallos atiende personalmente?", "¿La información del cliente es confidencial?", "¿Atienden casos de funcionarios públicos?"].includes(f.question)).map((faq) => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: { "@type": "Answer", text: faq.answer },

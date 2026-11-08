@@ -3,9 +3,9 @@ import { LegalPage } from "@/components/legal-page";
 import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Política de privacidad | Dr. Fausto Vásquez — Estudio Jurídico" },
+  title: { absolute: "Política de privacidad | Dr. Fausto Vásquez Cevallos — Estudio Jurídico" },
   description:
-    "Cómo el Estudio Jurídico Dr. Fausto Vásquez trata los datos personales recibidos a través de este sitio, conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador.",
+    "Cómo el Estudio Jurídico Dr. Fausto Vásquez Cevallos trata los datos personales recibidos a través de este sitio, conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador.",
   alternates: { canonical: `${SITE_URL}/privacidad` },
   robots: { index: true, follow: true },
 };
@@ -20,13 +20,9 @@ export default function PrivacidadPage() {
     >
       <h2>Quién trata sus datos</h2>
       <p>
-        El responsable del tratamiento es el <strong>Estudio Jurídico Dr. Fausto
-        Vásquez</strong>, con oficina en Av. 12 de Octubre N26-97 y Lincoln,
-        Torre 1492, Piso 8, Oficina 802, Quito, Ecuador. Para cualquier asunto
-        relacionado con sus datos puede escribir a{" "}
-        <a href="mailto:contacto@faustovasquezabogado.com">
-          contacto@faustovasquezabogado.com
-        </a>.
+        El responsable del tratamiento es el <strong>Estudio Jurídico Dr. Fausto Vásquez Cevallos</strong>, con oficina en Quito, Ecuador. Para cualquier asunto
+        relacionado con sus datos puede comunicarse al{" "}
+        <a href="tel:+593983076881">+593 98 307 6881</a>.
       </p>
 
       <h2>Qué datos se recogen</h2>
@@ -111,9 +107,7 @@ export default function PrivacidadPage() {
       </ul>
       <p>
         Escriba a{" "}
-        <a href="mailto:contacto@faustovasquezabogado.com">
-          contacto@faustovasquezabogado.com
-        </a>{" "}
+        <a href="tel:+593983076881">+593 98 307 6881</a>{" "}
         indicando qué derecho desea ejercer. Si considera que sus derechos no
         han sido atendidos, puede acudir a la Superintendencia de Protección de
         Datos Personales.

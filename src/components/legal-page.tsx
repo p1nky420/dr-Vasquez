@@ -1,48 +1,38 @@
-import type { ReactNode } from "react";
-import Link from "next/link";
+import { Children, cloneElement, isValidElement, type ReactNode } from "react";
+import { PageHero } from "@/components/page-hero";
 
-/**
- * Envoltorio compartido para las páginas legales. Registro sobrio y legible:
- * son textos que se consultan, no que se recorren.
- */
-export function LegalPage({
-  eyebrow,
-  title,
-  updated,
-  intro,
-  children,
-}: {
+export function LegalPage({ eyebrow, title, updated, intro, children }: {
   eyebrow: string;
   title: string;
   updated: string;
   intro: string;
   children: ReactNode;
 }) {
-  return (
-    <article className="bg-[#0a0908] text-[#f3eee4]">
-      <section className="px-5 pb-10 pt-32 md:px-8 md:pt-40">
-        <div className="mx-auto max-w-[48rem]">
-          <nav aria-label="Ruta de navegación" className="text-[0.8125rem] text-[#9a9287]">
-            <Link href="/" className="inline-flex min-h-6 items-center hover:text-[#c9a96a]">
-              Inicio
-            </Link>
-          </nav>
-          <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.18em] text-[#c9a96a]">
-            {eyebrow}
-          </p>
-          <h1 className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.025em] text-[#fffaf0]">
-            {title}
-          </h1>
-          <p className="mt-6 text-[1rem] leading-[1.85] text-[#c2baae]">{intro}</p>
-          <p className="mt-6 text-[0.8125rem] uppercase tracking-[0.14em] text-[#8f877c]">
-            Última actualización: {updated}
-          </p>
-        </div>
-      </section>
+  const headings: { id: string; label: string }[] = [];
+  const content = Children.map(children, child => {
+    if (!isValidElement<{ id?: string; children?: ReactNode }>(child) ||
+      child.type !== "h2" || typeof child.props.children !== "string") return child;
 
-      <section className="px-5 pb-24 md:px-8">
-        <div className="legal mx-auto max-w-[48rem] border-t border-[#c9a96a]/20 pt-10">
-          {children}
+    const label = child.props.children;
+    const id = child.props.id ?? label.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    headings.push({ id, label });
+    return cloneElement(child, { id });
+  });
+
+  return (
+    <article className="ed-page ed-legal">
+      <PageHero eyebrow={eyebrow} title={title} text={intro} actionLabel="Leer el documento" />
+      <section id="contenido" className="in-wrap in-document">
+        {headings.length > 0 && (
+          <nav aria-label="Contenido del documento">
+            <p className="ed-kicker">En este documento</p>
+            {headings.map(heading => <a key={heading.id} href={`#${heading.id}`}>{heading.label}</a>)}
+          </nav>
+        )}
+        <div>
+          <p className="ed-kicker">Última actualización · {updated}</p>
+          <div className="legal">{content}</div>
         </div>
       </section>
     </article>

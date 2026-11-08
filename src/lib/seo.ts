@@ -15,6 +15,7 @@ export type PracticeLanding = {
   eyebrow: string;
   lede: string;
   image: string;
+  firstReview: string;
   /** What the visitor is actually living through when they land here. */
   situations: string[];
   /** What the firm does about it. */
@@ -35,6 +36,7 @@ export const practiceLandings: PracticeLanding[] = [
     eyebrow: "Derecho penal económico",
     lede: "Las investigaciones por lavado de activos se construyen sobre prueba documental, pericias contables y trazabilidad patrimonial. La defensa se decide en cómo se leen esos elementos, no en la audiencia.",
     image: "/practice-area-lavado-activos.png",
+    firstReview: "Ubicamos las operaciones bajo investigación, los períodos que abarca el expediente y las pericias o requerimientos ya emitidos.",
     situations: [
       "La Unidad de Análisis Financiero o la Fiscalía ha requerido información sobre operaciones o cuentas.",
       "Se han dispuesto medidas cautelares sobre bienes, cuentas o participaciones societarias.",
@@ -91,8 +93,9 @@ export const practiceLandings: PracticeLanding[] = [
     metaDescription:
       "Defensa penal en peculado, cohecho, concusión, tráfico de influencias y enriquecimiento ilícito en Ecuador. Funcionarios, exautoridades y contratistas del Estado.",
     eyebrow: "Administración pública",
-    lede: "Estos procesos combinan presión institucional, exposición mediática y prueba administrativa voluminosa. La defensa exige leer el expediente técnico antes que el titular del periódico.",
+    lede: "Defensa en Quito para funcionarios, exautoridades y contratistas investigados por peculado, cohecho, concusión o enriquecimiento ilícito.",
     image: "/practice-area-admin-publica.png",
+    firstReview: "Ubicamos la decisión cuestionada, el rol que tuvo cada persona, los informes de control disponibles y la etapa del proceso.",
     situations: [
       "Un informe de la Contraloría ha derivado en indicios de responsabilidad penal.",
       "Una decisión administrativa o contractual está siendo imputada como delito.",
@@ -151,6 +154,7 @@ export const practiceLandings: PracticeLanding[] = [
     eyebrow: "Garantías fundamentales",
     lede: "Cuando el proceso penal excede sus propios límites, la vía no es solo penal. Las garantías jurisdiccionales existen para corregir la actuación, y tienen plazos propios.",
     image: "/practice-area-constitucional.png",
+    firstReview: "Identificamos la actuación cuestionada, las resoluciones y notificaciones relevantes, y lo que ya se ha pedido o resuelto en el expediente.",
     situations: [
       "Existe una privación de libertad que se considera ilegal, arbitraria o ilegítima.",
       "La prisión preventiva se ha prolongado más allá de lo razonable o proporcionado.",
@@ -209,6 +213,7 @@ export const practiceLandings: PracticeLanding[] = [
     eyebrow: "Alta complejidad",
     lede: "La mayoría de los procesos no se pierden en el juicio: se pierden antes, en decisiones tomadas sin una teoría del caso construida. Una segunda opinión técnica llega a tiempo más veces de lo que se cree.",
     image: "/practice-area-litigio.png",
+    firstReview: "Ordenamos el estado del proceso, la prueba disponible, las audiencias próximas y las decisiones que aún requieren revisión.",
     situations: [
       "Ya existe un abogado, pero se busca una evaluación independiente del estado del caso.",
       "Hay una audiencia próxima y la intervención necesita preparación técnica.",
