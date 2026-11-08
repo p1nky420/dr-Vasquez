@@ -219,12 +219,14 @@
 }
 
 /* Acabado premium: portada en penumbra, titulares sin cortes, acciones sobrias */
+.fv-cover .sv-kicker { color: #cdb27f; }
+.fv-cover h1 { font-weight: 300; }
+.fv-cover__point, .fv-cover__line em { color: #d4b985; }
+.fv-cover .fv-cover__lead { color: #e2dacd; }
 @media (min-width: 768px) {
   .fv-cover { --hero-copy-width: 44%; }
-  .fv-cover .sv-kicker { color: #cdb27f; }
-  .fv-cover h1 { font-size: clamp(3rem, 5vw, 7.4rem); font-weight: 300; }
-  .fv-cover__point, .fv-cover__line em { color: #d4b985; }
-  .fv-cover .fv-cover__lead { color: #e2dacd; max-width: 34ch; }
+  .fv-cover h1 { font-size: clamp(3rem, 5vw, 7.4rem); }
+  .fv-cover .fv-cover__lead { max-width: 34ch; }
 }
 
 .sv-practice-panel { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }

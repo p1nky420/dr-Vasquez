@@ -109,32 +109,60 @@
 }
 
 /* Portada en penumbra: el texto se apoya en sombra cálida, no en un velo claro */
-@media (min-width: 768px) {
-  .fv-panorama__photo { background: #2b2722; }
-  .fv-panorama__photo img { filter: saturate(.78) brightness(.92); }
+.fv-panorama__photo { background: #2b2722; }
+.fv-panorama__photo img { filter: saturate(.78) brightness(.92); }
+.fv-panorama__copy { color: var(--fv-paper); }
+.fv-panorama :is(.sv-kicker, .ed-kicker) { color: #cdb27f; }
+.fv-panorama .ed-breadcrumb { color: #cfc6b8; }
+.fv-panorama .ed-breadcrumb a:hover { color: var(--fv-paper); }
+.ed-hero h1 { font-weight: 300; }
+.ed-hero .ed-lead { color: #e2dacd; }
+.fv-panorama .fv-cover__action {
+  min-height: 0;
+  padding: 1rem 0;
+  gap: 2.4rem;
+  border: 0;
+  border-bottom: 1px solid #cdb27f99;
+  border-radius: 0;
+  background: none;
+  color: var(--fv-paper);
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: gap .4s, border-color .4s;
+}
+.fv-panorama .fv-cover__action:hover { background: none; gap: 3.2rem; border-color: #d4b985; }
+
+@media (min-width: 900px) {
   .fv-panorama__photo::after {
     background: linear-gradient(var(--hero-fade-direction), transparent 38%, #14110ecc 62%, #14110ef2 100%),
       linear-gradient(0deg, #14110e66, transparent 35%);
   }
-  .fv-panorama__copy { color: var(--fv-paper); }
-  .fv-panorama :is(.sv-kicker, .ed-kicker) { color: #cdb27f; }
-  .fv-panorama .ed-breadcrumb { color: #cfc6b8; }
-  .fv-panorama .ed-breadcrumb a:hover { color: var(--fv-paper); }
-  .ed-hero h1 { font-weight: 300; }
-  .ed-hero .ed-lead { color: #e2dacd; }
-  .fv-panorama .fv-cover__action {
-    min-height: 0;
-    padding: 1rem 0;
-    gap: 2.4rem;
-    border: 0;
-    border-bottom: 1px solid #cdb27f99;
-    border-radius: 0;
-    background: none;
-    color: var(--fv-paper);
-    font-size: .78rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    transition: gap .4s, border-color .4s;
+}
+
+/* En móvil y tableta la foto ocupa toda la portada y el texto se apoya en la sombra que sube desde abajo */
+@media (max-width: 899px) {
+  .fv-panorama { grid-template-rows: 5rem minmax(clamp(34rem, calc(100svh - 5rem), 48rem), auto); }
+  .fv-panorama__photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% 35%;
   }
-  .fv-panorama .fv-cover__action:hover { background: none; gap: 3.2rem; border-color: #d4b985; }
+  .fv-panorama[data-copy-side="left"] .fv-panorama__photo img { object-position: 64% 40%; }
+  .fv-panorama__photo::after {
+    content: "";
+    background: linear-gradient(0deg, #14110ef7 0%, #14110ee6 34%, #14110e8c 58%, transparent 80%);
+  }
+  .fv-panorama .fv-panorama__copy,
+  .fv-panorama[data-copy-side="left"] .fv-panorama__copy {
+    grid-row: 2;
+    align-self: end;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 40rem;
+    padding: 2rem 6vw 2.4rem;
+  }
 }
