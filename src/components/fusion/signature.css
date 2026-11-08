@@ -327,3 +327,16 @@
   .fv-authority__backdrop { width: 100% !important; object-position: 50% 12%; opacity: .16; -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 70%); mask-image: linear-gradient(180deg, #000 10%, transparent 70%); }
   .fv-authority__credit { left: 6vw; text-align: left; }
 }
+
+/* Hovers editoriales: lentos y de un solo gesto */
+.sv-books > a { transition: color .35s, padding-left .5s cubic-bezier(.22, 1, .36, 1); }
+.sv-books > a:hover { color: var(--fv-bronze); padding-left: .5rem; }
+.sv-faq summary { transition: color .3s; }
+.sv-faq summary:hover { color: var(--fv-bronze); }
+.sv-practice-panel { overflow: hidden; }
+.sv-practice-panel > img { transition: scale 1.6s cubic-bezier(.22, 1, .36, 1); }
+.sv-practice-panel:hover > img { scale: 1.035; }
+@media (prefers-reduced-motion: reduce) {
+  .sv-books > a:hover { padding-left: 0; }
+  .sv-practice-panel:hover > img { scale: 1; }
+}

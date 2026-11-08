@@ -8,6 +8,7 @@ import { AnalyticsConsent } from "@/components/analytics-consent";
 import { EvaluationVault } from "@/components/evaluation-vault";
 import { ScrollAnalytics } from "@/components/scroll-analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { SearchProvider, SearchModal } from "@/components/search-modal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HapticFeedback } from "@/components/haptic-feedback";
@@ -245,6 +246,7 @@ export default function RootLayout({
           <AnalyticsConsent />
           <ScrollAnalytics />
           <SmoothScroll />
+          <ScrollReveal />
           <HapticFeedback />
           <SpeedInsights />
         </SearchProvider>
