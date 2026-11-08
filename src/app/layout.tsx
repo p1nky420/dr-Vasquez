@@ -125,6 +125,8 @@ const institutionalJsonLd = {
       sameAs: [
         "https://www.facebook.com/share/1AFRvUQQiB/?mibextid=wwXIfr",
         "https://www.facebook.com/fausto.vasquez.9083",
+        "https://www.youtube.com/@FaustoVasquez-Abogado",
+        "https://www.tiktok.com/@ab.fausto.vasquez",
       ],
       alumniOf: [
         { "@type": "CollegeOrUniversity", name: "Universidad Central del Ecuador" },

@@ -255,3 +255,73 @@
   .sv-practice, .fv-method, .sv-jurist--curated, .sv-contact, .sv-close { padding-block: var(--sv-space); }
   .sv-faq { padding-block: calc(var(--sv-space) * .6) var(--sv-space); }
 }
+
+/* Trayectoria verificable: tres datos comprobables y los medios que lo han consultado */
+.fv-authority { padding: clamp(2.6rem, 4.5vw, 3.8rem) 6vw; background: var(--fv-white); color: var(--fv-text); border-bottom: 1px solid var(--fv-line); }
+.fv-authority ul { margin: 0; padding: 0; list-style: none; }
+.fv-authority__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 72rem; margin-inline: auto; }
+.fv-authority__facts li { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .2rem 1.5rem; text-align: center; }
+.fv-authority__facts li + li { border-left: 1px solid var(--fv-line); }
+.fv-authority__facts strong { font: 300 clamp(1.9rem, 3vw, 2.75rem)/1.1 var(--font-display), Georgia, serif; letter-spacing: -.025em; }
+.fv-authority__facts strong em { color: var(--fv-bronze); }
+.fv-authority__facts span { color: var(--fv-secondary); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; }
+.fv-authority__press { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 72rem; margin: clamp(2rem, 3.5vw, 2.8rem) auto 0; padding-top: clamp(1.6rem, 3vw, 2.2rem); border-top: 1px solid var(--fv-line); }
+.fv-authority__press > .sv-kicker { margin: 0; color: var(--fv-bronze); gap: 1.1rem; }
+.fv-authority__press > .sv-kicker::before, .fv-authority__press > .sv-kicker::after { content: ""; width: 2.5rem; height: 1px; background: currentColor; opacity: .45; }
+.fv-authority__press ul { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 1rem; }
+.fv-authority__press li { padding: 0 clamp(1.2rem, 2.4vw, 2.4rem); }
+.fv-authority__press li + li { border-left: 1px solid var(--fv-line); }
+.fv-authority__press a { display: inline-flex; flex-direction: column; align-items: center; gap: .15rem; color: #6c6359; transition: color .3s; }
+.fv-authority__press a span { font: 400 1.32rem/1.2 var(--font-display), Georgia, serif; letter-spacing: -.005em; }
+.fv-authority__press a small { color: #a2988b; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; transition: color .3s; }
+.fv-authority__press a:hover, .fv-authority__press a:focus-visible { color: var(--fv-text); }
+.fv-authority__press a:hover small { color: var(--fv-bronze); }
+@media (max-width: 760px) {
+  .fv-authority__facts { grid-template-columns: 1fr; }
+  .fv-authority__facts li { padding: .9rem 0; }
+  .fv-authority__facts li + li { border-left: 0; border-top: 1px solid var(--fv-line); }
+  .fv-authority__press ul { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 0; width: 100%; }
+  .fv-authority__press li { padding: 0 .5rem; }
+  .fv-authority__press li + li { border-left: 0; }
+  .fv-authority__press li:nth-child(even) { border-left: 1px solid var(--fv-line); }
+  .fv-authority__press li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .fv-authority__press a { width: 100%; }
+  .fv-authority__press a span { font-size: 1.15rem; }
+}
+
+/* Quito: la ciudad como telón, en franja panorámica y tono cálido */
+.fv-city { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; min-height: clamp(18rem, 44svh, 30rem); padding: clamp(2rem, 4vw, 3.4rem) 6vw; overflow: hidden; isolation: isolate; background: #2b2722; color: var(--fv-paper); }
+.fv-city > img { z-index: -2; object-fit: cover; object-position: center 38%; filter: sepia(.32) contrast(.96) brightness(.95); scale: 1.12; }
+.fv-city::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, #1c1813b3 0%, #1c181333 45%, transparent 70%), linear-gradient(90deg, #1c18138c, transparent 50%); }
+.fv-city__copy { max-width: 34rem; }
+.fv-city .sv-kicker { color: #dcc493; }
+.fv-city h2 { margin-top: .7rem; font: 300 clamp(1.9rem, 3.2vw, 3.2rem)/1.1 var(--font-display), Georgia, serif; letter-spacing: -.025em; text-wrap: balance; }
+.fv-city h2 em { color: #e2cc9c; }
+.fv-city__credit { position: static; align-self: flex-end; max-width: 22rem; color: #ffffffa6; font-size: .6rem; letter-spacing: .04em; text-align: right; }
+.fv-city__credit a { text-decoration: underline; text-underline-offset: 2px; }
+.fv-city__credit a:hover { color: var(--fv-paper); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fv-city > img { animation: fv-city-drift linear both; animation-timeline: view(); }
+    @keyframes fv-city-drift { from { translate: 0 -5%; } to { translate: 0 5%; } }
+  }
+}
+@media (max-width: 760px) {
+  .fv-city { flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 1.2rem; min-height: 22rem; }
+  .fv-city > img { object-position: 50% 30%; }
+  .fv-city__credit { align-self: flex-start; text-align: left; }
+}
+
+/* Quito de fondo en la trayectoria: El Panecillo desde la calle García Moreno, desvanecido */
+.fv-authority { position: relative; isolation: isolate; overflow: hidden; }
+.fv-authority__backdrop { z-index: -1; left: auto !important; width: 46% !important; object-fit: cover; object-position: 50% 22%; opacity: .26; filter: grayscale(1) sepia(.25) contrast(1.1); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, #000 55%); }
+.fv-authority__social { padding-top: 2.2rem; color: var(--fv-secondary); font-size: .72rem; letter-spacing: .12em; text-align: center; text-transform: uppercase; }
+.fv-authority__social a { color: var(--fv-bronze); text-decoration: underline; text-decoration-color: #9c7c5466; text-underline-offset: 4px; transition: color .3s; }
+.fv-authority__social a:hover { color: var(--fv-text); }
+.fv-authority__credit { position: absolute; right: 6vw; bottom: .7rem; margin: 0; color: #8a8072; font-size: .58rem; letter-spacing: .03em; }
+.fv-authority__credit a { text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 760px) {
+  .fv-authority { padding-bottom: 3.2rem; }
+  .fv-authority__backdrop { width: 100% !important; object-position: 50% 12%; opacity: .16; -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 70%); mask-image: linear-gradient(180deg, #000 10%, transparent 70%); }
+  .fv-authority__credit { left: 6vw; text-align: left; }
+}

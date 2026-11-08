@@ -10,6 +10,9 @@ import { PanoramicHero } from "@/components/panoramic-hero";
 import { heroPhotos } from "@/lib/hero-photos";
 import { ConsultationActions } from "@/components/consultation-actions";
 import { books } from "@/lib/publications";
+import { press } from "@/lib/press";
+import { heritage } from "@/lib/patrimonio";
+import { socialLinks } from "@/lib/site";
 import { faqs } from "@/lib/home-content";
 import { MethodChess } from "./method-chess";
 import "./fusion.css";
@@ -38,15 +41,46 @@ function Hero() {
   );
 }
 
+function AuthorityBand() {
+  const facts = [
+    { value: <><em>Desde</em> 2000</>, key: "ejercicio", label: "Ejercicio penal" },
+    { value: <>{books.length} <em>obras</em></>, key: "obras", label: "Jurídicas publicadas" },
+    { value: <>3 <em>universidades</em></>, key: "docencia", label: "Docencia y dirección de tesis" },
+  ];
+  const backdrop = heritage.garciaMoreno;
+  return <section className="fv-authority" aria-label="Trayectoria verificable">
+    <Image className="fv-authority__backdrop" src={backdrop.src} alt="" fill sizes="70vw" />
+    <ul className="fv-authority__facts">{facts.map(fact => <li key={fact.key}><strong>{fact.value}</strong><span>{fact.label}</span></li>)}</ul>
+    <div className="fv-authority__press">
+      <p className="sv-kicker">Consultado por</p>
+      <ul>{press.map(item => <li key={item.url}><a href={item.url} target="_blank" rel="noreferrer" title={item.title} aria-label={`${item.outlet}: ${item.title} (${item.dateLabel})`}><span>{item.outlet}</span><small>{item.dateLabel}</small></a></li>)}</ul>
+    </div>
+    <p className="fv-authority__social">Sígalo en {socialLinks.map((link, index) => <span key={link.href}>{index > 0 && " · "}<a href={link.href} target="_blank" rel="noreferrer">{link.label}</a></span>)}</p>
+    <p className="fv-authority__credit">{backdrop.place} · <a href={backdrop.source} target="_blank" rel="noreferrer">{backdrop.author}</a>, <a href={backdrop.licenseUrl} target="_blank" rel="noreferrer">{backdrop.license}</a></p>
+  </section>;
+}
+
 function PracticeExplorer() {
   const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
   const p = practices[active];
   return <section id="especialidades" className="sv-practice">
-    <div className="sv-section-heading"><p className="sv-kicker">El ámbito de la defensa</p><h2>Ámbitos de<br /><em>defensa.</em></h2><p>Libertad. Patrimonio. Reputación.<br />Cada asunto exige una lectura propia.</p></div>
+    <div className="sv-section-heading"><p className="sv-kicker">El ámbito de la defensa</p><h2>Ámbitos de <em>defensa.</em></h2><p>Libertad. Patrimonio. Reputación.<br />Cada asunto exige una lectura propia.</p></div>
     <div className="sv-explorer"><div className="sv-explorer__tabs" role="tablist" aria-label="Especialidades">{practices.map((item,index) => <button key={item.title} type="button" role="tab" id={`practice-tab-${index}`} aria-selected={active===index} aria-controls={`practice-panel-${index}`} tabIndex={active===index ? 0 : -1} onClick={()=>setActive(index)} onKeyDown={e=>{if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?practices.length-1:(index+(['ArrowDown','ArrowRight'].includes(e.key)?1:-1)+practices.length)%practices.length;setActive(n);document.getElementById(`practice-tab-${n}`)?.focus();}}}><span>{item.title}</span><ArrowUpRight size={24}/></button>)}</div>
     <div className="sv-explorer__visual"><AnimatePresence mode="wait"><motion.div key={p.title} role="tabpanel" id={`practice-panel-${active}`} aria-labelledby={`practice-tab-${active}`} className="sv-practice-panel" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : .2, ease }}><Image src={p.image} alt="Detalle del trabajo y despacho del Dr. Fausto Vásquez Cevallos" width={960} height={1280} sizes="(max-width:760px) 88vw, 32vw"/><div className="sv-practice-panel__body"><p className="sv-kicker">{p.tags}</p><h3>{p.label}</h3><p>{p.text}</p><Link href={p.href} className="sv-link">Explorar esta especialidad <ArrowUpRight size={20}/></Link></div></motion.div></AnimatePresence></div></div>
     <Link href="/areas-de-practica" className="sv-all-practices">Todas las áreas de práctica <ArrowRight size={18}/></Link>
+  </section>;
+}
+
+function CityBand() {
+  const photo = heritage.panorama;
+  return <section className="fv-city" aria-labelledby="ciudad-titulo">
+    <Image src={photo.src} alt="Centro Histórico de Quito visto desde El Panecillo, con la Basílica del Voto Nacional al fondo" fill sizes="100vw" />
+    <div className="fv-city__copy">
+      <p className="sv-kicker">Quito · Ecuador</p>
+      <h2 id="ciudad-titulo">En el corazón de Quito, <em>desde 2000.</em></h2>
+    </div>
+    <p className="fv-city__credit">{photo.place} · <a href={photo.source} target="_blank" rel="noreferrer">{photo.author}</a>, <a href={photo.licenseUrl} target="_blank" rel="noreferrer">{photo.license}</a></p>
   </section>;
 }
 
@@ -62,8 +96,9 @@ function JuristPortrait() {
 }
 
 export function FusionHome() {
-  return <div className="sv"><Hero/><AcademicCredentials showAcademicLink/><PracticeExplorer/>
+  return <div className="sv"><Hero/><AuthorityBand/><AcademicCredentials showAcademicLink/><PracticeExplorer/>
     <MethodChess/>
+    <CityBand/>
     <JuristPortrait/>
     <section id="consulta-rapida" className="sv-contact" aria-labelledby="sv-contact-title">
       <div className="sv-contact__intro">

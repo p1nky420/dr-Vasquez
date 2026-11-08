@@ -14,6 +14,10 @@ import {
 export const whatsappNumber = "593983076881";
 export const phoneHref = "tel:+593983076881";
 export const phoneDisplay = "+593 98 307 6881";
+export const socialLinks = [
+  { label: "YouTube", href: "https://www.youtube.com/@FaustoVasquez-Abogado" },
+  { label: "TikTok", href: "https://www.tiktok.com/@ab.fausto.vasquez" },
+];
 export const navItems = [
   { href: "/firma", label: "Trayectoria" },
   { href: "/areas-de-practica", label: "Especialidades" },

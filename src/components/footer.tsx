@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navItems } from "@/lib/site";
+import { navItems, socialLinks } from "@/lib/site";
 import { Seal } from "@/components/fusion/seal";
 
 export function Footer() {
@@ -37,6 +37,7 @@ export function Footer() {
             <p><a className="inline-flex min-h-6 items-center py-0.5 hover:text-[#24211e]" href="tel:+593983076881">+593 98 307 6881</a></p>
 
             <p>Quito · Atención en Ecuador, previa evaluación<br />Atención con cita previa</p>
+            <p className="flex gap-5 pt-2">{socialLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center py-0.5 text-[#76572f] underline-offset-4 transition-colors hover:text-[#24211e] hover:underline">{link.label}</a>)}</p>
           </div>
         </div>
       </div>
