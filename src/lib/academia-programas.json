@@ -1,0 +1,531 @@
+[
+  {
+    "slug": "fundamentos-litigio-penal-estrategico",
+    "title": "Fundamentos del litigio penal estratégico",
+    "tag": "Bases del litigio",
+    "description": "Teoría del delito, proceso penal ecuatoriano, prueba y primeras técnicas de argumentación en audiencia.",
+    "photo": "lectura.webp",
+    "alt": "Fausto Vásquez Cevallos lee un libro en su despacho",
+    "links": [],
+    "level": "I",
+    "code": "AJFV-N1",
+    "approved": false,
+    "audience": "Estudiantes de últimos años de Derecho, abogados que inician su práctica penal y profesionales que necesitan comprender el proceso penal.",
+    "requirements": "No se exige experiencia previa en litigio penal. Se recomienda conocimientos básicos de derecho.",
+    "goals": [
+      "Comprender los principios, las funciones y la estructura del derecho penal ecuatoriano.",
+      "Aplicar la teoría del delito al análisis de un caso.",
+      "Reconocer las etapas del proceso penal y las garantías de cada sujeto procesal.",
+      "Identificar y valorar los medios de prueba.",
+      "Intervenir en una audiencia con una teoría del caso y un alegato básico."
+    ],
+    "modules": [
+      {
+        "title": "Fundamentos del derecho penal",
+        "objective": "Comprender funciones, principios y fuentes del derecho penal ecuatoriano.",
+        "topics": [
+          "Funciones del derecho penal y de la pena",
+          "Principios limitadores: legalidad, lesividad, culpabilidad, proporcionalidad y mínima intervención",
+          "Fuentes y estructura del Código Orgánico Integral Penal",
+          "Aplicación de la ley penal en el tiempo, el espacio y las personas",
+          "Política criminal y garantías"
+        ]
+      },
+      {
+        "title": "Teoría del delito I: acción y tipicidad",
+        "objective": "Analizar la conducta típica y sus elementos.",
+        "topics": [
+          "Concepto y estructura del delito",
+          "Acción y omisión",
+          "Tipo objetivo: sujetos, conducta, resultado y relación de causalidad",
+          "Tipo subjetivo: dolo e imprudencia",
+          "Bien jurídico y elementos normativos del tipo"
+        ]
+      },
+      {
+        "title": "Teoría del delito II: antijuridicidad, culpabilidad y punibilidad",
+        "objective": "Completar el análisis del delito y sus consecuencias.",
+        "topics": [
+          "Causas de justificación",
+          "Culpabilidad: imputabilidad, conciencia de la antijuridicidad y exigibilidad",
+          "Error de tipo y error de prohibición",
+          "Autoría y participación",
+          "Iter criminis: tentativa y consumación; concurso de delitos"
+        ]
+      },
+      {
+        "title": "Procedimiento penal ecuatoriano",
+        "objective": "Ubicar cada actuación en la etapa procesal correspondiente.",
+        "topics": [
+          "Estructura del proceso y sujetos procesales",
+          "Investigación previa e instrucción fiscal",
+          "Evaluación y preparatoria de juicio",
+          "Juicio y recursos",
+          "Procedimientos especiales"
+        ]
+      },
+      {
+        "title": "Derechos y garantías",
+        "objective": "Reconocer las garantías que limitan el poder punitivo.",
+        "topics": [
+          "Presunción de inocencia y debido proceso",
+          "Derecho a la defensa y a guardar silencio",
+          "Medidas cautelares y prisión preventiva: presupuestos y límites",
+          "Garantías jurisdiccionales aplicables al proceso penal",
+          "Nulidades y exclusión de prueba ilícita"
+        ]
+      },
+      {
+        "title": "Prueba penal",
+        "objective": "Valorar la prueba y detectar sus defectos.",
+        "topics": [
+          "Principios de la prueba y carga probatoria",
+          "Testimonio, pericia y prueba documental",
+          "Cadena de custodia y evidencia digital",
+          "Prueba ilícita y su exclusión",
+          "Valoración de la prueba y estándar de decisión"
+        ]
+      },
+      {
+        "title": "Litigación oral inicial",
+        "objective": "Preparar y presentar una teoría del caso básica.",
+        "topics": [
+          "Teoría del caso: hechos, fundamento jurídico y prueba",
+          "Alegato de apertura",
+          "Técnicas de intervención en audiencia",
+          "Argumentación oral",
+          "Manejo de objeciones"
+        ]
+      },
+      {
+        "title": "Taller práctico de litigación",
+        "objective": "Practicar con simulaciones y recibir retroalimentación.",
+        "topics": [
+          "Simulación de audiencia de formulación de cargos",
+          "Simulación de audiencia de evaluación y preparatoria",
+          "Retroalimentación individual",
+          "Proyecto final: teoría del caso escrita",
+          "Ética del litigante y secreto profesional"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "derecho-penal-litigio-profesional",
+    "title": "Derecho penal y litigio profesional",
+    "tag": "Práctica procesal",
+    "description": "Teoría del caso, investigación defensiva, audiencias, contrainterrogatorio y técnicas de impugnación.",
+    "photo": "preparacion-expediente.webp",
+    "alt": "Fausto Vásquez Cevallos revisa documentos de trabajo",
+    "links": [
+      {
+        "href": "/areas-de-practica/litigio-penal-estrategico",
+        "label": "Litigio penal estratégico en el despacho"
+      }
+    ],
+    "level": "II",
+    "code": "AJFV-N2",
+    "approved": false,
+    "audience": "Abogados en ejercicio que litigan o desean litigar en materia penal.",
+    "requirements": "Conocimientos de teoría del delito y proceso penal (equivalentes al Nivel I) y, preferiblemente, experiencia inicial en audiencias.",
+    "goals": [
+      "Construir una teoría del caso fáctica, jurídica y probatoria.",
+      "Diseñar y ejecutar una investigación defensiva.",
+      "Argumentar en audiencias de garantías y de juicio.",
+      "Realizar interrogatorios y contrainterrogatorios eficaces.",
+      "Fundamentar recursos y acciones de impugnación."
+    ],
+    "modules": [
+      {
+        "title": "Teoría del caso avanzada",
+        "objective": "Construir y depurar una teoría del caso sólida.",
+        "topics": [
+          "Teoría fáctica, jurídica y probatoria",
+          "Línea de tiempo y matriz de hechos",
+          "Tema, frase central y narrativa",
+          "Estrategias: negativa, justificación, atipicidad y nulidad",
+          "Revisión crítica de la teoría de la contraparte"
+        ]
+      },
+      {
+        "title": "Investigación y defensa técnica",
+        "objective": "Planificar la investigación defensiva.",
+        "topics": [
+          "Investigación defensiva y búsqueda de información",
+          "Lectura crítica del expediente fiscal",
+          "Solicitud y control de diligencias",
+          "Acceso a la información y reserva",
+          "Trabajo con peritos y consultores"
+        ]
+      },
+      {
+        "title": "Audiencias de garantías",
+        "objective": "Intervenir con eficacia en las audiencias tempranas.",
+        "topics": [
+          "Calificación de flagrancia",
+          "Formulación de cargos",
+          "Medidas cautelares: argumentos a favor y en contra",
+          "Revisión y sustitución de medidas; caducidad de la prisión preventiva",
+          "Habeas corpus y otras garantías jurisdiccionales"
+        ]
+      },
+      {
+        "title": "Prueba y litigación probatoria",
+        "objective": "Anunciar, practicar y controlar la prueba.",
+        "topics": [
+          "Anuncio de prueba y estrategia probatoria",
+          "Admisibilidad y exclusión",
+          "Incorporación de prueba documental y material",
+          "Prueba pericial: contratación, informe y objeciones",
+          "Prueba testimonial"
+        ]
+      },
+      {
+        "title": "Interrogatorio y contrainterrogatorio",
+        "objective": "Dominar la técnica del examen de testigos.",
+        "topics": [
+          "Preparación de testigos",
+          "Interrogatorio directo",
+          "Contrainterrogatorio: control y construcción de argumentos",
+          "Impugnación de credibilidad",
+          "Objeciones y respuestas; examen de peritos"
+        ]
+      },
+      {
+        "title": "Dogmática aplicada al caso",
+        "objective": "Llevar la dogmática al análisis de un caso concreto.",
+        "topics": [
+          "Del tipo penal al caso concreto",
+          "Análisis de tipicidad y bien jurídico",
+          "Causas de justificación y de exculpación en la práctica",
+          "Error y su prueba",
+          "Concursos aplicados"
+        ]
+      },
+      {
+        "title": "Argumentación y motivación",
+        "objective": "Argumentar y redactar con estructura y precisión.",
+        "topics": [
+          "Estructura del argumento jurídico",
+          "Falacias frecuentes",
+          "Motivación de las resoluciones y garantía de motivación",
+          "Alegato final",
+          "Redacción de escritos y recursos"
+        ]
+      },
+      {
+        "title": "Impugnación penal",
+        "objective": "Fundamentar y estrategizar los recursos.",
+        "topics": [
+          "Apelación, casación y revisión",
+          "Admisibilidad y fundamentación",
+          "Errores de procedimiento y errores de juzgamiento",
+          "Estrategia de recursos",
+          "Acciones constitucionales complementarias"
+        ]
+      },
+      {
+        "title": "Laboratorio de juicio",
+        "objective": "Practicar un juicio oral completo.",
+        "topics": [
+          "Simulación de juicio oral completo",
+          "Roles de acusación, defensa y tribunal",
+          "Análisis de grabación",
+          "Evaluación entre pares",
+          "Plan personal de mejora"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "derecho-penal-economico-delitos-complejos",
+    "title": "Derecho penal económico y delitos complejos",
+    "tag": "Empresa y Estado",
+    "description": "Lavado de activos, corrupción, responsabilidad penal en empresas y análisis de prueba financiera.",
+    "photo": "laptop-quito.webp",
+    "alt": "Fausto Vásquez Cevallos trabaja frente al ventanal del despacho",
+    "links": [
+      {
+        "href": "/derecho-penal-economico",
+        "label": "Práctica en derecho penal económico"
+      },
+      {
+        "href": "/areas-de-practica/lavado-de-activos",
+        "label": "Defensa penal en lavado de activos"
+      }
+    ],
+    "level": "III",
+    "code": "AJFV-N3",
+    "approved": false,
+    "audience": "Penalistas, asesores corporativos, oficiales de cumplimiento, auditores y funcionarios que enfrentan o previenen riesgos penales económicos.",
+    "requirements": "Formación en derecho penal y proceso penal (equivalente al Nivel I) y, preferiblemente, práctica profesional.",
+    "goals": [
+      "Analizar los tipos de criminalidad económica y su bien jurídico.",
+      "Estructurar la defensa en lavado de activos y delitos contra la administración pública.",
+      "Delimitar la responsabilidad individual y de la persona jurídica en la empresa.",
+      "Diseñar un programa de cumplimiento penal.",
+      "Interpretar prueba financiera y pericial."
+    ],
+    "modules": [
+      {
+        "title": "Fundamentos del derecho penal económico",
+        "objective": "Situar la criminalidad económica en el sistema penal.",
+        "topics": [
+          "Concepto y bien jurídico en los delitos económicos",
+          "Panorama de la parte especial económica",
+          "Imputación en estructuras empresariales",
+          "Relación con el derecho administrativo sancionador",
+          "Política criminal económica"
+        ]
+      },
+      {
+        "title": "Lavado de activos",
+        "objective": "Dominar el tipo, la prueba y la defensa.",
+        "topics": [
+          "Estructura del tipo y delito previo",
+          "Etapas del proceso de lavado",
+          "Prueba indiciaria y origen de fondos",
+          "Debida diligencia y sujetos obligados",
+          "Decomiso y extinción de dominio: marco general"
+        ]
+      },
+      {
+        "title": "Corrupción y administración pública",
+        "objective": "Delimitar lo administrativo de lo penal.",
+        "topics": [
+          "Peculado, cohecho, concusión y enriquecimiento ilícito",
+          "Tráfico de influencias",
+          "Responsabilidad de funcionarios y contratistas",
+          "Informes de control y su valor penal",
+          "Decisiones colegiadas y principio de confianza"
+        ]
+      },
+      {
+        "title": "Delitos financieros y patrimoniales",
+        "objective": "Analizar los delitos patrimoniales y financieros.",
+        "topics": [
+          "Estafa y abuso de confianza",
+          "Captación ilegal de dinero",
+          "Falsedad documental",
+          "Delitos contra el sistema financiero",
+          "Delitos tributarios y aduaneros: panorama"
+        ]
+      },
+      {
+        "title": "Responsabilidad penal en empresas",
+        "objective": "Atribuir responsabilidad en la organización.",
+        "topics": [
+          "Responsabilidad penal de las personas jurídicas",
+          "Imputación individual y posición de garante",
+          "Delegación y principio de confianza",
+          "Responsabilidad de administradores",
+          "Efecto de los programas de cumplimiento"
+        ]
+      },
+      {
+        "title": "Compliance y prevención",
+        "objective": "Diseñar la prevención penal en la empresa.",
+        "topics": [
+          "Mapa de riesgos penales",
+          "Elementos de un programa de cumplimiento",
+          "Canales de denuncia y protección",
+          "Investigaciones internas",
+          "Debida diligencia con terceros"
+        ]
+      },
+      {
+        "title": "Investigación financiera y evidencia",
+        "objective": "Leer y utilizar la prueba financiera.",
+        "topics": [
+          "Lectura de estados financieros",
+          "Rastreo de flujos de fondos",
+          "Prueba pericial contable y financiera",
+          "Evidencia digital y cadena de custodia",
+          "Unidades de análisis financiero y organismos de control"
+        ]
+      },
+      {
+        "title": "Litigación de casos complejos",
+        "objective": "Gestionar casos voluminosos y de alta exposición.",
+        "topics": [
+          "Gestión de expedientes voluminosos",
+          "Teoría del caso en delitos económicos",
+          "Peritos y contraperitaje",
+          "Cooperación eficaz y salidas procesales",
+          "Estrategia reputacional y comunicación"
+        ]
+      },
+      {
+        "title": "Laboratorio de criminalidad económica",
+        "objective": "Integrar lo aprendido en un caso completo.",
+        "topics": [
+          "Caso integral simulado",
+          "Informe de riesgo penal",
+          "Audiencia simulada",
+          "Dictamen y plan de defensa",
+          "Presentación final"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "dogmatica-penal-defensa-estrategica-avanzada",
+    "title": "Dogmática penal y defensa estratégica avanzada",
+    "tag": "Profundización jurídica",
+    "description": "Imputación objetiva, autoría, omisión, prueba y jurisprudencia para quienes ya trabajan en derecho penal.",
+    "photo": "lectura-editorial.webp",
+    "alt": "Fausto Vásquez Cevallos estudia un tratado jurídico",
+    "links": [
+      {
+        "href": "/publicaciones#punto-inflexion",
+        "label": "Consultar la obra sobre imputación objetiva"
+      }
+    ],
+    "level": "IV",
+    "code": "AJFV-N4",
+    "approved": false,
+    "audience": "Litigantes, investigadores, docentes y juristas con experiencia que buscan formación avanzada.",
+    "requirements": "Experiencia profesional o académica en derecho penal. Se valorará haber completado los niveles anteriores o acreditar formación equivalente.",
+    "goals": [
+      "Aplicar la metodología de investigación dogmática.",
+      "Dominar los criterios de imputación objetiva y de autoría.",
+      "Analizar críticamente dolo, imprudencia, omisión y error.",
+      "Evaluar la prueba con enfoque epistemológico.",
+      "Elaborar y defender un trabajo de investigación."
+    ],
+    "modules": [
+      {
+        "title": "Metodología de investigación dogmática",
+        "objective": "Plantear y conducir una investigación jurídica.",
+        "topics": [
+          "Problema y método dogmático",
+          "Búsqueda y uso de fuentes",
+          "Estructura de un trabajo dogmático",
+          "Cita y argumentación académica",
+          "Taller del proyecto de investigación"
+        ]
+      },
+      {
+        "title": "Imputación objetiva avanzada",
+        "objective": "Aplicar los criterios de imputación objetiva.",
+        "topics": [
+          "Riesgo permitido y creación de un riesgo desaprobado",
+          "Realización del riesgo en el resultado",
+          "Alcance del tipo",
+          "Principio de confianza y prohibición de regreso; competencia de la víctima",
+          "La imputación objetiva en el COIP"
+        ]
+      },
+      {
+        "title": "Autoría y dominio del hecho",
+        "objective": "Distinguir autoría y participación.",
+        "topics": [
+          "Teorías de la autoría",
+          "Dominio del hecho y sus formas",
+          "Coautoría",
+          "Autoría mediata y aparatos organizados de poder",
+          "Inducción, complicidad y delitos de infracción de deber"
+        ]
+      },
+      {
+        "title": "Dolo, imprudencia y error",
+        "objective": "Analizar el aspecto subjetivo del delito.",
+        "topics": [
+          "Concepto de dolo y dolo eventual",
+          "Teorías cognitivas y volitivas",
+          "Imprudencia consciente e inconsciente",
+          "Error de tipo y error de prohibición",
+          "Ignorancia deliberada"
+        ]
+      },
+      {
+        "title": "Omisión y posiciones de garante",
+        "objective": "Fundamentar la responsabilidad por omisión.",
+        "topics": [
+          "Omisión propia e impropia",
+          "Fundamentos de la posición de garante",
+          "Deber de vigilancia",
+          "Garantes en la empresa",
+          "Comisión por omisión en el COIP"
+        ]
+      },
+      {
+        "title": "Antijuridicidad y culpabilidad",
+        "objective": "Profundizar en justificación y exculpación.",
+        "topics": [
+          "Legítima defensa y estado de necesidad",
+          "Consentimiento",
+          "Cumplimiento de un deber",
+          "Culpabilidad y exigibilidad",
+          "Concepciones funcionales de la culpabilidad"
+        ]
+      },
+      {
+        "title": "Dogmática de delitos complejos",
+        "objective": "Resolver problemas dogmáticos de la parte especial.",
+        "topics": [
+          "Concursos y problemas de la parte especial",
+          "Delitos de peligro",
+          "Delitos de organización",
+          "Bienes jurídicos supraindividuales",
+          "Derecho penal y derecho administrativo sancionador"
+        ]
+      },
+      {
+        "title": "Prueba, epistemología y proceso",
+        "objective": "Evaluar la prueba con rigor.",
+        "topics": [
+          "Verdad y prueba en el proceso penal",
+          "Estándares de prueba",
+          "Prueba indiciaria",
+          "Razonamiento probatorio y sesgos",
+          "Prueba científica"
+        ]
+      },
+      {
+        "title": "Jurisprudencia comparada",
+        "objective": "Analizar sentencias con método.",
+        "topics": [
+          "Método de análisis de sentencias",
+          "Cortes ecuatorianas: criterios y precedentes",
+          "Referencias de la región",
+          "Fuerza y límites del precedente",
+          "Estudio de casos"
+        ]
+      },
+      {
+        "title": "Defensa estratégica avanzada",
+        "objective": "Diseñar la defensa integral.",
+        "topics": [
+          "Diseño integral de la defensa",
+          "Decisiones bajo incertidumbre",
+          "Acuerdos y salidas procesales",
+          "Ética y secreto profesional",
+          "Defensa de personas expuestas públicamente"
+        ]
+      },
+      {
+        "title": "Seminario de investigación",
+        "objective": "Avanzar y discutir el trabajo final.",
+        "topics": [
+          "Presentación de avances",
+          "Revisión entre pares",
+          "Tutoría individual",
+          "Cierre del marco teórico",
+          "Taller de redacción"
+        ]
+      },
+      {
+        "title": "Trabajo final y defensa",
+        "objective": "Concluir y defender la investigación.",
+        "topics": [
+          "Redacción del trabajo final",
+          "Presentación oral",
+          "Defensa ante tribunal académico",
+          "Retroalimentación final",
+          "Opciones de publicación"
+        ]
+      }
+    ]
+  }
+]

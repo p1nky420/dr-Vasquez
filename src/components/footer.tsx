@@ -19,7 +19,7 @@ export function Footer() {
         <div>
           <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#76572f]">Institución</p>
           <nav className="mt-6 grid gap-3 text-[0.95rem] text-[#594f46]">
-            {navItems.map((item) => <Link key={item.href} href={item.href} className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#24211e]">{item.label}</Link>)}
+            {navItems.filter(({ href }) => href !== "/academia").map((item) => <Link key={item.href} href={item.href} className="inline-flex min-h-6 items-center py-0.5 transition-colors hover:text-[#24211e]">{item.label}</Link>)}
           </nav>
         </div>
         <div>

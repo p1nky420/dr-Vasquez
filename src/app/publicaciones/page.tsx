@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { ArrowUpRight, BookOpenText, FileText } from "lucide-react";
 import { heroPhotos } from "@/lib/hero-photos";
@@ -95,7 +96,10 @@ export default function PublicacionesPage() {
       </section>
       <aside className="in-wrap in-action" aria-labelledby="biblioteca-disponibilidad">
         <div><h2 id="biblioteca-disponibilidad">Disponibilidad de los libros</h2><p>El despacho puede confirmar qué obras están disponibles para consulta.</p></div>
-        <WhatsappCta location="interior-cierre" label="Consultar publicaciones" message="Hola, deseo consultar sobre las publicaciones del Dr. Fausto Vásquez Cevallos." />
+        <div className="in-action__links">
+          <WhatsappCta location="interior-cierre" label="Consultar publicaciones" message="Hola, deseo consultar sobre las publicaciones del Dr. Fausto Vásquez Cevallos." />
+          <Link href="/academia#contenido" className="ed-text-link">Explorar formación en derecho penal <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        </div>
       </aside>
     </div>
   );

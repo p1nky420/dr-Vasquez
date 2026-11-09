@@ -15,7 +15,7 @@ export default function PrivacidadPage() {
     <LegalPage
       eyebrow="Protección de datos"
       title="Política de privacidad"
-      updated="septiembre de 2026"
+      updated="noviembre de 2026"
       intro="Este sitio recibe información de personas que atraviesan situaciones jurídicas sensibles. Esta política explica qué datos se recogen, para qué se usan y qué derechos tiene sobre ellos."
     >
       <h2>Quién trata sus datos</h2>
@@ -60,6 +60,14 @@ export default function PrivacidadPage() {
       <p>
         Sus datos <strong>no se venden, no se ceden con fines comerciales y no
         se usan para publicidad dirigida</strong>.
+      </p>
+
+      <h2 id="privacidad-academia">Lista de interés de la Academia</h2>
+      <p>
+        Si se registra en la lista de la Academia, el estudio usa su nombre, el contacto que elija y el programa de
+        interés para avisarle sobre las convocatorias correspondientes. El registro es voluntario y se guarda
+        separado de las solicitudes de evaluación legal. Puede pedir que retiremos su contacto usando el teléfono
+        indicado en esta página.
       </p>
 
       <h2>Base legal</h2>

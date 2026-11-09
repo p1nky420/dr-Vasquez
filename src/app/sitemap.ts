@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { academyProgramPath, academyPrograms } from "@/lib/academia";
 import { SITE_URL, practiceLandings } from "@/lib/seo";
 
 type Entry = {
@@ -23,18 +24,17 @@ const staticRoutes: Entry[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   return [
     ...staticRoutes.map((route) => ({
       url: `${SITE_URL}${route.path}`,
-      lastModified,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
+    ...academyPrograms.filter(({ approved }) => approved).map(({ slug }) => ({
+      url: `${SITE_URL}${academyProgramPath(slug)}`,
+    })),
     ...practiceLandings.map((landing) => ({
       url: `${SITE_URL}/areas-de-practica/${landing.slug}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
