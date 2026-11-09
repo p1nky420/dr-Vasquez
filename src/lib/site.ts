@@ -22,6 +22,7 @@ export const navItems = [
   { href: "/firma", label: "Trayectoria" },
   { href: "/areas-de-practica", label: "Especialidades" },
   { href: "/publicaciones", label: "Publicaciones" },
+  { href: "/academia", label: "Academia" },
   { href: "/contacto", label: "Contacto" },
 ];
 export type PracticeArea = {

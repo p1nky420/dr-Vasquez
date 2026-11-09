@@ -36,11 +36,11 @@ export function encryptIntake(data: IntakeSubmission): EncryptedIntake | null {
   };
 }
 
-export async function verifyTurnstile(token: string | undefined, ip: string | null) {
+export async function verifyTurnstile(token: string | undefined, ip: string | null, requiredAction?: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   // No secret configured: the firm has chosen not to run a challenge. Do not
   // turn that into a blanket rejection of every real lead in production.
-  if (!secret) return true;
+  if (!secret) return !requiredAction;
   if (!token) return false;
 
   try {
@@ -49,13 +49,13 @@ export async function verifyTurnstile(token: string | undefined, ip: string | nu
 
     const response = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      { method: "POST", body, cache: "no-store" },
+      { method: "POST", body, cache: "no-store", ...(requiredAction ? { signal: AbortSignal.timeout(5000) } : {}) },
     );
-    const result = (await response.json()) as { success?: boolean };
-    return result.success === true;
+    const result = (await response.json()) as { success?: boolean; action?: string };
+    return result.success === true && (!requiredAction || (response.ok && result.action === requiredAction));
   } catch {
     // Cloudflare being unreachable must not cost the firm a client.
-    return true;
+    return !requiredAction;
   }
 }
 
